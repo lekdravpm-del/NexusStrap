@@ -15,9 +15,11 @@ jobs:
           fetch-depth: 0
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '10.0.x'
+        shell: bash
+        run: |
+          Invoke-WebRequest -Uri "https://dot.net/v1/dotnet-install.ps1" -OutFile "dotnet-install.ps1"
+          .\dotnet-install.ps1 -Channel 10.0 -Quality preview
+          echo "$env:LOCALAPPDATA\Microsoft\dotnet" >> $env:GITHUB_PATH
 
       - name: Get version from tag
         id: version
@@ -31,12 +33,20 @@ jobs:
         run: dotnet build NexusStrap/NexusStrap.csproj -c Release --no-restore
 
       - name: Publish
-        run: dotnet publish NexusStrap/NexusStrap.csproj -c Release --no-build -p:PublishProfile=Publish-x64
+        run: >
+          dotnet publish NexusStrap/NexusStrap.csproj -c Release --no-build
+          -r win-x64
+          -p:SelfContained=true
+          -p:PublishSingleFile=true
+          -p:PublishTrimmed=false
+          -p:PublishReadyToRun=true
+          -p:EnableCompressionInSingleFile=true
+          -p:IncludeNativeLibrariesForSelfExtract=true
 
       - name: Rename exe with version
         shell: bash
         run: |
-          mv "NexusStrap/bin/Release/net10.0-windows/publish/win-x64/NexusStrap.exe" "NexusStrap-${{ steps.version.outputs.VERSION }}.exe"
+          mv "NexusStrap/bin/Release/net10.0-windows/win-x64/publish/NexusStrap.exe" "NexusStrap-${{ steps.version.outputs.VERSION }}.exe"
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
