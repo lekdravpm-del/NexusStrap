@@ -7,10 +7,6 @@
 </p>
 
 <p align="center">
-    <img src="./.resources/nexusstrap.png" height=200 alt="logo"/>
-</p>
-
-<p align="center">
     If you want to help support our project please consider giving this repo a star!
 </p>
 
