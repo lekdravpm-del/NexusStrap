@@ -23,11 +23,11 @@ namespace NexusStrap
 #else
         public const string ProjectName = "NexusStrap";
 #endif
-        public const string ProjectOwner = "NexusStrap";
-        public const string ProjectRepository = "NexusStrap/NexusStrap";
-        public const string ProjectDownloadLink = "https://github.com/NexusStrap/NexusStrap/releases";
-        public const string ProjectHelpLink = "https://github.com/nexusstraplabs/nexusstrap/wiki";
-        public const string ProjectSupportLink = "https://github.com/NexusStrap/NexusStrap/issues/new";
+        public const string ProjectOwner = "lekdravpm-del";
+        public const string ProjectRepository = "lekdravpm-del/NexusStrap";
+        public const string ProjectDownloadLink = "https://github.com/lekdravpm-del/NexusStrap/releases";
+        public const string ProjectHelpLink = "https://github.com/lekdravpm-del/NexusStrap/issues";
+        public const string ProjectSupportLink = "https://github.com/lekdravpm-del/NexusStrap/issues/new";
 
         public const string RobloxPlayerAppName = "RobloxPlayerBeta.exe";
         public const string RobloxStudioAppName = "RobloxStudioBeta.exe";

@@ -123,7 +123,7 @@ namespace NexusStrap.Integrations
                     },
                     Buttons = new[]
                     {
-                        new Button { Label = "GitHub", Url = "https://github.com/NexusStrap/NexusStrap" },
+                        new Button { Label = "GitHub", Url = "https://github.com/lekdravpm-del/NexusStrap" },
                         new Button { Label = "Discord", Url = "https://discord.gg/KdR9vpRcUN" }
                     }
                 };

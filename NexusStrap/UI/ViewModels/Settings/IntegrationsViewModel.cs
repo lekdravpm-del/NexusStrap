@@ -307,6 +307,33 @@ namespace NexusStrap.UI.ViewModels.Settings
 
         public CustomIntegration? SelectedCustomIntegration { get; set; }
         public int SelectedCustomIntegrationIndex { get; set; }
+        public bool CustomRPCEnabled
+        {
+            get => App.Settings.Prop.CustomRPCEnabled;
+            set
+            {
+                App.Settings.Prop.CustomRPCEnabled = value;
+                OnPropertyChanged(nameof(CustomRPCEnabled));
+                OnPropertyChanged(nameof(IsCustomizing));
+            }
+        }
+
+        public bool IsCustomizing => CustomRPCEnabled;
+
+        private string _customDetails = App.Settings.Prop.CustomRPCDetails ?? "";
+        public string CustomDetails
+        {
+            get => _customDetails;
+            set { _customDetails = value; App.Settings.Prop.CustomRPCDetails = value; OnPropertyChanged(nameof(CustomDetails)); }
+        }
+
+        private string _customState = App.Settings.Prop.CustomRPCState ?? "";
+        public string CustomState
+        {
+            get => _customState;
+            set { _customState = value; App.Settings.Prop.CustomRPCState = value; OnPropertyChanged(nameof(CustomState)); }
+        }
+
         public bool IsCustomIntegrationSelected => SelectedCustomIntegration is not null;
 
         private static bool IsBlocked(string path)

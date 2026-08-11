@@ -132,6 +132,40 @@ namespace NexusStrap
             if (_cancellationTokenSource.Token.IsCancellationRequested)
                 return;
 
+            // Crash Recovery: detect abnormal exit and auto-relaunch
+            if (App.Settings.Prop.CrashRecoveryEnabled && _watcherData.LaunchMode == LaunchMode.Player)
+            {
+                try
+                {
+                    using var process = Process.GetProcessById(_watcherData.ProcessId);
+                    if (process.HasExited && process.ExitCode != 0)
+                    {
+                        App.Logger.WriteLine("Watcher::Run", $"Roblox crashed with exit code {process.ExitCode}. Crash recovery triggered.");
+                        for (int attempt = 1; attempt <= App.Settings.Prop.CrashRecoveryMaxRetries; attempt++)
+                        {
+                            App.Logger.WriteLine("Watcher::Run", $"Crash recovery attempt {attempt}/{App.Settings.Prop.CrashRecoveryMaxRetries}");
+                            await Task.Delay(App.Settings.Prop.CrashRecoveryDelayMs);
+
+                            try
+                            {
+                                Process.Start(Paths.Process, "-player");
+                                App.Logger.WriteLine("Watcher::Run", "Crash recovery: relaunched Roblox successfully");
+                                return;
+                            }
+                            catch (Exception ex)
+                            {
+                                App.Logger.WriteException("Watcher::Run", ex);
+                            }
+                        }
+                        App.Logger.WriteLine("Watcher::Run", "Crash recovery: all retry attempts exhausted");
+                    }
+                }
+                catch
+                {
+                    // Process may have already been cleaned up
+                }
+            }
+
             if (_watcherData.AutoclosePids is not null)
             {
                 foreach (int pid in _watcherData.AutoclosePids)

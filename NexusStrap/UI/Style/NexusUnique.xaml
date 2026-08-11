@@ -1,0 +1,12 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml">
+
+    <!-- NexusStrap unique accent brushes -->
+    <SolidColorBrush x:Key="NexusAccentBrush" Color="#3A7BD5" />
+    <SolidColorBrush x:Key="NexusAccentHoverBrush" Color="#2E6BC4" />
+    <SolidColorBrush x:Key="NexusCardBorderBrush" Color="#3A7BD5" />
+    <SolidColorBrush x:Key="NexusHoverBgBrush" Color="#153A7BD5" />
+
+</ResourceDictionary>

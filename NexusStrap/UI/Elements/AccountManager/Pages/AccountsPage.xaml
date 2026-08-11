@@ -13,20 +13,31 @@
       Title="Accounts Page"
       Scrollable="True">
 
-    <Grid Margin="0,8,8,8">
+    <Grid Margin="4,8,8,8">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
+        <!-- Current Account - Accent Card -->
         <Border
             Grid.Row="0"
             Margin="0,0,0,16"
-            Padding="16"
-            Background="{DynamicResource PrimaryBackgroundColor}"
-            BorderBrush="{DynamicResource ControlFillColorDefaultBrush}"
-            BorderThickness="1"
-            CornerRadius="8">
+            Padding="20,16"
+            CornerRadius="10">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#30FFFFFF" Offset="0"/>
+                    <GradientStop Color="#10FFFFFF" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Border.BorderBrush>
+                <SolidColorBrush Color="{DynamicResource SystemAccentColor}" Opacity="0.4"/>
+            </Border.BorderBrush>
+            <Border.BorderThickness>
+                <Thickness Left="3" Top="0" Right="0" Bottom="0"/>
+            </Border.BorderThickness>
+
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -36,9 +47,10 @@
                 <TextBlock
                     Grid.Row="0"
                     Margin="0,0,0,12"
-                    FontSize="20"
-                    FontWeight="Bold"
-                    Text="Current Account" />
+                    FontSize="13"
+                    FontWeight="Medium"
+                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                    Text="ACTIVE SESSION" />
 
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
@@ -49,26 +61,27 @@
                     <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
                         <Grid>
                             <Border
-                                Width="70"
-                                Height="70"
-                                Background="{DynamicResource ControlFillColorSecondaryBrush}"
-                                CornerRadius="35">
-                                <Image
-                                    ClipToBounds="True"
-                                    Source="{Binding CurrentUserAvatarUrl}"
-                                    Stretch="UniformToFill" />
+                                Width="60"
+                                Height="60"
+                                CornerRadius="10">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="{Binding CurrentUserAvatarUrl}" Stretch="UniformToFill" />
+                                </Border.Background>
+                                <Border.Clip>
+                                    <RectangleGeometry RadiusX="10" RadiusY="10" Rect="0,0,60,60"/>
+                                </Border.Clip>
                             </Border>
 
                             <Border
-                                Width="16"
-                                Height="16"
-                                Margin="0,0,2,2"
+                                Width="14"
+                                Height="14"
+                                Margin="0,0,1,1"
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Bottom"
                                 Background="{Binding CurrentUserPresence.StatusColor, FallbackValue=#808080}"
                                 BorderBrush="{DynamicResource ApplicationBackgroundBrush}"
                                 BorderThickness="2"
-                                CornerRadius="8"
+                                CornerRadius="7"
                                 ToolTip="{Binding CurrentUserPresence.ToolTipText, FallbackValue='Offline'}">
                                 <Border.Effect>
                                     <DropShadowEffect BlurRadius="4" Opacity="0.6" ShadowDepth="0" />
@@ -76,56 +89,62 @@
                             </Border>
                         </Grid>
 
-                        <StackPanel Margin="12,0,0,0" VerticalAlignment="Center">
+                        <StackPanel Margin="14,0,0,0" VerticalAlignment="Center">
                             <TextBlock
-                                FontSize="18"
+                                FontSize="17"
                                 FontWeight="SemiBold"
                                 Foreground="{DynamicResource TextFillColorPrimaryBrush}"
                                 Text="{Binding CurrentUserDisplayName}" />
                             <TextBlock
-                                FontSize="14"
+                                FontSize="13"
+                                Margin="0,2,0,0"
                                 Foreground="{DynamicResource TextFillColorSecondaryBrush}"
                                 Text="{Binding CurrentUserUsername}" />
 
                             <StackPanel
-                                Margin="0,4,0,0"
+                                Margin="0,6,0,0"
                                 Orientation="Horizontal"
                                 Visibility="{Binding IsAccountInformationVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
-                                <TextBlock
-                                    FontSize="12"
-                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
-                                    Text="{Binding FriendsCount, StringFormat={}{0} Friends}" />
-                                <TextBlock
-                                    Margin="8,0,0,0"
-                                    FontSize="12"
-                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
-                                    Text="{Binding FollowersCount, StringFormat={}{0} Followers}" />
-                                <TextBlock
-                                    Margin="8,0,0,0"
-                                    FontSize="12"
-                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
-                                    Text="{Binding FollowingCount, StringFormat={}{0} Following}" />
+                                <Border Padding="6,2" CornerRadius="4" Margin="0,0,6,0">
+                                    <Border.Background>
+                                        <SolidColorBrush Color="{DynamicResource SystemAccentColor}" Opacity="0.15"/>
+                                    </Border.Background>
+                                    <TextBlock FontSize="11" FontWeight="Medium" Text="{Binding FriendsCount, StringFormat='{}{0} Friends'}" />
+                                </Border>
+                                <Border Padding="6,2" CornerRadius="4" Margin="0,0,6,0">
+                                    <Border.Background>
+                                        <SolidColorBrush Color="{DynamicResource SystemAccentColor}" Opacity="0.15"/>
+                                    </Border.Background>
+                                    <TextBlock FontSize="11" FontWeight="Medium" Text="{Binding FollowersCount, StringFormat='{}{0} Followers'}" />
+                                </Border>
+                                <Border Padding="6,2" CornerRadius="4">
+                                    <Border.Background>
+                                        <SolidColorBrush Color="{DynamicResource SystemAccentColor}" Opacity="0.15"/>
+                                    </Border.Background>
+                                    <TextBlock FontSize="11" FontWeight="Medium" Text="{Binding FollowingCount, StringFormat='{}{0} Following'}" />
+                                </Border>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
 
-                    <StackPanel Grid.Column="1" VerticalAlignment="Center" Orientation="Horizontal">
-                        <ui:Button 
-                            Appearance="Secondary"
-                            Command="{Binding SignOutCommand}" 
-                            Content="Sign Out" />
-                    </StackPanel>
+                    <ui:Button
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Appearance="Danger"
+                        Command="{Binding SignOutCommand}"
+                        Content="Sign Out" />
                 </Grid>
             </Grid>
         </Border>
 
+        <!-- Manage Accounts -->
         <Border
             Grid.Row="1"
             Padding="16"
             Background="{DynamicResource PrimaryBackgroundColor}"
             BorderBrush="{DynamicResource ControlFillColorDefaultBrush}"
             BorderThickness="1"
-            CornerRadius="8">
+            CornerRadius="10">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -133,18 +152,12 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <Grid Grid.Row="0" Margin="0,0,0,16">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-
-                    <TextBlock
-                        Grid.Column="0"
-                        VerticalAlignment="Center"
-                        FontSize="20"
-                        FontWeight="Bold"
-                        Text="Manage Accounts" />
-                </Grid>
+                <TextBlock
+                    Grid.Row="0"
+                    Margin="0,0,0,12"
+                    FontSize="16"
+                    FontWeight="Bold"
+                    Text="Saved Accounts" />
 
                 <ListBox
                     x:Name="AccountsListBox"
@@ -162,11 +175,12 @@
 
                     <ListBox.ItemContainerStyle>
                         <Style TargetType="ListBoxItem">
-                            <Setter Property="Padding" Value="12,8" />
+                            <Setter Property="Padding" Value="12,10" />
                             <Setter Property="Margin" Value="0,0,0,4" />
                             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                             <Setter Property="Background" Value="Transparent" />
-                            <Setter Property="BorderThickness" Value="0" />
+                            <Setter Property="BorderThickness" Value="0,0,0,1" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource ControlFillColorDefaultBrush}" />
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
                                     <Setter Property="Background" Value="{DynamicResource ControlFillColorSecondaryBrush}" />
@@ -182,37 +196,38 @@
                         <DataTemplate>
                             <Grid>
                                 <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
 
-                                <StackPanel Grid.Column="0" VerticalAlignment="Center" Orientation="Horizontal">
-                                    <Border
-                                        Width="40"
-                                        Height="40"
-                                        Background="{DynamicResource ControlFillColorSecondaryBrush}"
-                                        CornerRadius="20">
-                                        <Image 
-                                            ClipToBounds="True" 
-                                            Source="{Binding AvatarUrl}" 
+                                <Border Grid.Column="0"
+                                        Width="38"
+                                        Height="38"
+                                        CornerRadius="8"
+                                        Margin="0,0,12,0">
+                                    <Border.Background>
+                                        <ImageBrush
+                                            ImageSource="{Binding AvatarUrl}"
                                             Stretch="UniformToFill" />
-                                    </Border>
-                                    <StackPanel Margin="12,0,0,0" VerticalAlignment="Center">
-                                        <TextBlock 
-                                            FontSize="14"
-                                            FontWeight="SemiBold" 
-                                            Text="{Binding DisplayName}" />
-                                        <TextBlock 
-                                            FontSize="12"
-                                            Foreground="{DynamicResource TextFillColorSecondaryBrush}" 
-                                            Text="{Binding Username}" />
-                                    </StackPanel>
+                                    </Border.Background>
+                                </Border>
+
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                    <TextBlock
+                                        FontSize="14"
+                                        FontWeight="SemiBold"
+                                        Text="{Binding DisplayName}" />
+                                    <TextBlock
+                                        FontSize="12"
+                                        Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                        Text="{Binding Username}" />
                                 </StackPanel>
 
                                 <ui:Button
-                                    Grid.Column="1"
-                                    Width="28"
-                                    Height="28"
+                                    Grid.Column="2"
+                                    Width="30"
+                                    Height="30"
                                     Margin="8,0,0,0"
                                     Padding="0"
                                     VerticalAlignment="Center"
@@ -221,23 +236,23 @@
                                     Appearance="Danger"
                                     Command="{Binding DataContext.DeleteAccountCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
                                     CommandParameter="{Binding}"
-                                    ToolTip="Delete this account">
-                                    <ui:SymbolIcon FontSize="12" Symbol="Delete24" />
+                                    ToolTip="Remove this account">
+                                    <ui:SymbolIcon FontSize="13" Symbol="Delete24" />
                                 </ui:Button>
                             </Grid>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
 
-                <StackPanel Grid.Row="2" Margin="0,16,0,0">
+                <StackPanel Grid.Row="2" Margin="0,12,0,0">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <ui:Button 
-                        Grid.Column="0"
+                        <ui:Button
+                            Grid.Column="0"
                             Margin="0,0,8,0"
                             Height="36"
                             Appearance="Primary"
@@ -247,7 +262,7 @@
                         <ui:Button
                             x:Name="AddNewAccountButton"
                             Grid.Column="1"
-                            Height="34"
+                            Height="36"
                             HorizontalAlignment="Stretch"
                             Command="{Binding AddAccountCommand}"
                             Content="Add New Account" />

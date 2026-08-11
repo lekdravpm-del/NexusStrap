@@ -124,12 +124,8 @@ namespace NexusStrap
 
         private void SetDefaults()
         {
-            string? current = GetPresets("Rendering.FramerateCap");
-            if (string.IsNullOrEmpty(current) || current == "-1")
-            {
-                SetPresets("Rendering.FramerateCap", "9999");
-                Save();
-            }
+            // Uncap FPS is now controlled by the toggle in Behaviour settings
+            // Don't override the user's choice here
         }
 
         public virtual void Save()

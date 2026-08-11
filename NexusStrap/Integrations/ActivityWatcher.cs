@@ -671,6 +671,14 @@
                         };
 
                         activity.UniverseDetails = UniverseDetails.LoadFromCache(activity.UniverseId);
+
+                        if (activity.UniverseDetails == null && !string.IsNullOrEmpty(history.GameName))
+                        {
+                            activity.UniverseDetails = new UniverseDetails
+                            {
+                                Data = new GameDetailResponse { Id = activity.UniverseId, Name = history.GameName, RootPlaceId = activity.PlaceId, Description = "", SourceName = "", SourceDescription = "", Creator = null!, AllowedGearGenres = Enumerable.Empty<string>(), AllowedGearCategories = Enumerable.Empty<string>(), Genre = "", UniverseAvatarType = "" }
+                            };
+                        }
                         History.Add(activity);
                     }
 
@@ -730,6 +738,7 @@
                     ServerType = (int)activity.ServerType,
                     TimeJoined = activity.TimeJoined,
                     TimeLeft = activity.TimeLeft,
+                    GameName = activity.UniverseDetails?.Data?.Name,
                 }).ToList();
 
                 string json = JsonSerializer.Serialize(gameHistory, options);

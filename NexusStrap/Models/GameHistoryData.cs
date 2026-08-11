@@ -22,5 +22,8 @@
 
         [JsonPropertyName("TimeLeft")]
         public DateTime? TimeLeft { get; set; }
+
+        [JsonPropertyName("GameName")]
+        public string? GameName { get; set; }
     }
 }

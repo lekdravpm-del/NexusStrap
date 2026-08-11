@@ -178,5 +178,24 @@ namespace NexusStrap.UI.ViewModels.Settings
                 RequestPageReloadEvent?.Invoke(this, EventArgs.Empty);
             }
         }
+
+        public bool AutoUpdateEnabled
+        {
+            get => App.Settings.Prop.AutoUpdateFFlagsOnRobloxUpdate;
+            set
+            {
+                App.Settings.Prop.AutoUpdateFFlagsOnRobloxUpdate = value;
+                OnPropertyChanged(nameof(AutoUpdateEnabled));
+            }
+        }
+
+        private string _selectedTemplateName = App.Settings.Prop.AutoUpdateFFlagTemplateName ?? "";
+        public string SelectedTemplateName
+        {
+            get => _selectedTemplateName;
+            set { _selectedTemplateName = value; App.Settings.Prop.AutoUpdateFFlagTemplateName = value; OnPropertyChanged(nameof(SelectedTemplateName)); }
+        }
+
+        public string[] AvailableTemplates { get; } = FFlagTemplateManager.GetAll().Select(t => t.Name).ToArray();
     }
 }

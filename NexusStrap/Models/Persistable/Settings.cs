@@ -9,7 +9,7 @@ namespace NexusStrap.Models.Persistable
         public bool EnableActivityTracking { get; set; } = true;
         public bool ShowServerDetails { get; set; } = true;
         public bool ShowServerUptime { get; set; } = false;
-        public bool AutoRejoin { get; set; } = false;
+        public bool AutoRejoin { get; set; } = true;
         public bool ShowGameHistoryMenu { get; set; } = true;
         public bool PlaytimeCounter { get; set; } = true;
         public TrayDoubleClickAction DoubleClickAction { get; set; } = TrayDoubleClickAction.ServerInfo;
@@ -18,7 +18,7 @@ namespace NexusStrap.Models.Persistable
         public bool UseDiscordRichPresence { get; set; } = true;
         public bool HideRPCButtons { get; set; } = true;
         public bool EnableCustomStatusDisplay { get; set; } = true;
-        public bool ShowAccountOnRichPresence { get; set; } = false;
+        public bool ShowAccountOnRichPresence { get; set; } = true;
         public bool StudioRPC { get; set; } = false;
         public bool StudioThumbnailChanging { get; set; } = false;
         public bool StudioEditingInfo { get; set; } = false;
@@ -35,7 +35,7 @@ namespace NexusStrap.Models.Persistable
         public List<string> CleanerDirectories { get; set; } = new List<string>();
         public bool BackgroundUpdatesEnabled { get; set; } = false;
         public bool MultiInstanceLaunching { get; set; } = true;
-        public bool Error773Fix { get; set; } = false;
+        public bool Error773Fix { get; set; } = true;
         public int MultibloxInstanceCount { get; set; } = 2;
         public int MultibloxDelayMs { get; set; } = 1500;
         public ProcessPriorityOption SelectedProcessPriority { get; set; } = ProcessPriorityOption.AboveNormal;
@@ -96,5 +96,22 @@ namespace NexusStrap.Models.Persistable
         public string SelectedRegion { get; set; } = string.Empty;
         public bool ForceLocalData { get; set; } = false;
         public bool DebugDisableVersionPackageCleanup { get; set; } = false;
+
+        // Custom Launch Arguments
+        public ObservableCollection<CustomLaunchArg> CustomLaunchArgs { get; set; } = new();
+
+        // Crash Recovery
+        public bool CrashRecoveryEnabled { get; set; } = true;
+        public int CrashRecoveryMaxRetries { get; set; } = 3;
+        public int CrashRecoveryDelayMs { get; set; } = 2000;
+
+        // Auto-Update FFlag Profiles
+        public bool AutoUpdateFFlagsOnRobloxUpdate { get; set; } = false;
+        public string? AutoUpdateFFlagTemplateName { get; set; } = null;
+
+        // Discord RPC Customize
+        public bool CustomRPCEnabled { get; set; } = false;
+        public string? CustomRPCDetails { get; set; } = null;
+        public string? CustomRPCState { get; set; } = null;
     }
 }

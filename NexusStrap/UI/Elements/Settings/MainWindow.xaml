@@ -46,7 +46,6 @@
         <Grid x:Name="RootGrid" Grid.Row="1" Margin="10,8,0,0" Visibility="Visible">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -67,16 +66,24 @@
                 <ui:Anchor Grid.Column="1" Content="Discord" Icon="Chat24" NavigateUri="https://discord.gg/hvhEDxFek" ToolTip="Join our Discord server" VerticalAlignment="Center" Margin="0,0,8,0" />
             </Grid>
 
-            <ui:NavigationCompact x:Name="RootNavigation" Grid.Row="1" Grid.Column="0" Margin="0,0,20,0" Frame="{Binding ElementName=RootFrame}" IsExpanded="{Binding IsSidebarExpanded, Mode=TwoWay}" MaxWidth="215" SelectedPageIndex="0" FooterAlwaysVisible="True">
+            <ui:NavigationCompact x:Name="RootNavigation" Grid.Row="1" Grid.Column="0" Margin="4,0,16,0" Frame="{Binding ElementName=RootFrame}" IsExpanded="{Binding IsSidebarExpanded, Mode=TwoWay}" MaxWidth="195" SelectedPageIndex="0" FooterAlwaysVisible="True" Background="Transparent">
                 <ui:NavigationCompact.Items>
-                    <ui:NavigationItem Content="{x:Static resources:Strings.Menu_Integrations_Title}" PageType="{x:Type pages:IntegrationsPage}" Icon="Add28" IconSize="20" Tag="integrations" />
-                    <ui:NavigationItem Content="{x:Static resources:Strings.Menu_Behaviour_Title}" PageType="{x:Type pages:BehaviourPage}" Icon="PlaySettings20" IconSize="20" Tag="bootstrapper" />
-                    <ui:NavigationItem Content="{x:Static resources:Strings.Menu_Mods_Title}" PageType="{x:Type pages:ModsPage}" Icon="WrenchScrewdriver20" IconSize="20" Tag="mods" />
-                    <ui:NavigationItem Content="{x:Static resources:Strings.Menu_FastFlags_Title}" PageType="{x:Type pages:FastFlagsPage}" Icon="Flag24" IconSize="20" Tag="fastflags" />
-                    <ui:NavigationItem Content="{x:Static resources:Strings.Menu_Appearance_Title}" PageType="{x:Type pages:AppearancePage}" Icon="PaintBrush24" IconSize="20" Tag="appearance" />
-                    <ui:NavigationItem Content="{x:Static resources:Strings.Menu_RegionSelector_Title}" PageType="{x:Type pages:RegionSelectorPage}" Icon="Earth24" IconSize="20" Tag="regionselector" />
-                    <ui:NavigationItem Content="{x:Static resources:Strings.Menu_RobloxSettings_Title}" PageType="{x:Type pages:RobloxSettingsPage}" Icon="SquareHintApps24" IconSize="20" Tag="robloxsettings" x:Name="gbs" />
-                    <ui:NavigationItem Content="{x:Static resources:Strings.Common_Shortcuts}" PageType="{x:Type pages:ShortcutsPage}" Icon="Apps28" IconSize="20" Tag="shortcuts" />
+                    <ui:NavigationItem Content="{x:Static resources:Strings.Menu_Integrations_Title}" PageType="{x:Type pages:IntegrationsPage}" Icon="PuzzlePiece24" IconSize="20" Tag="integrations" />
+                    <ui:NavigationItem Content="{x:Static resources:Strings.Menu_Behaviour_Title}" PageType="{x:Type pages:BehaviourPage}" Icon="Rocket24" IconSize="20" Tag="bootstrapper" />
+                    <ui:NavigationItem Content="{x:Static resources:Strings.Menu_FastFlags_Title}" PageType="{x:Type pages:FastFlagsPage}" Icon="Tag24" IconSize="20" Tag="fastflags" />
+                    <ui:NavigationItem Content="FFlag Templates" PageType="{x:Type pages:FFlagTemplatesPage}" Icon="Library24" IconSize="20" Tag="fflagtemplates" />
+                    <ui:NavigationItem Content="{x:Static resources:Strings.Menu_Appearance_Title}" PageType="{x:Type pages:AppearancePage}" Icon="Color24" IconSize="20" Tag="appearance" />
+                    <ui:NavigationItem Content="{x:Static resources:Strings.Menu_RegionSelector_Title}" PageType="{x:Type pages:RegionSelectorPage}" Icon="Navigation24" IconSize="20" Tag="regionselector" />
+                    <ui:NavigationItem Content="{x:Static resources:Strings.Menu_RobloxSettings_Title}" PageType="{x:Type pages:RobloxSettingsPage}" Icon="LauncherSettings24" IconSize="20" Tag="robloxsettings" x:Name="gbs" />
+                    <ui:NavigationItem Content="{x:Static resources:Strings.Common_Shortcuts}" PageType="{x:Type pages:ShortcutsPage}" Icon="Keyboard24" IconSize="20" Tag="shortcuts" />
+
+                    <ui:NavigationItem Content="Server History" PageType="{x:Type pages:ServerHistoryPage}" Icon="History24" IconSize="20" Tag="serverhistory" />
+                    <ui:NavigationItem Content="Launch Arguments" PageType="{x:Type pages:CustomLaunchArgsPage}" Icon="Code24" IconSize="20" Tag="launchargs" />
+                    <ui:NavigationItem Content="Log Viewer" PageType="{x:Type pages:LogViewerPage}" Icon="Document24" IconSize="20" Tag="logviewer" />
+                    <ui:NavigationItem Content="Anti-Cheat" PageType="{x:Type pages:AntiCheatPage}" Icon="ShieldCheckmark24" IconSize="20" Tag="anticheat" />
+                    <ui:NavigationItem Content="Conflict Detector" PageType="{x:Type pages:ModConflictPage}" Icon="ErrorCircle24" IconSize="20" Tag="conflictdetector" />
+                    <ui:NavigationItem Content="Health Check" PageType="{x:Type pages:HealthCheckPage}" Icon="HeartPulse24" IconSize="20" Tag="healthcheck" />
+                    <ui:NavigationItem Content="Analytics" PageType="{x:Type pages:AnalyticsPage}" Icon="ChartPerson24" IconSize="20" Tag="analytics" />
 
                     <ui:NavigationItem Content="{x:Static resources:Strings.Menu_FastFlagEditor_Title}" PageType="{x:Type pages:FastFlagEditorPage}" Icon="EditSettings20" IconSize="20" Tag="fastflageditor" Visibility="Collapsed" />
                     <ui:NavigationItem Content="FastFlagEditorWarning" PageType="{x:Type pages:FastFlagEditorWarningPage}" Icon="Warning24" IconSize="20" Tag="fastflageditorwarning" Visibility="Collapsed" />
@@ -84,16 +91,16 @@
                     <ui:NavigationItem Content="Community Mods" PageType="{x:Type pages:CommunityModsPage}" Icon="BuildingShop24" IconSize="20" Tag="communitymods" Visibility="Collapsed" />
                     <ui:NavigationItem Content="Preset Mods" PageType="{x:Type pages:ModsPresetsPage}" Icon="BuildingShop24" IconSize="20" Tag="presetmods" Visibility="Collapsed" />
                     <ui:NavigationItem Content="Mod Generator" PageType="{x:Type pages:ModGeneratorPage}" Icon="BuildingShop24" IconSize="20" Tag="modgenerator" Visibility="Collapsed" />
-                    <ui:NavigationItem Content="Theme Store" PageType="{x:Type pages:ThemeStorePage}" Icon="PaintBrush24" IconSize="20" Tag="themestore" />
+                    <ui:NavigationItem Content="Theme Store" PageType="{x:Type pages:ThemeStorePage}" Icon="PaintBrush24" IconSize="20" Tag="themestore" Visibility="Collapsed" />
                 </ui:NavigationCompact.Items>
                 <ui:NavigationCompact.Footer>
-                    <ui:NavigationItem Content="{x:Static resources:Strings.Menu_AccountManager_Title}" Icon="People24" IconSize="20" Tag="accountmanager"  Command="{Binding OpenAccountManagerCommand, Mode=OneTime}" />
-                    <ui:NavigationItem Content="{x:Static resources:Strings.Common_Settings}" PageType="{x:Type pages:ChannelPage}" Icon="Settings20" IconSize="20" Tag="channel" />
-                    <ui:NavigationItem Content="{x:Static resources:Strings.Menu_About_Title}" Icon="WeatherSnowflake48" IconSize="21" Margin="0,0,0,12" Command="{Binding OpenAboutCommand, Mode=OneTime}" />
+                    <ui:NavigationItem Content="{x:Static resources:Strings.Menu_AccountManager_Title}" Icon="ContactCard24" IconSize="20" Tag="accountmanager"  Command="{Binding OpenAccountManagerCommand, Mode=OneTime}" />
+                    <ui:NavigationItem Content="{x:Static resources:Strings.Common_Settings}" PageType="{x:Type pages:ChannelPage}" Icon="Options24" IconSize="20" Tag="channel" />
+                    <ui:NavigationItem Content="{x:Static resources:Strings.Menu_About_Title}" Icon="Info24" IconSize="21" Margin="0,0,0,12" Command="{Binding OpenAboutCommand, Mode=OneTime}" />
                 </ui:NavigationCompact.Footer>
             </ui:NavigationCompact>
 
-            <Grid Grid.Row="1" Grid.RowSpan="2" Grid.Column="1">
+            <Grid Grid.Row="1" Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -114,6 +121,7 @@
                 <ItemsPanelTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
@@ -139,18 +147,47 @@
             </StatusBarItem>
 
             <!-- Made by Troll -->
-            <StatusBarItem Grid.Column="1" VerticalAlignment="Center">
+            <StatusBarItem Grid.Column="1" VerticalAlignment="Center" Margin="0,0,4,0">
                 <TextBlock Text="Made by Troll/Recd" FontSize="12" FontWeight="Medium" VerticalAlignment="Center" Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
             </StatusBarItem>
 
+            <!-- Close -->
+            <StatusBarItem Grid.Column="3" VerticalAlignment="Center" Margin="0,0,4,0">
+                <ui:Button Content="{x:Static resources:Strings.Common_Close}"
+                   Height="32"
+                   Padding="14,0"
+                   FontWeight="Medium"
+                   Command="{Binding CloseWindowCommand}" />
+            </StatusBarItem>
+
+            <!-- Save -->
+            <StatusBarItem Grid.Column="4" VerticalAlignment="Center" Margin="0,0,4,0">
+                <ui:Button Content="{x:Static resources:Strings.Menu_Save}"
+                   Appearance="Primary"
+                   Height="32"
+                   Padding="14,0"
+                   FontWeight="Medium"
+                   Command="{Binding SaveSettingsCommand}" />
+            </StatusBarItem>
+
+            <!-- Restart -->
+            <StatusBarItem Grid.Column="5" VerticalAlignment="Center" Margin="0,0,4,0">
+                <ui:Button Content="{x:Static resources:Strings.Menu_Restart}"
+               Height="32"
+               Padding="14,0"
+               FontWeight="Medium"
+               Appearance="Primary"
+               Command="{Binding RestartAppCommand}" />
+            </StatusBarItem>
+
             <!-- Save & Launch -->
-            <StatusBarItem Grid.Column="2" VerticalAlignment="Center" Margin="0,0,4,0">
+            <StatusBarItem Grid.Column="6" VerticalAlignment="Center" Margin="0,0,0,0">
                 <ui:Button x:Name="LaunchButton"
                Content="{x:Static resources:Strings.Menu_SaveAndLaunch}"
                Appearance="Primary"
                Height="32"
-               FontWeight="Medium"
-               Padding="14,0"
+               FontWeight="Bold"
+               Padding="18,0"
                Click="LaunchButton_Click">
                     <ui:Button.ContextMenu>
                         <ContextMenu x:Name="LaunchMenu">
@@ -167,35 +204,6 @@
                         </ContextMenu>
                     </ui:Button.ContextMenu>
                 </ui:Button>
-            </StatusBarItem>
-
-            <!-- Restart -->
-            <StatusBarItem Grid.Column="3" VerticalAlignment="Center" Margin="0,0,4,0">
-                <ui:Button Content="{x:Static resources:Strings.Menu_Restart}"
-               Height="32"
-               Padding="14,0"
-               FontWeight="Medium"
-               Appearance="Primary"
-               Command="{Binding RestartAppCommand}" />
-            </StatusBarItem>
-
-            <!-- Save -->
-            <StatusBarItem Grid.Column="4" VerticalAlignment="Center" Margin="0,0,4,0">
-                <ui:Button Content="{x:Static resources:Strings.Menu_Save}"
-                   Appearance="Primary"
-                   Height="32"
-                   Padding="14,0"
-                   FontWeight="Medium"
-                   Command="{Binding SaveSettingsCommand}" />
-            </StatusBarItem>
-
-            <!-- Close -->
-            <StatusBarItem Grid.Column="5" VerticalAlignment="Center" Margin="0,0,0,0">
-                <ui:Button Content="{x:Static resources:Strings.Common_Close}"
-                   Height="32"
-                   Padding="14,0"
-                   FontWeight="Medium"
-                   Command="{Binding CloseWindowCommand}" />
             </StatusBarItem>
         </StatusBar>
 

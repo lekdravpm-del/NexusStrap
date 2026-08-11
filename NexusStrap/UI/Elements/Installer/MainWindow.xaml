@@ -11,8 +11,8 @@
         xmlns:local="clr-namespace:NexusStrap.UI.Elements.Installer"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance dmodels:MainWindowViewModel, IsDesignTimeCreatable=True}"
-        Title="{x:Static resources:Strings.Installer_Title}"
-        Height="540" Width="840" MinWidth="840"
+        Title="NEXUS — Setup"
+        Height="580" Width="880" MinWidth="880"
         Background="{ui:ThemeResource ApplicationBackgroundBrush}"
         ExtendsContentIntoTitleBar="True"
         WindowBackdropType="Mica"
@@ -23,6 +23,20 @@
             <Setter Property="MinWidth" Value="100" />
             <Setter Property="FontWeight" Value="SemiBold" />
         </Style>
+        <Style x:Key="GlowTitleText" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="42" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="FontFamily" Value="Segoe UI" />
+        </Style>
+        <Style x:Key="GetStartedButton" TargetType="ui:Button">
+            <Setter Property="Height" Value="48" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="Padding" Value="32,0" />
+        </Style>
     </Window.Resources>
     <Grid Background="{DynamicResource ApplicationBackground}">
         <Grid.RowDefinitions>
@@ -31,7 +45,7 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <ui:TitleBar Padding="8" x:Name="RootTitleBar" Grid.Row="0" ForceShutdown="False" MinimizeToTray="False" UseSnapLayout="True" Title="{x:Static resources:Strings.Installer_Title}" Icon="pack://application:,,,/NX.ico" />
+        <ui:TitleBar Padding="8" x:Name="RootTitleBar" Grid.Row="0" ForceShutdown="False" MinimizeToTray="False" UseSnapLayout="True" Title="NEXUS — Setup" Icon="pack://application:,,,/NX.ico" />
 
         <Grid x:Name="RootGrid" Grid.Row="1" Margin="12,12,0,0" Visibility="Visible">
             <Grid.RowDefinitions>

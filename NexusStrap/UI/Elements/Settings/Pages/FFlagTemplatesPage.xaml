@@ -1,0 +1,114 @@
+<ui:UiPage x:Class="NexusStrap.UI.Elements.Settings.Pages.FFlagTemplatesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      xmlns:dmodels="clr-namespace:NexusStrap.UI.ViewModels.Settings"
+      mc:Ignorable="d"
+      d:DataContext="{d:DesignInstance dmodels:FFlagTemplatesViewModel, IsDesignTimeCreatable=True}"
+      d:DesignHeight="1600" d:DesignWidth="800"
+      Title="FFlagTemplatesPage"
+      Scrollable="True">
+
+    <StackPanel Margin="0,0,14,14">
+        <TextBlock Margin="0,0,0,16" Text="Browse and apply preset FFlag configurations for performance, graphics, and more." FontSize="14" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+
+        <Grid Margin="0,0,0,12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <ui:TextBox Grid.Column="0" PlaceholderText="Search templates..." 
+                         Text="{Binding SearchQuery, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         Margin="0,0,8,0" />
+
+            <ui:Button Grid.Column="1" Content="Import" Icon="ArrowDownload24" 
+                        Command="{Binding ImportTemplateCommand}"
+                        Appearance="Secondary" Height="32" Padding="12,0" />
+        </Grid>
+
+        <WrapPanel Margin="0,0,0,12">
+            <ui:Button x:Name="CategoryAll" Content="All" Margin="0,0,4,4" Padding="10,4"
+                        Click="CategoryButton_Click" Tag="" />
+            <ui:Button x:Name="CategoryPerformance" Content="Performance" Margin="0,0,4,4" Padding="10,4"
+                        Click="CategoryButton_Click" Tag="Performance" />
+            <ui:Button x:Name="CategoryGraphics" Content="Graphics Quality" Margin="0,0,4,4" Padding="10,4"
+                        Click="CategoryButton_Click" Tag="Graphics Quality" />
+            <ui:Button x:Name="CategoryVisual" Content="Visual Effects" Margin="0,0,4,4" Padding="10,4"
+                        Click="CategoryButton_Click" Tag="Visual Effects" />
+            <ui:Button x:Name="CategoryNetwork" Content="Network" Margin="0,0,4,4" Padding="10,4"
+                        Click="CategoryButton_Click" Tag="Network" />
+            <ui:Button x:Name="CategoryDebug" Content="Debug" Margin="0,0,4,4" Padding="10,4"
+                        Click="CategoryButton_Click" Tag="Debug" />
+            <ui:Button x:Name="CategoryStability" Content="Stability" Margin="0,0,4,4" Padding="10,4"
+                        Click="CategoryButton_Click" Tag="Stability" />
+        </WrapPanel>
+
+        <TextBlock Margin="0,0,0,8" FontSize="16" FontWeight="SemiBold"
+                   Text="{Binding Templates.Count, StringFormat='{}{0} templates found'}"
+                   Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+
+        <ItemsControl ItemsSource="{Binding Templates}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <ui:CardExpander Margin="0,0,0,8" IsExpanded="False">
+                        <ui:CardExpander.Header>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Grid.Column="0">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock FontSize="14" FontWeight="SemiBold" Text="{Binding Name}" />
+                                        <Border Background="{DynamicResource SystemAccentColorDark1Brush}" 
+                                                CornerRadius="4" Margin="8,0,0,0" Padding="6,2">
+                                            <TextBlock FontSize="10" Foreground="White" 
+                                                       Text="{Binding Category}" VerticalAlignment="Center" />
+                                        </Border>
+                                    </StackPanel>
+                                    <TextBlock FontSize="12" Text="{Binding Description}" 
+                                               Foreground="{DynamicResource TextFillColorTertiaryBrush}" 
+                                               TextWrapping="Wrap" Margin="0,2,0,0" />
+                                </StackPanel>
+
+                                <ui:Button Grid.Column="1" Content="Apply" Icon="Checkmark24"
+                                            Appearance="Primary" Height="28" Padding="12,0"
+                                            Command="{Binding DataContext.ApplyTemplateCommand, RelativeSource={RelativeSource AncestorType=ui:UiPage}}"
+                                            CommandParameter="{Binding}" VerticalAlignment="Center" />
+                            </Grid>
+                        </ui:CardExpander.Header>
+
+                        <StackPanel Margin="0,8,0,0">
+                            <TextBlock FontSize="13" FontWeight="SemiBold" Text="Flags in this template:" 
+                                       Margin="0,0,0,4" />
+                            <ItemsControl ItemsSource="{Binding Flags}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Background="{DynamicResource ApplicationBackgroundBrush}" 
+                                                CornerRadius="4" Padding="8,4" Margin="0,0,0,2">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock FontSize="12" FontFamily="Consolas" 
+                                                           Text="{Binding Key}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
+                                                <TextBlock Grid.Column="1" FontSize="12" FontFamily="Consolas" 
+                                                           FontWeight="Bold" Text="{Binding Value}" 
+                                                           Foreground="{DynamicResource SystemAccentColorLight1Brush}" />
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </ui:CardExpander>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </StackPanel>
+</ui:UiPage>

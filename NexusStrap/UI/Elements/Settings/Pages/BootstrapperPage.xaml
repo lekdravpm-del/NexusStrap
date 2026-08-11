@@ -1,4 +1,4 @@
-﻿<ui:UiPage x:Class="NexusStrap.UI.Elements.Settings.Pages.BehaviourPage"
+<ui:UiPage x:Class="NexusStrap.UI.Elements.Settings.Pages.BehaviourPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -25,7 +25,7 @@
 
         <controls:OptionControl 
             Header="{x:Static resources:Strings.Menu_Behaviour_AllowCookieAccess_Title}"
-            Description="{Binding Source={x:Static resources:Strings.Menu_Behaviour_AllowCookieAccess_Description}, Converter={StaticResource StringFormatConverter}, ConverterParameter='https://github.com/fishstrap/fishstrap/wiki/Account-Access#what-will-fishstrap-access-with-your-account'}">
+            Description="{Binding Source={x:Static resources:Strings.Menu_Behaviour_AllowCookieAccess_Description}, Converter={StaticResource StringFormatConverter}, ConverterParameter='https://github.com/lekdravpm-del/NexusStrap'}">
             <StackPanel Orientation="Horizontal">
                 <ui:SymbolIcon Symbol="Warning20" Margin="0,2,8,0" Foreground="Orange">
                     <ui:SymbolIcon.Style>
@@ -141,12 +141,6 @@
                 </controls:OptionControl>
             </StackPanel>
         </ui:CardExpander>
-
-        <controls:OptionControl
-            Header="Performance Overlay"
-            Description="Show a floating overlay with CPU, memory, and FPS stats while Roblox is running.">
-            <ui:ToggleSwitch IsChecked="{Binding PerformanceOverlayEnabled, Mode=TwoWay}" />
-        </controls:OptionControl>
 
         <ui:CardExpander Grid.Row="1" Margin="0,8,0,0" IsExpanded="True">
             <ui:CardExpander.Header>

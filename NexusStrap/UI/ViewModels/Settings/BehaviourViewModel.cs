@@ -200,11 +200,5 @@ namespace NexusStrap.UI.ViewModels.Settings
             get => App.Settings.Prop.LaunchSoundVolume;
             set => App.Settings.Prop.LaunchSoundVolume = value;
         }
-
-        public bool PerformanceOverlayEnabled
-        {
-            get => App.Settings.Prop.EnablePerformanceOverlay;
-            set => App.Settings.Prop.EnablePerformanceOverlay = value;
-        }
     }
 }

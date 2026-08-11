@@ -25,9 +25,9 @@
             Text="{x:Static resources:Strings.Menu_Shortcuts_Description}" />
 
         <controls:OptionControl
-            Description="{Binding Source={x:Static resources:Strings.Menu_Shortcuts_ExtractIcons_Description}, Converter={StaticResource StringFormatConverter}, ConverterParameter='https://github.com/nexusstraplabs/nexusstrap/wiki/Using-Roblox-icons-for-your-shortcuts'}"
+            Description="{Binding Source={x:Static resources:Strings.Menu_Shortcuts_ExtractIcons_Description}, Converter={StaticResource StringFormatConverter}, ConverterParameter='https://github.com/lekdravpm-del/NexusStrap/wiki/Using-Roblox-icons-for-your-shortcuts'}"
             Header="{x:Static resources:Strings.Menu_Shortcuts_ExtractIcons_Title}"
-            HelpLink="https://github.com/nexusstraplabs/nexusstrap/wiki/Using-Roblox-icons-for-your-shortcuts">
+            HelpLink="https://github.com/lekdravpm-del/NexusStrap/wiki/Using-Roblox-icons-for-your-shortcuts">
             <ui:ToggleSwitch IsChecked="{Binding ExtractIconsTask.NewState, Mode=TwoWay}" />
         </controls:OptionControl>
 

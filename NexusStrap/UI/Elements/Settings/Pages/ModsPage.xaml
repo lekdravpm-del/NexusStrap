@@ -11,7 +11,7 @@
     xmlns:controls="clr-namespace:NexusStrap.UI.Elements.Controls"
     xmlns:resources="clr-namespace:NexusStrap.Resources"
     Title="ModsPage" 
-    Scrollable="True" 
+
     AllowDrop="True" 
     Drop="Page_Drop"
     mc:Ignorable="d"

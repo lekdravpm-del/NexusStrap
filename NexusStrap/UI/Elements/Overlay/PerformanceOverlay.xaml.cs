@@ -9,7 +9,6 @@ namespace NexusStrap.UI.Elements.Overlay
     public partial class PerformanceOverlay : Wpf.Ui.Controls.UiWindow
     {
         private readonly DispatcherTimer _updateTimer;
-        private PerformanceCounter? _cpuCounter;
         private Process? _robloxProcess;
 
         public PerformanceOverlay()

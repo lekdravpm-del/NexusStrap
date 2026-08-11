@@ -8,7 +8,7 @@
              xmlns:base="clr-namespace:NexusStrap.UI.Elements.Base"
              xmlns:resources="clr-namespace:NexusStrap.Resources"
              mc:Ignorable="d"
-             Title="Account Manager"
+              Title="NEXUS — Accounts"
              Background="{ui:ThemeResource ApplicationBackgroundBrush}"
              Width="1000"
              Height="675"
@@ -22,9 +22,9 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <ui:TitleBar Padding="8" x:Name="RootTitleBar" Grid.Row="0" ForceShutdown="False" MinimizeToTray="False" UseSnapLayout="True" Title="Account Manager" Icon="pack://application:,,,/NX.ico" />
+        <ui:TitleBar Padding="8" x:Name="RootTitleBar" Grid.Row="0" ForceShutdown="False" MinimizeToTray="False" UseSnapLayout="True" Title="NEXUS — Accounts" Icon="pack://application:,,,/NX.ico" />
 
-        <Grid x:Name="RootGrid" Grid.Row="1" Margin="12,12,0,0" Visibility="Visible">
+        <Grid x:Name="RootGrid" Grid.Row="1" Margin="12,8,12,0" Visibility="Visible">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
@@ -34,15 +34,16 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <ui:NavigationStore x:Name="RootNavigation" Grid.Row="1" Grid.Column="0" Margin="0,0,12,0" Frame="{Binding ElementName=RootFrame}" SelectedPageIndex="0">
+            <!-- Tab Navigation -->
+            <ui:NavigationStore x:Name="RootNavigation" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0,8" Frame="{Binding ElementName=RootFrame}" SelectedPageIndex="0">
                 <ui:NavigationStore.Items>
-                    <ui:NavigationItem Content="Accounts" PageType="{x:Type pages:AccountsPage}" Icon="PersonAccounts24" Tag="accounts" Margin="0,0,0,12" FontWeight="Medium" />
-                    <ui:NavigationItem Content="Friends" PageType="{x:Type pages:FriendsPage}" Icon="People24" Tag="friends" Margin="0,0,0,12" FontWeight="Medium" x:Name="friends"/>
-                    <ui:NavigationItem Content="Games" PageType="{x:Type pages:GamesPage}" Icon="Games24" Tag="games" Margin="0,0,0,12" FontWeight="Medium" x:Name="games"/>
+                    <ui:NavigationItem Content="Accounts" PageType="{x:Type pages:AccountsPage}" Icon="PersonAccounts24" Tag="accounts" Margin="0,0,12,0" FontWeight="Medium" />
+                    <ui:NavigationItem Content="Friends" PageType="{x:Type pages:FriendsPage}" Icon="People24" Tag="friends" Margin="0,0,12,0" FontWeight="Medium" x:Name="friends"/>
+                    <ui:NavigationItem Content="Games" PageType="{x:Type pages:GamesPage}" Icon="Games24" Tag="games" Margin="0,0,12,0" FontWeight="Medium" x:Name="games"/>
                 </ui:NavigationStore.Items>
             </ui:NavigationStore>
 
-            <Frame x:Name="RootFrame" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" />
+            <Frame x:Name="RootFrame" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" />
         </Grid>
 
         <Grid x:Name="LoadingOverlay" Grid.Row="1" Grid.RowSpan="2" Visibility="Collapsed" Background="#A0000000" Panel.ZIndex="9999" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">

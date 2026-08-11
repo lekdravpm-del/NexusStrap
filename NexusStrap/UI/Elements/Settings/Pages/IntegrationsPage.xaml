@@ -30,14 +30,14 @@
             x:Name="ActivityTrackingOption"
             Description="{x:Static resources:Strings.Menu_Integrations_EnableActivityTracking_Description}"
             Header="{x:Static resources:Strings.Menu_Integrations_EnableActivityTracking_Title}"
-            HelpLink="https://github.com/nexusstraplabs/nexusstrap/wiki/What-is-activity-tracking%3F">
+            HelpLink="https://github.com/lekdravpm-del/NexusStrap/wiki/What-is-activity-tracking%3F">
             <ui:ToggleSwitch IsChecked="{Binding ActivityTrackingEnabled, Mode=TwoWay}" />
         </controls:OptionControl>
 
         <controls:OptionControl
             Description="{x:Static resources:Strings.Menu_Integrations_QueryServerLocation_Description}"
             Header="{x:Static resources:Strings.Menu_Integrations_QueryServerLocation_Title}"
-            HelpLink="https://github.com/nexusstraplabs/nexusstrap/wiki/What-is-activity-tracking%3F#server-location-querying"
+            HelpLink="https://github.com/lekdravpm-del/NexusStrap/wiki/What-is-activity-tracking%3F#server-location-querying"
             IsEnabled="{Binding InnerContent.IsChecked, ElementName=ActivityTrackingOption, Mode=OneWay}">
             <ui:ToggleSwitch IsChecked="{Binding ShowServerDetailsEnabled, Mode=TwoWay}" />
         </controls:OptionControl>
@@ -135,9 +135,9 @@
             <StackPanel>
 
                 <controls:OptionControl
-                    Description="{Binding Source={x:Static resources:Strings.Menu_Integrations_DesktopApp_Description}, Converter={StaticResource StringFormatConverter}, ConverterParameter='https://github.com/nexusstraplabs/nexusstrap/wiki/What-is-activity-tracking%3F#dont-exit-to-desktop-app'}"
+                    Description="{Binding Source={x:Static resources:Strings.Menu_Integrations_DesktopApp_Description}, Converter={StaticResource StringFormatConverter}, ConverterParameter='https://github.com/lekdravpm-del/NexusStrap/wiki/What-is-activity-tracking%3F#dont-exit-to-desktop-app'}"
                     Header="{x:Static resources:Strings.Menu_Integrations_DesktopApp_Title}"
-                    HelpLink="https://github.com/nexusstraplabs/nexusstrap/wiki/What-is-activity-tracking%3F#dont-exit-to-desktop-app"
+                    HelpLink="https://github.com/lekdravpm-del/NexusStrap/wiki/What-is-activity-tracking%3F#dont-exit-to-desktop-app"
                     IsEnabled="{Binding InnerContent.IsChecked, ElementName=ActivityTrackingOption, Mode=OneWay}">
                     <ui:ToggleSwitch IsChecked="{Binding DisableAppPatchEnabled, Mode=TwoWay}" />
                 </controls:OptionControl>
@@ -161,7 +161,7 @@
             Text="{x:Static resources:Strings.Common_DiscordRichPresence}" />
         <controls:MarkdownTextBlock
             Foreground="{DynamicResource TextFillColorSecondaryBrush}"
-            MarkdownText="{Binding Source={x:Static resources:Strings.Menu_Integrations_RequiresActivityTracking}, Converter={StaticResource StringFormatConverter}, ConverterParameter='https://github.com/nexusstraplabs/nexusstrap/wiki/What-is-activity-tracking%3F#discord-rich-presence'}"
+            MarkdownText="{Binding Source={x:Static resources:Strings.Menu_Integrations_RequiresActivityTracking}, Converter={StaticResource StringFormatConverter}, ConverterParameter='https://github.com/lekdravpm-del/NexusStrap/wiki/What-is-activity-tracking%3F#discord-rich-presence'}"
             TextWrapping="Wrap" />
 
         <controls:OptionControl 
@@ -178,7 +178,7 @@
 
         <controls:OptionControl
             x:Name="DiscordActivityOption"
-            Description="{Binding Source={x:Static resources:Strings.Menu_Integrations_ShowGameActivity_Description}, Converter={StaticResource StringFormatConverter}, ConverterParameter='https://github.com/nexusstraplabs/nexusstrap/wiki/Discord-Rich-Presence-does-not-work'}"
+            Description="{Binding Source={x:Static resources:Strings.Menu_Integrations_ShowGameActivity_Description}, Converter={StaticResource StringFormatConverter}, ConverterParameter='https://github.com/lekdravpm-del/NexusStrap/wiki/Discord-Rich-Presence-does-not-work'}"
             Header="{x:Static resources:Strings.Menu_Integrations_ShowGameActivity_Title}"
             IsEnabled="{Binding InnerContent.IsChecked, ElementName=ActivityTrackingOption, Mode=OneWay}">
             <ui:ToggleSwitch IsChecked="{Binding DiscordActivityEnabled, Mode=TwoWay}" />
@@ -399,6 +399,45 @@
                 </TextBlock.Style>
             </TextBlock>
         </Grid>
+
+        <!-- RPC Customize -->
+        <StackPanel Margin="0,20,0,0">
+            <TextBlock FontSize="20" FontWeight="Bold" Text="Discord RPC Customize" Margin="0,0,0,8" />
+
+            <TextBlock Text="Override the default Discord Rich Presence details and state text. When enabled, your custom text will be shown instead of the auto-detected game information." TextWrapping="Wrap" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Margin="0,0,0,12" />
+
+            <ui:CardControl Icon="Chat24">
+                <ui:CardControl.Header>
+                    <StackPanel>
+                        <TextBlock Text="Custom RPC" FontWeight="SemiBold" />
+                        <TextBlock Text="Override Discord Rich Presence text" FontSize="11" Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
+                    </StackPanel>
+                </ui:CardControl.Header>
+                <ui:ToggleSwitch IsChecked="{Binding CustomRPCEnabled, Mode=TwoWay}" />
+            </ui:CardControl>
+
+            <ui:CardControl Icon="Edit24" Margin="0,4,0,0" Visibility="{Binding CustomRPCEnabled, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <ui:CardControl.Header>
+                    <StackPanel>
+                        <TextBlock Text="Details Line" FontWeight="SemiBold" />
+                        <TextBlock Text="Top line of presence (e.g. 'Playing NexusStrap')" FontSize="11" Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
+                    </StackPanel>
+                </ui:CardControl.Header>
+                <ui:TextBox Text="{Binding CustomDetails, UpdateSourceTrigger=PropertyChanged}" Width="220" />
+            </ui:CardControl>
+
+            <ui:CardControl Icon="Edit24" Margin="0,4,0,0" Visibility="{Binding CustomRPCEnabled, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <ui:CardControl.Header>
+                    <StackPanel>
+                        <TextBlock Text="State Line" FontWeight="SemiBold" />
+                        <TextBlock Text="Bottom line of presence (e.g. 'In Studio')" FontSize="11" Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
+                    </StackPanel>
+                </ui:CardControl.Header>
+                <ui:TextBox Text="{Binding CustomState, UpdateSourceTrigger=PropertyChanged}" Width="220" />
+            </ui:CardControl>
+
+            <TextBlock Text="Note: Changes take effect on next RPC initialization." FontSize="11" FontStyle="Italic" Foreground="{DynamicResource TextFillColorTertiaryBrush}" Margin="0,8,0,0" />
+        </StackPanel>
 
         <StackPanel Margin="0,24,0,0" HorizontalAlignment="Center">
             <TextBlock Text="~ tailoop was here ~" FontSize="11" FontStyle="Italic" Foreground="{DynamicResource TextFillColorTertiaryBrush}" Opacity="0.5" />

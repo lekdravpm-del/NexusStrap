@@ -37,13 +37,29 @@ namespace NexusStrap.UI.ViewModels.Settings
             Hardware = HardwareInfo.Detect();
             TierName = Hardware.GetTierName();
 
-            RecommendedSettingsSummary = Hardware.GetTier() switch
+            string gpuInfo = Hardware.GpuName != "Unknown" ? Hardware.GpuName : "Unknown GPU";
+            string cpuInfo = Hardware.CpuName != "Unknown" ? Hardware.CpuName : "Unknown CPU";
+            string ramInfo = $"{Hardware.TotalRamGB} GB RAM";
+            string vramInfo = Hardware.GpuVramGB > 0 ? $" ({Hardware.GpuVramGB} GB VRAM)" : "";
+
+            string gpuRecommendation = Hardware.GetTier() switch
             {
-                PerformanceTier.Ultra => "Full anti-aliasing (MSAA x4) and maximum graphics quality.",
-                PerformanceTier.High => "Anti-aliasing (MSAA x4) and high graphics quality.",
-                PerformanceTier.Mid => "Light anti-aliasing (MSAA x2) and balanced graphics quality.",
-                _ => "Performance first: MSAA off, reduced grass, low-poly meshes and lowered graphics quality."
+                PerformanceTier.Ultra => "Vulkan recommended for best raytracing support.",
+                PerformanceTier.High => "Vulkan recommended for best performance.",
+                PerformanceTier.Mid => "DirectX 11 (default) recommended for stability.",
+                _ => "DirectX 11 recommended. Consider lowering resolution."
             };
+
+            RecommendedSettingsSummary = $"Detected: {gpuInfo}{vramInfo}, {cpuInfo}, {ramInfo}\n" +
+                $"Tier: {TierName}\n" +
+                $"{gpuRecommendation}\n\n" +
+                Hardware.GetTier() switch
+                {
+                    PerformanceTier.Ultra => "Will apply: MSAA x4, max graphics quality, all effects enabled.",
+                    PerformanceTier.High => "Will apply: MSAA x4, high graphics quality, grass enabled.",
+                    PerformanceTier.Mid => "Will apply: MSAA x2, balanced quality, grass enabled.",
+                    _ => "Will apply: MSAA off, no grass, low-poly meshes, paused voxelizer."
+                };
         }
 
         private void Apply()

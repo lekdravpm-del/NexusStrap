@@ -160,66 +160,22 @@ namespace NexusStrap
             if (string.IsNullOrEmpty(sourceDir) || !Directory.Exists(sourceDir))
                 return;
 
-            // user data that must never be overwritten when deploying onto an existing install
-            string[] protectedFiles = { "Settings.json", "State.json", "PlayerState.json", "StudioState.json", "FastFlagManager.json" };
-            string[] protectedDirs = { "Cache", "ClientSettings", "CustomCursorsSets", "CustomThemes", "Downloads", "Logs", "Modifications", "Versions", "Profiles", "SavedFlagProfiles", "Integrations" };
-
-            // only copy application files, not random files from the source directory
-            string[] appExtensions = { ".exe", ".dll", ".pdb", ".json", ".ico", ".png", ".jpg", ".mp3", ".ogg", ".ttf", ".otf", ".pow", ".xshd", ".xml", ".resx" };
-
+            // For single-file exe: only copy the exe itself, nothing else
+            // The .exe contains all resources embedded inside it
             Directory.CreateDirectory(InstallLocation);
 
-            foreach (var file in Directory.GetFiles(sourceDir))
+            string exePath = Paths.Process;
+            string targetExe = Path.Combine(InstallLocation, Path.GetFileName(exePath));
+
+            if (!string.Equals(exePath, targetExe, StringComparison.OrdinalIgnoreCase))
             {
-                string fileName = Path.GetFileName(file);
-                string extension = Path.GetExtension(file).ToLowerInvariant();
-
-                if (protectedFiles.Contains(fileName, StringComparer.OrdinalIgnoreCase))
-                    continue;
-
-                if (!appExtensions.Contains(extension))
-                    continue;
-
                 try
                 {
-                    File.Copy(file, Path.Combine(InstallLocation, fileName), true);
+                    File.Copy(exePath, targetExe, true);
+                    App.Logger.WriteLine(LOG_IDENT, $"Copied executable to {targetExe}");
                 }
                 catch (Exception ex)
                 {
-                    App.Logger.WriteLine(LOG_IDENT, $"Could not copy '{fileName}'");
-                    App.Logger.WriteException(LOG_IDENT, ex);
-                }
-            }
-
-            foreach (var dir in Directory.GetDirectories(sourceDir))
-            {
-                string dirName = Path.GetFileName(dir);
-
-                if (protectedDirs.Contains(dirName, StringComparer.OrdinalIgnoreCase))
-                    continue;
-
-                // only copy application directories (Resources, etc.)
-                if (dirName != "Resources" && dirName != "NativeAssets" && !dirName.StartsWith("NexusStrap"))
-                    continue;
-
-                string destination = Path.Combine(InstallLocation, dirName);
-
-                try
-                {
-                    Directory.CreateDirectory(destination);
-
-                    foreach (var file in Directory.GetFiles(dir, "*", SearchOption.AllDirectories))
-                    {
-                        string relative = Path.GetRelativePath(dir, file);
-                        string target = Path.Combine(destination, relative);
-
-                        Directory.CreateDirectory(Path.GetDirectoryName(target)!);
-                        File.Copy(file, target, true);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    App.Logger.WriteLine(LOG_IDENT, $"Could not copy directory '{dirName}'");
                     App.Logger.WriteException(LOG_IDENT, ex);
                 }
             }

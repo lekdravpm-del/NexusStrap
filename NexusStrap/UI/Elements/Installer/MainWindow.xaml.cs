@@ -77,7 +77,7 @@ namespace NexusStrap.UI.Elements.Installer
             Closing += new CancelEventHandler(MainWindow_Closing);
         }
 
-        void NextPage()
+        public void NextPage()
         {
             if (NextPageCallback is not null && !NextPageCallback())
                 return;

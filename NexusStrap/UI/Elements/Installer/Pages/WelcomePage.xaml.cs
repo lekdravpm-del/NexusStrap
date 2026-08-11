@@ -12,8 +12,8 @@ namespace NexusStrap.UI.Elements.Installer.Pages
 
         public WelcomePage()
         {
-                if (Window.GetWindow(this) is MainWindow window)
-                    window.SetButtonEnabled("next", true);
+            if (Window.GetWindow(this) is MainWindow window)
+                window.SetButtonEnabled("next", true);
 
             DataContext = _viewModel;
             InitializeComponent();
@@ -23,6 +23,18 @@ namespace NexusStrap.UI.Elements.Installer.Pages
         {
             if (Window.GetWindow(this) is MainWindow window)
                 window.SetNextButtonText(Strings.Common_Navigation_Next);
+        }
+
+        private void ExpressInstall_Click(object sender, RoutedEventArgs e)
+        {
+            if (Window.GetWindow(this) is MainWindow window)
+                window.NextPage();
+        }
+
+        private void Customize_Click(object sender, RoutedEventArgs e)
+        {
+            if (Window.GetWindow(this) is MainWindow window)
+                window.NextPage();
         }
     }
 }

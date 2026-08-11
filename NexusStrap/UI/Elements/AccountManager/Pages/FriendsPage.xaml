@@ -23,11 +23,17 @@
 
 
             <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,12">
-                <TextBlock VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Text="Friends" />
-                <TextBlock VerticalAlignment="Center" Text="Filter:" Margin="8,4,8,0" />
-                <ComboBox Width="100" ItemsSource="{Binding FriendFilters}" SelectedItem="{Binding SelectedFriendFilter}"/>
-                <ui:Button Margin="8,0,0,0" Command="{Binding RefreshFriendsCommand}" Content="Refresh" />
-
+                <TextBlock VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Text="Friends" Margin="0,0,12,0" />
+                <Border Padding="8,4" CornerRadius="6" VerticalAlignment="Center" Margin="0,0,12,0">
+                    <Border.Background>
+                        <SolidColorBrush Color="{DynamicResource SystemAccentColor}" Opacity="0.12"/>
+                    </Border.Background>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center" FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Text="Filter" Margin="0,0,8,0" />
+                        <ComboBox Width="110" ItemsSource="{Binding FriendFilters}" SelectedItem="{Binding SelectedFriendFilter}"/>
+                    </StackPanel>
+                </Border>
+                <ui:Button Margin="4,0,0,0" Command="{Binding RefreshFriendsCommand}" Content="Refresh" />
             </StackPanel>
 
             <ItemsControl ItemsSource="{Binding FilteredFriends}" Grid.Row="2" HorizontalAlignment="Stretch">
@@ -40,21 +46,23 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Border Margin="0,4,4,4"
-                                Padding="8"
+                                Padding="10"
                                 Background="{DynamicResource PrimaryBackgroundColor}"
-                                CornerRadius="6">
+                                CornerRadius="10"
+                                BorderThickness="1,0,1,1">
+                            <Border.BorderBrush>
+                                <SolidColorBrush Color="{DynamicResource SystemAccentColor}" Opacity="0.15"/>
+                            </Border.BorderBrush>
 
                             <StackPanel>
                                 <Grid>
                                     <Border
-                                        Width="64"
-                                        Height="64"
-                                        Background="{DynamicResource ControlFillColorSecondaryBrush}"
-                                        CornerRadius="32">
-                                        <Image 
-                                            ClipToBounds="True" 
-                                            Source="{Binding AvatarUrl, TargetNullValue={x:Null}, FallbackValue={x:Null}}" 
-                                            Stretch="UniformToFill" />
+                                        Width="56"
+                                        Height="56"
+                                        CornerRadius="10">
+                                        <Border.Background>
+                                            <ImageBrush ImageSource="{Binding AvatarUrl, TargetNullValue={x:Null}, FallbackValue={x:Null}}" Stretch="UniformToFill" />
+                                        </Border.Background>
                                     </Border>
                                     <Border
                                         Width="16"

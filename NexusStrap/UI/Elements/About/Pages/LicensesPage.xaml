@@ -36,7 +36,7 @@
                 Grid.Column="0"
                 Margin="0,8,8,0"
                 Command="models:GlobalViewModel.OpenWebpageCommand"
-                CommandParameter="https://github.com/nexusstraplabs/nexusstrap/blob/main/LICENSE">
+                CommandParameter="https://github.com/lekdravpm-del/NexusStrap/blob/main/LICENSE">
                 <StackPanel>
                     <TextBlock FontSize="14" Text="NexusStrap" />
                     <TextBlock

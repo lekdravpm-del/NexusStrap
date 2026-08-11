@@ -14,6 +14,7 @@
                 <ui:ThemesDictionary Theme="Dark" />
                 <ui:ControlsDictionary />
                 <ResourceDictionary Source="UI/Style/Dark.xaml" />
+                <ResourceDictionary Source="UI/Style/NexusUnique.xaml" />
                 <!--  NOTE: WpfUiWindow::ApplyTheme relies on this order.  -->
                 <ResourceDictionary Source="UI/Style/Default.xaml" />
             </ResourceDictionary.MergedDictionaries>

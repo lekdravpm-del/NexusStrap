@@ -144,6 +144,47 @@
                 </MenuItem.Header>
             </MenuItem>
 
+            <Separator/>
+
+            <MenuItem x:Name="QuickLaunchRoot">
+                <MenuItem.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="24" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <ui:SymbolIcon Grid.Column="0" Symbol="Play24"/>
+                        <TextBlock Grid.Column="1" VerticalAlignment="Center" Margin="4,0,0,0" Text="Quick Launch" />
+                    </Grid>
+                </MenuItem.Header>
+            </MenuItem>
+
+            <MenuItem x:Name="BookmarksRoot">
+                <MenuItem.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="24" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <ui:SymbolIcon Grid.Column="0" Symbol="Bookmark24"/>
+                        <TextBlock Grid.Column="1" VerticalAlignment="Center" Margin="4,0,0,0" Text="Bookmarks" />
+                    </Grid>
+                </MenuItem.Header>
+            </MenuItem>
+
+            <MenuItem x:Name="BookmarkCurrentGameMenuItem" Click="BookmarkCurrentGameMenuItem_Click">
+                <MenuItem.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="24" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <ui:SymbolIcon Grid.Column="0" Symbol="BookmarkAdd24"/>
+                        <TextBlock Grid.Column="1" VerticalAlignment="Center" Margin="4,0,0,0" Text="Bookmark Current Game" />
+                    </Grid>
+                </MenuItem.Header>
+            </MenuItem>
+
             <MenuItem Click="CloseRobloxMenuItem_Click">
                 <MenuItem.Header>
                     <Grid>

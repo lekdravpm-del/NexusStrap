@@ -843,19 +843,6 @@ namespace NexusStrap
                 catch (Exception ex) { App.Logger.WriteException(LOG_IDENT, ex); }
             }
 
-            if (App.Settings.Prop.EnablePerformanceOverlay)
-            {
-                try
-                {
-                    System.Windows.Application.Current.Dispatcher.Invoke(() =>
-                    {
-                        var overlay = new UI.Elements.Overlay.PerformanceOverlay();
-                        overlay.Show();
-                    });
-                }
-                catch (Exception ex) { App.Logger.WriteException(LOG_IDENT, ex); }
-            }
-
             string[] Names = { App.RobloxPlayerAppName, App.RobloxStudioAppName };
             string ResolvedName = null!;
 
@@ -1051,6 +1038,13 @@ namespace NexusStrap
                 if (ipl.IsAcquired || true)
                     Process.Start(Paths.Process, args);
             }
+
+            // Change Roblox window title to "Nexus" and set icon after window initializes
+            _ = Task.Run(async () =>
+            {
+                await Task.Delay(2000);
+                Win32WindowHelper.ApplyWindowTitleAndIcon(_appPid, "Nexus");
+            });
 
             // allow for window to show, since the log is created pretty far beforehand
             Thread.Sleep(1000);
