@@ -1,5 +1,6 @@
 ﻿using NexusStrap.UI.ViewModels.Settings;
 using NexusStrap.UI.Elements.Dialogs;
+using Microsoft.Win32;
 using System.Windows;
 
 namespace NexusStrap.UI.Elements.Settings.Pages
@@ -23,6 +24,21 @@ namespace NexusStrap.UI.Elements.Settings.Pages
                 Owner = Window.GetWindow(this)
             };
             window.ShowDialog();
+        }
+
+        private void BrowseLaunchSound_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new OpenFileDialog
+            {
+                Filter = "Audio Files|*.mp3;*.wav;*.ogg|All Files|*.*",
+                Title = "Select Launch Sound"
+            };
+
+            if (dialog.ShowDialog() == true)
+            {
+                var vm = (BehaviourViewModel)DataContext;
+                vm.LaunchSoundPath = dialog.FileName;
+            }
         }
     }
 }

@@ -148,6 +148,20 @@
                             Command="{Binding LoadMoreCommand}"
                             Content="{x:Static resources:Strings.Menu_RegionSelector_LoadMore}" />
                     </StackPanel>
+
+                    <StackPanel Grid.Column="2" VerticalAlignment="Center">
+                        <ui:Button
+                            Appearance="Primary"
+                            Padding="12,6"
+                            Command="{Binding AutoSelectRegionCommand}"
+                            Content="Auto-Select Best Region" />
+                        <TextBlock
+                            Margin="0,4,0,0"
+                            FontSize="11"
+                            Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                            Text="{Binding AutoSelectStatus}"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
                 </Grid>
 
             </StackPanel>

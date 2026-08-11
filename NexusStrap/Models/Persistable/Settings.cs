@@ -79,6 +79,18 @@ namespace NexusStrap.Models.Persistable
         public string Channel { get; set; } = RobloxInterfaces.Deployment.DefaultChannel;
         public ChannelChangeMode ChannelChangeMode { get; set; } = ChannelChangeMode.Prompt;
 
+        // Custom Launch Sound
+        public bool EnableLaunchSound { get; set; } = false;
+        public string? LaunchSoundPath { get; set; } = null;
+        public double LaunchSoundVolume { get; set; } = 0.5;
+
+        // Auto Region Select
+        public bool AutoSelectBestRegion { get; set; } = false;
+
+        // Performance Overlay
+        public bool EnablePerformanceOverlay { get; set; } = false;
+        public int OverlayOpacity { get; set; } = 80;
+
         // Misc Stuff
         public bool IsNavigationSidebarExpanded { get; set; } = true;
         public string SelectedRegion { get; set; } = string.Empty;

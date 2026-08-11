@@ -173,5 +173,38 @@ namespace NexusStrap.UI.ViewModels.Settings
                     CleanerItems.Remove("NexusStrapLogs");
             }
         }
+
+        public bool LaunchSoundEnabled
+        {
+            get => App.Settings.Prop.EnableLaunchSound;
+            set => App.Settings.Prop.EnableLaunchSound = value;
+        }
+
+        public string? LaunchSoundPath
+        {
+            get => App.Settings.Prop.LaunchSoundPath;
+            set
+            {
+                App.Settings.Prop.LaunchSoundPath = value;
+                OnPropertyChanged(nameof(LaunchSoundPath));
+                OnPropertyChanged(nameof(LaunchSoundDisplay));
+            }
+        }
+
+        public string LaunchSoundDisplay => string.IsNullOrEmpty(LaunchSoundPath)
+            ? "Select a .mp3, .wav, or .ogg file to play on launch."
+            : $"Selected: {System.IO.Path.GetFileName(LaunchSoundPath)}";
+
+        public double LaunchSoundVolume
+        {
+            get => App.Settings.Prop.LaunchSoundVolume;
+            set => App.Settings.Prop.LaunchSoundVolume = value;
+        }
+
+        public bool PerformanceOverlayEnabled
+        {
+            get => App.Settings.Prop.EnablePerformanceOverlay;
+            set => App.Settings.Prop.EnablePerformanceOverlay = value;
+        }
     }
 }

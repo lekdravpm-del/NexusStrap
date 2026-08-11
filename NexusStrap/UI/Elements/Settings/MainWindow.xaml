@@ -84,6 +84,7 @@
                     <ui:NavigationItem Content="Community Mods" PageType="{x:Type pages:CommunityModsPage}" Icon="BuildingShop24" IconSize="20" Tag="communitymods" Visibility="Collapsed" />
                     <ui:NavigationItem Content="Preset Mods" PageType="{x:Type pages:ModsPresetsPage}" Icon="BuildingShop24" IconSize="20" Tag="presetmods" Visibility="Collapsed" />
                     <ui:NavigationItem Content="Mod Generator" PageType="{x:Type pages:ModGeneratorPage}" Icon="BuildingShop24" IconSize="20" Tag="modgenerator" Visibility="Collapsed" />
+                    <ui:NavigationItem Content="Theme Store" PageType="{x:Type pages:ThemeStorePage}" Icon="PaintBrush24" IconSize="20" Tag="themestore" />
                 </ui:NavigationCompact.Items>
                 <ui:NavigationCompact.Footer>
                     <ui:NavigationItem Content="{x:Static resources:Strings.Menu_AccountManager_Title}" Icon="People24" IconSize="20" Tag="accountmanager"  Command="{Binding OpenAccountManagerCommand, Mode=OneTime}" />

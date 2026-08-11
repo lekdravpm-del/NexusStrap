@@ -45,6 +45,8 @@ namespace NexusStrap.UI.ViewModels.Settings
         [ObservableProperty] private GameSearchResult? _selectedSearchResult;
         [ObservableProperty] private int _selectedSortOrder = 2;
         [ObservableProperty] private int _lastFetchProcessedCount;
+        [ObservableProperty] private bool _isAutoSelecting;
+        [ObservableProperty] private string _autoSelectStatus = "";
 
         public ObservableCollection<string> Regions { get; } = new();
         public ObservableCollection<ServerEntry> Servers { get; } = new();
@@ -68,6 +70,7 @@ namespace NexusStrap.UI.ViewModels.Settings
         public IAsyncRelayCommand SearchCommand { get; }
         public IAsyncRelayCommand LoadMoreCommand { get; }
         public IAsyncRelayCommand SearchGamesCommand { get; }
+        public IAsyncRelayCommand AutoSelectRegionCommand { get; }
 
         public RegionSelectorViewModel()
         {
@@ -79,6 +82,7 @@ namespace NexusStrap.UI.ViewModels.Settings
             SearchCommand = new AsyncRelayCommand(SearchAsync, () => !IsLoading && !string.IsNullOrWhiteSpace(PlaceId) && HasValidCookies);
             SearchGamesCommand = new AsyncRelayCommand(SearchGamesAsync, () => !IsLoading && !IsGameSearchLoading && !string.IsNullOrWhiteSpace(SearchQuery) && HasValidCookies);
             LoadMoreCommand = new AsyncRelayCommand(LoadMoreServersAsync, () => !IsLoading && !string.IsNullOrWhiteSpace(NextCursor));
+            AutoSelectRegionCommand = new AsyncRelayCommand(AutoSelectBestRegionAsync, () => !IsLoading && !IsAutoSelecting && HasValidCookies && Regions.Count > 0);
 
             _ = InitializeCookiesAsync();
         }
@@ -265,6 +269,91 @@ namespace NexusStrap.UI.ViewModels.Settings
             for (int i = 0; i < 5 && !string.IsNullOrWhiteSpace(NextCursor); i++)
                 await LoadServersAsync();
             IsLoading = false;
+        }
+
+        private async Task AutoSelectBestRegionAsync()
+        {
+            const string LOG_IDENT = "RegionSelectorViewModel::AutoSelectBestRegion";
+            IsAutoSelecting = true;
+            AutoSelectStatus = "Pinging regions...";
+
+            try
+            {
+                string? bestRegion = null;
+                long bestPing = long.MaxValue;
+
+                var regionEndpoints = new Dictionary<string, string>
+                {
+                    { "us", "https://gamejoin.roblox.com/v1/multi-game-place" },
+                    { "eu", "https://gamejoin.roblox-eu.roblox.com/v1/multi-game-place" },
+                    { "asia", "https://gamejoin.roblox-asia.roblox.com/v1/multi-game-place" },
+                    { "au", "https://gamejoin.roblox-au.roblox.com/v1/multi-game-place" },
+                    { "sa", "https://gamejoin.roblox-sa.roblox.com/v1/multi-game-place" },
+                    { "jp", "https://gamejoin.roblox-jp.roblox.com/v1/multi-game-place" }
+                };
+
+                foreach (var region in Regions)
+                {
+                    var regionLower = region.ToLowerInvariant();
+                    string url = null!;
+
+                    foreach (var endpoint in regionEndpoints)
+                    {
+                        if (regionLower.Contains(endpoint.Key))
+                        {
+                            url = endpoint.Value;
+                            break;
+                        }
+                    }
+
+                    if (string.IsNullOrEmpty(url))
+                        url = $"https://gamejoin.roblox.com/v1/multi-game-place";
+
+                    try
+                    {
+                        var sw = System.Diagnostics.Stopwatch.StartNew();
+                        using var request = new HttpRequestMessage(HttpMethod.Head, url);
+                        request.Headers.Add("User-Agent", App.HttpClient.DefaultRequestHeaders.UserAgent.ToString());
+                        await App.HttpClient.SendAsync(request);
+                        sw.Stop();
+
+                        long ping = sw.ElapsedMilliseconds;
+                        App.Logger.WriteLine(LOG_IDENT, $"Region '{region}': {ping}ms");
+
+                        if (ping < bestPing)
+                        {
+                            bestPing = ping;
+                            bestRegion = region;
+                        }
+                    }
+                    catch
+                    {
+                        App.Logger.WriteLine(LOG_IDENT, $"Region '{region}': failed to ping");
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(bestRegion))
+                {
+                    SelectedRegion = bestRegion;
+                    AutoSelectStatus = $"Best region: {bestRegion} ({bestPing}ms)";
+                    App.Settings.Save();
+                }
+                else
+                {
+                    AutoSelectStatus = "Failed to detect best region.";
+                }
+            }
+            catch (Exception ex)
+            {
+                App.Logger.WriteException(LOG_IDENT, ex);
+                AutoSelectStatus = "Error during region detection.";
+            }
+            finally
+            {
+                IsAutoSelecting = false;
+                await Task.Delay(3000);
+                AutoSelectStatus = "";
+            }
         }
     }
 }

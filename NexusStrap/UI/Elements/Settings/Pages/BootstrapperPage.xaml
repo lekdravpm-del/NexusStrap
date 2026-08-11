@@ -108,10 +108,44 @@
             </ComboBox>
         </controls:OptionControl>
 
-        <controls:OptionControl 
+        <controls:OptionControl
             Header="{x:Static resources:Strings.Menu_Behaviour_BackgroundUpdates_Title}"
             Description="{x:Static resources:Strings.Menu_Behaviour_BackgroundUpdates_Description}">
             <ui:ToggleSwitch IsChecked="{Binding BackgroundUpdates, Mode=TwoWay}" />
+        </controls:OptionControl>
+
+        <ui:CardExpander Margin="0,8,0,0">
+            <ui:CardExpander.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <TextBlock FontSize="14" Text="Launch Sound" />
+                        <TextBlock FontSize="12" Text="Play a custom sound when Roblox starts." Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
+                    </StackPanel>
+                    <ui:ToggleSwitch Grid.Column="1" IsChecked="{Binding LaunchSoundEnabled, Mode=TwoWay}" />
+                </Grid>
+            </ui:CardExpander.Header>
+            <StackPanel Margin="0,8,0,0">
+                <controls:OptionControl
+                    Header="Sound File"
+                    Description="{Binding LaunchSoundDisplay, Mode=OneWay}">
+                    <ui:Button Content="Browse" Padding="12,6" Click="BrowseLaunchSound_Click" />
+                </controls:OptionControl>
+                <controls:OptionControl
+                    Header="Volume"
+                    Description="Adjust the launch sound volume.">
+                    <Slider Width="200" Minimum="0" Maximum="1" TickFrequency="0.1" Value="{Binding LaunchSoundVolume, Mode=TwoWay}" />
+                </controls:OptionControl>
+            </StackPanel>
+        </ui:CardExpander>
+
+        <controls:OptionControl
+            Header="Performance Overlay"
+            Description="Show a floating overlay with CPU, memory, and FPS stats while Roblox is running.">
+            <ui:ToggleSwitch IsChecked="{Binding PerformanceOverlayEnabled, Mode=TwoWay}" />
         </controls:OptionControl>
 
         <ui:CardExpander Grid.Row="1" Margin="0,8,0,0" IsExpanded="True">

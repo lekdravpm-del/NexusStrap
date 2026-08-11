@@ -830,6 +830,32 @@ namespace NexusStrap
 
             SetStatus(Strings.Bootstrapper_Status_Starting);
 
+            if (App.Settings.Prop.EnableLaunchSound && !string.IsNullOrEmpty(App.Settings.Prop.LaunchSoundPath) && File.Exists(App.Settings.Prop.LaunchSoundPath))
+            {
+                try
+                {
+                    var player = new System.Windows.Media.MediaPlayer();
+                    player.Volume = App.Settings.Prop.LaunchSoundVolume;
+                    player.Open(new Uri(App.Settings.Prop.LaunchSoundPath));
+                    player.Play();
+                    await Task.Delay(100);
+                }
+                catch (Exception ex) { App.Logger.WriteException(LOG_IDENT, ex); }
+            }
+
+            if (App.Settings.Prop.EnablePerformanceOverlay)
+            {
+                try
+                {
+                    System.Windows.Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        var overlay = new UI.Elements.Overlay.PerformanceOverlay();
+                        overlay.Show();
+                    });
+                }
+                catch (Exception ex) { App.Logger.WriteException(LOG_IDENT, ex); }
+            }
+
             string[] Names = { App.RobloxPlayerAppName, App.RobloxStudioAppName };
             string ResolvedName = null!;
 

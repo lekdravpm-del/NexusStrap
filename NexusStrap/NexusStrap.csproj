@@ -111,6 +111,7 @@
     <PackageReference Include="securifybv.ShellLink" Version="0.1.0" />
     <PackageReference Include="SharpZipLib" Version="1.4.2" />
     <PackageReference Include="XamlAnimatedGif" Version="2.3.1" />
+    <PackageReference Include="System.Management" Version="10.0.0-preview.4.25258.110" />
   </ItemGroup>
 
   <ItemGroup>
