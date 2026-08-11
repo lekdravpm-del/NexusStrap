@@ -1,0 +1,63 @@
+<ui:UiPage
+    x:Class="NexusStrap.UI.Elements.Settings.Pages.OptimizationSetupPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:resources="clr-namespace:NexusStrap.Resources"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    Title="OptimizationSetupPage"
+    d:DesignHeight="600"
+    d:DesignWidth="800"
+    Scrollable="True"
+    mc:Ignorable="d">
+
+    <StackPanel Margin="0,0,14,14">
+        <TextBlock
+            Margin="0,0,0,4"
+            FontSize="28"
+            FontWeight="Bold"
+            Text="{x:Static resources:Strings.OptimizationSetup_Title}" />
+        <TextBlock
+            Margin="0,0,0,16"
+            FontSize="14"
+            Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+            Text="{x:Static resources:Strings.OptimizationSetup_Description}"
+            TextWrapping="Wrap" />
+
+        <ui:CardExpander Margin="0,8,0,0" IsExpanded="True" Header="{x:Static resources:Strings.OptimizationSetup_YourHardware}">
+            <StackPanel Margin="0,8,0,0">
+                <TextBlock FontSize="14" Foreground="{DynamicResource TextFillColorTertiaryBrush}" Text="{x:Static resources:Strings.OptimizationSetup_Cpu}" />
+                <TextBlock FontSize="14" Text="{Binding Hardware.CpuName, Mode=OneTime}" TextWrapping="Wrap" />
+                <TextBlock Margin="0,8,0,0" FontSize="14" Foreground="{DynamicResource TextFillColorTertiaryBrush}" Text="{x:Static resources:Strings.OptimizationSetup_Gpu}" />
+                <TextBlock FontSize="14" Text="{Binding Hardware.GpuName, Mode=OneTime}" TextWrapping="Wrap" />
+                <TextBlock Margin="0,8,0,0" FontSize="14" Foreground="{DynamicResource TextFillColorTertiaryBrush}" Text="{x:Static resources:Strings.OptimizationSetup_Ram}" />
+                <TextBlock FontSize="14" Text="{Binding Hardware.TotalRamGB, Mode=OneTime, StringFormat={}{0} GB}" />
+                <TextBlock Margin="0,8,0,0" FontSize="14" Foreground="{DynamicResource TextFillColorTertiaryBrush}" Text="{x:Static resources:Strings.OptimizationSetup_Windows}" />
+                <TextBlock FontSize="14" Text="{Binding Hardware.WindowsVersion, Mode=OneTime}" TextWrapping="Wrap" />
+            </StackPanel>
+        </ui:CardExpander>
+
+        <ui:CardExpander Margin="0,8,0,0" IsExpanded="True" Header="{x:Static resources:Strings.OptimizationSetup_Recommendation}">
+            <StackPanel Margin="0,8,0,0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="14" Foreground="{DynamicResource TextFillColorTertiaryBrush}" Text="{x:Static resources:Strings.OptimizationSetup_Tier}" />
+                    <TextBlock Margin="8,0,0,0" FontSize="14" FontWeight="Bold" Text="{Binding TierName, Mode=OneTime}" />
+                </StackPanel>
+                <TextBlock Margin="0,8,0,0" FontSize="14" Text="{Binding RecommendedSettingsSummary, Mode=OneTime}" TextWrapping="Wrap" />
+                <TextBlock Margin="0,12,0,0" FontSize="12" Foreground="{DynamicResource TextFillColorTertiaryBrush}" Text="{x:Static resources:Strings.OptimizationSetup_Note}" TextWrapping="Wrap" />
+            </StackPanel>
+        </ui:CardExpander>
+
+        <StackPanel Margin="0,16,0,0" HorizontalAlignment="Right" Orientation="Horizontal">
+            <ui:Button
+                Margin="0,0,8,0"
+                Appearance="Secondary"
+                Command="{Binding SkipCommand, Mode=OneTime}"
+                Content="{x:Static resources:Strings.OptimizationSetup_Skip}" />
+            <ui:Button
+                Command="{Binding ApplyCommand, Mode=OneTime}"
+                Content="{x:Static resources:Strings.OptimizationSetup_Apply}" />
+        </StackPanel>
+    </StackPanel>
+</ui:UiPage>

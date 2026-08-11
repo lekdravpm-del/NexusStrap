@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="NexusStrap/NexusStrap.csproj" />
+  <Project Path="wpfui/src/Wpf.Ui/Wpf.Ui.csproj" />
+  <Project Path="ColorPicker/ColorPicker/ColorPicker.csproj" />
+  <Properties Name="ExtensibilityGlobals" Scope="PostLoad">
+    <Property Name="RESX_NeutralResourcesLanguage" Value="en-GB" />
+  </Properties>
+</Solution>

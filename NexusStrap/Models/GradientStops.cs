@@ -1,0 +1,8 @@
+﻿namespace NexusStrap.Models
+{
+    public class GradientStops
+    {
+        public double Offset { get; set; } = 1.0;
+        public string Color { get; set; } = "#000000";
+    }
+}

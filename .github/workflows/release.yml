@@ -1,0 +1,50 @@
+name: Build & Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Get version from tag
+        id: version
+        shell: bash
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+
+      - name: Restore
+        run: dotnet restore NexusStrap/NexusStrap.csproj
+
+      - name: Build
+        run: dotnet build NexusStrap/NexusStrap.csproj -c Release --no-restore
+
+      - name: Publish
+        run: dotnet publish NexusStrap/NexusStrap.csproj -c Release --no-build -p:PublishProfile=Publish-x64
+
+      - name: Rename exe with version
+        shell: bash
+        run: |
+          mv "NexusStrap/bin/Release/net10.0-windows/publish/win-x64/NexusStrap.exe" "NexusStrap-${{ steps.version.outputs.VERSION }}.exe"
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: NexusStrap v${{ steps.version.outputs.VERSION }}
+          files: NexusStrap-${{ steps.version.outputs.VERSION }}.exe
+          generate_release_notes: true
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
