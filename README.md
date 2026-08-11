@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-    NexusStrap is a fork of <a href="https://github.com/fishstrap/fishstrap.git"><strong>Fishstrap</strong></a>, focused on performance and customization
+    NexusStrap is a fork of FishStrap focused on performance and customization
 </p>
 
 <p align="center">
