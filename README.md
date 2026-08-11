@@ -14,24 +14,12 @@
     If you want to help support our project please consider giving this repo a star!
 </p>
 
-<div align="center">
-
-[![License][badge-repo-license]][repo-license]
-[![Downloads (Total)][badge-repo-downloads-total]][repo-releases]
-[![Downloads (Latest)][badge-repo-downloads]][repo-releases]
-[![Version][badge-repo-latest]][repo-latest]
-[![Stars][badge-repo-stars]][repo-stargazer]
-[![Discord][badge-discord]][discord-invite]
-
-</div>
-
 > [!CAUTION]
-> The repo, [github:NexusStrap/NexusStrap](https://github.com/NexusStrap/NexusStrap.git) and [our website](https://nexusstrap.github.io), are the **ONLY PLACES** you shall
-> get the binary/executable from, as any other is **NOT** affiliated with us, and is a potential threat.
+> Only download NexusStrap from the official repository or releases provided by the project. Do not download binaries from unofficial sources, as they may be modified or malicious.
 
 ## Download
 
-Grab the latest `NexusStrap.exe` from [Releases](https://github.com/NexusStrap/NexusStrap/releases/latest).
+Grab the latest `NexusStrap.exe` from the repository's Releases page.
 
 ## Building from Source
 
@@ -52,82 +40,73 @@ Output: `NexusStrap/bin/Release/net10.0-windows/publish/win-x64/NexusStrap.exe`
 ## Key Improvements Over NexusStrap
 
 ### Integrations
-- Player and message logs are now combined into **Logs Menu**
-- Disable Roblox’s built-in screenshot and video recording system
-- Custom NexusStrap Discord RPC that shows the current page/dialog
-- Replace "Playing Roblox" with the name of the game you're playing using Custom Status Display
-- Game history logging is now toggleable
-- PlayTime Counter shows both total and session playtime
+
+* Player and message logs are now combined into **Logs Menu**
+* Disable Roblox’s built-in screenshot and video recording system
+* Custom NexusStrap Discord RPC that shows the current page/dialog
+* Replace "Playing Roblox" with the name of the game you're playing using Custom Status Display
+* Game history logging is now toggleable
+* PlayTime Counter shows both total and session playtime
 
 ### Bootstrapper
-- Switch between all of the classic Roblox icons for the top bar icon
-- Change the Roblox process priority
-- Automatically close the Roblox Crash Handler to reduce memory usage
-- Integrated cleaner tool to remove leftover files (feature was made by fishstrap first not us)
-- Multi-instance launching support
+
+* Switch between all of the classic Roblox icons for the top bar icon
+* Change the Roblox process priority
+* Automatically close the Roblox Crash Handler to reduce memory usage
+* Integrated cleaner tool to remove leftover files (feature was made by FishStrap first, not us)
+* Multi-instance launching support
 
 ### Mods
-- Generate Mods using custom gradient colors easily
-- Quick use Custom Cursors and Custom Shiftlocks easily
-- Have multiple Custom Cursor Sets ready for use with the click of a button
-- Easily add custom death sounds
+
+* Generate Mods using custom gradient colors easily
+* Quick use Custom Cursors and Custom Shiftlocks easily
+* Have multiple Custom Cursor Sets ready for use with the click of a button
+* Easily add custom death sounds
 
 ### FastFlag Enhancements
-- Toggle advanced settings
-- Better Profiles
-- Press Ctrl+Z and Ctrl+Y to Undo/Redo changes
-- Built-in FastFlag lists inside of the profiles dialog
-- Remove invalid/default flags and automatically update outdated ones in one click
-- Use Preset Column to help find which flags are toggleables in fastflag settings
-- FastFlag Warning system to help tell you about ban worthy fastflags
-- Select values quickly using the built-in value selector when adding flags
-- Use Find Flag feature to check all of Robloxs FastFlags
-- Publish and Use other peoples published lists in Public Flag Lists
+
+* Toggle advanced settings
+* Better Profiles
+* Press Ctrl+Z and Ctrl+Y to Undo/Redo changes
+* Built-in FastFlag lists inside of the profiles dialog
+* Remove invalid/default flags and automatically update outdated ones in one click
+* Use Preset Column to help find which flags are toggleables in fastflag settings
+* FastFlag Warning system to help tell you about ban worthy fastflags
+* Select values quickly using the built-in value selector when adding flags
+* Use Find Flag feature to check all of Roblox's FastFlags
+* Publish and Use other peoples published lists in Public Flag Lists
 
 ### UI & Appearance
-- Fully customizable bootstrapper launcher
-- Change the app font to any font you want
-- Supports animated GIF, image, and gradient backgrounds themes
-- Built-in App themes
-- Use element toolbox when creating custom launchers (prob removing soon cuz its hella useless) 
+
+* Fully customizable bootstrapper launcher
+* Change the app font to any font you want
+* Supports animated GIF, image, and gradient backgrounds themes
+* Built-in App themes
+* Use element toolbox when creating custom launchers (probably removing soon because it's useless)
 
 ### Settings
-- Disable Hardware Acceleration to lower nexusstrap memory usage
-- Disable NexusStrap Animations to help with performance
-- Fixed auto update that wont go off randomly
-- Easily switch Roblox update channels with action presets
-- Option to fully block Roblox updates
-- Quickly Reset/Import/Export all your settings in one place
-- Use the debug menu to read log files
-- Easily uninstall NexusStrap if its not to your liking (you totally shouldnt trust trust)
+
+* Disable Hardware Acceleration to lower NexusStrap memory usage
+* Disable NexusStrap Animations to help with performance
+* Fixed auto update that won't go off randomly
+* Easily switch Roblox update channels with action presets
+* Option to fully block Roblox updates
+* Quickly Reset/Import/Export all your settings in one place
+* Use the debug menu to read log files
+* Easily uninstall NexusStrap if it's not to your liking
 
 ### Extra Features
-- Remembers the last opened tab
-- Import settings from other bootstrappers easily like Fishstrap and NexusStrap
-- Built-in PC tweaks for performance optimization
-- Create game shortcuts for faster game joining
-- Includes a hidden Easter egg page and game
 
-More features are planned to be added, you can also sugguest a feature in our issues!
+* Remembers the last opened tab
+* Import settings from other bootstrappers easily like FishStrap and NexusStrap
+* Built-in PC tweaks for performance optimization
+* Create game shortcuts for faster game joining
+* Includes a hidden Easter egg page and game
+
+More features are planned to be added. You can also suggest a feature in the Issues section.
 
 ---
 
 ## Licensing
 
-This project is **dual-licensed** under `GPL-3.0-or-later` and `Unlicensed`. 
-
-<!-- Badge defs -->
-[badge-repo-license]: https://img.shields.io/github/license/NexusStrap/NexusStrap?style=for-the-badge&color=37add9
-[badge-repo-downloads]: https://img.shields.io/github/downloads/NexusStrap/NexusStrap/latest/total?style=for-the-badge&color=37add9
-[badge-repo-downloads-total]: https://img.shields.io/github/downloads/NexusStrap/NexusStrap/total?style=for-the-badge&color=37add9
-[badge-repo-latest]: https://img.shields.io/github/v/release/NexusStrap/NexusStrap?style=for-the-badge&color=37add9
-[badge-repo-stars]: https://img.shields.io/github/stars/NexusStrap/NexusStrap?style=for-the-badge&color=37add9
-[badge-discord]: https://img.shields.io/discord/1364660238963179520?style=for-the-badge&label=discord&color=5865f2
-
-[repo-license]: https://github.com/NexusStrap/NexusStrap/blob/main/LICENSE
-[repo-actions]: https://github.com/NexusStrap/NexusStrap/actions
-[repo-releases]: https://github.com/NexusStrap/NexusStrap/releases
-[repo-latest]: https://github.com/NexusStrap/NexusStrap/releases/latest
-[repo-stargazer]: https://github.com/NexusStrap/NexusStrap/stargazers
-
-[discord-invite]: https://discord.gg/KdR9vpRcUN
+This project is **dual-licensed** under `GPL-3.0-or-later` and `Unlicensed`.
