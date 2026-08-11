@@ -164,13 +164,20 @@ namespace NexusStrap
             string[] protectedFiles = { "Settings.json", "State.json", "PlayerState.json", "StudioState.json", "FastFlagManager.json" };
             string[] protectedDirs = { "Cache", "ClientSettings", "CustomCursorsSets", "CustomThemes", "Downloads", "Logs", "Modifications", "Versions", "Profiles", "SavedFlagProfiles", "Integrations" };
 
+            // only copy application files, not random files from the source directory
+            string[] appExtensions = { ".exe", ".dll", ".pdb", ".json", ".ico", ".png", ".jpg", ".mp3", ".ogg", ".ttf", ".otf", ".pow", ".xshd", ".xml", ".resx" };
+
             Directory.CreateDirectory(InstallLocation);
 
             foreach (var file in Directory.GetFiles(sourceDir))
             {
                 string fileName = Path.GetFileName(file);
+                string extension = Path.GetExtension(file).ToLowerInvariant();
 
                 if (protectedFiles.Contains(fileName, StringComparer.OrdinalIgnoreCase))
+                    continue;
+
+                if (!appExtensions.Contains(extension))
                     continue;
 
                 try
@@ -189,6 +196,10 @@ namespace NexusStrap
                 string dirName = Path.GetFileName(dir);
 
                 if (protectedDirs.Contains(dirName, StringComparer.OrdinalIgnoreCase))
+                    continue;
+
+                // only copy application directories (Resources, etc.)
+                if (dirName != "Resources" && dirName != "NativeAssets" && !dirName.StartsWith("NexusStrap"))
                     continue;
 
                 string destination = Path.Combine(InstallLocation, dirName);
