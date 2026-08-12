@@ -439,6 +439,7 @@ namespace NexusStrap
 
         protected override void OnExit(ExitEventArgs e)
         {
+            AccountManager.Shared.SaveAccounts();
             RichPresence?.Dispose();
             base.OnExit(e);
         }

@@ -107,6 +107,10 @@ namespace NexusStrap.Integrations
 
             App.Logger.WriteLine(LOG_IDENT_LOAD, "Loading accounts...");
 
+            var dir = Path.GetDirectoryName(_accountsLocation);
+            if (!string.IsNullOrEmpty(dir) && !Directory.Exists(dir))
+                Directory.CreateDirectory(dir);
+
             if (!File.Exists(_accountsLocation))
             {
                 App.Logger.WriteLine(LOG_IDENT_LOAD, "Accounts file not found.");
@@ -194,6 +198,10 @@ namespace NexusStrap.Integrations
             App.Logger.WriteLine(LOG_IDENT_SAVE, "Saving accounts...");
             try
             {
+                var dir = Path.GetDirectoryName(_accountsLocation);
+                if (!string.IsNullOrEmpty(dir) && !Directory.Exists(dir))
+                    Directory.CreateDirectory(dir);
+
                 var protectedAccounts = _accounts
                     .Select(a => new AltAccount(ProtectString(a.SecurityToken), a.UserId, a.Username, a.DisplayName))
                     .ToList();
