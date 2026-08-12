@@ -9,7 +9,7 @@ namespace NexusStrap.UI.ViewModels.Dialogs
     {
         public string Text => String.Format(
             Strings.Uninstaller_Text, 
-            "https://github.com/nexusstraplabs/nexusstrap/wiki/Roblox-crashes-or-does-not-launch",
+            "https://github.com/lekdravpm-del/NexusStrap/wiki/Roblox-crashes-or-does-not-launch",
             Paths.Base
         );
 

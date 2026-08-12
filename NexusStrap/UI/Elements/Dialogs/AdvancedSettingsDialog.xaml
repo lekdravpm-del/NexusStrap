@@ -38,14 +38,14 @@
                 <controls:OptionControl
                         Header="{x:Static resources:Strings.Menu_FastFlagsEditor_AdvancedSettings_PresetColumn_Title}" 
                         Description="{x:Static resources:Strings.Menu_FastFlagsEditor_AdvancedSettings_PresetColumn_Description}"
-                        HelpLink="https://github.com/NexusStrap/NexusStrap/wiki/Advanced-FastFlag-Editor-Settings#preset-column" >
+                        HelpLink="https://github.com/lekdravpm-del/NexusStrap/wiki/Advanced-FastFlag-Editor-Settings#preset-column" >
                     <ui:ToggleSwitch IsChecked="{Binding ShowPresetColumnSetting, Mode=TwoWay}" />
                 </controls:OptionControl>
 
                 <controls:OptionControl
                         Header="{x:Static resources:Strings.Menu_FastFlagsEditor_AdvancedSettings_ToggleFlagCount_Title}" 
                         Description="{x:Static resources:Strings.Menu_FastFlagsEditor_AdvancedSettings_ToggleFlagCount_Description}"
-                        HelpLink="https://github.com/NexusStrap/NexusStrap/wiki/Advanced-FastFlag-Editor-Settings#flag-count" >
+                        HelpLink="https://github.com/lekdravpm-del/NexusStrap/wiki/Advanced-FastFlag-Editor-Settings#flag-count" >
                     <ui:ToggleSwitch IsChecked="{Binding ShowFlagCount, Mode=TwoWay}" />
                 </controls:OptionControl>
             </StackPanel>
