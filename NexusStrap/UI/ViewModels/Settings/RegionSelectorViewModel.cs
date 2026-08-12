@@ -62,7 +62,7 @@ namespace NexusStrap.UI.ViewModels.Settings
         public bool IsServerListEmptyAndNotLoading => IsServerListEmpty && !IsLoading;
         public bool ShowLoadingIndicator => IsLoading && !IsGameSearchLoading;
 
-        public string ServerListMessage => !HasValidCookies ? "Dummy not found, Please notify us in our discord server." :
+        public string ServerListMessage => !HasValidCookies ? "Log in to your account in the Account Manager to use Region Selector." :
             IsLoading ? "" :
             !HasSearched ? "Enter a Place ID and click Search to view servers." :
             IsServerListEmpty ? (LastFetchProcessedCount == 0 ? "No public servers found." : "No servers found for specified region.") : "";
@@ -84,7 +84,16 @@ namespace NexusStrap.UI.ViewModels.Settings
             LoadMoreCommand = new AsyncRelayCommand(LoadMoreServersAsync, () => !IsLoading && !string.IsNullOrWhiteSpace(NextCursor));
             AutoSelectRegionCommand = new AsyncRelayCommand(AutoSelectBestRegionAsync, () => !IsLoading && !IsAutoSelecting && HasValidCookies && Regions.Count > 0);
 
+            AccountManager.Shared.ActiveAccountChanged += OnActiveAccountChanged;
             _ = InitializeCookiesAsync();
+        }
+
+        private void OnActiveAccountChanged(Integrations.AltAccount? account)
+        {
+            if (!HasValidCookies && account != null)
+            {
+                _ = InitializeCookiesAsync();
+            }
         }
 
         partial void OnSearchQueryChanged(string value)
@@ -131,6 +140,25 @@ namespace NexusStrap.UI.ViewModels.Settings
         {
             try
             {
+                // First try: use the user's own account cookie from AccountManager
+                var activeAccount = AccountManager.Shared.ActiveAccount;
+                if (activeAccount != null)
+                {
+                    string? userCookie = AccountManager.Shared.GetRoblosecurityForUser(activeAccount.UserId);
+                    if (!string.IsNullOrWhiteSpace(userCookie))
+                    {
+                        Roblosecurity = userCookie;
+                        _fetcher = new RobloxServerFetcher();
+                        HasValidCookies = await _fetcher.ValidateCookieAsync(Roblosecurity);
+                        if (HasValidCookies)
+                        {
+                            await LoadRegionsAsync();
+                            return;
+                        }
+                    }
+                }
+
+                // Fallback: try the dummy cookie from remote data
                 await App.RemoteData.WaitUntilDataFetched();
 
                 for (int attempt = 0; attempt < 3; attempt++)
