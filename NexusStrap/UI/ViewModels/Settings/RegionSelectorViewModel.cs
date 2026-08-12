@@ -132,12 +132,19 @@ namespace NexusStrap.UI.ViewModels.Settings
             try
             {
                 await App.RemoteData.WaitUntilDataFetched();
-                Roblosecurity = App.RemoteData.Prop.Dummy;
 
-                if (!string.IsNullOrWhiteSpace(Roblosecurity))
+                for (int attempt = 0; attempt < 3; attempt++)
                 {
-                    _fetcher = new RobloxServerFetcher();
-                    HasValidCookies = await _fetcher.ValidateCookieAsync(Roblosecurity);
+                    Roblosecurity = App.RemoteData.Prop.Dummy;
+
+                    if (!string.IsNullOrWhiteSpace(Roblosecurity))
+                    {
+                        _fetcher = new RobloxServerFetcher();
+                        HasValidCookies = await _fetcher.ValidateCookieAsync(Roblosecurity);
+                        break;
+                    }
+
+                    await Task.Delay(1000);
                 }
 
                 if (HasValidCookies) await LoadRegionsAsync();

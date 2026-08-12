@@ -16,9 +16,6 @@ namespace NexusStrap.UI.Elements.About
             App.RichPresence?.SetDialog("About");
 
             App.Logger.WriteLine("MainWindow", "Initializing about window");
-
-            if (Locale.CurrentCulture.Name.StartsWith("tr"))
-                TranslatorsText.FontSize = 9;
         }
 
         #region INavigationWindow methods

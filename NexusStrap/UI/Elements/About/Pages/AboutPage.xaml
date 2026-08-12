@@ -22,101 +22,120 @@
         </Storyboard>
     </ui:UiPage.Resources>
 
-    <StackPanel Margin="0,0,14,14">
+    <Grid Margin="0,0,14,14">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
-        <Grid Margin="0,0,0,24" HorizontalAlignment="Center">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-
-            <Image x:Name="Image1" Grid.Column="0" Width="96" Height="96" VerticalAlignment="Center" Source="pack://application:,,,/Resources/Nexus.png" RenderOptions.BitmapScalingMode="HighQuality" />
-            <Image x:Name="Image2" Grid.Column="0" Width="96" Height="96" VerticalAlignment="Center" Source="pack://application:,,,/Resources/BootstrapperStyles/ByfronDialog/Matt.png" RenderOptions.BitmapScalingMode="HighQuality" Opacity="0" />
-
-            <StackPanel Grid.Column="1" Margin="12,0,0,0" VerticalAlignment="Center">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="NEXUS STRAP" Margin="0,0,4,0" FontSize="24" FontWeight="Bold" Foreground="White">
-                        <TextBlock.Effect>
-                            <DropShadowEffect Color="White" BlurRadius="18" ShadowDepth="0" Opacity="0.8"/>
-                        </TextBlock.Effect>
-                    </TextBlock>
-                </Grid>
-                <TextBlock Text="{x:Static resources:Strings.Menu_About_Description}" Foreground="{DynamicResource TextFillColorTertiaryBrush}"  />
-            </StackPanel>
-        </Grid>
-
-        <StackPanel HorizontalAlignment="Center" Margin="0,0,0,12">
-            <TextBlock Text="Made by Troll/Recd" FontSize="13" FontWeight="Medium" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
-        </StackPanel>
-
-        <WrapPanel HorizontalAlignment="Center" Orientation="Horizontal">
-            <ui:Anchor Margin="0,0,8,8" Content="{x:Static resources:Strings.Menu_About_ReportIssue}" Icon="BookExclamationMark24" NavigateUri="https://github.com/nexusstrap/nexusstrap/issues" />
-            <ui:Anchor Margin="0,0,8,8" Content="Discord" Icon="Chat24" NavigateUri="https://discord.gg/hvhEDxFek" ToolTip="Want to join our server?" />
-        </WrapPanel>
-
-        <StackPanel Visibility="{Binding BuildInformationVisibility, Mode=OneTime}">
-            <TextBlock Text="Build Information" FontWeight="Bold" FontSize="20" Margin="0,16,0,0" />
-
-            <Grid Column="0" Margin="0,8,0,0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
+        <!-- Header: Logo + Title + Description -->
+        <Border Grid.Row="0" Padding="20" Margin="0,0,0,16" Background="{DynamicResource ControlFillColorDefaultBrush}" CornerRadius="12">
+            <Grid HorizontalAlignment="Center">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Row="0" Grid.Column="0" Margin="0,4,16,4" FontSize="14"  Text="Timestamp" />
-                <TextBlock Grid.Row="0" Grid.Column="1" Margin="0,0,0,4" VerticalAlignment="Bottom" Text="{Binding BuildTimestamp, Mode=OneTime}" Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
+                <Grid Grid.Column="0" Width="80" Height="80" VerticalAlignment="Center">
+                    <Image x:Name="Image1" Width="80" Height="80" VerticalAlignment="Center" Source="pack://application:,,,/Resources/Nexus.png" RenderOptions.BitmapScalingMode="HighQuality" />
+                    <Image x:Name="Image2" Width="80" Height="80" VerticalAlignment="Center" Source="pack://application:,,,/Resources/BootstrapperStyles/ByfronDialog/Matt.png" RenderOptions.BitmapScalingMode="HighQuality" Opacity="0" />
+                </Grid>
 
-                <TextBlock Grid.Row="3" Grid.Column="0" Margin="0,1,16,-21" FontSize="14"  Text="Version" />
-                <TextBlock Grid.Row="3" Margin="86,3,0,0" VerticalAlignment="Top" Text="{Binding Version, Mode=OneTime}" Foreground="{DynamicResource TextFillColorTertiaryBrush}" Grid.ColumnSpan="2" />
-
-                <TextBlock Grid.Row="2" Grid.Column="0" Margin="0,4,16,4" FontSize="14"  Text="Commit Hash" Visibility="{Binding BuildCommitVisibility, Mode=OneTime}" />
-                <TextBlock Grid.Row="2" Grid.Column="1" Margin="0,0,0,4" VerticalAlignment="Bottom" Foreground="{DynamicResource TextFillColorTertiaryBrush}" Visibility="{Binding BuildCommitVisibility, Mode=OneTime}">
-                  <Hyperlink Foreground="{DynamicResource TextFillColorTertiaryBrush}" Command="models:GlobalViewModel.OpenWebpageCommand" CommandParameter="{Binding BuildCommitHashUrl, Mode=OneTime}">
-                    <TextBlock Text="{Binding BuildMetadata.CommitHash, Mode=OneTime}" />
-                  </Hyperlink>
-                </TextBlock>
-
-                <TextBlock Grid.Row="3" Grid.Column="0" Margin="0,4,16,4" FontSize="14"  Text="Commit Ref" Visibility="{Binding BuildCommitVisibility, Mode=OneTime}" />
-                <TextBlock Grid.Row="3" Grid.Column="1" Margin="0,0,0,4" VerticalAlignment="Bottom" Text="{Binding BuildMetadata.CommitRef, Mode=OneTime}" Foreground="{DynamicResource TextFillColorTertiaryBrush}" Visibility="{Binding BuildCommitVisibility, Mode=OneTime}" />
+                <StackPanel Grid.Column="1" Margin="16,0,0,0" VerticalAlignment="Center">
+                    <TextBlock Text="NEXUS STRAP" FontSize="28" FontWeight="Bold" Foreground="White">
+                        <TextBlock.Effect>
+                            <DropShadowEffect Color="White" BlurRadius="18" ShadowDepth="0" Opacity="0.8"/>
+                        </TextBlock.Effect>
+                    </TextBlock>
+                    <TextBlock Text="{x:Static resources:Strings.Menu_About_Description}" Foreground="{DynamicResource TextFillColorTertiaryBrush}" FontSize="13" Margin="0,4,0,0" />
+                </StackPanel>
             </Grid>
+        </Border>
+
+        <!-- Links Row -->
+        <WrapPanel Grid.Row="1" HorizontalAlignment="Center" Margin="0,0,0,16">
+            <ui:Button Margin="0,0,8,8" Appearance="Primary" Icon="BookExclamationMark24" Content="Report Issue" Command="models:GlobalViewModel.OpenWebpageCommand" CommandParameter="https://github.com/lekdravpm-del/NexusStrap/issues" />
+            <ui:Button Margin="0,0,8,8" Appearance="Primary" Icon="Chat24" Content="Discord" Command="models:GlobalViewModel.OpenWebpageCommand" CommandParameter="https://discord.gg/hvhEDxFek" />
+            <ui:Button Margin="0,0,8,8" Appearance="Primary" Icon="Library24" Content="Wiki" Command="models:GlobalViewModel.OpenWebpageCommand" CommandParameter="https://github.com/lekdravpm-del/NexusStrap/wiki" />
+        </WrapPanel>
+
+        <!-- Credits Section -->
+        <Border Grid.Row="2" Padding="16" Margin="0,0,0,16" Background="{DynamicResource ControlFillColorDefaultBrush}" CornerRadius="12">
+            <StackPanel>
+                <TextBlock Text="Credits" FontWeight="Bold" FontSize="18" Margin="0,0,0,12" />
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Code -->
+                    <StackPanel Grid.Column="0" Margin="0,0,12,0">
+                        <TextBlock Text="Code" FontSize="12" FontWeight="SemiBold" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Margin="0,0,0,4" />
+                        <Border Padding="10" Background="{DynamicResource ApplicationBackgroundBrush}" CornerRadius="8">
+                            <StackPanel>
+                                <TextBlock Text="Troll" FontSize="14" FontWeight="Medium" />
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+
+                    <!-- Contributors -->
+                    <StackPanel Grid.Column="1" Margin="12,0,0,0">
+                        <TextBlock Text="Contributors" FontSize="12" FontWeight="SemiBold" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Margin="0,0,0,4" />
+                        <Border Padding="10" Background="{DynamicResource ApplicationBackgroundBrush}" CornerRadius="8">
+                            <StackPanel>
+                                <TextBlock Text="tailoop" FontSize="14" FontWeight="Medium" />
+                                <TextBlock Text="Burger" FontSize="14" FontWeight="Medium" Margin="0,2,0,0" />
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </Border>
+
+        <!-- Build Information -->
+        <StackPanel Grid.Row="3" Visibility="{Binding BuildInformationVisibility, Mode=OneTime}" Margin="0,0,0,16">
+            <Border Padding="16" Background="{DynamicResource ControlFillColorDefaultBrush}" CornerRadius="12">
+                <StackPanel>
+                    <TextBlock Text="Build Information" FontWeight="Bold" FontSize="18" Margin="0,0,0,12" />
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" Margin="0,4,16,4" FontSize="14" Text="Timestamp" />
+                        <TextBlock Grid.Row="0" Grid.Column="1" Margin="0,0,0,4" VerticalAlignment="Bottom" Text="{Binding BuildTimestamp, Mode=OneTime}" Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
+
+                        <TextBlock Grid.Row="1" Grid.Column="0" Margin="0,4,16,4" FontSize="14" Text="Version" />
+                        <TextBlock Grid.Row="1" Grid.Column="1" Margin="0,0,0,4" VerticalAlignment="Bottom" Text="{Binding Version, Mode=OneTime}" Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
+
+                        <TextBlock Grid.Row="2" Grid.Column="0" Margin="0,4,16,4" FontSize="14" Text="Commit Hash" Visibility="{Binding BuildCommitVisibility, Mode=OneTime}" />
+                        <TextBlock Grid.Row="2" Grid.Column="1" Margin="0,0,0,4" VerticalAlignment="Bottom" Foreground="{DynamicResource TextFillColorTertiaryBrush}" Visibility="{Binding BuildCommitVisibility, Mode=OneTime}">
+                            <Hyperlink Foreground="{DynamicResource TextFillColorTertiaryBrush}" Command="models:GlobalViewModel.OpenWebpageCommand" CommandParameter="{Binding BuildCommitHashUrl, Mode=OneTime}">
+                                <TextBlock Text="{Binding BuildMetadata.CommitHash, Mode=OneTime}" />
+                            </Hyperlink>
+                        </TextBlock>
+
+                        <TextBlock Grid.Row="3" Grid.Column="0" Margin="0,4,16,4" FontSize="14" Text="Commit Ref" Visibility="{Binding BuildCommitVisibility, Mode=OneTime}" />
+                        <TextBlock Grid.Row="3" Grid.Column="1" Margin="0,0,0,4" VerticalAlignment="Bottom" Text="{Binding BuildMetadata.CommitRef, Mode=OneTime}" Foreground="{DynamicResource TextFillColorTertiaryBrush}" Visibility="{Binding BuildCommitVisibility, Mode=OneTime}" />
+                    </Grid>
+                </StackPanel>
+            </Border>
         </StackPanel>
 
-        <TextBlock Text="{x:Static resources:Strings.Menu_About_Contributors}" FontWeight="Bold" FontSize="20" Margin="0,16,0,0" />
-        <TextBlock Text="{x:Static resources:Strings.Menu_About_Contributors_Description}" TextWrapping="Wrap" Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
-        <Grid Margin="0,8,0,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-
-            <controls:Expander Grid.Column="0" Margin="0,0,4,0" HeaderIcon="Code24" HeaderText="{x:Static resources:Strings.Menu_About_Contributors_Code}" IsExpanded="True">
-                <StackPanel>
-                    <controls:MarkdownTextBlock MarkdownText="Troll" />
-                </StackPanel>
-            </controls:Expander>
-
-            <controls:Expander Grid.Column="1" Margin="4,0,4,0" HeaderIcon="AppsAddIn28" HeaderText="{x:Static resources:Strings.Menu_About_Contributors_Contributors}" IsExpanded="True">
-                <StackPanel>
-                    <controls:MarkdownTextBlock MarkdownText="tailoop / Burger" />
-                </StackPanel>
-            </controls:Expander>
-
-            <controls:Expander Grid.Column="2" Margin="4,0,0,0" HeaderIcon="ArrowDownload24" HeaderText="Translators" IsExpanded="True">
-                <StackPanel>
-                    <controls:MarkdownTextBlock MarkdownText="tailoop" />
-                </StackPanel>
-            </controls:Expander>
-        </Grid>
-    </StackPanel>
+        <!-- Footer -->
+        <TextBlock Grid.Row="4" Text="Made by Troll/Recd" FontSize="13" FontWeight="Medium" Foreground="{DynamicResource TextFillColorTertiaryBrush}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,8" />
+    </Grid>
 </ui:UiPage>
