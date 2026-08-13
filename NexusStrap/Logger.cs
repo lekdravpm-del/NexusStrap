@@ -2,10 +2,11 @@
 {
     // https://stackoverflow.com/a/53873141/11852173
 
-    public class Logger
+    public class Logger : IDisposable
     {
         private readonly SemaphoreSlim _semaphore = new(1, 1);
         private FileStream? _filestream;
+        private bool _disposed = false;
 
         public readonly List<string> History = new();
         public bool Initialized = false;
@@ -13,6 +14,29 @@
         public string? FileLocation;
 
         public string AsDocument => String.Join('\n', History);
+
+        public void Dispose()
+        {
+            if (_disposed)
+                return;
+
+            _disposed = true;
+
+            try
+            {
+                _semaphore.Wait(TimeSpan.FromSeconds(2));
+                _filestream?.Flush();
+                _filestream?.Dispose();
+            }
+            catch { }
+            finally
+            {
+                _semaphore.Release();
+                _semaphore.Dispose();
+            }
+
+            GC.SuppressFinalize(this);
+        }
 
         public void Initialize(bool useTempDir = false)
         {
@@ -109,6 +133,9 @@
             WriteToLog(outlog);
 
             History.Add(outlog);
+
+            if (History.Count > 5000)
+                History.RemoveRange(0, History.Count - 5000);
         }
 
         public void WriteLine(string identifier, string message) => WriteLine($"[{identifier}] {message}");

@@ -1,0 +1,582 @@
+﻿<?xml version="1.0" encoding="utf-8"?><root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Bootstrapper.Status.ApplyingModifications" xml:space="preserve">
+    <value>Robloxi muudatuste rakendamine...</value>
+  </data>
+  <data name="Bootstrapper.Status.Connecting" xml:space="preserve">
+    <value>Robloxiga ühendamine...</value>
+  </data>
+  <data name="Bootstrapper.Status.Downloading" xml:space="preserve">
+    <value>Allalaadimine</value>
+  </data>
+  <data name="Bootstrapper.Status.Installing" xml:space="preserve">
+    <value>Installeerin {product}...</value>
+  </data>
+  <data name="Bootstrapper.Status.Starting" xml:space="preserve">
+    <value>Käivitan {product}...</value>
+  </data>
+  <data name="Bootstrapper.Status.Upgrading" xml:space="preserve">
+    <value>Uuendan {product}...</value>
+  </data>
+  <data name="Bootstrapper.Status.WaitingForData" xml:space="preserve">
+    <value>Andmete ootamine...</value>
+  </data>
+  <data name="Bootstrapper.Status.WaitingOtherInstances" xml:space="preserve">
+    <value>Teiste eksemplaride ootamine...</value>
+  </data>
+  <data name="Common.AddSingle" xml:space="preserve">
+    <value>Lisa üks</value>
+  </data>
+  <data name="Common.Analytics" xml:space="preserve">
+    <value>Analüüs</value>
+  </data>
+  <data name="Common.Automatic" xml:space="preserve">
+    <value>Automaatne</value>
+  </data>
+  <data name="Common.Browse" xml:space="preserve">
+    <value>Sirvi</value>
+  </data>
+  <data name="Common.Cancel" xml:space="preserve">
+    <value>Tühista</value>
+  </data>
+  <data name="Common.Channel" xml:space="preserve">
+    <value>Kanal</value>
+  </data>
+  <data name="Common.Choose" xml:space="preserve">
+    <value>Vali</value>
+  </data>
+  <data name="Common.Close" xml:space="preserve">
+    <value>Sule</value>
+  </data>
+  <data name="Common.CopyAll" xml:space="preserve">
+    <value>Kopeeri kõik</value>
+  </data>
+  <data name="Common.CreateNew" xml:space="preserve">
+    <value>Loo uus</value>
+  </data>
+  <data name="Common.Custom" xml:space="preserve">
+    <value>Kohandatud</value>
+  </data>
+  <data name="Common.Debug" xml:space="preserve">
+    <value>Silumine</value>
+  </data>
+  <data name="Common.DebugMenu" xml:space="preserve">
+    <value>Silumismenüü</value>
+  </data>
+  <data name="Common.Default" xml:space="preserve">
+    <value>Vaikimisi</value>
+  </data>
+  <data name="Common.Delete" xml:space="preserve">
+    <value>Kustuta</value>
+  </data>
+  <data name="Common.DeleteAll" xml:space="preserve">
+    <value>Kustuta kõik</value>
+  </data>
+  <data name="Common.Deployment" xml:space="preserve">
+    <value>Kasutuslevitamine</value>
+  </data>
+  <data name="Common.Disabled" xml:space="preserve">
+    <value>Keelatud</value>
+  </data>
+  <data name="Common.DiscordRichPresence" xml:space="preserve">
+    <value>Discord Rich Presence</value>
+  </data>
+  <data name="Common.Edit" xml:space="preserve">
+    <value>Muuda</value>
+  </data>
+  <data name="Common.Experimental" xml:space="preserve">
+    <value>Katsetuslik</value>
+  </data>
+  <data name="Common.Export" xml:space="preserve">
+    <value>Ekspordi</value>
+  </data>
+  <data name="Common.FilterType" xml:space="preserve">
+    <value>Filtri tüüp:</value>
+  </data>
+  <data name="Common.Help" xml:space="preserve">
+    <value>Abi</value>
+  </data>
+  <data name="Common.Import" xml:space="preserve">
+    <value>Impordi</value>
+  </data>
+  <data name="Common.ImportFromFile" xml:space="preserve">
+    <value>Impordi failist</value>
+  </data>
+  <data name="Common.ImportJson" xml:space="preserve">
+    <value>Impordi JSON</value>
+  </data>
+  <data name="Common.LauncherType" xml:space="preserve">
+    <value>Tüüp: Käiviti</value>
+  </data>
+  <data name="Common.Loading" xml:space="preserve">
+    <value>Laadimine, palun oodake...</value>
+  </data>
+  <data name="Common.Message" xml:space="preserve">
+    <value>Sõnum</value>
+  </data>
+  <data name="Common.Miscellaneous" xml:space="preserve">
+    <value>Mitmesugune</value>
+  </data>
+  <data name="Common.Name" xml:space="preserve">
+    <value>Nimi</value>
+  </data>
+  <data name="Common.New" xml:space="preserve">
+    <value>Uus</value>
+  </data>
+  <data name="Common.No" xml:space="preserve">
+    <value>Ei</value>
+  </data>
+  <data name="Common.NotAvailable" xml:space="preserve">
+    <value>Pole saadaval</value>
+  </data>
+  <data name="Common.OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Common.OpenLogFile" xml:space="preserve">
+    <value>Ava logifail</value>
+  </data>
+  <data name="Common.Performance" xml:space="preserve">
+    <value>Jõudlus</value>
+  </data>
+  <data name="Common.Presets" xml:space="preserve">
+    <value>Eelseadistused</value>
+  </data>
+  <data name="Common.Quality" xml:space="preserve">
+    <value>Kvaliteet</value>
+  </data>
+  <data name="Common.Recommended" xml:space="preserve">
+    <value>Soovitatav</value>
+  </data>
+  <data name="Common.Refresh" xml:space="preserve">
+    <value>Värskenda</value>
+  </data>
+  <data name="Common.Remove" xml:space="preserve">
+    <value>Eemalda</value>
+  </data>
+  <data name="Common.Rename" xml:space="preserve">
+    <value>Nimeta ümber</value>
+  </data>
+  <data name="Common.Reset" xml:space="preserve">
+    <value>Lähtesta</value>
+  </data>
+  <data name="Common.RobloxNotInstalled" xml:space="preserve">
+    <value>Roblox pole veel installitud. Käivitage Roblox NexusStrapiga vähemalt üks kord enne selle valiku kasutamist.</value>
+  </data>
+  <data name="Common.Search" xml:space="preserve">
+    <value>Otsi</value>
+  </data>
+  <data name="Common.Settings" xml:space="preserve">
+    <value>Seaded</value>
+  </data>
+  <data name="Common.Shortcuts" xml:space="preserve">
+    <value>Otseteed</value>
+  </data>
+  <data name="Common.Studio" xml:space="preserve">
+    <value>Studio</value>
+  </data>
+  <data name="Common.SystemDefault" xml:space="preserve">
+    <value>Süsteemi vaikeväärtus</value>
+  </data>
+  <data name="Common.Time" xml:space="preserve">
+    <value>Aeg</value>
+  </data>
+  <data name="Common.Type" xml:space="preserve">
+    <value>Tüüp</value>
+  </data>
+  <data name="Common.UnknownStatus" xml:space="preserve">
+    <value>Tundmatu olek</value>
+  </data>
+  <data name="Common.UserId" xml:space="preserve">
+    <value>Kasutaja ID</value>
+  </data>
+  <data name="Common.Username" xml:space="preserve">
+    <value>Kasutajanimi</value>
+  </data>
+  <data name="Common.Value" xml:space="preserve">
+    <value>Väärtus</value>
+  </data>
+  <data name="Common.Version" xml:space="preserve">
+    <value>Versioon</value>
+  </data>
+  <data name="Common.Warning" xml:space="preserve">
+    <value>Hoiatus</value>
+  </data>
+  <data name="Common.Yes" xml:space="preserve">
+    <value>Jah</value>
+  </data>
+  <data name="ContextMenu.CloseRoblox" xml:space="preserve">
+    <value>Sule Roblox</value>
+  </data>
+  <data name="ContextMenu.GameHistory.ClearHistory" xml:space="preserve">
+    <value>Kustuta ajalugu</value>
+  </data>
+  <data name="ContextMenu.GameHistory.NoHistory" xml:space="preserve">
+    <value>Mänguajalugu pole veel{0}{0}Liitu mõne mänguga, et neid siin näha!</value>
+  </data>
+  <data name="ContextMenu.GameHistory.Refresh" xml:space="preserve">
+    <value>Värskenda</value>
+  </data>
+  <data name="ContextMenu.GameHistory.Rejoin" xml:space="preserve">
+    <value>Liitu uuesti</value>
+  </data>
+  <data name="ContextMenu.GameHistory.Title" xml:space="preserve">
+    <value>Mänguajalugu</value>
+  </data>
+  <data name="ContextMenu.ServerInformation.Location" xml:space="preserve">
+    <value>Asukoht</value>
+  </data>
+  <data name="ContextMenu.ServerInformation.Title" xml:space="preserve">
+    <value>Serveri teave</value>
+  </data>
+  <data name="ContextMenu.ServerInformation.Type" xml:space="preserve">
+    <value>Tüüp</value>
+  </data>
+  <data name="ContextMenu.ServerInformation.Uptime" xml:space="preserve">
+    <value>Hinnanguline tööaeg</value>
+  </data>
+  <data name="Dialog.AlreadyRunning.Installer" xml:space="preserve">
+    <value>Palun oodake, kuni installimine lõpeb.</value>
+  </data>
+  <data name="Dialog.CannotCreateShortcuts" xml:space="preserve">
+    <value>NexusStrap ei suutnud luua otseteid töölauale ja avamenüüsse. Proovige need hiljem seadete kaudu luua.</value>
+  </data>
+  <data name="Dialog.Connectivity.Title" xml:space="preserve">
+    <value>Ühenduse viga</value>
+  </data>
+  <data name="Dialog.Connectivity.UnableToConnect" xml:space="preserve">
+    <value>NexusStrap ei saa ühendust luua {0}-ga</value>
+  </data>
+  <data name="Dialog.Exception.Title" xml:space="preserve">
+    <value>NexusStrapi erand</value>
+  </data>
+  <data name="Dialog.LanguageSelector.Header" xml:space="preserve">
+    <value>Valige eelistatud keel</value>
+  </data>
+  <data name="Dialog.LanguageSelector.Subtext" xml:space="preserve">
+    <value>Valige keel enne installimise jätkamist.
+Mõni tekst ei pruugi olla eelistatud keelde tõlgitud.</value>
+  </data>
+  <data name="Dialog.PlayerError.Crash" xml:space="preserve">
+    <value>Roblox jooksis kokku.</value>
+  </data>
+  <data name="Dialog.PlayerError.FailedLaunch" xml:space="preserve">
+    <value>Robloxi käivitamine ebaõnnestus.</value>
+  </data>
+  <data name="Installer.Completion.Launch.Title" xml:space="preserve">
+    <value>Installeeri ja käivita Roblox</value>
+  </data>
+  <data name="Installer.Completion.Settings.Title" xml:space="preserve">
+    <value>Konfigureerige NexusStrapi sätted</value>
+  </data>
+  <data name="Installer.Completion.Text" xml:space="preserve">
+    <value>NexusStrap on edukalt installitud.
+
+Roblox pole aga veel installitud. See installitakse, kui käivitate Robloxi NexusStrapiga esimest korda. Enne installimist võiksite kõigepealt konfigureerida NexusStrapi sätted.
+
+Oluline märkus: Ärge kasutage Robloxi käivitamiseks otseteed "Roblox Player", sest NexusStrap ei saa konfliktide tõttu Robloxi käivitada. Kui te ei näe NexusStrapi käivitumas Robloxi veebisaidilt käivitamisel, käivitage lihtsalt Roblox NexusStrapiga üks kord töölauarakendusest, et see probleem lahendada.
+
+Mida soovite teha?</value>
+  </data>
+  <data name="Installer.Completion.Title" xml:space="preserve">
+    <value>Lõpetamine</value>
+  </data>
+  <data name="Installer.FailedToImportSettings" xml:space="preserve">
+    <value>NexusStrapi sätete importimine ebaõnnestus.
+
+{0}</value>
+  </data>
+  <data name="Installer.Install.Title" xml:space="preserve">
+    <value>Installeeri</value>
+  </data>
+  <data name="Installer.ShouldCancel" xml:space="preserve">
+    <value>Kas olete kindel, et soovite installimise tühistada?</value>
+  </data>
+  <data name="Installer.Title" xml:space="preserve">
+    <value>NexusStrapi installer</value>
+  </data>
+  <data name="Installer.Welcome.MainText" xml:space="preserve">
+    <value>Täname, et laadisite alla NexusStrapi.
+
+Ainus ametlik allikas NexusStrapi allalaadimiseks on {0}, seega kontrollige, et olete selle alla laadinud ametlikust allikast.
+
+See installiprotsess on kiire ja lihtne ning saate kõik NexusStrapi sätted konfigureerida pärast installimist.</value>
+  </data>
+  <data name="Installer.Welcome.NextToContinue" xml:space="preserve">
+    <value>Jätkamiseks klõpsake nuppu 'Järgmine'.</value>
+  </data>
+  <data name="Installer.Welcome.Title" xml:space="preserve">
+    <value>Tere tulemast</value>
+  </data>
+  <data name="LaunchMenu.ConfigureSettings" xml:space="preserve">
+    <value>Seadistage sätteid</value>
+  </data>
+  <data name="LaunchMenu.Discord" xml:space="preserve">
+    <value>Liituge meie Discordi serveriga</value>
+  </data>
+  <data name="LaunchMenu.LaunchRoblox" xml:space="preserve">
+    <value>Käivita Roblox</value>
+  </data>
+  <data name="LaunchMenu.LaunchRobloxStudio" xml:space="preserve">
+    <value>Käivita Roblox Studio</value>
+  </data>
+  <data name="Menu.About.Title" xml:space="preserve">
+    <value>Teave</value>
+  </data>
+  <data name="Menu.AccountManager.Title" xml:space="preserve">
+    <value>Kontohaldur</value>
+  </data>
+  <data name="Menu.Appearance.Title" xml:space="preserve">
+    <value>Välimus</value>
+  </data>
+  <data name="Menu.Behaviour.Title" xml:space="preserve">
+    <value>Bootstrapper</value>
+  </data>
+  <data name="Menu.FastFlags.Title" xml:space="preserve">
+    <value>FastFlag-seaded</value>
+  </data>
+  <data name="Menu.Integrations.ActivityTracking" xml:space="preserve">
+    <value>Tegevuse jälgimine</value>
+  </data>
+  <data name="Menu.Integrations.Description" xml:space="preserve">
+    <value>Seadistage lisafunktsioone, mis töötavad koos Robloxiga.</value>
+  </data>
+  <data name="Menu.Integrations.EnableActivityTracking.Description" xml:space="preserve">
+    <value>Võimaldab NexusStrapil tuvastada, millist Robloxi mängu mängite. Mõned funktsioonid võivad seda nõuda.</value>
+  </data>
+  <data name="Menu.Integrations.EnableActivityTracking.Title" xml:space="preserve">
+    <value>Luba tegevuse jälgimine</value>
+  </data>
+  <data name="Menu.Integrations.PlaytimeCounter.Description" xml:space="preserve">
+    <value>Kuvab teie kogu mänguaja ja praeguse seansi aja, kui olete mängus või Studio kohas.</value>
+  </data>
+  <data name="Menu.Integrations.PlaytimeCounter.Title" xml:space="preserve">
+    <value>Mänguaja loendur</value>
+  </data>
+  <data name="Menu.Integrations.QueryServerLocation.Description" xml:space="preserve">
+    <value>Mängus olles näete, kus teie server asub, [ipinfo.io](https://ipinfo.io) kaudu.</value>
+  </data>
+  <data name="Menu.Integrations.QueryServerLocation.Title" xml:space="preserve">
+    <value>Päri serveri asukohta</value>
+  </data>
+  <data name="Menu.Integrations.QueryServerUptime.Description" xml:space="preserve">
+    <value>Kuvab, kui kaua tagasi serverit selles seansis esimest korda nähti.</value>
+  </data>
+  <data name="Menu.Integrations.QueryServerUptime.Title" xml:space="preserve">
+    <value>Päri serveri tööaega</value>
+  </data>
+  <data name="Menu.Integrations.StartMenuTile.Description" xml:space="preserve">
+    <value>Lisab NexusStrapi otsetee teie avamenüüsse Robloxi kiireks käivitamiseks. Windows 10/11 ei toeta enam live-plaate, seega kasutatakse klassikalist otseteed.</value>
+  </data>
+  <data name="Menu.Integrations.StartMenuTile.Title" xml:space="preserve">
+    <value>Avamenüü otsetee</value>
+  </data>
+  <data name="Menu.Integrations.Title" xml:space="preserve">
+    <value>Integratsioonid</value>
+  </data>
+  <data name="Menu.RegionSelector.Title" xml:space="preserve">
+    <value>Regiooni valija</value>
+  </data>
+  <data name="Menu.RobloxSettings.Title" xml:space="preserve">
+    <value>Robloxi seaded</value>
+  </data>
+  <data name="Menu.TestMode" xml:space="preserve">
+    <value>Testirežiim</value>
+  </data>
+  <data name="Menu.Title" xml:space="preserve">
+    <value>NexusStrapi seaded</value>
+  </data>
+  <data name="ServerBrowser.FetchFailed" xml:space="preserve">
+    <value>Serverite laadimine ebaõnnestus. Proovige uuesti.</value>
+  </data>
+  <data name="ServerBrowser.FilterAny" xml:space="preserve">
+    <value>Ükskõik milline</value>
+  </data>
+  <data name="ServerBrowser.FilterEmpty" xml:space="preserve">
+    <value>Tühi</value>
+  </data>
+  <data name="ServerBrowser.FilterFull" xml:space="preserve">
+    <value>75% või rohkem täis</value>
+  </data>
+  <data name="ServerBrowser.FilterHalf" xml:space="preserve">
+    <value>25-50% täis</value>
+  </data>
+  <data name="ServerBrowser.FilterQuarter" xml:space="preserve">
+    <value>Vähem kui 25% täis</value>
+  </data>
+  <data name="ServerBrowser.FilterThreeQuarter" xml:space="preserve">
+    <value>50-75% täis</value>
+  </data>
+  <data name="ServerBrowser.FilterUptime1To3" xml:space="preserve">
+    <value>1-3 tundi</value>
+  </data>
+  <data name="ServerBrowser.FilterUptime3To6" xml:space="preserve">
+    <value>3-6 tundi</value>
+  </data>
+  <data name="ServerBrowser.FilterUptimeOver6" xml:space="preserve">
+    <value>Rohkem kui 6 tundi</value>
+  </data>
+  <data name="ServerBrowser.FilterUptimeUnder1" xml:space="preserve">
+    <value>Vähem kui 1 tund</value>
+  </data>
+  <data name="ServerBrowser.Game" xml:space="preserve">
+    <value>Mäng</value>
+  </data>
+  <data name="ServerBrowser.Join" xml:space="preserve">
+    <value>Liitu</value>
+  </data>
+  <data name="ServerBrowser.LoadMore" xml:space="preserve">
+    <value>Laadi rohkem</value>
+  </data>
+  <data name="ServerBrowser.NoGame" xml:space="preserve">
+    <value>Serverite sirvimiseks valige mäng või sisestage koha ID.</value>
+  </data>
+  <data name="ServerBrowser.NoServers" xml:space="preserve">
+    <value>Praeguste filtrite jaoks ei leitud ühtegi serverit.</value>
+  </data>
+  <data name="ServerBrowser.PlaceId" xml:space="preserve">
+    <value>Koha ID</value>
+  </data>
+  <data name="ServerBrowser.PlayerCount" xml:space="preserve">
+    <value>Mängijate arv</value>
+  </data>
+  <data name="ServerBrowser.Players" xml:space="preserve">
+    <value>Mängijad</value>
+  </data>
+  <data name="ServerBrowser.Refresh" xml:space="preserve">
+    <value>Värskenda</value>
+  </data>
+  <data name="ServerBrowser.Region" xml:space="preserve">
+    <value>Regioon</value>
+  </data>
+  <data name="ServerBrowser.RegionHint" xml:space="preserve">
+    <value>Serverite regioonide tuvastamiseks logige sisse kontohaldurisse.</value>
+  </data>
+  <data name="ServerBrowser.ServerId" xml:space="preserve">
+    <value>Serveri ID</value>
+  </data>
+  <data name="ServerBrowser.Status" xml:space="preserve">
+    <value>Kuvatakse {0} serveri(t).</value>
+  </data>
+  <data name="ServerBrowser.Title" xml:space="preserve">
+    <value>Serveribrauser</value>
+  </data>
+  <data name="ServerBrowser.Uptime" xml:space="preserve">
+    <value>Tööaeg</value>
+  </data>
+</root>

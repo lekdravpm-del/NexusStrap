@@ -24,6 +24,10 @@ internal static class Win32WindowHelper
     [DllImport("user32.dll")]
     private static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint lpdwProcessId);
 
+    [DllImport("user32.dll")]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    private static extern bool IsWindowVisible(IntPtr hWnd);
+
     [DllImport("user32.dll", CharSet = CharSet.Auto)]
     private static extern IntPtr SendMessage(IntPtr hWnd, uint msg, nuint wParam, nint lParam);
 
@@ -64,6 +68,33 @@ internal static class Win32WindowHelper
         {
             System.Diagnostics.Debug.WriteLine($"Failed to set window title/icon: {ex.Message}");
         }
+    }
+
+    public static bool IsWindowVisibleForProcess(int processId)
+    {
+        try
+        {
+            IntPtr hWnd = IntPtr.Zero;
+
+            while (true)
+            {
+                hWnd = FindWindowEx(IntPtr.Zero, hWnd, null, null);
+
+                if (hWnd == IntPtr.Zero)
+                    break;
+
+                GetWindowThreadProcessId(hWnd, out uint pid);
+
+                if (pid == (uint)processId && IsWindowVisible(hWnd))
+                    return true;
+            }
+        }
+        catch
+        {
+            // ignore enumeration failures
+        }
+
+        return false;
     }
 
     private static nint GetNexusIcon()

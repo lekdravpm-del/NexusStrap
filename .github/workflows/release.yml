@@ -48,6 +48,18 @@ jobs:
         run: |
           mv "NexusStrap/bin/Release/net10.0-windows/win-x64/publish/NexusStrap.exe" "NexusStrap-${{ steps.version.outputs.VERSION }}.exe"
 
+      - name: Sign exe (if certificate secrets provided)
+        if: ${{ secrets.SIGNING_CERT_BASE64 != '' }}
+        shell: pwsh
+        run: |
+          $certPath = Join-Path $env:RUNNER_TEMP "cert.pfx"
+          [System.IO.File]::WriteAllBytes($certPath, [Convert]::FromBase64String($env:SIGNING_CERT_BASE64))
+          $signtool = Get-ChildItem "C:\Program Files (x86)\Windows Kits\10\bin" -Recurse -Filter "signtool.exe" | Sort-Object FullName -Descending | Select-Object -First 1
+          & $signtool.FullName sign /f $certPath /p $env:SIGNING_CERT_PASSWORD /fd SHA256 /tr "http://timestamp.digicert.com" /td SHA256 /v "NexusStrap-${{ steps.version.outputs.VERSION }}.exe"
+        env:
+          SIGNING_CERT_BASE64: ${{ secrets.SIGNING_CERT_BASE64 }}
+          SIGNING_CERT_PASSWORD: ${{ secrets.SIGNING_CERT_PASSWORD }}
+
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:

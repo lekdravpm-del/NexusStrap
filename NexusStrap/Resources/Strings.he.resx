@@ -1,0 +1,582 @@
+﻿<?xml version="1.0" encoding="utf-8"?><root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Bootstrapper.Status.ApplyingModifications" xml:space="preserve">
+    <value>מיישם שינויים של Roblox...</value>
+  </data>
+  <data name="Bootstrapper.Status.Connecting" xml:space="preserve">
+    <value>מתחבר ל-Roblox...</value>
+  </data>
+  <data name="Bootstrapper.Status.Downloading" xml:space="preserve">
+    <value>מוריד</value>
+  </data>
+  <data name="Bootstrapper.Status.Installing" xml:space="preserve">
+    <value>מתקין את {product}...</value>
+  </data>
+  <data name="Bootstrapper.Status.Starting" xml:space="preserve">
+    <value>מפעיל את {product}...</value>
+  </data>
+  <data name="Bootstrapper.Status.Upgrading" xml:space="preserve">
+    <value>משדרג את {product}...</value>
+  </data>
+  <data name="Bootstrapper.Status.WaitingForData" xml:space="preserve">
+    <value>ממתין לנתונים...</value>
+  </data>
+  <data name="Bootstrapper.Status.WaitingOtherInstances" xml:space="preserve">
+    <value>ממתין למופעים אחרים...</value>
+  </data>
+  <data name="Common.AddSingle" xml:space="preserve">
+    <value>הוספת אחד</value>
+  </data>
+  <data name="Common.Analytics" xml:space="preserve">
+    <value>אנליטיקה</value>
+  </data>
+  <data name="Common.Automatic" xml:space="preserve">
+    <value>אוטומטי</value>
+  </data>
+  <data name="Common.Browse" xml:space="preserve">
+    <value>עיון</value>
+  </data>
+  <data name="Common.Cancel" xml:space="preserve">
+    <value>ביטול</value>
+  </data>
+  <data name="Common.Channel" xml:space="preserve">
+    <value>ערוץ</value>
+  </data>
+  <data name="Common.Choose" xml:space="preserve">
+    <value>בחירה</value>
+  </data>
+  <data name="Common.Close" xml:space="preserve">
+    <value>סגירה</value>
+  </data>
+  <data name="Common.CopyAll" xml:space="preserve">
+    <value>העתקת הכול</value>
+  </data>
+  <data name="Common.CreateNew" xml:space="preserve">
+    <value>יצירת חדש</value>
+  </data>
+  <data name="Common.Custom" xml:space="preserve">
+    <value>מותאם אישית</value>
+  </data>
+  <data name="Common.Debug" xml:space="preserve">
+    <value>ניפוי שגיאות</value>
+  </data>
+  <data name="Common.DebugMenu" xml:space="preserve">
+    <value>תפריט ניפוי שגיאות</value>
+  </data>
+  <data name="Common.Default" xml:space="preserve">
+    <value>ברירת מחדל</value>
+  </data>
+  <data name="Common.Delete" xml:space="preserve">
+    <value>מחיקה</value>
+  </data>
+  <data name="Common.DeleteAll" xml:space="preserve">
+    <value>מחיקת הכול</value>
+  </data>
+  <data name="Common.Deployment" xml:space="preserve">
+    <value>פריסה</value>
+  </data>
+  <data name="Common.Disabled" xml:space="preserve">
+    <value>מושבת</value>
+  </data>
+  <data name="Common.DiscordRichPresence" xml:space="preserve">
+    <value>Discord Rich Presence</value>
+  </data>
+  <data name="Common.Edit" xml:space="preserve">
+    <value>עריכה</value>
+  </data>
+  <data name="Common.Experimental" xml:space="preserve">
+    <value>ניסיוני</value>
+  </data>
+  <data name="Common.Export" xml:space="preserve">
+    <value>ייצוא</value>
+  </data>
+  <data name="Common.FilterType" xml:space="preserve">
+    <value>סוג מסנן:</value>
+  </data>
+  <data name="Common.Help" xml:space="preserve">
+    <value>עזרה</value>
+  </data>
+  <data name="Common.Import" xml:space="preserve">
+    <value>ייבוא</value>
+  </data>
+  <data name="Common.ImportFromFile" xml:space="preserve">
+    <value>ייבוא מקובץ</value>
+  </data>
+  <data name="Common.ImportJson" xml:space="preserve">
+    <value>ייבוא JSON</value>
+  </data>
+  <data name="Common.LauncherType" xml:space="preserve">
+    <value>סוג: משגר</value>
+  </data>
+  <data name="Common.Loading" xml:space="preserve">
+    <value>טוען, נא להמתין...</value>
+  </data>
+  <data name="Common.Message" xml:space="preserve">
+    <value>הודעה</value>
+  </data>
+  <data name="Common.Miscellaneous" xml:space="preserve">
+    <value>שונות</value>
+  </data>
+  <data name="Common.Name" xml:space="preserve">
+    <value>שם</value>
+  </data>
+  <data name="Common.New" xml:space="preserve">
+    <value>חדש</value>
+  </data>
+  <data name="Common.No" xml:space="preserve">
+    <value>לא</value>
+  </data>
+  <data name="Common.NotAvailable" xml:space="preserve">
+    <value>לא זמין</value>
+  </data>
+  <data name="Common.OK" xml:space="preserve">
+    <value>אישור</value>
+  </data>
+  <data name="Common.OpenLogFile" xml:space="preserve">
+    <value>פתיחת קובץ יומן</value>
+  </data>
+  <data name="Common.Performance" xml:space="preserve">
+    <value>ביצועים</value>
+  </data>
+  <data name="Common.Presets" xml:space="preserve">
+    <value>קביעות מוגדרות מראש</value>
+  </data>
+  <data name="Common.Quality" xml:space="preserve">
+    <value>איכות</value>
+  </data>
+  <data name="Common.Recommended" xml:space="preserve">
+    <value>מומלץ</value>
+  </data>
+  <data name="Common.Refresh" xml:space="preserve">
+    <value>רענון</value>
+  </data>
+  <data name="Common.Remove" xml:space="preserve">
+    <value>הסרה</value>
+  </data>
+  <data name="Common.Rename" xml:space="preserve">
+    <value>שינוי שם</value>
+  </data>
+  <data name="Common.Reset" xml:space="preserve">
+    <value>איפוס</value>
+  </data>
+  <data name="Common.RobloxNotInstalled" xml:space="preserve">
+    <value>Roblox עדיין לא מותקן. נא להפעיל את Roblox עם NexusStrap לפחות פעם אחת לפני השימוש באפשרות זו.</value>
+  </data>
+  <data name="Common.Search" xml:space="preserve">
+    <value>חיפוש</value>
+  </data>
+  <data name="Common.Settings" xml:space="preserve">
+    <value>הגדרות</value>
+  </data>
+  <data name="Common.Shortcuts" xml:space="preserve">
+    <value>קיצורי דרך</value>
+  </data>
+  <data name="Common.Studio" xml:space="preserve">
+    <value>סטודיו</value>
+  </data>
+  <data name="Common.SystemDefault" xml:space="preserve">
+    <value>ברירת מחדל של המערכת</value>
+  </data>
+  <data name="Common.Time" xml:space="preserve">
+    <value>זמן</value>
+  </data>
+  <data name="Common.Type" xml:space="preserve">
+    <value>סוג</value>
+  </data>
+  <data name="Common.UnknownStatus" xml:space="preserve">
+    <value>סטטוס לא ידוע</value>
+  </data>
+  <data name="Common.UserId" xml:space="preserve">
+    <value>מזהה משתמש</value>
+  </data>
+  <data name="Common.Username" xml:space="preserve">
+    <value>שם משתמש</value>
+  </data>
+  <data name="Common.Value" xml:space="preserve">
+    <value>ערך</value>
+  </data>
+  <data name="Common.Version" xml:space="preserve">
+    <value>גרסה</value>
+  </data>
+  <data name="Common.Warning" xml:space="preserve">
+    <value>אזהרה</value>
+  </data>
+  <data name="Common.Yes" xml:space="preserve">
+    <value>כן</value>
+  </data>
+  <data name="ContextMenu.CloseRoblox" xml:space="preserve">
+    <value>סגירת Roblox</value>
+  </data>
+  <data name="ContextMenu.GameHistory.ClearHistory" xml:space="preserve">
+    <value>ניקוי היסטוריה</value>
+  </data>
+  <data name="ContextMenu.GameHistory.NoHistory" xml:space="preserve">
+    <value>אין עדיין היסטוריית משחקים{0}{0}הצטרף למספר משחקים כדי לראות אותם כאן!</value>
+  </data>
+  <data name="ContextMenu.GameHistory.Refresh" xml:space="preserve">
+    <value>רענון</value>
+  </data>
+  <data name="ContextMenu.GameHistory.Rejoin" xml:space="preserve">
+    <value>הצטרפות מחדש</value>
+  </data>
+  <data name="ContextMenu.GameHistory.Title" xml:space="preserve">
+    <value>היסטוריית משחקים</value>
+  </data>
+  <data name="ContextMenu.ServerInformation.Location" xml:space="preserve">
+    <value>מיקום</value>
+  </data>
+  <data name="ContextMenu.ServerInformation.Title" xml:space="preserve">
+    <value>מידע על השרת</value>
+  </data>
+  <data name="ContextMenu.ServerInformation.Type" xml:space="preserve">
+    <value>סוג</value>
+  </data>
+  <data name="ContextMenu.ServerInformation.Uptime" xml:space="preserve">
+    <value>זמן פעילות משוער</value>
+  </data>
+  <data name="Dialog.AlreadyRunning.Installer" xml:space="preserve">
+    <value>נא להמתין עד שתסתיים ההתקנה.</value>
+  </data>
+  <data name="Dialog.CannotCreateShortcuts" xml:space="preserve">
+    <value>NexusStrap לא הצליח ליצור קיצורי דרך לשולחן העבודה ולתפריט התחל. נסה ליצור אותם מאוחר יותר דרך ההגדרות.</value>
+  </data>
+  <data name="Dialog.Connectivity.Title" xml:space="preserve">
+    <value>שגיאת חיבור</value>
+  </data>
+  <data name="Dialog.Connectivity.UnableToConnect" xml:space="preserve">
+    <value>NexusStrap אינו יכול להתחבר אל {0}</value>
+  </data>
+  <data name="Dialog.Exception.Title" xml:space="preserve">
+    <value>חריגה של NexusStrap</value>
+  </data>
+  <data name="Dialog.LanguageSelector.Header" xml:space="preserve">
+    <value>בחר את השפה המועדפת</value>
+  </data>
+  <data name="Dialog.LanguageSelector.Subtext" xml:space="preserve">
+    <value>בחר שפה לפני המשך ההתקנה.
+ייתכן שחלק מהטקסט לא תורגם לשפה המועדפת.</value>
+  </data>
+  <data name="Dialog.PlayerError.Crash" xml:space="preserve">
+    <value>Roblox קרס.</value>
+  </data>
+  <data name="Dialog.PlayerError.FailedLaunch" xml:space="preserve">
+    <value>Roblox נכשל בהפעלה.</value>
+  </data>
+  <data name="Installer.Completion.Launch.Title" xml:space="preserve">
+    <value>התקנה והפעלת Roblox</value>
+  </data>
+  <data name="Installer.Completion.Settings.Title" xml:space="preserve">
+    <value>הגדרת אפשרויות NexusStrap</value>
+  </data>
+  <data name="Installer.Completion.Text" xml:space="preserve">
+    <value>NexusStrap הותקן בהצלחה.
+
+עם זאת, Roblox עדיין לא מותקן. הוא יותקן כאשר תפעיל את Roblox עם NexusStrap בפעם הראשונה. לפני ההתקנה, ייתכן שתרצה להגדיר תחילה את ההגדרות של NexusStrap.
+
+הערה חשובה: אל תשתמש בקיצור הדרך "Roblox Player" כדי להפעיל את Roblox, מכיוון ש-NexusStrap לא יוכל להפעיל את Roblox בשל התנגשויות. אם אינך רואה את NexusStrap מופעל כשאתה מתחיל מאתר Roblox, פשוט הפעל את Roblox עם NexusStrap פעם אחת מתוך אפליקציית שולחן העבודה כדי לפתור בעיה זו.
+
+מה תרצה לעשות?</value>
+  </data>
+  <data name="Installer.Completion.Title" xml:space="preserve">
+    <value>סיום</value>
+  </data>
+  <data name="Installer.FailedToImportSettings" xml:space="preserve">
+    <value>ייבוא ההגדרות של NexusStrap נכשל.
+
+{0}</value>
+  </data>
+  <data name="Installer.Install.Title" xml:space="preserve">
+    <value>התקנה</value>
+  </data>
+  <data name="Installer.ShouldCancel" xml:space="preserve">
+    <value>האם אתה בטוח שברצונך לבטל את ההתקנה?</value>
+  </data>
+  <data name="Installer.Title" xml:space="preserve">
+    <value>מתקין NexusStrap</value>
+  </data>
+  <data name="Installer.Welcome.MainText" xml:space="preserve">
+    <value>תודה שהורדת את NexusStrap.
+
+המקור הרשמי היחיד להורדת NexusStrap הוא {0}, לכן נא לוודא שהורדת אותו מהמקור הרשמי.
+
+תהליך ההתקנה הזה יהיה מהיר ופשוט, ותוכל להגדיר את כל ההגדרות של NexusStrap לאחר ההתקנה.</value>
+  </data>
+  <data name="Installer.Welcome.NextToContinue" xml:space="preserve">
+    <value>נא ללחוץ על 'הבא' כדי להמשיך.</value>
+  </data>
+  <data name="Installer.Welcome.Title" xml:space="preserve">
+    <value>ברוך הבא</value>
+  </data>
+  <data name="LaunchMenu.ConfigureSettings" xml:space="preserve">
+    <value>הגדרת אפשרויות</value>
+  </data>
+  <data name="LaunchMenu.Discord" xml:space="preserve">
+    <value>הצטרפות לשרת הדיסקורד שלנו</value>
+  </data>
+  <data name="LaunchMenu.LaunchRoblox" xml:space="preserve">
+    <value>הפעלת Roblox</value>
+  </data>
+  <data name="LaunchMenu.LaunchRobloxStudio" xml:space="preserve">
+    <value>הפעלת Roblox Studio</value>
+  </data>
+  <data name="Menu.About.Title" xml:space="preserve">
+    <value>אודות</value>
+  </data>
+  <data name="Menu.AccountManager.Title" xml:space="preserve">
+    <value>מנהל חשבונות</value>
+  </data>
+  <data name="Menu.Appearance.Title" xml:space="preserve">
+    <value>מראה</value>
+  </data>
+  <data name="Menu.Behaviour.Title" xml:space="preserve">
+    <value>Bootstrapper</value>
+  </data>
+  <data name="Menu.FastFlags.Title" xml:space="preserve">
+    <value>הגדרות FastFlag</value>
+  </data>
+  <data name="Menu.Integrations.ActivityTracking" xml:space="preserve">
+    <value>מעקב פעילות</value>
+  </data>
+  <data name="Menu.Integrations.Description" xml:space="preserve">
+    <value>הגדרת פונקציונליות נוספת לעבודה לצד Roblox.</value>
+  </data>
+  <data name="Menu.Integrations.EnableActivityTracking.Description" xml:space="preserve">
+    <value>מאפשר ל-NexusStrap לזהות באיזה משחק Roblox אתה משחק. ייתכן שחלק מהתכונות ידרשו זאת.</value>
+  </data>
+  <data name="Menu.Integrations.EnableActivityTracking.Title" xml:space="preserve">
+    <value>הפעלת מעקב פעילות</value>
+  </data>
+  <data name="Menu.Integrations.PlaytimeCounter.Description" xml:space="preserve">
+    <value>מציג את זמן המשחק הכולל ואת זמן הסשן הנוכחי בזמן שאתה במשחק או במקום סטודיו.</value>
+  </data>
+  <data name="Menu.Integrations.PlaytimeCounter.Title" xml:space="preserve">
+    <value>מונה זמן משחק</value>
+  </data>
+  <data name="Menu.Integrations.QueryServerLocation.Description" xml:space="preserve">
+    <value>כשאתה במשחק, תוכל לראות היכן נמצא השרת שלך דרך [ipinfo.io](https://ipinfo.io).</value>
+  </data>
+  <data name="Menu.Integrations.QueryServerLocation.Title" xml:space="preserve">
+    <value>שאילתת מיקום השרת</value>
+  </data>
+  <data name="Menu.Integrations.QueryServerUptime.Description" xml:space="preserve">
+    <value>מציג כמה זמן עבר מאז שהשרת נראה לראשונה בסשן זה.</value>
+  </data>
+  <data name="Menu.Integrations.QueryServerUptime.Title" xml:space="preserve">
+    <value>שאילתת זמן פעילות השרת</value>
+  </data>
+  <data name="Menu.Integrations.StartMenuTile.Description" xml:space="preserve">
+    <value>מוסיף קיצור דרך של NexusStrap לתפריט התחל להפעלה מהירה של Roblox. Windows 10/11 כבר לא תומכים באריחים חיים, לכן משתמשים בקיצור דרך קלאסי.</value>
+  </data>
+  <data name="Menu.Integrations.StartMenuTile.Title" xml:space="preserve">
+    <value>קיצור דרך בתפריט התחל</value>
+  </data>
+  <data name="Menu.Integrations.Title" xml:space="preserve">
+    <value>אינטגרציות</value>
+  </data>
+  <data name="Menu.RegionSelector.Title" xml:space="preserve">
+    <value>בורר אזור</value>
+  </data>
+  <data name="Menu.RobloxSettings.Title" xml:space="preserve">
+    <value>הגדרות Roblox</value>
+  </data>
+  <data name="Menu.TestMode" xml:space="preserve">
+    <value>מצב בדיקה</value>
+  </data>
+  <data name="Menu.Title" xml:space="preserve">
+    <value>הגדרות NexusStrap</value>
+  </data>
+  <data name="ServerBrowser.FetchFailed" xml:space="preserve">
+    <value>טעינת השרתים נכשלה. נא לנסות שוב.</value>
+  </data>
+  <data name="ServerBrowser.FilterAny" xml:space="preserve">
+    <value>כל אחד</value>
+  </data>
+  <data name="ServerBrowser.FilterEmpty" xml:space="preserve">
+    <value>ריק</value>
+  </data>
+  <data name="ServerBrowser.FilterFull" xml:space="preserve">
+    <value>75% או יותר מלא</value>
+  </data>
+  <data name="ServerBrowser.FilterHalf" xml:space="preserve">
+    <value>25-50% מלא</value>
+  </data>
+  <data name="ServerBrowser.FilterQuarter" xml:space="preserve">
+    <value>פחות מ-25% מלא</value>
+  </data>
+  <data name="ServerBrowser.FilterThreeQuarter" xml:space="preserve">
+    <value>50-75% מלא</value>
+  </data>
+  <data name="ServerBrowser.FilterUptime1To3" xml:space="preserve">
+    <value>1-3 שעות</value>
+  </data>
+  <data name="ServerBrowser.FilterUptime3To6" xml:space="preserve">
+    <value>3-6 שעות</value>
+  </data>
+  <data name="ServerBrowser.FilterUptimeOver6" xml:space="preserve">
+    <value>יותר מ-6 שעות</value>
+  </data>
+  <data name="ServerBrowser.FilterUptimeUnder1" xml:space="preserve">
+    <value>פחות משעה</value>
+  </data>
+  <data name="ServerBrowser.Game" xml:space="preserve">
+    <value>משחק</value>
+  </data>
+  <data name="ServerBrowser.Join" xml:space="preserve">
+    <value>הצטרפות</value>
+  </data>
+  <data name="ServerBrowser.LoadMore" xml:space="preserve">
+    <value>טעינת עוד</value>
+  </data>
+  <data name="ServerBrowser.NoGame" xml:space="preserve">
+    <value>בחר משחק או הזן מזהה מקום כדי לדפדף בשרתים.</value>
+  </data>
+  <data name="ServerBrowser.NoServers" xml:space="preserve">
+    <value>לא נמצאו שרתים עבור המסננים הנוכחיים.</value>
+  </data>
+  <data name="ServerBrowser.PlaceId" xml:space="preserve">
+    <value>מזהה מקום</value>
+  </data>
+  <data name="ServerBrowser.PlayerCount" xml:space="preserve">
+    <value>מספר שחקנים</value>
+  </data>
+  <data name="ServerBrowser.Players" xml:space="preserve">
+    <value>שחקנים</value>
+  </data>
+  <data name="ServerBrowser.Refresh" xml:space="preserve">
+    <value>רענון</value>
+  </data>
+  <data name="ServerBrowser.Region" xml:space="preserve">
+    <value>אזור</value>
+  </data>
+  <data name="ServerBrowser.RegionHint" xml:space="preserve">
+    <value>היכנס למנהל החשבונות כדי לזהות אזורי שרתים.</value>
+  </data>
+  <data name="ServerBrowser.ServerId" xml:space="preserve">
+    <value>מזהה שרת</value>
+  </data>
+  <data name="ServerBrowser.Status" xml:space="preserve">
+    <value>מוצגים {0} שרתים.</value>
+  </data>
+  <data name="ServerBrowser.Title" xml:space="preserve">
+    <value>דפדפן שרתים</value>
+  </data>
+  <data name="ServerBrowser.Uptime" xml:space="preserve">
+    <value>זמן פעילות</value>
+  </data>
+</root>

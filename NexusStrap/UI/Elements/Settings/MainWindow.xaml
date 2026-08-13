@@ -5,9 +5,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:pages="clr-namespace:NexusStrap.UI.Elements.Settings.Pages"
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-             xmlns:base="clr-namespace:NexusStrap.UI.Elements.Base"
-             xmlns:resources="clr-namespace:NexusStrap.Resources"
-             xmlns:dmodels="clr-namespace:NexusStrap.UI.ViewModels.Settings"
+    xmlns:base="clr-namespace:NexusStrap.UI.Elements.Base"
+    xmlns:resources="clr-namespace:NexusStrap.Resources"
+    xmlns:controls="clr-namespace:NexusStrap.UI.Elements.Controls"
+    xmlns:dmodels="clr-namespace:NexusStrap.UI.ViewModels.Settings"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance dmodels:MainWindowViewModel, IsDesignTimeCreatable=True}"
              Title="{x:Static resources:Strings.Menu_Title}"
@@ -63,7 +64,11 @@
                         <DropShadowEffect Color="White" BlurRadius="16" ShadowDepth="0" Opacity="0.85"/>
                     </TextBlock.Effect>
                 </TextBlock>
-                <ui:Anchor Grid.Column="1" Content="Discord" Icon="Chat24" NavigateUri="https://discord.gg/hvhEDxFek" ToolTip="Join our Discord server" VerticalAlignment="Center" Margin="0,0,8,0" />
+                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
+                    <controls:AccountProfileControl VerticalAlignment="Center" Margin="0,0,8,0" />
+                    <ui:Anchor Content="Roblox" Icon="Games24" NavigateUri="https://www.roblox.com/users/3573547911/profile" ToolTip="Follow my Roblox profile" VerticalAlignment="Center" />
+                    <ui:Anchor Content="Discord" Icon="Chat24" NavigateUri="https://discord.gg/hvhEDxFek" ToolTip="Join our Discord server" VerticalAlignment="Center" />
+                </StackPanel>
             </Grid>
 
             <ui:NavigationCompact x:Name="RootNavigation" Grid.Row="1" Grid.Column="0" Margin="4,0,16,0" Frame="{Binding ElementName=RootFrame}" IsExpanded="{Binding IsSidebarExpanded, Mode=TwoWay}" MaxWidth="195" SelectedPageIndex="0" FooterAlwaysVisible="True" Background="Transparent">
@@ -78,6 +83,7 @@
                     <ui:NavigationItem Content="{x:Static resources:Strings.Common_Shortcuts}" PageType="{x:Type pages:ShortcutsPage}" Icon="Keyboard24" IconSize="20" Tag="shortcuts" />
 
                     <ui:NavigationItem Content="Server History" PageType="{x:Type pages:ServerHistoryPage}" Icon="History24" IconSize="20" Tag="serverhistory" />
+                    <ui:NavigationItem Content="{x:Static resources:Strings.ServerBrowser_Title}" PageType="{x:Type pages:ServerBrowserPage}" Icon="Globe24" IconSize="20" Tag="serverbrowser" x:Name="serverBrowser" />
                     <ui:NavigationItem Content="Launch Arguments" PageType="{x:Type pages:CustomLaunchArgsPage}" Icon="Code24" IconSize="20" Tag="launchargs" />
                     <ui:NavigationItem Content="Log Viewer" PageType="{x:Type pages:LogViewerPage}" Icon="Document24" IconSize="20" Tag="logviewer" />
                     <ui:NavigationItem Content="Anti-Cheat" PageType="{x:Type pages:AntiCheatPage}" Icon="ShieldCheckmark24" IconSize="20" Tag="anticheat" />
@@ -146,9 +152,9 @@
                 </StackPanel>
             </StatusBarItem>
 
-            <!-- Made by Troll -->
+            <!-- Made by -->
             <StatusBarItem Grid.Column="1" VerticalAlignment="Center" Margin="0,0,4,0">
-                <TextBlock Text="Made by Troll/Recd" FontSize="12" FontWeight="Medium" VerticalAlignment="Center" Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
+                <TextBlock Text="Made by Recd" FontSize="12" FontWeight="Medium" VerticalAlignment="Center" Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
             </StatusBarItem>
 
             <!-- Close -->

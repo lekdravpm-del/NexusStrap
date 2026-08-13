@@ -325,6 +325,7 @@ namespace NexusStrap
             // - watcher task: runs activity watcher + waiting for roblox to close, terminates when it has
 
             var watcher = new Watcher();
+            App.WatcherInstance = watcher;
 
             Task watcherTask = Task.Run(watcher.Run);
 

@@ -63,6 +63,13 @@
             <ui:ToggleSwitch IsChecked="{Binding PlaytimeCounterEnabled, Mode=TwoWay}" />
         </controls:OptionControl>
 
+        <controls:OptionControl
+            Description="{x:Static resources:Strings.Menu_Integrations_StartMenuTile_Description}"
+            Header="{x:Static resources:Strings.Menu_Integrations_StartMenuTile_Title}"
+            HelpLink="https://github.com/lekdravpm-del/NexusStrap/wiki">
+            <ui:ToggleSwitch IsChecked="{Binding EnableStartMenuTile, Mode=TwoWay}" Checked="StartMenuTile_Checked" Unchecked="StartMenuTile_Unchecked" />
+        </controls:OptionControl>
+
         <ui:CardExpander
             Margin="0,8,0,0" 
             IsEnabled="{Binding InnerContent.IsChecked, ElementName=ActivityTrackingOption, Mode=OneWay}"

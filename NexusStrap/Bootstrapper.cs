@@ -341,11 +341,41 @@ namespace NexusStrap
             }
 
             if (!IsStudioLaunch)
+            {
+                await WaitForRobloxWindowVisibleAsync();
+
+                Dialog?.CloseBootstrapper();
+
+                await mutex.ReleaseAsync();
+
                 await HandlePostLaunchOperations();
+            }
+            else
+            {
+                await mutex.ReleaseAsync();
 
-            await mutex.ReleaseAsync();
+                Dialog?.CloseBootstrapper();
+            }
+        }
 
-            Dialog?.CloseBootstrapper();
+        private async Task WaitForRobloxWindowVisibleAsync()
+        {
+            const string LOG_IDENT = "Bootstrapper::WaitForRobloxWindowVisible";
+
+            try
+            {
+                using var timeoutCts = new CancellationTokenSource(TimeSpan.FromSeconds(90));
+                using var linkedCts = CancellationTokenSource.CreateLinkedTokenSource(_cancelTokenSource.Token, timeoutCts.Token);
+
+                while (_appPid == 0 || !Win32WindowHelper.IsWindowVisibleForProcess(_appPid))
+                {
+                    await Task.Delay(250, linkedCts.Token);
+                }
+            }
+            catch (OperationCanceledException)
+            {
+                App.Logger.WriteLine(LOG_IDENT, "Timed out waiting for the Roblox window to become visible");
+            }
         }
 
         private async Task HandlePostLaunchOperations()
@@ -1043,7 +1073,7 @@ namespace NexusStrap
             _ = Task.Run(async () =>
             {
                 await Task.Delay(2000);
-                Win32WindowHelper.ApplyWindowTitleAndIcon(_appPid, "Nexus");
+                Win32WindowHelper.ApplyWindowTitleAndIcon(_appPid, "Nexus Strapper");
             });
 
             // allow for window to show, since the log is created pretty far beforehand

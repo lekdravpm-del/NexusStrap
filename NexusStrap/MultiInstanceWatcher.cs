@@ -9,7 +9,7 @@
             try
             {
                 // prevent any possible race conditions by checking for NexusStrap processes too
-                int count = Process.GetProcesses().Count(x => x.ProcessName is "RobloxPlayerBeta" or "NexusStrap");
+                int count = Process.GetProcessesByName("RobloxPlayerBeta").Length + Process.GetProcessesByName("NexusStrap").Length;
                 count -= 1; // ignore the current process
                 return count;
             }

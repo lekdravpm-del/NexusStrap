@@ -211,7 +211,17 @@ namespace NexusStrap.UI
 
             App.Logger.WriteLine("NotifyIconWrapper::Dispose", "Disposing NotifyIcon");
 
-            _menuContainer.Dispatcher.Invoke(_menuContainer.Close);
+            try
+            {
+                _menuContainer.Dispatcher.Invoke(() =>
+                {
+                    if (_menuContainer.IsLoaded)
+                        _menuContainer.Close();
+                });
+            }
+            catch { }
+
+            _notifyIcon.Visible = false;
             _notifyIcon.Dispose();
 
             GC.SuppressFinalize(this);

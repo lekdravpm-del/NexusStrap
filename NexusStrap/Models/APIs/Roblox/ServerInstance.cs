@@ -14,8 +14,32 @@
         [JsonPropertyName("region")]
         public string Region { get; set; } = "Unknown";
 
+        [JsonPropertyName("ping")]
+        public int? Ping { get; set; }
+
+        [JsonPropertyName("fps")]
+        public int? Fps { get; set; }
+
         [JsonPropertyName("firstSeen")]
         public DateTime? FirstSeen { get; set; }
+
+        [JsonIgnore]
+        public double Capacity => MaxPlayers > 0 ? Math.Min(1.0, (double)Playing / MaxPlayers) : 0;
+
+        [JsonIgnore]
+        public string PlayersDisplay => $"{Playing}/{MaxPlayers}";
+
+        [JsonIgnore]
+        public TimeSpan? Uptime
+        {
+            get
+            {
+                if (FirstSeen == null)
+                    return null;
+
+                return DateTime.UtcNow - FirstSeen.Value;
+            }
+        }
 
         [JsonIgnore]
         public string UptimeDisplay

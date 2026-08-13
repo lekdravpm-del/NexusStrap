@@ -67,9 +67,10 @@ namespace NexusStrap.Integrations
                 var protectedBytes = ProtectedData.Protect(bytes, DpapiEntropy, DataProtectionScope.CurrentUser);
                 return Convert.ToBase64String(protectedBytes);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return plaintext;
+                App.Logger.WriteException($"{LOG_IDENT}::ProtectString", ex);
+                throw new CryptographicException("Failed to encrypt account data", ex);
             }
         }
 
@@ -80,7 +81,6 @@ namespace NexusStrap.Integrations
 
             try
             {
-                // Try base64 decode -> unprotect. If it's not base64 or unprotect fails, assume plaintext.
                 var protectedBytes = Convert.FromBase64String(protectedText);
                 var bytes = ProtectedData.Unprotect(protectedBytes, DpapiEntropy, DataProtectionScope.CurrentUser);
                 return Encoding.UTF8.GetString(bytes);
@@ -90,106 +90,130 @@ namespace NexusStrap.Integrations
                 // Not base64 -> plaintext
                 return protectedText ?? string.Empty;
             }
-            catch (CryptographicException)
+            catch (CryptographicException ex)
             {
                 // Could not unprotect -> assume plaintext (or different machine/profile)
+                App.Logger.WriteException($"{LOG_IDENT}::UnprotectString", ex);
                 return protectedText ?? string.Empty;
-            }
-            catch (Exception)
-            {
-                return protectedText ?? string.Empty;
-            }
-        }
-
-        public void LoadAccounts()
-        {
-            const string LOG_IDENT_LOAD = $"{LOG_IDENT}::LoadAccounts";
-
-            App.Logger.WriteLine(LOG_IDENT_LOAD, "Loading accounts...");
-
-            var dir = Path.GetDirectoryName(_accountsLocation);
-            if (!string.IsNullOrEmpty(dir) && !Directory.Exists(dir))
-                Directory.CreateDirectory(dir);
-
-            if (!File.Exists(_accountsLocation))
-            {
-                App.Logger.WriteLine(LOG_IDENT_LOAD, "Accounts file not found.");
-                _accounts = new();
-                NoAccountsFound?.Invoke();
-                return;
-            }
-
-            string json = File.ReadAllText(_accountsLocation);
-            if (string.IsNullOrWhiteSpace(json))
-            {
-                App.Logger.WriteLine(LOG_IDENT_LOAD, "Accounts file is empty.");
-                _accounts = new();
-                NoAccountsFound?.Invoke();
-                return;
-            }
-
-            try
-            {
-                var managerData = JsonConvert.DeserializeObject<AccountManagerData>(json);
-                if (managerData?.Accounts is not null && managerData.Accounts.Any())
-                {
-                    _accounts = managerData.Accounts
-                        .Select(acc => new AltAccount(
-                            UnprotectString(acc.SecurityToken),
-                            acc.UserId,
-                            acc.Username,
-                            acc.DisplayName))
-                        .ToList();
-
-                    if (managerData.ActiveAccountId.HasValue)
-                    {
-                        var cachedAccount = _accounts.FirstOrDefault(acc => acc.UserId == managerData.ActiveAccountId.Value);
-                        if (cachedAccount != null)
-                        {
-                            ActiveAccount = cachedAccount;
-                            ActiveAccountChanged?.Invoke(ActiveAccount);
-                            App.Logger.WriteLine(LOG_IDENT_LOAD, $"Restored active account from file: {cachedAccount.Username}");
-                        }
-                        else
-                        {
-                            App.Logger.WriteLine(LOG_IDENT_LOAD, $"Saved active account ID {managerData.ActiveAccountId} not found in loaded accounts");
-                            if (_accounts.Any())
-                                SetActiveAccount(_accounts.First());
-                        }
-                    }
-                    else if (_accounts.Any())
-                    {
-                        SetActiveAccount(_accounts.First());
-                    }
-
-                    CurrentPlaceId = managerData.CurrentPlaceId ?? "";
-                    CurrentServerInstanceId = managerData.CurrentServerInstanceId ?? "";
-
-                    App.Logger.WriteLine(LOG_IDENT_LOAD, $"Restored Place ID: {CurrentPlaceId}, Server Instance ID: {CurrentServerInstanceId}");
-                }
-                else
-                {
-                    App.Logger.WriteLine(LOG_IDENT_LOAD, "Accounts file deserialized to empty or null list.");
-                    _accounts = new();
-                    NoAccountsFound?.Invoke();
-                }
             }
             catch (Exception ex)
             {
-                App.Logger.WriteException(LOG_IDENT_LOAD, ex);
+                App.Logger.WriteException($"{LOG_IDENT}::UnprotectString", ex);
+                return protectedText ?? string.Empty;
+            }
+        }
+
+        private static void VerifyAccountEncryption(string encryptedText)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(encryptedText))
+                    return;
+                
+                Convert.FromBase64String(encryptedText);
+                var bytes = ProtectedData.Unprotect(Convert.FromBase64String(encryptedText), DpapiEntropy, DataProtectionScope.CurrentUser);
+            }
+            catch (FormatException)
+            {
+                throw new FormatException("Account data appears to be stored in plaintext; re-encrypt all accounts");
+            }
+            catch (CryptographicException ex)
+            {
+                throw new CryptographicException("Account data encryption key may have changed", ex);
+            }
+        }
+
+    public void LoadAccounts()
+    {
+        const string LOG_IDENT_LOAD = $"{LOG_IDENT}::LoadAccounts";
+
+        App.Logger.WriteLine(LOG_IDENT_LOAD, "Loading accounts...");
+
+        var dir = Path.GetDirectoryName(_accountsLocation);
+        if (!string.IsNullOrEmpty(dir) && !Directory.Exists(dir))
+            Directory.CreateDirectory(dir);
+
+        if (!File.Exists(_accountsLocation))
+        {
+            App.Logger.WriteLine(LOG_IDENT_LOAD, "Accounts file not found.");
+            _accounts = new();
+            NoAccountsFound?.Invoke();
+            return;
+        }
+
+        string json = File.ReadAllText(_accountsLocation);
+        if (string.IsNullOrWhiteSpace(json))
+        {
+            App.Logger.WriteLine(LOG_IDENT_LOAD, "Accounts file is empty.");
+            _accounts = new();
+            NoAccountsFound?.Invoke();
+            return;
+        }
+
+        try
+        {
+            var managerData = JsonConvert.DeserializeObject<AccountManagerData>(json);
+            if (managerData?.Accounts is not null && managerData.Accounts.Any())
+            {
+                _accounts = managerData.Accounts
+                    .Select(acc => new AltAccount(
+                        UnprotectString(acc.SecurityToken),
+                        acc.UserId,
+                        acc.Username,
+                        acc.DisplayName))
+                    .ToList();
+
+                VerifyAccountEncryption(string.Join(',', managerData.Accounts.Select(a => a.SecurityToken)));
+
+                if (managerData.ActiveAccountId.HasValue)
+                {
+                    var cachedAccount = _accounts.FirstOrDefault(acc => acc.UserId == managerData.ActiveAccountId.Value);
+                    if (cachedAccount != null)
+                    {
+                        ActiveAccount = cachedAccount;
+                        ActiveAccountChanged?.Invoke(ActiveAccount);
+                        App.Logger.WriteLine(LOG_IDENT_LOAD, $"Restored active account from file: {cachedAccount.Username}");
+                    }
+                    else
+                    {
+                        App.Logger.WriteLine(LOG_IDENT_LOAD, $"Saved active account ID {managerData.ActiveAccountId} not found in loaded accounts");
+                        if (_accounts.Any())
+                            SetActiveAccount(_accounts.First());
+                    }
+                }
+                else if (_accounts.Any())
+                {
+                    SetActiveAccount(_accounts.First());
+                }
+
+                CurrentPlaceId = managerData.CurrentPlaceId ?? "";
+                CurrentServerInstanceId = managerData.CurrentServerInstanceId ?? "";
+
+                App.Logger.WriteLine(LOG_IDENT_LOAD, $"Restored Place ID: {CurrentPlaceId}, Server Instance ID: {CurrentServerInstanceId}");
+            }
+            else
+            {
+                App.Logger.WriteLine(LOG_IDENT_LOAD, "Accounts file deserialized to empty or null list.");
                 _accounts = new();
                 NoAccountsFound?.Invoke();
             }
-
-            if (_accounts.Any())
-            {
-                _ = Task.Run(async () =>
-                {
-                    await Task.Delay(3000);
-                    await ValidateAllAccountsAsync();
-                });
-            }
         }
+        catch (Exception ex)
+        {
+            App.Logger.WriteException(LOG_IDENT_LOAD, ex);
+            _accounts = new();
+            NoAccountsFound?.Invoke();
+        }
+
+        if (_accounts.Any())
+        {
+            _ = Task.Run(async () =>
+            {
+                await Task.Delay(3000);
+                await ValidateAllAccountsAsync();
+            });
+        }
+    }
 
         public void SaveAccounts()
         {
@@ -227,39 +251,39 @@ namespace NexusStrap.Integrations
             }
         }
 
-        public void SetCurrentPlaceId(string placeId)
+    public void SetCurrentPlaceId(string placeId)
+    {
+        CurrentPlaceId = placeId ?? "";
+        SaveAccounts();
+    }
+
+    public void SetCurrentServerInstanceId(string serverInstanceId)
+    {
+        CurrentServerInstanceId = serverInstanceId ?? "";
+        SaveAccounts();
+    }
+
+    public void SetActiveAccount(AltAccount? account)
+    {
+        const string LOG_IDENT_SET_ACTIVE = $"{LOG_IDENT}::SetActiveAccount";
+
+        ActiveAccount = account;
+        App.Logger.WriteLine(LOG_IDENT_SET_ACTIVE, $"Set active account to: {account?.Username ?? "None"}");
+
+        SaveAccounts();
+
+        // Notify listeners that active account changed
+        try
         {
-            CurrentPlaceId = placeId ?? "";
-            SaveAccounts();
+            ActiveAccountChanged?.Invoke(ActiveAccount);
         }
-
-        public void SetCurrentServerInstanceId(string serverInstanceId)
+        catch (Exception ex)
         {
-            CurrentServerInstanceId = serverInstanceId ?? "";
-            SaveAccounts();
+            App.Logger.WriteException(LOG_IDENT_SET_ACTIVE, ex);
         }
+    }
 
-        public void SetActiveAccount(AltAccount? account)
-        {
-            const string LOG_IDENT_SET_ACTIVE = $"{LOG_IDENT}::SetActiveAccount";
-
-            ActiveAccount = account;
-            App.Logger.WriteLine(LOG_IDENT_SET_ACTIVE, $"Set active account to: {account?.Username ?? "None"}");
-
-            SaveAccounts();
-
-            // Notify listeners that active account changed
-            try
-            {
-                ActiveAccountChanged?.Invoke(ActiveAccount);
-            }
-            catch (Exception ex)
-            {
-                App.Logger.WriteException(LOG_IDENT_SET_ACTIVE, ex);
-            }
-        }
-
-        public string? GetRoblosecurityForUser(long userId)
+    public string? GetRoblosecurityForUser(long userId)
         {
             var a = _accounts.FirstOrDefault(x => x.UserId == userId);
             return a?.SecurityToken;

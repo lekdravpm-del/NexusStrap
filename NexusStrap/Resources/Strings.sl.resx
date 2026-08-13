@@ -1,0 +1,582 @@
+﻿<?xml version="1.0" encoding="utf-8"?><root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Bootstrapper.Status.ApplyingModifications" xml:space="preserve">
+    <value>Uporabljam spremembe Roblox...</value>
+  </data>
+  <data name="Bootstrapper.Status.Connecting" xml:space="preserve">
+    <value>Povezovanje z Roblox...</value>
+  </data>
+  <data name="Bootstrapper.Status.Downloading" xml:space="preserve">
+    <value>Prenašanje</value>
+  </data>
+  <data name="Bootstrapper.Status.Installing" xml:space="preserve">
+    <value>Nameščam {product}...</value>
+  </data>
+  <data name="Bootstrapper.Status.Starting" xml:space="preserve">
+    <value>Zaganjam {product}...</value>
+  </data>
+  <data name="Bootstrapper.Status.Upgrading" xml:space="preserve">
+    <value>Nadgrajujem {product}...</value>
+  </data>
+  <data name="Bootstrapper.Status.WaitingForData" xml:space="preserve">
+    <value>Čakanje na podatke...</value>
+  </data>
+  <data name="Bootstrapper.Status.WaitingOtherInstances" xml:space="preserve">
+    <value>Čakanje na druge primerke...</value>
+  </data>
+  <data name="Common.AddSingle" xml:space="preserve">
+    <value>Dodaj enega</value>
+  </data>
+  <data name="Common.Analytics" xml:space="preserve">
+    <value>Analitika</value>
+  </data>
+  <data name="Common.Automatic" xml:space="preserve">
+    <value>Samodejno</value>
+  </data>
+  <data name="Common.Browse" xml:space="preserve">
+    <value>Prebrskaj</value>
+  </data>
+  <data name="Common.Cancel" xml:space="preserve">
+    <value>Prekliči</value>
+  </data>
+  <data name="Common.Channel" xml:space="preserve">
+    <value>Kanal</value>
+  </data>
+  <data name="Common.Choose" xml:space="preserve">
+    <value>Izberi</value>
+  </data>
+  <data name="Common.Close" xml:space="preserve">
+    <value>Zapri</value>
+  </data>
+  <data name="Common.CopyAll" xml:space="preserve">
+    <value>Kopiraj vse</value>
+  </data>
+  <data name="Common.CreateNew" xml:space="preserve">
+    <value>Ustvari novo</value>
+  </data>
+  <data name="Common.Custom" xml:space="preserve">
+    <value>Po meri</value>
+  </data>
+  <data name="Common.Debug" xml:space="preserve">
+    <value>Razhroščevanje</value>
+  </data>
+  <data name="Common.DebugMenu" xml:space="preserve">
+    <value>Meni za razhroščevanje</value>
+  </data>
+  <data name="Common.Default" xml:space="preserve">
+    <value>Privzeto</value>
+  </data>
+  <data name="Common.Delete" xml:space="preserve">
+    <value>Izbriši</value>
+  </data>
+  <data name="Common.DeleteAll" xml:space="preserve">
+    <value>Izbriši vse</value>
+  </data>
+  <data name="Common.Deployment" xml:space="preserve">
+    <value>Uvedba</value>
+  </data>
+  <data name="Common.Disabled" xml:space="preserve">
+    <value>Onemogočeno</value>
+  </data>
+  <data name="Common.DiscordRichPresence" xml:space="preserve">
+    <value>Discord Rich Presence</value>
+  </data>
+  <data name="Common.Edit" xml:space="preserve">
+    <value>Uredi</value>
+  </data>
+  <data name="Common.Experimental" xml:space="preserve">
+    <value>Eksperimentalno</value>
+  </data>
+  <data name="Common.Export" xml:space="preserve">
+    <value>Izvozi</value>
+  </data>
+  <data name="Common.FilterType" xml:space="preserve">
+    <value>Vrsta filtra:</value>
+  </data>
+  <data name="Common.Help" xml:space="preserve">
+    <value>Pomoč</value>
+  </data>
+  <data name="Common.Import" xml:space="preserve">
+    <value>Uvozi</value>
+  </data>
+  <data name="Common.ImportFromFile" xml:space="preserve">
+    <value>Uvozi iz datoteke</value>
+  </data>
+  <data name="Common.ImportJson" xml:space="preserve">
+    <value>Uvozi JSON</value>
+  </data>
+  <data name="Common.LauncherType" xml:space="preserve">
+    <value>Vrsta: Zaganjalnik</value>
+  </data>
+  <data name="Common.Loading" xml:space="preserve">
+    <value>Nalaganje, počakajte...</value>
+  </data>
+  <data name="Common.Message" xml:space="preserve">
+    <value>Sporočilo</value>
+  </data>
+  <data name="Common.Miscellaneous" xml:space="preserve">
+    <value>Razno</value>
+  </data>
+  <data name="Common.Name" xml:space="preserve">
+    <value>Ime</value>
+  </data>
+  <data name="Common.New" xml:space="preserve">
+    <value>Novo</value>
+  </data>
+  <data name="Common.No" xml:space="preserve">
+    <value>Ne</value>
+  </data>
+  <data name="Common.NotAvailable" xml:space="preserve">
+    <value>Ni na voljo</value>
+  </data>
+  <data name="Common.OK" xml:space="preserve">
+    <value>V redu</value>
+  </data>
+  <data name="Common.OpenLogFile" xml:space="preserve">
+    <value>Odpri datoteko dnevnika</value>
+  </data>
+  <data name="Common.Performance" xml:space="preserve">
+    <value>Zmogljivost</value>
+  </data>
+  <data name="Common.Presets" xml:space="preserve">
+    <value>Prednastavitve</value>
+  </data>
+  <data name="Common.Quality" xml:space="preserve">
+    <value>Kakovost</value>
+  </data>
+  <data name="Common.Recommended" xml:space="preserve">
+    <value>Priporočeno</value>
+  </data>
+  <data name="Common.Refresh" xml:space="preserve">
+    <value>Osveži</value>
+  </data>
+  <data name="Common.Remove" xml:space="preserve">
+    <value>Odstrani</value>
+  </data>
+  <data name="Common.Rename" xml:space="preserve">
+    <value>Preimenuj</value>
+  </data>
+  <data name="Common.Reset" xml:space="preserve">
+    <value>Ponastavi</value>
+  </data>
+  <data name="Common.RobloxNotInstalled" xml:space="preserve">
+    <value>Roblox še ni nameščen. Pred uporabo te možnosti vsaj enkrat zaženite Roblox z NexusStrap.</value>
+  </data>
+  <data name="Common.Search" xml:space="preserve">
+    <value>Išči</value>
+  </data>
+  <data name="Common.Settings" xml:space="preserve">
+    <value>Nastavitve</value>
+  </data>
+  <data name="Common.Shortcuts" xml:space="preserve">
+    <value>Bližnjice</value>
+  </data>
+  <data name="Common.Studio" xml:space="preserve">
+    <value>Studio</value>
+  </data>
+  <data name="Common.SystemDefault" xml:space="preserve">
+    <value>Sistemsko privzeto</value>
+  </data>
+  <data name="Common.Time" xml:space="preserve">
+    <value>Čas</value>
+  </data>
+  <data name="Common.Type" xml:space="preserve">
+    <value>Vrsta</value>
+  </data>
+  <data name="Common.UnknownStatus" xml:space="preserve">
+    <value>Neznan status</value>
+  </data>
+  <data name="Common.UserId" xml:space="preserve">
+    <value>ID uporabnika</value>
+  </data>
+  <data name="Common.Username" xml:space="preserve">
+    <value>Uporabniško ime</value>
+  </data>
+  <data name="Common.Value" xml:space="preserve">
+    <value>Vrednost</value>
+  </data>
+  <data name="Common.Version" xml:space="preserve">
+    <value>Različica</value>
+  </data>
+  <data name="Common.Warning" xml:space="preserve">
+    <value>Opozorilo</value>
+  </data>
+  <data name="Common.Yes" xml:space="preserve">
+    <value>Da</value>
+  </data>
+  <data name="ContextMenu.CloseRoblox" xml:space="preserve">
+    <value>Zapri Roblox</value>
+  </data>
+  <data name="ContextMenu.GameHistory.ClearHistory" xml:space="preserve">
+    <value>Počisti zgodovino</value>
+  </data>
+  <data name="ContextMenu.GameHistory.NoHistory" xml:space="preserve">
+    <value>Zgodovine iger še ni{0}{0}Pridružite se nekaterim igram, da jih vidite tukaj!</value>
+  </data>
+  <data name="ContextMenu.GameHistory.Refresh" xml:space="preserve">
+    <value>Osveži</value>
+  </data>
+  <data name="ContextMenu.GameHistory.Rejoin" xml:space="preserve">
+    <value>Ponovno se pridruži</value>
+  </data>
+  <data name="ContextMenu.GameHistory.Title" xml:space="preserve">
+    <value>Zgodovina iger</value>
+  </data>
+  <data name="ContextMenu.ServerInformation.Location" xml:space="preserve">
+    <value>Lokacija</value>
+  </data>
+  <data name="ContextMenu.ServerInformation.Title" xml:space="preserve">
+    <value>Informacije o strežniku</value>
+  </data>
+  <data name="ContextMenu.ServerInformation.Type" xml:space="preserve">
+    <value>Vrsta</value>
+  </data>
+  <data name="ContextMenu.ServerInformation.Uptime" xml:space="preserve">
+    <value>Ocenjen čas delovanja</value>
+  </data>
+  <data name="Dialog.AlreadyRunning.Installer" xml:space="preserve">
+    <value>Počakajte, da se namestitev konča.</value>
+  </data>
+  <data name="Dialog.CannotCreateShortcuts" xml:space="preserve">
+    <value>NexusStrap ni mogel ustvariti bližnjic za namizje in meni Start. Poskusite jih ustvariti pozneje prek nastavitev.</value>
+  </data>
+  <data name="Dialog.Connectivity.Title" xml:space="preserve">
+    <value>Napaka povezave</value>
+  </data>
+  <data name="Dialog.Connectivity.UnableToConnect" xml:space="preserve">
+    <value>NexusStrap se ne more povezati z {0}</value>
+  </data>
+  <data name="Dialog.Exception.Title" xml:space="preserve">
+    <value>Izjema NexusStrap</value>
+  </data>
+  <data name="Dialog.LanguageSelector.Header" xml:space="preserve">
+    <value>Izberite želeni jezik</value>
+  </data>
+  <data name="Dialog.LanguageSelector.Subtext" xml:space="preserve">
+    <value>Pred nadaljevanjem namestitve izberite jezik.
+Nekaj besedila morda ni prevedeno v želeni jezik.</value>
+  </data>
+  <data name="Dialog.PlayerError.Crash" xml:space="preserve">
+    <value>Roblox je zrušil.</value>
+  </data>
+  <data name="Dialog.PlayerError.FailedLaunch" xml:space="preserve">
+    <value>Robloxa ni bilo mogoče zagnati.</value>
+  </data>
+  <data name="Installer.Completion.Launch.Title" xml:space="preserve">
+    <value>Namesti in zaženi Roblox</value>
+  </data>
+  <data name="Installer.Completion.Settings.Title" xml:space="preserve">
+    <value>Konfiguriraj nastavitve NexusStrap</value>
+  </data>
+  <data name="Installer.Completion.Text" xml:space="preserve">
+    <value>NexusStrap je bil uspešno nameščen.
+
+Vendar Roblox še ni nameščen. Nameščen bo, ko prvič zaženete Roblox z NexusStrap. Pred namestitvijo boste morda želeli najprej konfigurirati nastavitve NexusStrap.
+
+Pomembna opomba: Za zagon Robloxa ne uporabljajte bližnjice "Roblox Player", saj NexusStrap zaradi konfliktov ne bo mogel zagnati Robloxa. Če ob zagonu s spletnega mesta Roblox ne vidite zaganjanja NexusStrap, preprosto enkrat zaženite Roblox z NexusStrap iz namizne aplikacije, da odpravite to težavo.
+
+Kaj želite storiti?</value>
+  </data>
+  <data name="Installer.Completion.Title" xml:space="preserve">
+    <value>Dokončanje</value>
+  </data>
+  <data name="Installer.FailedToImportSettings" xml:space="preserve">
+    <value>Uvoz nastavitev NexusStrap ni uspel.
+
+{0}</value>
+  </data>
+  <data name="Installer.Install.Title" xml:space="preserve">
+    <value>Namesti</value>
+  </data>
+  <data name="Installer.ShouldCancel" xml:space="preserve">
+    <value>Ali res želite preklicati namestitev?</value>
+  </data>
+  <data name="Installer.Title" xml:space="preserve">
+    <value>Namestitveni program NexusStrap</value>
+  </data>
+  <data name="Installer.Welcome.MainText" xml:space="preserve">
+    <value>Hvala, ker ste prenesli NexusStrap.
+
+Edini uradni vir za prenos NexusStrap je {0}, zato preverite, ali ste ga prenesli iz uradnega vira.
+
+Ta postopek namestitve bo hiter in preprost, po namestitvi pa boste lahko konfigurirali vse nastavitve NexusStrap.</value>
+  </data>
+  <data name="Installer.Welcome.NextToContinue" xml:space="preserve">
+    <value>Kliknite 'Naprej' za nadaljevanje.</value>
+  </data>
+  <data name="Installer.Welcome.Title" xml:space="preserve">
+    <value>Dobrodošli</value>
+  </data>
+  <data name="LaunchMenu.ConfigureSettings" xml:space="preserve">
+    <value>Konfiguriraj nastavitve</value>
+  </data>
+  <data name="LaunchMenu.Discord" xml:space="preserve">
+    <value>Pridružite se našemu Discord strežniku</value>
+  </data>
+  <data name="LaunchMenu.LaunchRoblox" xml:space="preserve">
+    <value>Zaženi Roblox</value>
+  </data>
+  <data name="LaunchMenu.LaunchRobloxStudio" xml:space="preserve">
+    <value>Zaženi Roblox Studio</value>
+  </data>
+  <data name="Menu.About.Title" xml:space="preserve">
+    <value>O programu</value>
+  </data>
+  <data name="Menu.AccountManager.Title" xml:space="preserve">
+    <value>Upravitelj računov</value>
+  </data>
+  <data name="Menu.Appearance.Title" xml:space="preserve">
+    <value>Videz</value>
+  </data>
+  <data name="Menu.Behaviour.Title" xml:space="preserve">
+    <value>Bootstrapper</value>
+  </data>
+  <data name="Menu.FastFlags.Title" xml:space="preserve">
+    <value>Nastavitve FastFlag</value>
+  </data>
+  <data name="Menu.Integrations.ActivityTracking" xml:space="preserve">
+    <value>Sledenje aktivnosti</value>
+  </data>
+  <data name="Menu.Integrations.Description" xml:space="preserve">
+    <value>Konfigurirajte dodatne funkcije za delo z Robloxom.</value>
+  </data>
+  <data name="Menu.Integrations.EnableActivityTracking.Description" xml:space="preserve">
+    <value>NexusStrapu omogoča, da zazna, katero igro Roblox igrate. Nekatere funkcije to morda zahtevajo.</value>
+  </data>
+  <data name="Menu.Integrations.EnableActivityTracking.Title" xml:space="preserve">
+    <value>Omogoči sledenje aktivnosti</value>
+  </data>
+  <data name="Menu.Integrations.PlaytimeCounter.Description" xml:space="preserve">
+    <value>Prikaže vaš skupni čas igranja in čas trenutne seje, ko ste v igri ali na mestu Studio.</value>
+  </data>
+  <data name="Menu.Integrations.PlaytimeCounter.Title" xml:space="preserve">
+    <value>Števec časa igranja</value>
+  </data>
+  <data name="Menu.Integrations.QueryServerLocation.Description" xml:space="preserve">
+    <value>Med igro boste lahko videli, kje je vaš strežnik, prek [ipinfo.io](https://ipinfo.io).</value>
+  </data>
+  <data name="Menu.Integrations.QueryServerLocation.Title" xml:space="preserve">
+    <value>Poizvedba o lokaciji strežnika</value>
+  </data>
+  <data name="Menu.Integrations.QueryServerUptime.Description" xml:space="preserve">
+    <value>Prikaže, kako dolgo nazaj je bil strežnik prvič viden v tej seji.</value>
+  </data>
+  <data name="Menu.Integrations.QueryServerUptime.Title" xml:space="preserve">
+    <value>Poizvedba o času delovanja strežnika</value>
+  </data>
+  <data name="Menu.Integrations.StartMenuTile.Description" xml:space="preserve">
+    <value>V meni Start doda bližnjico NexusStrap za hiter zagon Robloxa. Windows 10/11 ne podpira več živih ploščic, zato se uporablja klasična bližnjica.</value>
+  </data>
+  <data name="Menu.Integrations.StartMenuTile.Title" xml:space="preserve">
+    <value>Bližnjica v meniju Start</value>
+  </data>
+  <data name="Menu.Integrations.Title" xml:space="preserve">
+    <value>Integracije</value>
+  </data>
+  <data name="Menu.RegionSelector.Title" xml:space="preserve">
+    <value>Izbirnik regije</value>
+  </data>
+  <data name="Menu.RobloxSettings.Title" xml:space="preserve">
+    <value>Nastavitve Roblox</value>
+  </data>
+  <data name="Menu.TestMode" xml:space="preserve">
+    <value>Testni način</value>
+  </data>
+  <data name="Menu.Title" xml:space="preserve">
+    <value>Nastavitve NexusStrap</value>
+  </data>
+  <data name="ServerBrowser.FetchFailed" xml:space="preserve">
+    <value>Nalaganje strežnikov ni uspelo. Poskusite znova.</value>
+  </data>
+  <data name="ServerBrowser.FilterAny" xml:space="preserve">
+    <value>Kateri koli</value>
+  </data>
+  <data name="ServerBrowser.FilterEmpty" xml:space="preserve">
+    <value>Prazen</value>
+  </data>
+  <data name="ServerBrowser.FilterFull" xml:space="preserve">
+    <value>75% ali več poln</value>
+  </data>
+  <data name="ServerBrowser.FilterHalf" xml:space="preserve">
+    <value>25-50% poln</value>
+  </data>
+  <data name="ServerBrowser.FilterQuarter" xml:space="preserve">
+    <value>Manj kot 25% poln</value>
+  </data>
+  <data name="ServerBrowser.FilterThreeQuarter" xml:space="preserve">
+    <value>50-75% poln</value>
+  </data>
+  <data name="ServerBrowser.FilterUptime1To3" xml:space="preserve">
+    <value>1-3 ure</value>
+  </data>
+  <data name="ServerBrowser.FilterUptime3To6" xml:space="preserve">
+    <value>3-6 ur</value>
+  </data>
+  <data name="ServerBrowser.FilterUptimeOver6" xml:space="preserve">
+    <value>Več kot 6 ur</value>
+  </data>
+  <data name="ServerBrowser.FilterUptimeUnder1" xml:space="preserve">
+    <value>Manj kot 1 ura</value>
+  </data>
+  <data name="ServerBrowser.Game" xml:space="preserve">
+    <value>Igra</value>
+  </data>
+  <data name="ServerBrowser.Join" xml:space="preserve">
+    <value>Pridruži se</value>
+  </data>
+  <data name="ServerBrowser.LoadMore" xml:space="preserve">
+    <value>Naloži več</value>
+  </data>
+  <data name="ServerBrowser.NoGame" xml:space="preserve">
+    <value>Izberite igro ali vnesite ID mesta za brskanje po strežnikih.</value>
+  </data>
+  <data name="ServerBrowser.NoServers" xml:space="preserve">
+    <value>Za trenutne filtre ni bilo najdenih strežnikov.</value>
+  </data>
+  <data name="ServerBrowser.PlaceId" xml:space="preserve">
+    <value>ID mesta</value>
+  </data>
+  <data name="ServerBrowser.PlayerCount" xml:space="preserve">
+    <value>Število igralcev</value>
+  </data>
+  <data name="ServerBrowser.Players" xml:space="preserve">
+    <value>Igralci</value>
+  </data>
+  <data name="ServerBrowser.Refresh" xml:space="preserve">
+    <value>Osveži</value>
+  </data>
+  <data name="ServerBrowser.Region" xml:space="preserve">
+    <value>Regija</value>
+  </data>
+  <data name="ServerBrowser.RegionHint" xml:space="preserve">
+    <value>Prijavite se v Upravitelj računov za zaznavanje regij strežnikov.</value>
+  </data>
+  <data name="ServerBrowser.ServerId" xml:space="preserve">
+    <value>ID strežnika</value>
+  </data>
+  <data name="ServerBrowser.Status" xml:space="preserve">
+    <value>Prikazanih je {0} strežnikov.</value>
+  </data>
+  <data name="ServerBrowser.Title" xml:space="preserve">
+    <value>Brskalnik strežnikov</value>
+  </data>
+  <data name="ServerBrowser.Uptime" xml:space="preserve">
+    <value>Čas delovanja</value>
+  </data>
+</root>

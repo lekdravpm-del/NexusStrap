@@ -17,6 +17,8 @@ namespace NexusStrap.UI.ViewModels.Settings
         public EventHandler? RequestSaveNoticeEvent;
         public EventHandler? RequestCloseWindowEvent;
         public bool GBSEnabled = App.GlobalSettings.Loaded;
+
+        public bool ServerBrowserEnabled = App.Settings.Prop.EnableServerBrowser;
         public event EventHandler? SettingsSaved;
 
         public bool TestModeEnabled
@@ -93,9 +95,14 @@ namespace NexusStrap.UI.ViewModels.Settings
             SaveSettings();
 
             if (!App.LaunchSettings.TestModeFlag.Active)
+            {
                 Process.Start(Paths.Application, $"-{mode.ToLower()}");
+                App.DeferredTerminate();
+            }
             else
+            {
                 CloseWindow();
+            }
         }
 
         private async void RestartApp()

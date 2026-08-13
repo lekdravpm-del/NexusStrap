@@ -80,6 +80,19 @@ namespace NexusStrap
 
         public void KillRobloxProcess() => CloseProcess(_watcherData!.ProcessId, true);
 
+        private static bool IsProcessAlive(int pid)
+        {
+            try
+            {
+                using var process = Process.GetProcessById(pid);
+                return !process.HasExited;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public void CloseProcess(int pid, bool force = false)
         {
             const string LOG_IDENT = "Watcher::CloseProcess";
@@ -118,7 +131,7 @@ namespace NexusStrap
             try
             {
                 while (!_cancellationTokenSource.Token.IsCancellationRequested &&
-                       Utilities.GetProcessesSafe().Any(x => x.Id == _watcherData.ProcessId))
+                       IsProcessAlive(_watcherData.ProcessId))
                 {
                     await Task.Delay(1000, _cancellationTokenSource.Token);
                 }

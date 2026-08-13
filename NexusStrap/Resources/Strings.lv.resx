@@ -1,0 +1,582 @@
+﻿<?xml version="1.0" encoding="utf-8"?><root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Bootstrapper.Status.ApplyingModifications" xml:space="preserve">
+    <value>Tiek piemērotas Roblox modifikācijas...</value>
+  </data>
+  <data name="Bootstrapper.Status.Connecting" xml:space="preserve">
+    <value>Notiek savienošanās ar Roblox...</value>
+  </data>
+  <data name="Bootstrapper.Status.Downloading" xml:space="preserve">
+    <value>Notiek lejupielāde</value>
+  </data>
+  <data name="Bootstrapper.Status.Installing" xml:space="preserve">
+    <value>Notiek {product} instalēšana...</value>
+  </data>
+  <data name="Bootstrapper.Status.Starting" xml:space="preserve">
+    <value>Notiek {product} palaišana...</value>
+  </data>
+  <data name="Bootstrapper.Status.Upgrading" xml:space="preserve">
+    <value>Notiek {product} jaunināšana...</value>
+  </data>
+  <data name="Bootstrapper.Status.WaitingForData" xml:space="preserve">
+    <value>Gaida datus...</value>
+  </data>
+  <data name="Bootstrapper.Status.WaitingOtherInstances" xml:space="preserve">
+    <value>Gaida citus gadījumus...</value>
+  </data>
+  <data name="Common.AddSingle" xml:space="preserve">
+    <value>Pievienot vienu</value>
+  </data>
+  <data name="Common.Analytics" xml:space="preserve">
+    <value>Analītika</value>
+  </data>
+  <data name="Common.Automatic" xml:space="preserve">
+    <value>Automātisks</value>
+  </data>
+  <data name="Common.Browse" xml:space="preserve">
+    <value>Pārlūkot</value>
+  </data>
+  <data name="Common.Cancel" xml:space="preserve">
+    <value>Atcelt</value>
+  </data>
+  <data name="Common.Channel" xml:space="preserve">
+    <value>Kanāls</value>
+  </data>
+  <data name="Common.Choose" xml:space="preserve">
+    <value>Izvēlēties</value>
+  </data>
+  <data name="Common.Close" xml:space="preserve">
+    <value>Aizvērt</value>
+  </data>
+  <data name="Common.CopyAll" xml:space="preserve">
+    <value>Kopēt visu</value>
+  </data>
+  <data name="Common.CreateNew" xml:space="preserve">
+    <value>Izveidot jaunu</value>
+  </data>
+  <data name="Common.Custom" xml:space="preserve">
+    <value>Pielāgots</value>
+  </data>
+  <data name="Common.Debug" xml:space="preserve">
+    <value>Atkļūdošana</value>
+  </data>
+  <data name="Common.DebugMenu" xml:space="preserve">
+    <value>Atkļūdošanas izvēlne</value>
+  </data>
+  <data name="Common.Default" xml:space="preserve">
+    <value>Noklusējums</value>
+  </data>
+  <data name="Common.Delete" xml:space="preserve">
+    <value>Dzēst</value>
+  </data>
+  <data name="Common.DeleteAll" xml:space="preserve">
+    <value>Dzēst visu</value>
+  </data>
+  <data name="Common.Deployment" xml:space="preserve">
+    <value>Izvietošana</value>
+  </data>
+  <data name="Common.Disabled" xml:space="preserve">
+    <value>Atspējots</value>
+  </data>
+  <data name="Common.DiscordRichPresence" xml:space="preserve">
+    <value>Discord Rich Presence</value>
+  </data>
+  <data name="Common.Edit" xml:space="preserve">
+    <value>Rediģēt</value>
+  </data>
+  <data name="Common.Experimental" xml:space="preserve">
+    <value>Eksperimentāls</value>
+  </data>
+  <data name="Common.Export" xml:space="preserve">
+    <value>Eksportēt</value>
+  </data>
+  <data name="Common.FilterType" xml:space="preserve">
+    <value>Filtra veids:</value>
+  </data>
+  <data name="Common.Help" xml:space="preserve">
+    <value>Palīdzība</value>
+  </data>
+  <data name="Common.Import" xml:space="preserve">
+    <value>Importēt</value>
+  </data>
+  <data name="Common.ImportFromFile" xml:space="preserve">
+    <value>Importēt no faila</value>
+  </data>
+  <data name="Common.ImportJson" xml:space="preserve">
+    <value>Importēt JSON</value>
+  </data>
+  <data name="Common.LauncherType" xml:space="preserve">
+    <value>Veids: Palaidējs</value>
+  </data>
+  <data name="Common.Loading" xml:space="preserve">
+    <value>Notiek ielāde, lūdzu uzgaidiet...</value>
+  </data>
+  <data name="Common.Message" xml:space="preserve">
+    <value>Ziņojums</value>
+  </data>
+  <data name="Common.Miscellaneous" xml:space="preserve">
+    <value>Dažādi</value>
+  </data>
+  <data name="Common.Name" xml:space="preserve">
+    <value>Nosaukums</value>
+  </data>
+  <data name="Common.New" xml:space="preserve">
+    <value>Jauns</value>
+  </data>
+  <data name="Common.No" xml:space="preserve">
+    <value>Nē</value>
+  </data>
+  <data name="Common.NotAvailable" xml:space="preserve">
+    <value>Nav pieejams</value>
+  </data>
+  <data name="Common.OK" xml:space="preserve">
+    <value>Labi</value>
+  </data>
+  <data name="Common.OpenLogFile" xml:space="preserve">
+    <value>Atvērt žurnāla failu</value>
+  </data>
+  <data name="Common.Performance" xml:space="preserve">
+    <value>Veiktspēja</value>
+  </data>
+  <data name="Common.Presets" xml:space="preserve">
+    <value>Priekšiestatījumi</value>
+  </data>
+  <data name="Common.Quality" xml:space="preserve">
+    <value>Kvalitāte</value>
+  </data>
+  <data name="Common.Recommended" xml:space="preserve">
+    <value>Ieteicams</value>
+  </data>
+  <data name="Common.Refresh" xml:space="preserve">
+    <value>Atsvaidzināt</value>
+  </data>
+  <data name="Common.Remove" xml:space="preserve">
+    <value>Noņemt</value>
+  </data>
+  <data name="Common.Rename" xml:space="preserve">
+    <value>Pārdēvēt</value>
+  </data>
+  <data name="Common.Reset" xml:space="preserve">
+    <value>Atiestatīt</value>
+  </data>
+  <data name="Common.RobloxNotInstalled" xml:space="preserve">
+    <value>Roblox vēl nav instalēts. Lūdzu, palaidiet Roblox ar NexusStrap vismaz vienu reizi, pirms izmantojat šo opciju.</value>
+  </data>
+  <data name="Common.Search" xml:space="preserve">
+    <value>Meklēt</value>
+  </data>
+  <data name="Common.Settings" xml:space="preserve">
+    <value>Iestatījumi</value>
+  </data>
+  <data name="Common.Shortcuts" xml:space="preserve">
+    <value>Saīsnes</value>
+  </data>
+  <data name="Common.Studio" xml:space="preserve">
+    <value>Studio</value>
+  </data>
+  <data name="Common.SystemDefault" xml:space="preserve">
+    <value>Sistēmas noklusējums</value>
+  </data>
+  <data name="Common.Time" xml:space="preserve">
+    <value>Laiks</value>
+  </data>
+  <data name="Common.Type" xml:space="preserve">
+    <value>Veids</value>
+  </data>
+  <data name="Common.UnknownStatus" xml:space="preserve">
+    <value>Nezināms statuss</value>
+  </data>
+  <data name="Common.UserId" xml:space="preserve">
+    <value>Lietotāja ID</value>
+  </data>
+  <data name="Common.Username" xml:space="preserve">
+    <value>Lietotājvārds</value>
+  </data>
+  <data name="Common.Value" xml:space="preserve">
+    <value>Vērtība</value>
+  </data>
+  <data name="Common.Version" xml:space="preserve">
+    <value>Versija</value>
+  </data>
+  <data name="Common.Warning" xml:space="preserve">
+    <value>Brīdinājums</value>
+  </data>
+  <data name="Common.Yes" xml:space="preserve">
+    <value>Jā</value>
+  </data>
+  <data name="ContextMenu.CloseRoblox" xml:space="preserve">
+    <value>Aizvērt Roblox</value>
+  </data>
+  <data name="ContextMenu.GameHistory.ClearHistory" xml:space="preserve">
+    <value>Notīrīt vēsturi</value>
+  </data>
+  <data name="ContextMenu.GameHistory.NoHistory" xml:space="preserve">
+    <value>Pagaidām nav spēļu vēstures{0}{0}Pievienojieties dažām spēlēm, lai tās redzētu šeit!</value>
+  </data>
+  <data name="ContextMenu.GameHistory.Refresh" xml:space="preserve">
+    <value>Atsvaidzināt</value>
+  </data>
+  <data name="ContextMenu.GameHistory.Rejoin" xml:space="preserve">
+    <value>Pievienoties atkārtoti</value>
+  </data>
+  <data name="ContextMenu.GameHistory.Title" xml:space="preserve">
+    <value>Spēļu vēsture</value>
+  </data>
+  <data name="ContextMenu.ServerInformation.Location" xml:space="preserve">
+    <value>Atrašanās vieta</value>
+  </data>
+  <data name="ContextMenu.ServerInformation.Title" xml:space="preserve">
+    <value>Servera informācija</value>
+  </data>
+  <data name="ContextMenu.ServerInformation.Type" xml:space="preserve">
+    <value>Veids</value>
+  </data>
+  <data name="ContextMenu.ServerInformation.Uptime" xml:space="preserve">
+    <value>Paredzamais darbības laiks</value>
+  </data>
+  <data name="Dialog.AlreadyRunning.Installer" xml:space="preserve">
+    <value>Lūdzu, uzgaidiet, līdz instalēšana ir pabeigta.</value>
+  </data>
+  <data name="Dialog.CannotCreateShortcuts" xml:space="preserve">
+    <value>NexusStrap nevarēja izveidot saīsnes darbvirsmai un izvēlnei Sākt. Mēģiniet tās izveidot vēlāk, izmantojot iestatījumus.</value>
+  </data>
+  <data name="Dialog.Connectivity.Title" xml:space="preserve">
+    <value>Savienojuma kļūda</value>
+  </data>
+  <data name="Dialog.Connectivity.UnableToConnect" xml:space="preserve">
+    <value>NexusStrap nevar izveidot savienojumu ar {0}</value>
+  </data>
+  <data name="Dialog.Exception.Title" xml:space="preserve">
+    <value>NexusStrap izņēmums</value>
+  </data>
+  <data name="Dialog.LanguageSelector.Header" xml:space="preserve">
+    <value>Izvēlieties vēlamo valodu</value>
+  </data>
+  <data name="Dialog.LanguageSelector.Subtext" xml:space="preserve">
+    <value>Izvēlieties valodu pirms turpināt instalēšanu.
+Daļa teksta var nebūt tulkota vēlamajā valodā.</value>
+  </data>
+  <data name="Dialog.PlayerError.Crash" xml:space="preserve">
+    <value>Roblox avarēja.</value>
+  </data>
+  <data name="Dialog.PlayerError.FailedLaunch" xml:space="preserve">
+    <value>Neizdevās palaist Roblox.</value>
+  </data>
+  <data name="Installer.Completion.Launch.Title" xml:space="preserve">
+    <value>Instalēt un palaist Roblox</value>
+  </data>
+  <data name="Installer.Completion.Settings.Title" xml:space="preserve">
+    <value>Konfigurēt NexusStrap iestatījumus</value>
+  </data>
+  <data name="Installer.Completion.Text" xml:space="preserve">
+    <value>NexusStrap ir veiksmīgi instalēts.
+
+Tomēr Roblox vēl nav instalēts. Tas tiks instalēts, kad pirmo reizi palaidīsit Roblox ar NexusStrap. Pirms instalēšanas, iespējams, vēlēsities vispirms konfigurēt NexusStrap iestatījumus.
+
+Svarīga piezīme: Neizmantojiet saīsni "Roblox Player", lai palaistu Roblox, jo konfliktu dēļ NexusStrap nevarēs palaist Roblox. Ja, startējot no Roblox vietnes, neredzat NexusStrap palaižamies, vienkārši palaidiet Roblox ar NexusStrap vienu reizi no darbvirsmas lietotnes, lai atrisinātu šo problēmu.
+
+Ko vēlaties darīt?</value>
+  </data>
+  <data name="Installer.Completion.Title" xml:space="preserve">
+    <value>Pabeigšana</value>
+  </data>
+  <data name="Installer.FailedToImportSettings" xml:space="preserve">
+    <value>Neizdevās importēt NexusStrap iestatījumus.
+
+{0}</value>
+  </data>
+  <data name="Installer.Install.Title" xml:space="preserve">
+    <value>Instalēt</value>
+  </data>
+  <data name="Installer.ShouldCancel" xml:space="preserve">
+    <value>Vai tiešām vēlaties atcelt instalēšanu?</value>
+  </data>
+  <data name="Installer.Title" xml:space="preserve">
+    <value>NexusStrap instalētājs</value>
+  </data>
+  <data name="Installer.Welcome.MainText" xml:space="preserve">
+    <value>Paldies, ka lejupielādējāt NexusStrap.
+
+Vienīgais oficiālais NexusStrap lejupielādes avots ir {0}, tāpēc, lūdzu, pārliecinieties, ka esat to lejupielādējis no oficiāla avota.
+
+Šis instalēšanas process būs ātrs un vienkāršs, un pēc instalēšanas jūs varēsiet konfigurēt visus NexusStrap iestatījumus.</value>
+  </data>
+  <data name="Installer.Welcome.NextToContinue" xml:space="preserve">
+    <value>Lūdzu, noklikšķiniet uz 'Tālāk', lai turpinātu.</value>
+  </data>
+  <data name="Installer.Welcome.Title" xml:space="preserve">
+    <value>Laipni lūdzam</value>
+  </data>
+  <data name="LaunchMenu.ConfigureSettings" xml:space="preserve">
+    <value>Konfigurēt iestatījumus</value>
+  </data>
+  <data name="LaunchMenu.Discord" xml:space="preserve">
+    <value>Pievienojieties mūsu Discord serverim</value>
+  </data>
+  <data name="LaunchMenu.LaunchRoblox" xml:space="preserve">
+    <value>Palaist Roblox</value>
+  </data>
+  <data name="LaunchMenu.LaunchRobloxStudio" xml:space="preserve">
+    <value>Palaist Roblox Studio</value>
+  </data>
+  <data name="Menu.About.Title" xml:space="preserve">
+    <value>Par</value>
+  </data>
+  <data name="Menu.AccountManager.Title" xml:space="preserve">
+    <value>Kontu pārvaldnieks</value>
+  </data>
+  <data name="Menu.Appearance.Title" xml:space="preserve">
+    <value>Izskats</value>
+  </data>
+  <data name="Menu.Behaviour.Title" xml:space="preserve">
+    <value>Bootstrapper</value>
+  </data>
+  <data name="Menu.FastFlags.Title" xml:space="preserve">
+    <value>FastFlag iestatījumi</value>
+  </data>
+  <data name="Menu.Integrations.ActivityTracking" xml:space="preserve">
+    <value>Aktivitātes izsekošana</value>
+  </data>
+  <data name="Menu.Integrations.Description" xml:space="preserve">
+    <value>Konfigurējiet papildu funkcijas darbam ar Roblox.</value>
+  </data>
+  <data name="Menu.Integrations.EnableActivityTracking.Description" xml:space="preserve">
+    <value>Ļauj NexusStrap noteikt, kuru Roblox spēli spēlējat. Dažām funkcijām tas var būt nepieciešams.</value>
+  </data>
+  <data name="Menu.Integrations.EnableActivityTracking.Title" xml:space="preserve">
+    <value>Iespējot aktivitātes izsekošanu</value>
+  </data>
+  <data name="Menu.Integrations.PlaytimeCounter.Description" xml:space="preserve">
+    <value>Rāda jūsu kopējo spēles laiku un pašreizējās sesijas laiku, kamēr atrodaties spēlē vai Studio vietā.</value>
+  </data>
+  <data name="Menu.Integrations.PlaytimeCounter.Title" xml:space="preserve">
+    <value>Spēles laika skaitītājs</value>
+  </data>
+  <data name="Menu.Integrations.QueryServerLocation.Description" xml:space="preserve">
+    <value>Atrodoties spēlē, jūs varēsiet redzēt, kur atrodas jūsu serveris, izmantojot [ipinfo.io](https://ipinfo.io).</value>
+  </data>
+  <data name="Menu.Integrations.QueryServerLocation.Title" xml:space="preserve">
+    <value>Pieprasīt servera atrašanās vietu</value>
+  </data>
+  <data name="Menu.Integrations.QueryServerUptime.Description" xml:space="preserve">
+    <value>Rāda, cik sen serveris pirmo reizi tika redzēts šajā sesijā.</value>
+  </data>
+  <data name="Menu.Integrations.QueryServerUptime.Title" xml:space="preserve">
+    <value>Pieprasīt servera darbības laiku</value>
+  </data>
+  <data name="Menu.Integrations.StartMenuTile.Description" xml:space="preserve">
+    <value>Pievieno NexusStrap saīsni jūsu izvēlnei Sākt ātrai Roblox palaišanai. Windows 10/11 vairs neatbalsta tiešraides flīzes, tāpēc tiek izmantota klasiska saīsne.</value>
+  </data>
+  <data name="Menu.Integrations.StartMenuTile.Title" xml:space="preserve">
+    <value>Sākt izvēlnes saīsne</value>
+  </data>
+  <data name="Menu.Integrations.Title" xml:space="preserve">
+    <value>Integrācijas</value>
+  </data>
+  <data name="Menu.RegionSelector.Title" xml:space="preserve">
+    <value>Reģiona izvēlētājs</value>
+  </data>
+  <data name="Menu.RobloxSettings.Title" xml:space="preserve">
+    <value>Roblox iestatījumi</value>
+  </data>
+  <data name="Menu.TestMode" xml:space="preserve">
+    <value>Testa režīms</value>
+  </data>
+  <data name="Menu.Title" xml:space="preserve">
+    <value>NexusStrap iestatījumi</value>
+  </data>
+  <data name="ServerBrowser.FetchFailed" xml:space="preserve">
+    <value>Neizdevās ielādēt serverus. Lūdzu, mēģiniet vēlreiz.</value>
+  </data>
+  <data name="ServerBrowser.FilterAny" xml:space="preserve">
+    <value>Jebkurš</value>
+  </data>
+  <data name="ServerBrowser.FilterEmpty" xml:space="preserve">
+    <value>Tukšs</value>
+  </data>
+  <data name="ServerBrowser.FilterFull" xml:space="preserve">
+    <value>75% vai vairāk pilns</value>
+  </data>
+  <data name="ServerBrowser.FilterHalf" xml:space="preserve">
+    <value>25-50% pilns</value>
+  </data>
+  <data name="ServerBrowser.FilterQuarter" xml:space="preserve">
+    <value>Mazāk par 25% pilns</value>
+  </data>
+  <data name="ServerBrowser.FilterThreeQuarter" xml:space="preserve">
+    <value>50-75% pilns</value>
+  </data>
+  <data name="ServerBrowser.FilterUptime1To3" xml:space="preserve">
+    <value>1-3 stundas</value>
+  </data>
+  <data name="ServerBrowser.FilterUptime3To6" xml:space="preserve">
+    <value>3-6 stundas</value>
+  </data>
+  <data name="ServerBrowser.FilterUptimeOver6" xml:space="preserve">
+    <value>Vairāk par 6 stundām</value>
+  </data>
+  <data name="ServerBrowser.FilterUptimeUnder1" xml:space="preserve">
+    <value>Mazāk par 1 stundu</value>
+  </data>
+  <data name="ServerBrowser.Game" xml:space="preserve">
+    <value>Spēle</value>
+  </data>
+  <data name="ServerBrowser.Join" xml:space="preserve">
+    <value>Pievienoties</value>
+  </data>
+  <data name="ServerBrowser.LoadMore" xml:space="preserve">
+    <value>Ielādēt vairāk</value>
+  </data>
+  <data name="ServerBrowser.NoGame" xml:space="preserve">
+    <value>Izvēlieties spēli vai ievadiet vietas ID, lai pārlūkotu serverus.</value>
+  </data>
+  <data name="ServerBrowser.NoServers" xml:space="preserve">
+    <value>Pašreizējiem filtriem netika atrasts neviens serveris.</value>
+  </data>
+  <data name="ServerBrowser.PlaceId" xml:space="preserve">
+    <value>Vietas ID</value>
+  </data>
+  <data name="ServerBrowser.PlayerCount" xml:space="preserve">
+    <value>Spēlētāju skaits</value>
+  </data>
+  <data name="ServerBrowser.Players" xml:space="preserve">
+    <value>Spēlētāji</value>
+  </data>
+  <data name="ServerBrowser.Refresh" xml:space="preserve">
+    <value>Atsvaidzināt</value>
+  </data>
+  <data name="ServerBrowser.Region" xml:space="preserve">
+    <value>Reģions</value>
+  </data>
+  <data name="ServerBrowser.RegionHint" xml:space="preserve">
+    <value>Piesakieties kontu pārvaldniekā, lai noteiktu serveru reģionus.</value>
+  </data>
+  <data name="ServerBrowser.ServerId" xml:space="preserve">
+    <value>Servera ID</value>
+  </data>
+  <data name="ServerBrowser.Status" xml:space="preserve">
+    <value>Tiek rādīti {0} serveri.</value>
+  </data>
+  <data name="ServerBrowser.Title" xml:space="preserve">
+    <value>Serveru pārlūks</value>
+  </data>
+  <data name="ServerBrowser.Uptime" xml:space="preserve">
+    <value>Darbības laiks</value>
+  </data>
+</root>

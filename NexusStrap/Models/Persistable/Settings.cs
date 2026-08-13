@@ -113,5 +113,91 @@ namespace NexusStrap.Models.Persistable
         public bool CustomRPCEnabled { get; set; } = false;
         public string? CustomRPCDetails { get; set; } = null;
         public string? CustomRPCState { get; set; } = null;
+
+        // New Features
+        // Smooth Window Dragging
+        public bool EnableSmoothWindowDrag { get; set; } = false;
+
+        // Custom Window Title
+        public string CustomRobloxTitle { get; set; } = "";
+        public string CustomRobloxLogoPath { get; set; } = "";
+
+        // Profile Display
+        public bool EnableProfileDisplay { get; set; } = true;
+
+        // Start Menu Tile
+        public bool EnableStartMenuTile { get; set; } = false;
+        public string StartMenuTileArgs { get; set; } = "";
+
+        // Server Browser with Filters
+        public bool EnableServerBrowser { get; set; } = true;
+        public ServerFilter SelectedServerFilter { get; set; } = ServerFilter.All;
+        public string ServerPlayerCountFilter { get; set; } = "";
+        public string ServerUptimeFilter { get; set; } = "";
+        public string ServerRegionFilter { get; set; } = "";
+
+        // Server Capacity Indicator
+        public bool EnableServerCapacityIndicator { get; set; } = true;
+
+        // Multi-language Support
+        public ObservableCollection<string> EnabledLanguages { get; set; } = new()
+        {
+            "en",
+            "es",
+            "fr",
+            "de",
+            "it",
+            "pt-BR",
+            "ru",
+            "ja",
+            "ko",
+            "zh-CN",
+            "zh-TW",
+            "ar",
+            "he",
+            "fa",
+            "tr",
+            "nl",
+            "pl",
+            "sv",
+            "no",
+            "da",
+            "fi",
+            "cs",
+            "hu",
+            "ro",
+            "bg",
+            "hr",
+            "et",
+            "lt",
+            "sl",
+            "lv",
+            "eu",
+            "bn",
+            "hi",
+            "th",
+            "vi",
+            "id",
+            "ms",
+            "tl"
+        };
+
+        // Friend System
+        public bool EnableFriendSystem { get; set; } = true;
+        public string FriendSearchFilter { get; set; } = "";
+
+        // Auto-close on Roblox Launch
+        public bool AutoCloseSettingsOnLaunch { get; set; } = false;
+
+        // Performance Overlay Settings
+        public bool EnablePingOverlay { get; set; } = true;
+        public bool EnableFPSOverlay { get; set; } = true;
+        public bool EnableRAMOverlay { get; set; } = true;
+        public bool EnableCPUOverlay { get; set; } = true;
+        public OverlayPosition OverlayPosition { get; set; } = OverlayPosition.TopLeft;
+        public double OverlaySpacing { get; set; } = 10.0;
+
+        // New Feature
+        public bool EnableExtraFeature { get; set; } = false;
     }
 }

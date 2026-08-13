@@ -22,5 +22,27 @@ namespace NexusStrap.UI.Elements.Settings.Pages
             viewModel.SelectedCustomIntegration = (CustomIntegration)((ListBox)sender).SelectedItem;
             viewModel.OnPropertyChanged(nameof(viewModel.SelectedCustomIntegration));
         }
+
+        private static string StartMenuShortcutPath =>
+            System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Programs), "NexusStrap.lnk");
+
+        private void StartMenuTile_Checked(object sender, System.Windows.RoutedEventArgs e)
+        {
+            string args = App.Settings.Prop.StartMenuTileArgs;
+            if (string.IsNullOrWhiteSpace(args))
+                args = "-player";
+
+            Shortcut.Create(Paths.Process, args, StartMenuShortcutPath);
+        }
+
+        private void StartMenuTile_Unchecked(object sender, System.Windows.RoutedEventArgs e)
+        {
+            try
+            {
+                if (System.IO.File.Exists(StartMenuShortcutPath))
+                    System.IO.File.Delete(StartMenuShortcutPath);
+            }
+            catch { }
+        }
     }
 }

@@ -35,7 +35,7 @@
             </TextBlock.Effect>
         </TextBlock>
 
-        <TextBlock Grid.Row="1" Text="by Troll" HorizontalAlignment="Center" FontSize="14"
+        <TextBlock Grid.Row="1" Text="by Recd" HorizontalAlignment="Center" FontSize="14"
                    Foreground="{DynamicResource TextFillColorSecondaryBrush}" Margin="0,4,0,0" />
 
         <TextBlock Grid.Row="2" Text="{x:Static resources:Strings.Installer_Welcome_MainText}" HorizontalAlignment="Center"

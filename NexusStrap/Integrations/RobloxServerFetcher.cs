@@ -227,12 +227,11 @@ namespace NexusStrap.Integrations
 
         public async Task<FetchResult> FetchServerInstancesAsync(long placeId, string roblosecurity, string cursor = "", int sortOrder = 2)
         {
-            if (string.IsNullOrWhiteSpace(roblosecurity)) return new FetchResult();
-
             string url = $"https://games.roblox.com/v1/games/{placeId}/servers/Public?sortOrder={sortOrder}&excludeFullGames=true&limit=100&cursor={cursor}";
 
             var req = new HttpRequestMessage(HttpMethod.Get, url);
-            req.Headers.Add("Cookie", $".ROBLOSECURITY={roblosecurity}");
+            if (!string.IsNullOrWhiteSpace(roblosecurity))
+                req.Headers.Add("Cookie", $".ROBLOSECURITY={roblosecurity}");
 
             var response = await _client.SendAsync(req).ConfigureAwait(false);
             if (!response.IsSuccessStatusCode) return new FetchResult();
@@ -244,49 +243,97 @@ namespace NexusStrap.Integrations
 
             var instances = new ConcurrentBag<ServerInstance>();
             var placeCache = _serverCache.GetOrAdd(placeId, _ => new ConcurrentDictionary<string, ServerInstance>());
+            var newServers = new ConcurrentBag<ServerInstance>();
 
-            var parallelOptions = new ParallelOptions { MaxDegreeOfParallelism = 8 };
-            await Parallel.ForEachAsync(dataElement.EnumerateArray(), parallelOptions, async (serverElem, ct) =>
+            foreach (var serverElem in dataElement.EnumerateArray())
             {
                 string jobId = serverElem.GetProperty("id").GetString() ?? "";
                 int playing = serverElem.GetProperty("playing").GetInt32();
                 int maxPlayers = serverElem.GetProperty("maxPlayers").GetInt32();
 
-                if (playing >= maxPlayers) return;
+                if (playing >= maxPlayers) continue;
 
-                if (placeCache.TryGetValue(jobId, out var cached) && cached.Region != "Unknown")
+                int? ping = serverElem.TryGetProperty("ping", out var pingProp) && pingProp.ValueKind == JsonValueKind.Number ? pingProp.GetInt32() : null;
+                int? fps = serverElem.TryGetProperty("fps", out var fpsProp) && fpsProp.ValueKind == JsonValueKind.Number ? fpsProp.GetInt32() : null;
+
+                if (placeCache.TryGetValue(jobId, out var cached))
                 {
+                    cached.Playing = playing;
+                    cached.MaxPlayers = maxPlayers;
+                    cached.Ping = ping;
+                    cached.Fps = fps;
                     instances.Add(cached);
-                    return;
+                    continue;
                 }
 
-                try
+                var server = new ServerInstance
                 {
-                    var joinResp = await SendJoinRequestWithRetriesAsync(placeId, jobId, roblosecurity);
-                    using var parsed = JsonDocument.Parse(await joinResp.Content.ReadAsStringAsync());
+                    Id = jobId,
+                    Playing = playing,
+                    MaxPlayers = maxPlayers,
+                    Ping = ping,
+                    Fps = fps,
+                    FirstSeen = DateTime.UtcNow
+                };
 
-                    string address = TryExtractServerAddress(parsed.RootElement);
-                    string region = GetRegionForAddress(address);
+                newServers.Add(server);
+                instances.Add(server);
+            }
 
-                    var server = new ServerInstance
+            if (!string.IsNullOrWhiteSpace(roblosecurity))
+            {
+                var parallelOptions = new ParallelOptions { MaxDegreeOfParallelism = 8 };
+                await Parallel.ForEachAsync(newServers, parallelOptions, async (server, ct) =>
+                {
+                    try
                     {
-                        Id = jobId,
-                        Playing = playing,
-                        MaxPlayers = maxPlayers,
-                        Region = region
-                    };
+                        var joinResp = await SendJoinRequestWithRetriesAsync(placeId, server.Id, roblosecurity);
+                        using var parsed = JsonDocument.Parse(await joinResp.Content.ReadAsStringAsync());
 
-                    if (region != "Unknown") placeCache[jobId] = server;
-                    instances.Add(server);
-                }
-                catch { }
-            });
+                        string address = TryExtractServerAddress(parsed.RootElement);
+                        server.Region = GetRegionForAddress(address);
+
+                        if (server.Region != "Unknown") placeCache[server.Id] = server;
+                    }
+                    catch { }
+                });
+            }
+
+            SaveServerCache();
 
             return new FetchResult
             {
                 Servers = instances.ToList(),
                 NextCursor = nextCursor
             };
+        }
+
+        private void SaveServerCache()
+        {
+            try
+            {
+                foreach (var gameCache in _serverCache.Values)
+                {
+                    foreach (var key in gameCache.Where(e => e.Value.FirstSeen == null || DateTime.UtcNow - e.Value.FirstSeen.Value > TimeSpan.FromDays(7)).Select(e => e.Key).ToList())
+                        gameCache.TryRemove(key, out _);
+
+                    while (gameCache.Count > 1000)
+                    {
+                        string? oldest = gameCache.OrderBy(e => e.Value.FirstSeen ?? DateTime.MinValue).Select(e => e.Key).FirstOrDefault();
+                        if (oldest == null)
+                            break;
+
+                        gameCache.TryRemove(oldest, out _);
+                    }
+                }
+
+                using FileStream fs = File.Create(_serverCacheFilePath);
+                JsonSerializer.Serialize(fs, _serverCache);
+            }
+            catch (Exception ex)
+            {
+                App.Logger.WriteException(LOG_IDENT, ex);
+            }
         }
     }
 }

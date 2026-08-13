@@ -31,11 +31,20 @@ namespace NexusStrap.UI.Elements.Settings
 
             App.Logger.WriteLine("MainWindow", "Initializing settings window");
 
+            SourceInitialized += (_, _) =>
+            {
+                Topmost = true;
+                Activate();
+                Dispatcher.BeginInvoke(new Action(() => Topmost = false));
+            };
+
             if (showAlreadyRunningWarning)
                 ShowAlreadyRunningSnackbar();
 
             gbs.Opacity = viewModel.GBSEnabled ? 1 : 0.5;
             gbs.IsEnabled = viewModel.GBSEnabled; // binding doesnt work as expected so we are setting it in here instead
+
+            serverBrowser.Visibility = viewModel.ServerBrowserEnabled ? System.Windows.Visibility.Visible : System.Windows.Visibility.Collapsed;
 
             LoadState();
 

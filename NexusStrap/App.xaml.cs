@@ -44,6 +44,8 @@ namespace NexusStrap
 
         public static Bootstrapper? Bootstrapper { get; set; } = null!;
 
+        public static Watcher? WatcherInstance { get; set; } = null;
+
         public NexusStrapRichPresence RichPresenceInstance { get; private set; } = null!;
 
         public static bool IsActionBuild => !String.IsNullOrEmpty(BuildMetadata.CommitRef);
@@ -99,6 +101,15 @@ namespace NexusStrap
             Logger.WriteLine("App::SoftTerminate", $"Terminating with exit code {exitCodeNum} ({exitCode})");
 
             Current.Dispatcher.Invoke(() => Current.Shutdown(exitCodeNum));
+        }
+
+        public static void DeferredTerminate()
+        {
+            Current.Dispatcher.BeginInvoke(() =>
+            {
+                Logger.WriteLine("App::DeferredTerminate", "Terminating after launch");
+                Current.Shutdown();
+            });
         }
 
         void GlobalExceptionHandler(object sender, DispatcherUnhandledExceptionEventArgs e)
@@ -441,6 +452,8 @@ namespace NexusStrap
         {
             AccountManager.Shared.SaveAccounts();
             RichPresence?.Dispose();
+            WatcherInstance?.Dispose();
+            Logger.Dispose();
             base.OnExit(e);
         }
     }

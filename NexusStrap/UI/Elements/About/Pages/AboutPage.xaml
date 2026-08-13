@@ -78,7 +78,8 @@
                         <TextBlock Text="Code" FontSize="12" FontWeight="SemiBold" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Margin="0,0,0,4" />
                         <Border Padding="10" Background="{DynamicResource ApplicationBackgroundBrush}" CornerRadius="8">
                             <StackPanel>
-                                <TextBlock Text="Troll" FontSize="14" FontWeight="Medium" />
+                                <TextBlock Text="Recd" FontSize="14" FontWeight="Medium" />
+                                <Button Content="Roblox Profile" Margin="0,6,0,0" Padding="8,4" Command="models:GlobalViewModel.OpenWebpageCommand" CommandParameter="https://www.roblox.com/users/3573547911/profile" />
                             </StackPanel>
                         </Border>
                     </StackPanel>
@@ -136,6 +137,6 @@
         </StackPanel>
 
         <!-- Footer -->
-        <TextBlock Grid.Row="4" Text="Made by Troll/Recd" FontSize="13" FontWeight="Medium" Foreground="{DynamicResource TextFillColorTertiaryBrush}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,8" />
+        <TextBlock Grid.Row="4" Text="Made by Recd" FontSize="13" FontWeight="Medium" Foreground="{DynamicResource TextFillColorTertiaryBrush}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,8" />
     </Grid>
 </ui:UiPage>

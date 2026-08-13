@@ -15,57 +15,49 @@ namespace NexusStrap
             { "nil", Strings.Common_SystemDefault },
             { "en", "English" },
             { "en-US", "English (United States)" },
-#if QA_BUILD
-            { "sq", "Albanian" }, // Albanian (TODO: translate string)
-#endif
+            { "sq", "Shqip" }, // Albanian
             { "ar", "العربية" }, // Arabic
             { "bg", "Български" }, // Bulgarian
-#if QA_BUILD
             { "bn", "বাংলা" }, // Bengali
             { "bs", "Bosanski" }, // Bosnian
-#endif
             { "cs", "Čeština" }, // Czech
             { "de", "Deutsch" }, // German
-#if QA_BUILD
             { "da", "Dansk" }, // Danish
-#endif
             { "es-ES", "Español" }, // Spanish
-#if QA_BUILD
             { "el", "Ελληνικά" }, // Greek
-#endif
+            { "et", "Eesti" }, // Estonian
             { "fa", "فارسی" }, // Persian
             { "fi", "Suomi" }, // Finnish
             { "fil", "Filipino" }, // Filipino
             { "fr", "Français" }, // French
-#if QA_BUILD
-            { "he", "עברית‎" }, // Hebrew
-            { "hi", "Hindi (Latin)" }, // Hindi
-#endif
+            { "he", "עברית" }, // Hebrew
+            { "hi", "हिन्दी" }, // Hindi
             { "hr", "Hrvatski" }, // Croatian
             { "hu", "Magyar" }, // Hungarian
             { "id", "Bahasa Indonesia" }, // Indonesian
+            { "is", "Íslenska" }, // Icelandic
             { "it", "Italiano" }, // Italian
             { "ja", "日本語" }, // Japanese
             { "ko", "한국어" }, // Korean
             { "lt", "Lietuvių" }, // Lithuanian
+            { "lv", "Latviešu" }, // Latvian
             { "ms", "Malay" }, // Malay
             { "nl", "Nederlands" }, // Dutch
-#if QA_BUILD
             { "no", "Bokmål" }, // Norwegian
-#endif
             { "pl", "Polski" }, // Polish
             { "pt-BR", "Português (Brasil)" }, // Portuguese, Brazilian
             { "ro", "Română" }, // Romanian
             { "ru", "Русский" }, // Russian
+            { "sk", "Slovenčina" }, // Slovak
+            { "sl", "Slovenščina" }, // Slovenian
+            { "sr", "Српски" }, // Serbian
             { "sv-SE", "Svenska" }, // Swedish
             { "th", "ภาษาไทย" }, // Thai
             { "tr", "Türkçe" }, // Turkish
             { "uk", "Українська" }, // Ukrainian
             { "vi", "Tiếng Việt" }, // Vietnamese
             { "zh-CN", "中文 (简体)" }, // Chinese Simplified
-#if QA_BUILD
             { "zh-HK", "中文 (廣東話)" }, // Chinese Traditional, Hong Kong
-#endif
             { "zh-TW", "中文 (繁體)" } // Chinese Traditional
         };
 

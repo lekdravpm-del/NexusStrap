@@ -1,0 +1,582 @@
+﻿<?xml version="1.0" encoding="utf-8"?><root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Bootstrapper.Status.ApplyingModifications" xml:space="preserve">
+    <value>Beiti Roblox breytingum...</value>
+  </data>
+  <data name="Bootstrapper.Status.Connecting" xml:space="preserve">
+    <value>Tengist Roblox...</value>
+  </data>
+  <data name="Bootstrapper.Status.Downloading" xml:space="preserve">
+    <value>Næ í</value>
+  </data>
+  <data name="Bootstrapper.Status.Installing" xml:space="preserve">
+    <value>Set upp {product}...</value>
+  </data>
+  <data name="Bootstrapper.Status.Starting" xml:space="preserve">
+    <value>Ræsi {product}...</value>
+  </data>
+  <data name="Bootstrapper.Status.Upgrading" xml:space="preserve">
+    <value>Uppfæri {product}...</value>
+  </data>
+  <data name="Bootstrapper.Status.WaitingForData" xml:space="preserve">
+    <value>Bíð eftir gögnum...</value>
+  </data>
+  <data name="Bootstrapper.Status.WaitingOtherInstances" xml:space="preserve">
+    <value>Bíð eftir öðrum tilvikum...</value>
+  </data>
+  <data name="Common.AddSingle" xml:space="preserve">
+    <value>Bæta við einu</value>
+  </data>
+  <data name="Common.Analytics" xml:space="preserve">
+    <value>Greiningar</value>
+  </data>
+  <data name="Common.Automatic" xml:space="preserve">
+    <value>Sjálfvirkt</value>
+  </data>
+  <data name="Common.Browse" xml:space="preserve">
+    <value>Fletta</value>
+  </data>
+  <data name="Common.Cancel" xml:space="preserve">
+    <value>Hætta við</value>
+  </data>
+  <data name="Common.Channel" xml:space="preserve">
+    <value>Rás</value>
+  </data>
+  <data name="Common.Choose" xml:space="preserve">
+    <value>Velja</value>
+  </data>
+  <data name="Common.Close" xml:space="preserve">
+    <value>Loka</value>
+  </data>
+  <data name="Common.CopyAll" xml:space="preserve">
+    <value>Afrita allt</value>
+  </data>
+  <data name="Common.CreateNew" xml:space="preserve">
+    <value>Búa til nýtt</value>
+  </data>
+  <data name="Common.Custom" xml:space="preserve">
+    <value>Sérsniðið</value>
+  </data>
+  <data name="Common.Debug" xml:space="preserve">
+    <value>Villuleit</value>
+  </data>
+  <data name="Common.DebugMenu" xml:space="preserve">
+    <value>Villuleitarvalmynd</value>
+  </data>
+  <data name="Common.Default" xml:space="preserve">
+    <value>Sjálfgefið</value>
+  </data>
+  <data name="Common.Delete" xml:space="preserve">
+    <value>Eyða</value>
+  </data>
+  <data name="Common.DeleteAll" xml:space="preserve">
+    <value>Eyða öllu</value>
+  </data>
+  <data name="Common.Deployment" xml:space="preserve">
+    <value>Útgáfa</value>
+  </data>
+  <data name="Common.Disabled" xml:space="preserve">
+    <value>Óvirkt</value>
+  </data>
+  <data name="Common.DiscordRichPresence" xml:space="preserve">
+    <value>Discord Rich Presence</value>
+  </data>
+  <data name="Common.Edit" xml:space="preserve">
+    <value>Breyta</value>
+  </data>
+  <data name="Common.Experimental" xml:space="preserve">
+    <value>Tilraunakennt</value>
+  </data>
+  <data name="Common.Export" xml:space="preserve">
+    <value>Flytja út</value>
+  </data>
+  <data name="Common.FilterType" xml:space="preserve">
+    <value>Síutegund:</value>
+  </data>
+  <data name="Common.Help" xml:space="preserve">
+    <value>Hjálp</value>
+  </data>
+  <data name="Common.Import" xml:space="preserve">
+    <value>Flytja inn</value>
+  </data>
+  <data name="Common.ImportFromFile" xml:space="preserve">
+    <value>Flytja inn úr skrá</value>
+  </data>
+  <data name="Common.ImportJson" xml:space="preserve">
+    <value>Flytja inn JSON</value>
+  </data>
+  <data name="Common.LauncherType" xml:space="preserve">
+    <value>Tegund: Ræsir</value>
+  </data>
+  <data name="Common.Loading" xml:space="preserve">
+    <value>Hleður, vinsamlegast bíðið...</value>
+  </data>
+  <data name="Common.Message" xml:space="preserve">
+    <value>Skilaboð</value>
+  </data>
+  <data name="Common.Miscellaneous" xml:space="preserve">
+    <value>Ýmislegt</value>
+  </data>
+  <data name="Common.Name" xml:space="preserve">
+    <value>Nafn</value>
+  </data>
+  <data name="Common.New" xml:space="preserve">
+    <value>Nýtt</value>
+  </data>
+  <data name="Common.No" xml:space="preserve">
+    <value>Nei</value>
+  </data>
+  <data name="Common.NotAvailable" xml:space="preserve">
+    <value>Ekki tiltækt</value>
+  </data>
+  <data name="Common.OK" xml:space="preserve">
+    <value>Í lagi</value>
+  </data>
+  <data name="Common.OpenLogFile" xml:space="preserve">
+    <value>Opna annálaskrá</value>
+  </data>
+  <data name="Common.Performance" xml:space="preserve">
+    <value>Afköst</value>
+  </data>
+  <data name="Common.Presets" xml:space="preserve">
+    <value>Forstillingar</value>
+  </data>
+  <data name="Common.Quality" xml:space="preserve">
+    <value>Gæði</value>
+  </data>
+  <data name="Common.Recommended" xml:space="preserve">
+    <value>Mælt með</value>
+  </data>
+  <data name="Common.Refresh" xml:space="preserve">
+    <value>Endurnýja</value>
+  </data>
+  <data name="Common.Remove" xml:space="preserve">
+    <value>Fjarlægja</value>
+  </data>
+  <data name="Common.Rename" xml:space="preserve">
+    <value>Endurnefna</value>
+  </data>
+  <data name="Common.Reset" xml:space="preserve">
+    <value>Endurstilla</value>
+  </data>
+  <data name="Common.RobloxNotInstalled" xml:space="preserve">
+    <value>Roblox er ekki enn uppsett. Vinsamlegast ræstu Roblox með NexusStrap að minnsta kosti einu sinni áður en þessi valkostur er notaður.</value>
+  </data>
+  <data name="Common.Search" xml:space="preserve">
+    <value>Leita</value>
+  </data>
+  <data name="Common.Settings" xml:space="preserve">
+    <value>Stillingar</value>
+  </data>
+  <data name="Common.Shortcuts" xml:space="preserve">
+    <value>Flýtileiðir</value>
+  </data>
+  <data name="Common.Studio" xml:space="preserve">
+    <value>Studio</value>
+  </data>
+  <data name="Common.SystemDefault" xml:space="preserve">
+    <value>Sjálfgefið kerfisgildi</value>
+  </data>
+  <data name="Common.Time" xml:space="preserve">
+    <value>Tími</value>
+  </data>
+  <data name="Common.Type" xml:space="preserve">
+    <value>Tegund</value>
+  </data>
+  <data name="Common.UnknownStatus" xml:space="preserve">
+    <value>Óþekkt staða</value>
+  </data>
+  <data name="Common.UserId" xml:space="preserve">
+    <value>Notandaauðkenni</value>
+  </data>
+  <data name="Common.Username" xml:space="preserve">
+    <value>Notandanafn</value>
+  </data>
+  <data name="Common.Value" xml:space="preserve">
+    <value>Gildi</value>
+  </data>
+  <data name="Common.Version" xml:space="preserve">
+    <value>Útgáfa</value>
+  </data>
+  <data name="Common.Warning" xml:space="preserve">
+    <value>Aðvörun</value>
+  </data>
+  <data name="Common.Yes" xml:space="preserve">
+    <value>Já</value>
+  </data>
+  <data name="ContextMenu.CloseRoblox" xml:space="preserve">
+    <value>Loka Roblox</value>
+  </data>
+  <data name="ContextMenu.GameHistory.ClearHistory" xml:space="preserve">
+    <value>Hreinsa sögu</value>
+  </data>
+  <data name="ContextMenu.GameHistory.NoHistory" xml:space="preserve">
+    <value>Engin leikjasaga ennþá{0}{0}Taktu þátt í nokkrum leikjum til að sjá þá hér!</value>
+  </data>
+  <data name="ContextMenu.GameHistory.Refresh" xml:space="preserve">
+    <value>Endurnýja</value>
+  </data>
+  <data name="ContextMenu.GameHistory.Rejoin" xml:space="preserve">
+    <value>Tengjast aftur</value>
+  </data>
+  <data name="ContextMenu.GameHistory.Title" xml:space="preserve">
+    <value>Leikjasaga</value>
+  </data>
+  <data name="ContextMenu.ServerInformation.Location" xml:space="preserve">
+    <value>Staðsetning</value>
+  </data>
+  <data name="ContextMenu.ServerInformation.Title" xml:space="preserve">
+    <value>Upplýsingar um þjón</value>
+  </data>
+  <data name="ContextMenu.ServerInformation.Type" xml:space="preserve">
+    <value>Tegund</value>
+  </data>
+  <data name="ContextMenu.ServerInformation.Uptime" xml:space="preserve">
+    <value>Áætlaður keyrslutími</value>
+  </data>
+  <data name="Dialog.AlreadyRunning.Installer" xml:space="preserve">
+    <value>Vinsamlegast bíðið þar til uppsetningu lýkur.</value>
+  </data>
+  <data name="Dialog.CannotCreateShortcuts" xml:space="preserve">
+    <value>NexusStrap gat ekki búið til flýtileiðir fyrir skjáborðið og Start valmyndina. Prófaðu að búa þær til síðar í stillingunum.</value>
+  </data>
+  <data name="Dialog.Connectivity.Title" xml:space="preserve">
+    <value>Tengingarvilla</value>
+  </data>
+  <data name="Dialog.Connectivity.UnableToConnect" xml:space="preserve">
+    <value>NexusStrap getur ekki tengst {0}</value>
+  </data>
+  <data name="Dialog.Exception.Title" xml:space="preserve">
+    <value>Undantekning NexusStrap</value>
+  </data>
+  <data name="Dialog.LanguageSelector.Header" xml:space="preserve">
+    <value>Veldu valið tungumál</value>
+  </data>
+  <data name="Dialog.LanguageSelector.Subtext" xml:space="preserve">
+    <value>Veldu tungumál áður en uppsetning heldur áfram.
+Eitthvað af textanum gæti ekki verið þýtt á valið tungumál.</value>
+  </data>
+  <data name="Dialog.PlayerError.Crash" xml:space="preserve">
+    <value>Roblox hrundi.</value>
+  </data>
+  <data name="Dialog.PlayerError.FailedLaunch" xml:space="preserve">
+    <value>Ekki tókst að ræsa Roblox.</value>
+  </data>
+  <data name="Installer.Completion.Launch.Title" xml:space="preserve">
+    <value>Setja upp og ræsa Roblox</value>
+  </data>
+  <data name="Installer.Completion.Settings.Title" xml:space="preserve">
+    <value>Stilla NexusStrap valkosti</value>
+  </data>
+  <data name="Installer.Completion.Text" xml:space="preserve">
+    <value>NexusStrap var sett upp.
+
+Roblox er hins vegar ekki enn uppsett. Það verður sett upp þegar þú ræsir Roblox með NexusStrap í fyrsta skiptið. Fyrir uppsetningu gætirðu viljað stilla NexusStrap valkostina fyrst.
+
+Mikilvægt: Ekki nota flýtileiðina "Roblox Player" til að ræsa Roblox, því NexusStrap mun ekki geta ræst Roblox vegna árekstra. Ef þú sérð ekki NexusStrap ræsast þegar þú byrjar frá Roblox vefsíðunni skaltu einfaldlega ræsa Roblox með NexusStrap einu sinni úr skjáborðsforritinu til að leysa þetta vandamál.
+
+Hvað viltu gera?</value>
+  </data>
+  <data name="Installer.Completion.Title" xml:space="preserve">
+    <value>Lok</value>
+  </data>
+  <data name="Installer.FailedToImportSettings" xml:space="preserve">
+    <value>Mistókst að flytja inn NexusStrap stillingar.
+
+{0}</value>
+  </data>
+  <data name="Installer.Install.Title" xml:space="preserve">
+    <value>Setja upp</value>
+  </data>
+  <data name="Installer.ShouldCancel" xml:space="preserve">
+    <value>Ertu viss um að þú viljir hætta við uppsetningu?</value>
+  </data>
+  <data name="Installer.Title" xml:space="preserve">
+    <value>NexusStrap uppsetningarforrit</value>
+  </data>
+  <data name="Installer.Welcome.MainText" xml:space="preserve">
+    <value>Takk fyrir að sækja NexusStrap.
+
+Eina opinbera heimildin til að sækja NexusStrap er {0}, svo vinsamlegast staðfestu að þú hafir sótt það frá opinberum aðila.
+
+Þetta uppsetningarferli verður hratt og einfalt og þú getur stillt allar NexusStrap stillingar eftir uppsetningu.</value>
+  </data>
+  <data name="Installer.Welcome.NextToContinue" xml:space="preserve">
+    <value>Smelltu á 'Næsta' til að halda áfram.</value>
+  </data>
+  <data name="Installer.Welcome.Title" xml:space="preserve">
+    <value>Velkomin(n)</value>
+  </data>
+  <data name="LaunchMenu.ConfigureSettings" xml:space="preserve">
+    <value>Stilla valkosti</value>
+  </data>
+  <data name="LaunchMenu.Discord" xml:space="preserve">
+    <value>Ganga í Discord þjóninn okkar</value>
+  </data>
+  <data name="LaunchMenu.LaunchRoblox" xml:space="preserve">
+    <value>Ræsa Roblox</value>
+  </data>
+  <data name="LaunchMenu.LaunchRobloxStudio" xml:space="preserve">
+    <value>Ræsa Roblox Studio</value>
+  </data>
+  <data name="Menu.About.Title" xml:space="preserve">
+    <value>Um</value>
+  </data>
+  <data name="Menu.AccountManager.Title" xml:space="preserve">
+    <value>Reikningsstjóri</value>
+  </data>
+  <data name="Menu.Appearance.Title" xml:space="preserve">
+    <value>Útlit</value>
+  </data>
+  <data name="Menu.Behaviour.Title" xml:space="preserve">
+    <value>Bootstrapper</value>
+  </data>
+  <data name="Menu.FastFlags.Title" xml:space="preserve">
+    <value>FastFlag stillingar</value>
+  </data>
+  <data name="Menu.Integrations.ActivityTracking" xml:space="preserve">
+    <value>Virknimæling</value>
+  </data>
+  <data name="Menu.Integrations.Description" xml:space="preserve">
+    <value>Stilltu viðbótarvirkni til að vinna með Roblox.</value>
+  </data>
+  <data name="Menu.Integrations.EnableActivityTracking.Description" xml:space="preserve">
+    <value>Gerir NexusStrap kleift að greina hvaða Roblox leik þú spilar. Sumir eiginleikar geta krafist þessa.</value>
+  </data>
+  <data name="Menu.Integrations.EnableActivityTracking.Title" xml:space="preserve">
+    <value>Virkja virknimælingu</value>
+  </data>
+  <data name="Menu.Integrations.PlaytimeCounter.Description" xml:space="preserve">
+    <value>Sýnir heildarspilatíma þinn og tíma núverandi lotu þegar þú ert í leik eða Studio stað.</value>
+  </data>
+  <data name="Menu.Integrations.PlaytimeCounter.Title" xml:space="preserve">
+    <value>Spilatímamælir</value>
+  </data>
+  <data name="Menu.Integrations.QueryServerLocation.Description" xml:space="preserve">
+    <value>Þegar þú ert í leik geturðu séð hvar þjónninn þinn er staðsettur í gegnum [ipinfo.io](https://ipinfo.io).</value>
+  </data>
+  <data name="Menu.Integrations.QueryServerLocation.Title" xml:space="preserve">
+    <value>Fyrirspurn um staðsetningu þjóns</value>
+  </data>
+  <data name="Menu.Integrations.QueryServerUptime.Description" xml:space="preserve">
+    <value>Sýnir hve langt er síðan þjónninn sást fyrst í þessari lotu.</value>
+  </data>
+  <data name="Menu.Integrations.QueryServerUptime.Title" xml:space="preserve">
+    <value>Fyrirspurn um keyrslutíma þjóns</value>
+  </data>
+  <data name="Menu.Integrations.StartMenuTile.Description" xml:space="preserve">
+    <value>Bætir NexusStrap flýtileið við Start valmyndina þína fyrir hraða Roblox ræsingu. Windows 10/11 styðja ekki lengur lifandi flísar, svo klassísk flýtileið er notuð.</value>
+  </data>
+  <data name="Menu.Integrations.StartMenuTile.Title" xml:space="preserve">
+    <value>Flýtileið í Start valmynd</value>
+  </data>
+  <data name="Menu.Integrations.Title" xml:space="preserve">
+    <value>Samþættingar</value>
+  </data>
+  <data name="Menu.RegionSelector.Title" xml:space="preserve">
+    <value>Svæðisveljari</value>
+  </data>
+  <data name="Menu.RobloxSettings.Title" xml:space="preserve">
+    <value>Roblox stillingar</value>
+  </data>
+  <data name="Menu.TestMode" xml:space="preserve">
+    <value>Prófunarhamur</value>
+  </data>
+  <data name="Menu.Title" xml:space="preserve">
+    <value>Stillingar NexusStrap</value>
+  </data>
+  <data name="ServerBrowser.FetchFailed" xml:space="preserve">
+    <value>Mistókst að hlaða þjóna. Vinsamlegast reyndu aftur.</value>
+  </data>
+  <data name="ServerBrowser.FilterAny" xml:space="preserve">
+    <value>Hvaða sem er</value>
+  </data>
+  <data name="ServerBrowser.FilterEmpty" xml:space="preserve">
+    <value>Tómt</value>
+  </data>
+  <data name="ServerBrowser.FilterFull" xml:space="preserve">
+    <value>75% eða meira fullur</value>
+  </data>
+  <data name="ServerBrowser.FilterHalf" xml:space="preserve">
+    <value>25-50% fullur</value>
+  </data>
+  <data name="ServerBrowser.FilterQuarter" xml:space="preserve">
+    <value>Minna en 25% fullur</value>
+  </data>
+  <data name="ServerBrowser.FilterThreeQuarter" xml:space="preserve">
+    <value>50-75% fullur</value>
+  </data>
+  <data name="ServerBrowser.FilterUptime1To3" xml:space="preserve">
+    <value>1-3 klst</value>
+  </data>
+  <data name="ServerBrowser.FilterUptime3To6" xml:space="preserve">
+    <value>3-6 klst</value>
+  </data>
+  <data name="ServerBrowser.FilterUptimeOver6" xml:space="preserve">
+    <value>Meira en 6 klst</value>
+  </data>
+  <data name="ServerBrowser.FilterUptimeUnder1" xml:space="preserve">
+    <value>Minna en 1 klst</value>
+  </data>
+  <data name="ServerBrowser.Game" xml:space="preserve">
+    <value>Leikur</value>
+  </data>
+  <data name="ServerBrowser.Join" xml:space="preserve">
+    <value>Tengjast</value>
+  </data>
+  <data name="ServerBrowser.LoadMore" xml:space="preserve">
+    <value>Sækja meira</value>
+  </data>
+  <data name="ServerBrowser.NoGame" xml:space="preserve">
+    <value>Veldu leik eða sláðu inn staðarauðkenni til að vafra um þjóna.</value>
+  </data>
+  <data name="ServerBrowser.NoServers" xml:space="preserve">
+    <value>Engir þjónar fundust fyrir núverandi síur.</value>
+  </data>
+  <data name="ServerBrowser.PlaceId" xml:space="preserve">
+    <value>Staðarauðkenni</value>
+  </data>
+  <data name="ServerBrowser.PlayerCount" xml:space="preserve">
+    <value>Fjöldi leikmanna</value>
+  </data>
+  <data name="ServerBrowser.Players" xml:space="preserve">
+    <value>Leikmenn</value>
+  </data>
+  <data name="ServerBrowser.Refresh" xml:space="preserve">
+    <value>Endurnýja</value>
+  </data>
+  <data name="ServerBrowser.Region" xml:space="preserve">
+    <value>Svæði</value>
+  </data>
+  <data name="ServerBrowser.RegionHint" xml:space="preserve">
+    <value>Skráðu þig inn í reikningsstjóra til að greina svæði þjóna.</value>
+  </data>
+  <data name="ServerBrowser.ServerId" xml:space="preserve">
+    <value>Þjónsauðkenni</value>
+  </data>
+  <data name="ServerBrowser.Status" xml:space="preserve">
+    <value>Sýni {0} þjón(a).</value>
+  </data>
+  <data name="ServerBrowser.Title" xml:space="preserve">
+    <value>Vafri fyrir þjóna</value>
+  </data>
+  <data name="ServerBrowser.Uptime" xml:space="preserve">
+    <value>Keyrslutími</value>
+  </data>
+</root>

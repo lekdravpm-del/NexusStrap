@@ -210,6 +210,19 @@
                     </Grid>
                 </MenuItem.Header>
             </MenuItem>
+
+            <MenuItem Click="ExitNexusStrap_Click">
+                <MenuItem.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="24" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <ui:SymbolIcon Grid.Column="0" Symbol="DismissSquare24"/>
+                        <TextBlock Grid.Column="1" VerticalAlignment="Center" Margin="4,0,0,0" Text="Exit NexusStrap" FontWeight="Bold" />
+                    </Grid>
+                </MenuItem.Header>
+            </MenuItem>
         </ContextMenu>
     </ui:UiWindow.ContextMenu>
 </base:WpfUiWindow>

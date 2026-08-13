@@ -123,6 +123,12 @@ namespace NexusStrap.UI.ViewModels.Settings
             set => App.Settings.Prop.AutoRejoin = value;
         }
 
+        public bool EnableStartMenuTile
+        {
+            get => App.Settings.Prop.EnableStartMenuTile;
+            set => App.Settings.Prop.EnableStartMenuTile = value;
+        }
+
         public bool ShowGameHistoryEnabled
         {
             get => App.Settings.Prop.ShowGameHistoryMenu;

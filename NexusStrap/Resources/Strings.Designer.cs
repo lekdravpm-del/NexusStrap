@@ -6315,5 +6315,257 @@ namespace NexusStrap.Resources {
                 return ResourceManager.GetString("OptimizationSetup.Apply", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Server Browser.
+        /// </summary>
+        public static string ServerBrowser_Title {
+            get {
+                return ResourceManager.GetString("ServerBrowser.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Game.
+        /// </summary>
+        public static string ServerBrowser_Game {
+            get {
+                return ResourceManager.GetString("ServerBrowser.Game", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Place ID.
+        /// </summary>
+        public static string ServerBrowser_PlaceId {
+            get {
+                return ResourceManager.GetString("ServerBrowser.PlaceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Player Count.
+        /// </summary>
+        public static string ServerBrowser_PlayerCount {
+            get {
+                return ResourceManager.GetString("ServerBrowser.PlayerCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Region.
+        /// </summary>
+        public static string ServerBrowser_Region {
+            get {
+                return ResourceManager.GetString("ServerBrowser.Region", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uptime.
+        /// </summary>
+        public static string ServerBrowser_Uptime {
+            get {
+                return ResourceManager.GetString("ServerBrowser.Uptime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Refresh.
+        /// </summary>
+        public static string ServerBrowser_Refresh {
+            get {
+                return ResourceManager.GetString("ServerBrowser.Refresh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Load More.
+        /// </summary>
+        public static string ServerBrowser_LoadMore {
+            get {
+                return ResourceManager.GetString("ServerBrowser.LoadMore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Join.
+        /// </summary>
+        public static string ServerBrowser_Join {
+            get {
+                return ResourceManager.GetString("ServerBrowser.Join", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Players.
+        /// </summary>
+        public static string ServerBrowser_Players {
+            get {
+                return ResourceManager.GetString("ServerBrowser.Players", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Server ID.
+        /// </summary>
+        public static string ServerBrowser_ServerId {
+            get {
+                return ResourceManager.GetString("ServerBrowser.ServerId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Any.
+        /// </summary>
+        public static string ServerBrowser_FilterAny {
+            get {
+                return ResourceManager.GetString("ServerBrowser.FilterAny", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Empty.
+        /// </summary>
+        public static string ServerBrowser_FilterEmpty {
+            get {
+                return ResourceManager.GetString("ServerBrowser.FilterEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Less than 25% full.
+        /// </summary>
+        public static string ServerBrowser_FilterQuarter {
+            get {
+                return ResourceManager.GetString("ServerBrowser.FilterQuarter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 25-50% full.
+        /// </summary>
+        public static string ServerBrowser_FilterHalf {
+            get {
+                return ResourceManager.GetString("ServerBrowser.FilterHalf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 50-75% full.
+        /// </summary>
+        public static string ServerBrowser_FilterThreeQuarter {
+            get {
+                return ResourceManager.GetString("ServerBrowser.FilterThreeQuarter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 75% or more full.
+        /// </summary>
+        public static string ServerBrowser_FilterFull {
+            get {
+                return ResourceManager.GetString("ServerBrowser.FilterFull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Less than 1 hour.
+        /// </summary>
+        public static string ServerBrowser_FilterUptimeUnder1 {
+            get {
+                return ResourceManager.GetString("ServerBrowser.FilterUptimeUnder1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1-3 hours.
+        /// </summary>
+        public static string ServerBrowser_FilterUptime1To3 {
+            get {
+                return ResourceManager.GetString("ServerBrowser.FilterUptime1To3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 3-6 hours.
+        /// </summary>
+        public static string ServerBrowser_FilterUptime3To6 {
+            get {
+                return ResourceManager.GetString("ServerBrowser.FilterUptime3To6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to More than 6 hours.
+        /// </summary>
+        public static string ServerBrowser_FilterUptimeOver6 {
+            get {
+                return ResourceManager.GetString("ServerBrowser.FilterUptimeOver6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a game or enter a Place ID to browse servers..
+        /// </summary>
+        public static string ServerBrowser_NoGame {
+            get {
+                return ResourceManager.GetString("ServerBrowser.NoGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No servers found for the current filters..
+        /// </summary>
+        public static string ServerBrowser_NoServers {
+            get {
+                return ResourceManager.GetString("ServerBrowser.NoServers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Showing {0} server(s)..
+        /// </summary>
+        public static string ServerBrowser_Status {
+            get {
+                return ResourceManager.GetString("ServerBrowser.Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to load servers. Please try again..
+        /// </summary>
+        public static string ServerBrowser_FetchFailed {
+            get {
+                return ResourceManager.GetString("ServerBrowser.FetchFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log in to Account Manager to detect server regions..
+        /// </summary>
+        public static string ServerBrowser_RegionHint {
+            get {
+                return ResourceManager.GetString("ServerBrowser.RegionHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start Menu Shortcut.
+        /// </summary>
+        public static string Menu_Integrations_StartMenuTile_Title {
+            get {
+                return ResourceManager.GetString("Menu.Integrations.StartMenuTile.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adds a NexusStrap shortcut to your Start Menu for quick Roblox launches. Windows 10/11 no longer support live tiles, so a classic shortcut is used instead..
+        /// </summary>
+        public static string Menu_Integrations_StartMenuTile_Description {
+            get {
+                return ResourceManager.GetString("Menu.Integrations.StartMenuTile.Description", resourceCulture);
+            }
+        }
     }
 }

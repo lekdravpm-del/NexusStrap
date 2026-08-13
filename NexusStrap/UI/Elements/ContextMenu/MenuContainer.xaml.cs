@@ -179,6 +179,20 @@ namespace NexusStrap.UI.Elements.ContextMenu
         private void Window_Closed(object sender, EventArgs e) => App.Logger.WriteLine("MenuContainer::Window_Closed", "Context menu container closed");
         private void CloseWatcheMenuItem_Click(object sender, RoutedEventArgs e) => _watcher.Dispose();
 
+        private void ExitNexusStrap_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = Frontend.ShowMessageBox(
+                "Are you sure you want to exit NexusStrap?\n\nThis will close the tray icon and all background processes.",
+                MessageBoxImage.Question,
+                MessageBoxButton.YesNo
+            );
+
+            if (result != MessageBoxResult.Yes)
+                return;
+
+            App.SoftTerminate();
+        }
+
         private void PopulateQuickLaunch()
         {
             const string LOG_IDENT = "MenuContainer::PopulateQuickLaunch";

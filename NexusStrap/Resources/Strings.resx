@@ -2301,4 +2301,88 @@ Would you like to switch your preferred channel to {0}?</value>
   <data name="OptimizationSetup.Apply" xml:space="preserve">
     <value>Apply Recommended Settings</value>
   </data>
+  <data name="ServerBrowser.Title" xml:space="preserve">
+    <value>Server Browser</value>
+  </data>
+  <data name="ServerBrowser.Game" xml:space="preserve">
+    <value>Game</value>
+  </data>
+  <data name="ServerBrowser.PlaceId" xml:space="preserve">
+    <value>Place ID</value>
+  </data>
+  <data name="ServerBrowser.PlayerCount" xml:space="preserve">
+    <value>Player Count</value>
+  </data>
+  <data name="ServerBrowser.Region" xml:space="preserve">
+    <value>Region</value>
+  </data>
+  <data name="ServerBrowser.Uptime" xml:space="preserve">
+    <value>Uptime</value>
+  </data>
+  <data name="ServerBrowser.Refresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="ServerBrowser.LoadMore" xml:space="preserve">
+    <value>Load More</value>
+  </data>
+  <data name="ServerBrowser.Join" xml:space="preserve">
+    <value>Join</value>
+  </data>
+  <data name="ServerBrowser.Players" xml:space="preserve">
+    <value>Players</value>
+  </data>
+  <data name="ServerBrowser.ServerId" xml:space="preserve">
+    <value>Server ID</value>
+  </data>
+  <data name="ServerBrowser.FilterAny" xml:space="preserve">
+    <value>Any</value>
+  </data>
+  <data name="ServerBrowser.FilterEmpty" xml:space="preserve">
+    <value>Empty</value>
+  </data>
+  <data name="ServerBrowser.FilterQuarter" xml:space="preserve">
+    <value>Less than 25% full</value>
+  </data>
+  <data name="ServerBrowser.FilterHalf" xml:space="preserve">
+    <value>25-50% full</value>
+  </data>
+  <data name="ServerBrowser.FilterThreeQuarter" xml:space="preserve">
+    <value>50-75% full</value>
+  </data>
+  <data name="ServerBrowser.FilterFull" xml:space="preserve">
+    <value>75% or more full</value>
+  </data>
+  <data name="ServerBrowser.FilterUptimeUnder1" xml:space="preserve">
+    <value>Less than 1 hour</value>
+  </data>
+  <data name="ServerBrowser.FilterUptime1To3" xml:space="preserve">
+    <value>1-3 hours</value>
+  </data>
+  <data name="ServerBrowser.FilterUptime3To6" xml:space="preserve">
+    <value>3-6 hours</value>
+  </data>
+  <data name="ServerBrowser.FilterUptimeOver6" xml:space="preserve">
+    <value>More than 6 hours</value>
+  </data>
+  <data name="ServerBrowser.NoGame" xml:space="preserve">
+    <value>Select a game or enter a Place ID to browse servers.</value>
+  </data>
+  <data name="ServerBrowser.NoServers" xml:space="preserve">
+    <value>No servers found for the current filters.</value>
+  </data>
+  <data name="ServerBrowser.Status" xml:space="preserve">
+    <value>Showing {0} server(s).</value>
+  </data>
+  <data name="ServerBrowser.FetchFailed" xml:space="preserve">
+    <value>Failed to load servers. Please try again.</value>
+  </data>
+  <data name="ServerBrowser.RegionHint" xml:space="preserve">
+    <value>Log in to Account Manager to detect server regions.</value>
+  </data>
+  <data name="Menu.Integrations.StartMenuTile.Title" xml:space="preserve">
+    <value>Start Menu Shortcut</value>
+  </data>
+  <data name="Menu.Integrations.StartMenuTile.Description" xml:space="preserve">
+    <value>Adds a NexusStrap shortcut to your Start Menu for quick Roblox launches. Windows 10/11 no longer support live tiles, so a classic shortcut is used instead.</value>
+  </data>
 </root>

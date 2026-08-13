@@ -1,0 +1,582 @@
+﻿<?xml version="1.0" encoding="utf-8"?><root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Bootstrapper.Status.ApplyingModifications" xml:space="preserve">
+    <value>Roblox संशोधन लागू हो रहे हैं...</value>
+  </data>
+  <data name="Bootstrapper.Status.Connecting" xml:space="preserve">
+    <value>Roblox से कनेक्ट हो रहा है...</value>
+  </data>
+  <data name="Bootstrapper.Status.Downloading" xml:space="preserve">
+    <value>डाउनलोड हो रहा है</value>
+  </data>
+  <data name="Bootstrapper.Status.Installing" xml:space="preserve">
+    <value>{product} इंस्टॉल हो रहा है...</value>
+  </data>
+  <data name="Bootstrapper.Status.Starting" xml:space="preserve">
+    <value>{product} शुरू हो रहा है...</value>
+  </data>
+  <data name="Bootstrapper.Status.Upgrading" xml:space="preserve">
+    <value>{product} अपग्रेड हो रहा है...</value>
+  </data>
+  <data name="Bootstrapper.Status.WaitingForData" xml:space="preserve">
+    <value>डेटा की प्रतीक्षा...</value>
+  </data>
+  <data name="Bootstrapper.Status.WaitingOtherInstances" xml:space="preserve">
+    <value>अन्य इंस्टेंस की प्रतीक्षा...</value>
+  </data>
+  <data name="Common.AddSingle" xml:space="preserve">
+    <value>एक जोड़ें</value>
+  </data>
+  <data name="Common.Analytics" xml:space="preserve">
+    <value>विश्लेषण</value>
+  </data>
+  <data name="Common.Automatic" xml:space="preserve">
+    <value>स्वचालित</value>
+  </data>
+  <data name="Common.Browse" xml:space="preserve">
+    <value>ब्राउज़ करें</value>
+  </data>
+  <data name="Common.Cancel" xml:space="preserve">
+    <value>रद्द करें</value>
+  </data>
+  <data name="Common.Channel" xml:space="preserve">
+    <value>चैनल</value>
+  </data>
+  <data name="Common.Choose" xml:space="preserve">
+    <value>चुनें</value>
+  </data>
+  <data name="Common.Close" xml:space="preserve">
+    <value>बंद करें</value>
+  </data>
+  <data name="Common.CopyAll" xml:space="preserve">
+    <value>सभी कॉपी करें</value>
+  </data>
+  <data name="Common.CreateNew" xml:space="preserve">
+    <value>नया बनाएं</value>
+  </data>
+  <data name="Common.Custom" xml:space="preserve">
+    <value>कस्टम</value>
+  </data>
+  <data name="Common.Debug" xml:space="preserve">
+    <value>डीबग</value>
+  </data>
+  <data name="Common.DebugMenu" xml:space="preserve">
+    <value>डीबग मेनू</value>
+  </data>
+  <data name="Common.Default" xml:space="preserve">
+    <value>डिफ़ॉल्ट</value>
+  </data>
+  <data name="Common.Delete" xml:space="preserve">
+    <value>हटाएं</value>
+  </data>
+  <data name="Common.DeleteAll" xml:space="preserve">
+    <value>सभी हटाएं</value>
+  </data>
+  <data name="Common.Deployment" xml:space="preserve">
+    <value>डिप्लॉयमेंट</value>
+  </data>
+  <data name="Common.Disabled" xml:space="preserve">
+    <value>अक्षम</value>
+  </data>
+  <data name="Common.DiscordRichPresence" xml:space="preserve">
+    <value>Discord Rich Presence</value>
+  </data>
+  <data name="Common.Edit" xml:space="preserve">
+    <value>संपादित करें</value>
+  </data>
+  <data name="Common.Experimental" xml:space="preserve">
+    <value>प्रायोगिक</value>
+  </data>
+  <data name="Common.Export" xml:space="preserve">
+    <value>निर्यात करें</value>
+  </data>
+  <data name="Common.FilterType" xml:space="preserve">
+    <value>फ़िल्टर प्रकार:</value>
+  </data>
+  <data name="Common.Help" xml:space="preserve">
+    <value>सहायता</value>
+  </data>
+  <data name="Common.Import" xml:space="preserve">
+    <value>आयात करें</value>
+  </data>
+  <data name="Common.ImportFromFile" xml:space="preserve">
+    <value>फ़ाइल से आयात करें</value>
+  </data>
+  <data name="Common.ImportJson" xml:space="preserve">
+    <value>JSON आयात करें</value>
+  </data>
+  <data name="Common.LauncherType" xml:space="preserve">
+    <value>प्रकार: लॉन्चर</value>
+  </data>
+  <data name="Common.Loading" xml:space="preserve">
+    <value>लोड हो रहा है, कृपया प्रतीक्षा करें...</value>
+  </data>
+  <data name="Common.Message" xml:space="preserve">
+    <value>संदेश</value>
+  </data>
+  <data name="Common.Miscellaneous" xml:space="preserve">
+    <value>विविध</value>
+  </data>
+  <data name="Common.Name" xml:space="preserve">
+    <value>नाम</value>
+  </data>
+  <data name="Common.New" xml:space="preserve">
+    <value>नया</value>
+  </data>
+  <data name="Common.No" xml:space="preserve">
+    <value>नहीं</value>
+  </data>
+  <data name="Common.NotAvailable" xml:space="preserve">
+    <value>उपलब्ध नहीं</value>
+  </data>
+  <data name="Common.OK" xml:space="preserve">
+    <value>ठीक है</value>
+  </data>
+  <data name="Common.OpenLogFile" xml:space="preserve">
+    <value>लॉग फ़ाइल खोलें</value>
+  </data>
+  <data name="Common.Performance" xml:space="preserve">
+    <value>प्रदर्शन</value>
+  </data>
+  <data name="Common.Presets" xml:space="preserve">
+    <value>प्रीसेट</value>
+  </data>
+  <data name="Common.Quality" xml:space="preserve">
+    <value>गुणवत्ता</value>
+  </data>
+  <data name="Common.Recommended" xml:space="preserve">
+    <value>अनुशंसित</value>
+  </data>
+  <data name="Common.Refresh" xml:space="preserve">
+    <value>रीफ्रेश</value>
+  </data>
+  <data name="Common.Remove" xml:space="preserve">
+    <value>हटाएं</value>
+  </data>
+  <data name="Common.Rename" xml:space="preserve">
+    <value>नाम बदलें</value>
+  </data>
+  <data name="Common.Reset" xml:space="preserve">
+    <value>रीसेट</value>
+  </data>
+  <data name="Common.RobloxNotInstalled" xml:space="preserve">
+    <value>Roblox अभी तक इंस्टॉल नहीं है। इस विकल्प का उपयोग करने से पहले कृपया NexusStrap के साथ कम से कम एक बार Roblox लॉन्च करें।</value>
+  </data>
+  <data name="Common.Search" xml:space="preserve">
+    <value>खोजें</value>
+  </data>
+  <data name="Common.Settings" xml:space="preserve">
+    <value>सेटिंग्स</value>
+  </data>
+  <data name="Common.Shortcuts" xml:space="preserve">
+    <value>शॉर्टकट</value>
+  </data>
+  <data name="Common.Studio" xml:space="preserve">
+    <value>स्टूडियो</value>
+  </data>
+  <data name="Common.SystemDefault" xml:space="preserve">
+    <value>सिस्टम डिफ़ॉल्ट</value>
+  </data>
+  <data name="Common.Time" xml:space="preserve">
+    <value>समय</value>
+  </data>
+  <data name="Common.Type" xml:space="preserve">
+    <value>प्रकार</value>
+  </data>
+  <data name="Common.UnknownStatus" xml:space="preserve">
+    <value>अज्ञात स्थिति</value>
+  </data>
+  <data name="Common.UserId" xml:space="preserve">
+    <value>उपयोगकर्ता आईडी</value>
+  </data>
+  <data name="Common.Username" xml:space="preserve">
+    <value>उपयोगकर्ता नाम</value>
+  </data>
+  <data name="Common.Value" xml:space="preserve">
+    <value>मान</value>
+  </data>
+  <data name="Common.Version" xml:space="preserve">
+    <value>संस्करण</value>
+  </data>
+  <data name="Common.Warning" xml:space="preserve">
+    <value>चेतावनी</value>
+  </data>
+  <data name="Common.Yes" xml:space="preserve">
+    <value>हां</value>
+  </data>
+  <data name="ContextMenu.CloseRoblox" xml:space="preserve">
+    <value>Roblox बंद करें</value>
+  </data>
+  <data name="ContextMenu.GameHistory.ClearHistory" xml:space="preserve">
+    <value>इतिहास साफ़ करें</value>
+  </data>
+  <data name="ContextMenu.GameHistory.NoHistory" xml:space="preserve">
+    <value>अभी तक कोई गेम इतिहास नहीं है{0}{0}उन्हें यहां देखने के लिए कुछ गेम में शामिल हों!</value>
+  </data>
+  <data name="ContextMenu.GameHistory.Refresh" xml:space="preserve">
+    <value>रीफ्रेश</value>
+  </data>
+  <data name="ContextMenu.GameHistory.Rejoin" xml:space="preserve">
+    <value>फिर से जुड़ें</value>
+  </data>
+  <data name="ContextMenu.GameHistory.Title" xml:space="preserve">
+    <value>गेम इतिहास</value>
+  </data>
+  <data name="ContextMenu.ServerInformation.Location" xml:space="preserve">
+    <value>स्थान</value>
+  </data>
+  <data name="ContextMenu.ServerInformation.Title" xml:space="preserve">
+    <value>सर्वर जानकारी</value>
+  </data>
+  <data name="ContextMenu.ServerInformation.Type" xml:space="preserve">
+    <value>प्रकार</value>
+  </data>
+  <data name="ContextMenu.ServerInformation.Uptime" xml:space="preserve">
+    <value>अनुमानित अपटाइम</value>
+  </data>
+  <data name="Dialog.AlreadyRunning.Installer" xml:space="preserve">
+    <value>कृपया इंस्टॉलेशन पूरा होने तक प्रतीक्षा करें।</value>
+  </data>
+  <data name="Dialog.CannotCreateShortcuts" xml:space="preserve">
+    <value>NexusStrap डेस्कटॉप और स्टार्ट मेनू के लिए शॉर्टकट नहीं बना सका। बाद में सेटिंग्स के माध्यम से उन्हें बनाने का प्रयास करें।</value>
+  </data>
+  <data name="Dialog.Connectivity.Title" xml:space="preserve">
+    <value>कनेक्शन त्रुटि</value>
+  </data>
+  <data name="Dialog.Connectivity.UnableToConnect" xml:space="preserve">
+    <value>NexusStrap {0} से कनेक्ट नहीं हो सकता</value>
+  </data>
+  <data name="Dialog.Exception.Title" xml:space="preserve">
+    <value>NexusStrap अपवाद</value>
+  </data>
+  <data name="Dialog.LanguageSelector.Header" xml:space="preserve">
+    <value>अपनी पसंदीदा भाषा चुनें</value>
+  </data>
+  <data name="Dialog.LanguageSelector.Subtext" xml:space="preserve">
+    <value>इंस्टॉलेशन जारी रखने से पहले एक भाषा चुनें।
+कुछ टेक्स्ट आपकी पसंदीदा भाषा में अनुवादित नहीं हो सकता।</value>
+  </data>
+  <data name="Dialog.PlayerError.Crash" xml:space="preserve">
+    <value>Roblox क्रैश हो गया।</value>
+  </data>
+  <data name="Dialog.PlayerError.FailedLaunch" xml:space="preserve">
+    <value>Roblox लॉन्च करने में विफल रहा।</value>
+  </data>
+  <data name="Installer.Completion.Launch.Title" xml:space="preserve">
+    <value>Roblox इंस्टॉल करें और लॉन्च करें</value>
+  </data>
+  <data name="Installer.Completion.Settings.Title" xml:space="preserve">
+    <value>NexusStrap सेटिंग्स कॉन्फ़िगर करें</value>
+  </data>
+  <data name="Installer.Completion.Text" xml:space="preserve">
+    <value>NexusStrap सफलतापूर्वक इंस्टॉल हो गया।
+
+हालांकि, Roblox अभी तक इंस्टॉल नहीं हुआ है। यह तब इंस्टॉल होगा जब आप पहली बार NexusStrap के साथ Roblox लॉन्च करेंगे। इंस्टॉलेशन से पहले, आप पहले NexusStrap की सेटिंग्स कॉन्फ़िगर करना चाह सकते हैं।
+
+महत्वपूर्ण नोट: Roblox लॉन्च करने के लिए "Roblox Player" शॉर्टकट का उपयोग न करें, क्योंकि संघर्षों के कारण NexusStrap Roblox लॉन्च नहीं कर पाएगा। यदि Roblox वेबसाइट से लॉन्च करते समय NexusStrap शुरू होता नहीं दिखता है, तो इस समस्या को हल करने के लिए डेस्कटॉप ऐप से एक बार NexusStrap के साथ Roblox लॉन्च करें।
+
+आप क्या करना चाहते हैं?</value>
+  </data>
+  <data name="Installer.Completion.Title" xml:space="preserve">
+    <value>समापन</value>
+  </data>
+  <data name="Installer.FailedToImportSettings" xml:space="preserve">
+    <value>NexusStrap सेटिंग्स आयात करने में विफल रहा।
+
+{0}</value>
+  </data>
+  <data name="Installer.Install.Title" xml:space="preserve">
+    <value>इंस्टॉल करें</value>
+  </data>
+  <data name="Installer.ShouldCancel" xml:space="preserve">
+    <value>क्या आप वाकई इंस्टॉलेशन रद्द करना चाहते हैं?</value>
+  </data>
+  <data name="Installer.Title" xml:space="preserve">
+    <value>NexusStrap इंस्टॉलर</value>
+  </data>
+  <data name="Installer.Welcome.MainText" xml:space="preserve">
+    <value>NexusStrap डाउनलोड करने के लिए धन्यवाद।
+
+NexusStrap डाउनलोड करने का एकमात्र आधिकारिक स्रोत {0} है, इसलिए कृपया सुनिश्चित करें कि आपने इसे आधिकारिक स्रोत से डाउनलोड किया है।
+
+यह इंस्टॉलेशन प्रक्रिया तेज़ और सरल होगी, और इंस्टॉलेशन के बाद आप NexusStrap की सभी सेटिंग्स कॉन्फ़िगर कर पाएंगे।</value>
+  </data>
+  <data name="Installer.Welcome.NextToContinue" xml:space="preserve">
+    <value>जारी रखने के लिए 'Next' पर क्लिक करें।</value>
+  </data>
+  <data name="Installer.Welcome.Title" xml:space="preserve">
+    <value>स्वागत है</value>
+  </data>
+  <data name="LaunchMenu.ConfigureSettings" xml:space="preserve">
+    <value>सेटिंग्स कॉन्फ़िगर करें</value>
+  </data>
+  <data name="LaunchMenu.Discord" xml:space="preserve">
+    <value>हमारे Discord सर्वर से जुड़ें</value>
+  </data>
+  <data name="LaunchMenu.LaunchRoblox" xml:space="preserve">
+    <value>Roblox लॉन्च करें</value>
+  </data>
+  <data name="LaunchMenu.LaunchRobloxStudio" xml:space="preserve">
+    <value>Roblox Studio लॉन्च करें</value>
+  </data>
+  <data name="Menu.About.Title" xml:space="preserve">
+    <value>के बारे में</value>
+  </data>
+  <data name="Menu.AccountManager.Title" xml:space="preserve">
+    <value>खाता प्रबंधक</value>
+  </data>
+  <data name="Menu.Appearance.Title" xml:space="preserve">
+    <value>दिखावट</value>
+  </data>
+  <data name="Menu.Behaviour.Title" xml:space="preserve">
+    <value>बूटस्ट्रैपर</value>
+  </data>
+  <data name="Menu.FastFlags.Title" xml:space="preserve">
+    <value>FastFlag सेटिंग्स</value>
+  </data>
+  <data name="Menu.Integrations.ActivityTracking" xml:space="preserve">
+    <value>गतिविधि ट्रैकिंग</value>
+  </data>
+  <data name="Menu.Integrations.Description" xml:space="preserve">
+    <value>Roblox के साथ अतिरिक्त कार्यक्षमता कॉन्फ़िगर करें।</value>
+  </data>
+  <data name="Menu.Integrations.EnableActivityTracking.Description" xml:space="preserve">
+    <value>NexusStrap को यह पता लगाने की अनुमति देता है कि आप कौन सा Roblox गेम खेल रहे हैं। कुछ सुविधाओं को इसकी आवश्यकता हो सकती है।</value>
+  </data>
+  <data name="Menu.Integrations.EnableActivityTracking.Title" xml:space="preserve">
+    <value>गतिविधि ट्रैकिंग सक्षम करें</value>
+  </data>
+  <data name="Menu.Integrations.PlaytimeCounter.Description" xml:space="preserve">
+    <value>गेम या स्टूडियो स्थान में रहते हुए आपका कुल प्लेटाइम और वर्तमान सत्र समय दिखाता है।</value>
+  </data>
+  <data name="Menu.Integrations.PlaytimeCounter.Title" xml:space="preserve">
+    <value>प्लेटाइम काउंटर</value>
+  </data>
+  <data name="Menu.Integrations.QueryServerLocation.Description" xml:space="preserve">
+    <value>गेम में रहते हुए, आप [ipinfo.io](https://ipinfo.io) के माध्यम से देख पाएंगे कि आपका सर्वर कहां स्थित है।</value>
+  </data>
+  <data name="Menu.Integrations.QueryServerLocation.Title" xml:space="preserve">
+    <value>सर्वर स्थान पूछें</value>
+  </data>
+  <data name="Menu.Integrations.QueryServerUptime.Description" xml:space="preserve">
+    <value>दिखाता है कि इस सत्र में सर्वर को पहली बार कितने समय पहले देखा गया था।</value>
+  </data>
+  <data name="Menu.Integrations.QueryServerUptime.Title" xml:space="preserve">
+    <value>सर्वर अपटाइम पूछें</value>
+  </data>
+  <data name="Menu.Integrations.StartMenuTile.Description" xml:space="preserve">
+    <value>तेज़ Roblox लॉन्च के लिए आपके स्टार्ट मेनू में एक NexusStrap शॉर्टकट जोड़ता है। Windows 10/11 अब लाइव टाइल का समर्थन नहीं करते, इसलिए एक क्लासिक शॉर्टकट का उपयोग किया जाता है।</value>
+  </data>
+  <data name="Menu.Integrations.StartMenuTile.Title" xml:space="preserve">
+    <value>स्टार्ट मेनू शॉर्टकट</value>
+  </data>
+  <data name="Menu.Integrations.Title" xml:space="preserve">
+    <value>एकीकरण</value>
+  </data>
+  <data name="Menu.RegionSelector.Title" xml:space="preserve">
+    <value>क्षेत्र चयनकर्ता</value>
+  </data>
+  <data name="Menu.RobloxSettings.Title" xml:space="preserve">
+    <value>Roblox सेटिंग्स</value>
+  </data>
+  <data name="Menu.TestMode" xml:space="preserve">
+    <value>परीक्षण मोड</value>
+  </data>
+  <data name="Menu.Title" xml:space="preserve">
+    <value>NexusStrap सेटिंग्स</value>
+  </data>
+  <data name="ServerBrowser.FetchFailed" xml:space="preserve">
+    <value>सर्वर लोड करने में विफल। कृपया फिर से प्रयास करें।</value>
+  </data>
+  <data name="ServerBrowser.FilterAny" xml:space="preserve">
+    <value>कोई भी</value>
+  </data>
+  <data name="ServerBrowser.FilterEmpty" xml:space="preserve">
+    <value>खाली</value>
+  </data>
+  <data name="ServerBrowser.FilterFull" xml:space="preserve">
+    <value>75% या अधिक भरा</value>
+  </data>
+  <data name="ServerBrowser.FilterHalf" xml:space="preserve">
+    <value>25-50% भरा</value>
+  </data>
+  <data name="ServerBrowser.FilterQuarter" xml:space="preserve">
+    <value>25% से कम भरा</value>
+  </data>
+  <data name="ServerBrowser.FilterThreeQuarter" xml:space="preserve">
+    <value>50-75% भरा</value>
+  </data>
+  <data name="ServerBrowser.FilterUptime1To3" xml:space="preserve">
+    <value>1-3 घंटे</value>
+  </data>
+  <data name="ServerBrowser.FilterUptime3To6" xml:space="preserve">
+    <value>3-6 घंटे</value>
+  </data>
+  <data name="ServerBrowser.FilterUptimeOver6" xml:space="preserve">
+    <value>6 घंटे से अधिक</value>
+  </data>
+  <data name="ServerBrowser.FilterUptimeUnder1" xml:space="preserve">
+    <value>1 घंटे से कम</value>
+  </data>
+  <data name="ServerBrowser.Game" xml:space="preserve">
+    <value>गेम</value>
+  </data>
+  <data name="ServerBrowser.Join" xml:space="preserve">
+    <value>शामिल हों</value>
+  </data>
+  <data name="ServerBrowser.LoadMore" xml:space="preserve">
+    <value>और लोड करें</value>
+  </data>
+  <data name="ServerBrowser.NoGame" xml:space="preserve">
+    <value>सर्वर ब्राउज़ करने के लिए एक गेम चुनें या प्लेस आईडी दर्ज करें।</value>
+  </data>
+  <data name="ServerBrowser.NoServers" xml:space="preserve">
+    <value>वर्तमान फ़िल्टर के लिए कोई सर्वर नहीं मिला।</value>
+  </data>
+  <data name="ServerBrowser.PlaceId" xml:space="preserve">
+    <value>प्लेस आईडी</value>
+  </data>
+  <data name="ServerBrowser.PlayerCount" xml:space="preserve">
+    <value>खिलाड़ी संख्या</value>
+  </data>
+  <data name="ServerBrowser.Players" xml:space="preserve">
+    <value>खिलाड़ी</value>
+  </data>
+  <data name="ServerBrowser.Refresh" xml:space="preserve">
+    <value>रीफ्रेश</value>
+  </data>
+  <data name="ServerBrowser.Region" xml:space="preserve">
+    <value>क्षेत्र</value>
+  </data>
+  <data name="ServerBrowser.RegionHint" xml:space="preserve">
+    <value>सर्वर क्षेत्रों का पता लगाने के लिए खाता प्रबंधक में लॉग इन करें।</value>
+  </data>
+  <data name="ServerBrowser.ServerId" xml:space="preserve">
+    <value>सर्वर आईडी</value>
+  </data>
+  <data name="ServerBrowser.Status" xml:space="preserve">
+    <value>{0} सर्वर दिखाए जा रहे हैं।</value>
+  </data>
+  <data name="ServerBrowser.Title" xml:space="preserve">
+    <value>सर्वर ब्राउज़र</value>
+  </data>
+  <data name="ServerBrowser.Uptime" xml:space="preserve">
+    <value>अपटाइम</value>
+  </data>
+</root>
