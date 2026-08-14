@@ -98,6 +98,8 @@ namespace NexusStrap.UI
                 BootstrapperStyle.NexusStrapDialog => new NexusStrapDialog(),
                 BootstrapperStyle.FluentDialog => new FluentDialog(false),
                 BootstrapperStyle.FluentAeroDialog => new FluentDialog(true),
+                BootstrapperStyle.AuroraDialog => new AuroraDialog(),
+                BootstrapperStyle.NeonDialog => new NeonDialog(),
                 BootstrapperStyle.CustomDialog => GetCustomBootstrapper(),
                 _ => new FluentDialog(false)
             };

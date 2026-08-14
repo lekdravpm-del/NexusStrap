@@ -25,13 +25,7 @@ namespace NexusStrap.UI.Elements.Installer.Pages
                 window.SetNextButtonText(Strings.Common_Navigation_Next);
         }
 
-        private void ExpressInstall_Click(object sender, RoutedEventArgs e)
-        {
-            if (Window.GetWindow(this) is MainWindow window)
-                window.NextPage();
-        }
-
-        private void Customize_Click(object sender, RoutedEventArgs e)
+        private void Continue_Click(object sender, RoutedEventArgs e)
         {
             if (Window.GetWindow(this) is MainWindow window)
                 window.NextPage();

@@ -353,7 +353,11 @@ namespace NexusStrap.Integrations
                 if (accountInfo == null)
                 {
                     App.Logger.WriteLine(LOG_IDENT_QUICK_SIGN, "Quick Sign-In: failed to get account info with exchanged cookie.");
-                    try { await LogoutRoblosecurityAsync(roblosecurity).ConfigureAwait(false); } catch { }
+                    try { await LogoutRoblosecurityAsync(roblosecurity).ConfigureAwait(false); }
+                    catch (Exception ex)
+                    {
+                        App.Logger.WriteLine(LOG_IDENT_QUICK_SIGN, $"Failed to logout: {ex.Message}");
+                    }
                     Frontend.ShowMessageBox("Failed to get account information. Please try again.", MessageBoxImage.Error);
                     return null;
                 }
@@ -381,7 +385,11 @@ namespace NexusStrap.Integrations
                 cts.Cancel();
                 if (creation != null)
                 {
-                    try { await CancelQuickTokenAsync(creation.Code).ConfigureAwait(false); } catch { }
+                    try { await CancelQuickTokenAsync(creation.Code).ConfigureAwait(false); }
+                    catch (Exception ex)
+                    {
+                        App.Logger.WriteLine(LOG_IDENT_QUICK_SIGN, $"Failed to cancel quick token: {ex.Message}");
+                    }
                 }
 
                 App.RichPresence?.ClearDialog();
@@ -963,7 +971,7 @@ namespace NexusStrap.Integrations
                 App.Logger.WriteLine(LOG_IDENT_BROWSER, "Launching browser for account login...");
 
                 var fetcher = new BrowserFetcher();
-                string executablePath = null!;
+                string? executablePath = null;
 
                 var installed = fetcher.GetInstalledBrowsers().FirstOrDefault(b => b.Browser == SupportedBrowser.Chromium);
 

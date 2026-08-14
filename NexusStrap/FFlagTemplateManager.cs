@@ -4,6 +4,13 @@ namespace NexusStrap
 {
     public static class FFlagTemplateManager
     {
+        private static readonly HashSet<string> RendererPreferenceFlags = new(StringComparer.Ordinal)
+        {
+            "FFlagDebugGraphicsPreferD3D11",
+            "FFlagDebugGraphicsPreferVulkan",
+            "FFlagDebugGraphicsPreferOpenGL",
+        };
+
         private static readonly List<FFlagTemplate> _templates = new()
         {
             new FFlagTemplate
@@ -302,6 +309,99 @@ namespace NexusStrap
                     { "DFFlagTextureQualityOverrideEnabled", "True" },
                 }
             },
+
+            new FFlagTemplate
+            {
+                Name = "Unlock FPS 240",
+                Description = "Raises the frame rate cap from 60 to 240 for buttery smooth gameplay. Best paired with a high refresh rate monitor.",
+                Category = FFlagTemplateCategories.Performance,
+                Flags = new Dictionary<string, string>
+                {
+                    { "DFIntTaskSchedulerTargetFps", "240" },
+                    { "FFlagGameBasicSettingsFramerateCap", "False" },
+                }
+            },
+
+            new FFlagTemplate
+            {
+                Name = "Unlock FPS 144",
+                Description = "Raises the frame rate cap to 144. A gentler option than 240 for 144Hz displays.",
+                Category = FFlagTemplateCategories.Performance,
+                Flags = new Dictionary<string, string>
+                {
+                    { "DFIntTaskSchedulerTargetFps", "144" },
+                    { "FFlagGameBasicSettingsFramerateCap", "False" },
+                }
+            },
+
+            new FFlagTemplate
+            {
+                Name = "Brighter & Clearer",
+                Description = "Disables post-processing (bloom, vignette, color grading) for a brighter, clearer view. Makes dark games much easier to see.",
+                Category = FFlagTemplateCategories.VisualEffects,
+                Flags = new Dictionary<string, string>
+                {
+                    { "FFlagDisablePostFx", "True" },
+                }
+            },
+
+            new FFlagTemplate
+            {
+                Name = "Shadow Tuning",
+                Description = "Softens or removes heavy shadows so enemies and terrain stand out. Set to 0 to fully disable shadow intensity.",
+                Category = FFlagTemplateCategories.VisualEffects,
+                Flags = new Dictionary<string, string>
+                {
+                    { "FIntRenderShadowIntensity", "0" },
+                }
+            },
+
+            new FFlagTemplate
+            {
+                Name = "Future Is Bright Lighting",
+                Description = "Forces the new 'Future is Bright' shadow-map lighting engine for improved, more colorful lighting.",
+                Category = FFlagTemplateCategories.GraphicsQuality,
+                Flags = new Dictionary<string, string>
+                {
+                    { "FFlagDebugForceFutureIsBrightPhase2", "True" },
+                }
+            },
+
+            new FFlagTemplate
+            {
+                Name = "On-Screen FPS Counter",
+                Description = "Shows a small FPS counter in the corner of the game, handy for checking your performance after tuning flags.",
+                Category = FFlagTemplateCategories.Debug,
+                Flags = new Dictionary<string, string>
+                {
+                    { "FFlagDebugDisplayFPS", "True" },
+                }
+            },
+
+            new FFlagTemplate
+            {
+                Name = "Crisp Gameplay",
+                Description = "Disables post-processing and heavy shadows at once for the cleanest possible look during gameplay.",
+                Category = FFlagTemplateCategories.VisualEffects,
+                Flags = new Dictionary<string, string>
+                {
+                    { "FFlagDisablePostFx", "True" },
+                    { "FIntRenderShadowIntensity", "0" },
+                    { "DFIntDebugFRMQualityLevelOverride", "3" },
+                }
+            },
+
+            new FFlagTemplate
+            {
+                Name = "High Quality Textures",
+                Description = "Forces maximum texture quality so details, skins and surfaces stay sharp up close.",
+                Category = FFlagTemplateCategories.GraphicsQuality,
+                Flags = new Dictionary<string, string>
+                {
+                    { "DFIntTextureQualityOverride", "16" },
+                    { "DFFlagTextureQualityOverrideEnabled", "True" },
+                }
+            },
         };
 
         public static IReadOnlyList<FFlagTemplate> GetAll() => _templates.AsReadOnly();
@@ -332,6 +432,17 @@ namespace NexusStrap
 
             App.FastFlags.suspendUndoSnapshot = true;
             App.FastFlags.SaveUndoSnapshot();
+
+            // When the template pins a renderer, clear the others so two
+            // renderer preferences can never be active at the same time.
+            if (template.Flags.Keys.Any(RendererPreferenceFlags.Contains))
+            {
+                foreach (string rendererFlag in RendererPreferenceFlags)
+                {
+                    if (!template.Flags.ContainsKey(rendererFlag))
+                        App.FastFlags.SetValue(rendererFlag, null);
+                }
+            }
 
             foreach (var flag in template.Flags)
                 App.FastFlags.SetValue(flag.Key, flag.Value);

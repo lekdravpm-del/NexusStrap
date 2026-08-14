@@ -77,7 +77,10 @@ namespace NexusStrap.UI.ViewModels.Dialogs
                             };
                         }
                     }
-                    catch { /* Skip failed channels */ }
+                    catch (Exception ex)
+                    {
+                        App.Logger.WriteException("ChannelListViewModel::LoadChannels", ex);
+                        /* Skip failed channels */ }
                     finally { semaphore.Release(); }
                 });
 
@@ -115,7 +118,7 @@ namespace NexusStrap.UI.ViewModels.Dialogs
         {
             if (!File.Exists(CacheFilePath)) return null;
             try { return JsonSerializer.Deserialize<Dictionary<string, ChannelEntry>>(await File.ReadAllTextAsync(CacheFilePath)); }
-            catch { return null; }
+            catch (Exception ex) { App.Logger.WriteException("ChannelListViewModel::LoadCache", ex); return null; }
         }
 
         public class ChannelEntry

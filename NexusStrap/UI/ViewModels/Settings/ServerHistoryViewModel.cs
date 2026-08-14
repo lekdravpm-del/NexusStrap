@@ -28,6 +28,32 @@ namespace NexusStrap.UI.ViewModels.Settings
             LoadHistory();
         }
 
+        private async void Rejoin()
+        {
+            if (SelectedEntry == null || string.IsNullOrEmpty(SelectedEntry.JobId))
+                return;
+
+            try
+            {
+                var mgr = AccountManager.Shared;
+                if (mgr?.ActiveAccount == null)
+                {
+                    Frontend.ShowMessageBox("Please select an account first.", System.Windows.MessageBoxImage.Warning);
+                    return;
+                }
+
+                mgr.SetCurrentPlaceId(SelectedEntry.PlaceId.ToString());
+                mgr.SetCurrentServerInstanceId(SelectedEntry.JobId);
+
+                await mgr.LaunchAccountAsync(mgr.ActiveAccount, SelectedEntry.PlaceId, SelectedEntry.JobId);
+            }
+            catch (Exception ex)
+            {
+                App.Logger.WriteException("ServerHistoryViewModel::Rejoin", ex);
+                Frontend.ShowMessageBox($"Failed to rejoin server: {ex.Message}", System.Windows.MessageBoxImage.Error);
+            }
+        }
+
         private void LoadHistory()
         {
             HistoryEntries.Clear();
@@ -54,15 +80,10 @@ namespace NexusStrap.UI.ViewModels.Settings
                     });
                 }
             }
-            catch { }
-        }
-
-        private void Rejoin()
-        {
-            if (SelectedEntry == null || string.IsNullOrEmpty(SelectedEntry.JobId)) return;
-            var deeplink = $"roblox://experiences/start?placeId={SelectedEntry.PlaceId}&gameInstanceId={SelectedEntry.JobId}";
-            try { System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(deeplink) { UseShellExecute = true }); }
-            catch { }
+            catch (Exception ex)
+            {
+                App.Logger.WriteException("ServerHistoryViewModel::LoadHistoryFailed", ex);
+            }
         }
 
         private void ClearHistory()
@@ -73,7 +94,10 @@ namespace NexusStrap.UI.ViewModels.Settings
                 if (System.IO.File.Exists(historyPath)) System.IO.File.Delete(historyPath);
                 HistoryEntries.Clear();
             }
-            catch { }
+            catch (Exception ex)
+            {
+                App.Logger.WriteException("ServerHistoryViewModel::ClearHistoryFailed", ex);
+            }
         }
     }
 }

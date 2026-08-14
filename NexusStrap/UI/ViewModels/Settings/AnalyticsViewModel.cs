@@ -86,7 +86,10 @@ namespace NexusStrap.UI.ViewModels.Settings
                     });
                 }
             }
-            catch { }
+            catch (Exception ex)
+                {
+                    App.Logger.WriteException("AnalyticsViewModel::LoadStats", ex);
+                }
         }
     }
 }

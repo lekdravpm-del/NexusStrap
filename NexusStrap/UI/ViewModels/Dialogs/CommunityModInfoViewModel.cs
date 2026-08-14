@@ -50,7 +50,8 @@ namespace NexusStrap.UI.ViewModels.Dialogs
             var glyphTypeface = new GlyphTypeface(new Uri(fontPath));
             var color = Colors.White;
 
-            try { color = (Color)ColorConverter.ConvertFromString(Mod.HexCode ?? "#FFFFFF"); } catch { }
+            try { color = (Color)ColorConverter.ConvertFromString(Mod.HexCode ?? "#FFFFFF"); }
+            catch (Exception ex) { App.Logger.WriteException("CommunityModInfoViewModel::GenerateGlyphColor", ex); }
             var brush = new SolidColorBrush(color);
             brush.Freeze();
 

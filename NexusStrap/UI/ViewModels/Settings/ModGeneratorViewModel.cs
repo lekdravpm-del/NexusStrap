@@ -247,8 +247,11 @@ namespace NexusStrap.UI.ViewModels.Settings
                                 ColorBrush = PreviewBrush // Shared brush strategy
                             });
                         }
-                        catch { }
-                    });
+catch (Exception ex)
+                {
+                    App.Logger.WriteException("ModGeneratorViewModel::LoadGlyphPreview", ex);
+                }
+            });
                 }
 
                 GlyphItems = glyphItems;
@@ -321,12 +324,22 @@ namespace NexusStrap.UI.ViewModels.Settings
                     void DeleteExcept(string dir)
                     {
                         foreach (var file in Directory.GetFiles(dir))
-                            if (!preservePaths.Contains(Path.GetFullPath(file))) try { File.Delete(file); } catch { }
+                        {
+                            if (!preservePaths.Contains(Path.GetFullPath(file)))
+                            {
+                                try { File.Delete(file); }
+                                catch (Exception ex) { App.Logger.WriteException("ModGeneratorViewModel::DeleteExcept", ex); }
+                            }
+                        }
 
                         foreach (var subDir in Directory.GetDirectories(dir))
                         {
                             DeleteExcept(subDir);
-                            try { if (!Directory.EnumerateFileSystemEntries(subDir).Any() && !preservePaths.Contains(Path.GetFullPath(subDir))) Directory.Delete(subDir); } catch { }
+                            try
+                            {
+                                if (!Directory.EnumerateFileSystemEntries(subDir).Any() && !preservePaths.Contains(Path.GetFullPath(subDir))) Directory.Delete(subDir);
+                            }
+                            catch (Exception ex) { App.Logger.WriteException("ModGeneratorViewModel::DeleteExcept", ex); }
                         }
                     }
 
@@ -416,10 +429,10 @@ namespace NexusStrap.UI.ViewModels.Settings
 
         private bool IsValidHexColor(string hex) => !string.IsNullOrWhiteSpace(hex) && Regex.IsMatch(hex, "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$");
 
-        private void UpdateSolidColorFromHex(string hex)
+private void UpdateSolidColorFromHex(string hex)
         {
             try { _solidColor = System.Drawing.ColorTranslator.FromHtml(hex); }
-            catch { _solidColor = System.Drawing.Color.White; }
+            catch (Exception ex) { App.Logger.WriteException("ModGeneratorViewModel::UpdateSolidColor", ex); }
         }
 
         private void UpdateGlyphColors()

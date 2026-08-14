@@ -81,7 +81,7 @@ namespace NexusStrap.UI.ViewModels.Settings
             if (template == null) return;
 
             var result = Frontend.ShowMessageBox(
-                $"Apply '{template.Name}'?\n\nThis will set {template.Flags.Count} FFlag(s).",
+                $"Apply '{template.Name}'?\n\nThis will make {template.ChangeCount} FastFlag change(s).",
                 System.Windows.MessageBoxImage.Question,
                 System.Windows.MessageBoxButton.YesNo);
 
@@ -119,7 +119,7 @@ namespace NexusStrap.UI.ViewModels.Settings
                     FFlagTemplateManager.ApplyTemplate(template);
 
                     Frontend.ShowMessageBox(
-                        $"Imported and applied '{template.Name}' successfully!\n\n{template.Flags.Count} flags were set. Save your settings to make changes permanent.",
+                        $"Imported and applied '{template.Name}' successfully!\n\n{template.ChangeCount} FastFlag change(s) were made. Save your settings to make changes permanent.",
                         System.Windows.MessageBoxImage.Information);
                 }
                 catch (Exception ex)

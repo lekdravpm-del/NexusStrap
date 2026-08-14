@@ -80,19 +80,6 @@ namespace NexusStrap
 
         public void KillRobloxProcess() => CloseProcess(_watcherData!.ProcessId, true);
 
-        private static bool IsProcessAlive(int pid)
-        {
-            try
-            {
-                using var process = Process.GetProcessById(pid);
-                return !process.HasExited;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
         public void CloseProcess(int pid, bool force = false)
         {
             const string LOG_IDENT = "Watcher::CloseProcess";
@@ -126,20 +113,27 @@ namespace NexusStrap
             if (!_lock.IsAcquired || _watcherData is null)
                 return;
 
-            ActivityWatcher?.Start();
+            if (ActivityWatcher is not null)
+                _ = ActivityWatcher.Start();
+
+            int? exitCode = null;
 
             try
             {
-                while (!_cancellationTokenSource.Token.IsCancellationRequested &&
-                       IsProcessAlive(_watcherData.ProcessId))
-                {
-                    await Task.Delay(1000, _cancellationTokenSource.Token);
-                }
+                // Keep the Process instance until it exits. Looking it up after it has
+                // exited throws, which previously made crash recovery silently unreachable.
+                using var process = Process.GetProcessById(_watcherData.ProcessId);
+                await process.WaitForExitAsync(_cancellationTokenSource.Token);
+                exitCode = process.ExitCode;
             }
             catch (OperationCanceledException)
             {
                 App.Logger.WriteLine("Watcher::Run", "Watcher was cancelled");
                 return;
+            }
+            catch (Exception ex)
+            {
+                App.Logger.WriteException("Watcher::Run", ex);
             }
 
             if (_cancellationTokenSource.Token.IsCancellationRequested)
@@ -148,34 +142,33 @@ namespace NexusStrap
             // Crash Recovery: detect abnormal exit and auto-relaunch
             if (App.Settings.Prop.CrashRecoveryEnabled && _watcherData.LaunchMode == LaunchMode.Player)
             {
-                try
+                if (exitCode is int code && code != 0)
                 {
-                    using var process = Process.GetProcessById(_watcherData.ProcessId);
-                    if (process.HasExited && process.ExitCode != 0)
+                    App.Logger.WriteLine("Watcher::Run", $"Roblox crashed with exit code {code}. Crash recovery triggered.");
+                    for (int attempt = 1; attempt <= App.Settings.Prop.CrashRecoveryMaxRetries; attempt++)
                     {
-                        App.Logger.WriteLine("Watcher::Run", $"Roblox crashed with exit code {process.ExitCode}. Crash recovery triggered.");
-                        for (int attempt = 1; attempt <= App.Settings.Prop.CrashRecoveryMaxRetries; attempt++)
+                        App.Logger.WriteLine("Watcher::Run", $"Crash recovery attempt {attempt}/{App.Settings.Prop.CrashRecoveryMaxRetries}");
+                        try
                         {
-                            App.Logger.WriteLine("Watcher::Run", $"Crash recovery attempt {attempt}/{App.Settings.Prop.CrashRecoveryMaxRetries}");
-                            await Task.Delay(App.Settings.Prop.CrashRecoveryDelayMs);
-
-                            try
-                            {
-                                Process.Start(Paths.Process, "-player");
-                                App.Logger.WriteLine("Watcher::Run", "Crash recovery: relaunched Roblox successfully");
-                                return;
-                            }
-                            catch (Exception ex)
-                            {
-                                App.Logger.WriteException("Watcher::Run", ex);
-                            }
+                            await Task.Delay(App.Settings.Prop.CrashRecoveryDelayMs, _cancellationTokenSource.Token);
                         }
-                        App.Logger.WriteLine("Watcher::Run", "Crash recovery: all retry attempts exhausted");
+                        catch (OperationCanceledException)
+                        {
+                            return;
+                        }
+
+                        try
+                        {
+                            Process.Start(Paths.Process, "-player");
+                            App.Logger.WriteLine("Watcher::Run", "Crash recovery: relaunched Roblox successfully");
+                            return;
+                        }
+                        catch (Exception ex)
+                        {
+                            App.Logger.WriteException("Watcher::Run", ex);
+                        }
                     }
-                }
-                catch
-                {
-                    // Process may have already been cleaned up
+                    App.Logger.WriteLine("Watcher::Run", "Crash recovery: all retry attempts exhausted");
                 }
             }
 

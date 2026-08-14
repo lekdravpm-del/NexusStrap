@@ -431,7 +431,10 @@ namespace NexusStrap
                     {
                         proc.Kill();
                     }
-                    catch { }
+                    catch (Exception ex)
+                    {
+                        App.Logger.WriteLine(LOG_IDENT, $"Failed to kill RobloxCrashHandler process: {ex.Message}");
+                    }
                 }
             }
         }
@@ -1341,9 +1344,6 @@ namespace NexusStrap
                     _staticDirectory && (dirName != "WindowsPlayer" && dirName != "WindowsStudio64")
                     )
                 {
-                    // TODO: this is too expensive
-                    //Filesystem.AssertReadOnlyDirectory(dir);
-
                     // check if it's still being used first
                     // we dont want to accidentally delete the files of a running roblox instance
                     if (!TryDeleteRobloxInDirectory(dir))

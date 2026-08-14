@@ -42,7 +42,10 @@ namespace NexusStrap.UI.Elements.Settings.Pages
                 if (System.IO.File.Exists(StartMenuShortcutPath))
                     System.IO.File.Delete(StartMenuShortcutPath);
             }
-            catch { }
+            catch (Exception ex)
+            {
+                App.Logger.WriteException("IntegrationsPage::RemoveShortcut", ex);
+            }
         }
     }
 }

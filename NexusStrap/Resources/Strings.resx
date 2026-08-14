@@ -1631,6 +1631,12 @@ Would you like to enable Test Mode?</value>
   <data name="Dialog.Exception.Version" xml:space="preserve">
     <value>Version {0}</value>
   </data>
+  <data name="Enums.BootstrapperStyle.AuroraDialog" xml:space="preserve">
+    <value>Nexus 1.2 Aurora</value>
+  </data>
+  <data name="Enums.BootstrapperStyle.NeonDialog" xml:space="preserve">
+    <value>Neon</value>
+  </data>
   <data name="Enums.BootstrapperStyle.CustomDialog" xml:space="preserve">
     <value>Custom</value>
   </data>

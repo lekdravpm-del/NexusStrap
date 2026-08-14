@@ -9,8 +9,8 @@
     <UseWPF>true</UseWPF>
     <UseWindowsForms>True</UseWindowsForms>
     <ApplicationIcon>NX.ico</ApplicationIcon>
-    <Version>2.0.8</Version>
-    <FileVersion>2.0.8</FileVersion>
+    <Version>2.0.9</Version>
+    <FileVersion>2.0.9</FileVersion>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
@@ -22,6 +22,24 @@
     <Description>NexusStrap - Roblox bootstrapper with settings, integrations and customization.</Description>
     <Copyright>Copyright (c) 2026 NexusStrap</Copyright>
     <RepositoryUrl>https://github.com/lekdravpm-del/NexusStrap</RepositoryUrl>
+  </PropertyGroup>
+
+  <!-- Framework-dependent deployment: requires the .NET 10 Desktop Runtime on the user machine.
+       No runtime is bundled, no self-contained output, no AOT. When the Desktop Runtime is
+       missing, the generated apphost .exe shows the standard error dialog telling the user
+       that .NET 10 is required, with a link to install it. -->
+  <PropertyGroup>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>false</SelfContained>
+    <PublishSingleFile>true</PublishSingleFile>
+    <UseAppHost>true</UseAppHost>
+    <PublishReadyToRun>false</PublishReadyToRun>
+  </PropertyGroup>
+
+  <!-- Release builds/publishes: no PDBs, no source references. -->
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
   </PropertyGroup>
 
   <ItemGroup>
@@ -116,7 +134,6 @@
     <PackageReference Include="securifybv.ShellLink" Version="0.1.0" />
     <PackageReference Include="SharpZipLib" Version="1.4.2" />
     <PackageReference Include="XamlAnimatedGif" Version="2.3.1" />
-    <PackageReference Include="System.Management" Version="10.0.0-preview.4.25258.110" />
   </ItemGroup>
 
   <ItemGroup>

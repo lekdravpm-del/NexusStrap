@@ -138,6 +138,7 @@ namespace NexusStrap.UI.ViewModels.Installer
             }
 
             installer.DoInstall();
+            installer.EnsureShortcuts();
             return true;
         }
 

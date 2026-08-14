@@ -213,7 +213,10 @@ namespace NexusStrap.UI.ViewModels.Settings
                     });
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                App.Logger.WriteException("ServerBrowserViewModel::LoadGames", ex);
+            }
         }
 
         private long ResolvePlaceId()
@@ -366,7 +369,7 @@ namespace NexusStrap.UI.ViewModels.Settings
 
             var deeplink = $"roblox://experiences/start?placeId={placeId}&gameInstanceId={server.Id}";
             try { System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(deeplink) { UseShellExecute = true }); }
-            catch { }
+            catch (Exception ex) { App.Logger.WriteException("ServerBrowserViewModel::JoinServer", ex); }
         }
     }
 }

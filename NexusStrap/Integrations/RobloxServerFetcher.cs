@@ -295,7 +295,10 @@ namespace NexusStrap.Integrations
 
                         if (server.Region != "Unknown") placeCache[server.Id] = server;
                     }
-                    catch { }
+                    catch (Exception ex)
+                    {
+                        App.Logger.WriteException("RobloxServerFetcher::FetchInstances", ex);
+                    }
                 });
             }
 

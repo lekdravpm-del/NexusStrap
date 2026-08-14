@@ -173,10 +173,21 @@ namespace NexusStrap
                 if (!File.Exists(FileLocation)) return false;
                 string? dir = Path.GetDirectoryName(exportPath);
                 if (!string.IsNullOrEmpty(dir)) Directory.CreateDirectory(dir);
-                File.Copy(FileLocation, exportPath, true);
-                return true;
+                try
+                {
+                    File.Copy(FileLocation, exportPath, true);
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    App.Logger.WriteException("GBSEditor::ExportSettings", ex);
+                }
             }
-            catch { return false; }
+            catch (Exception ex)
+            {
+                App.Logger.WriteException("GBSEditor::ExportSettings", ex);
+            }
+            return false;
         }
 
         public bool ImportSettings(string importPath)
@@ -185,11 +196,22 @@ namespace NexusStrap
             {
                 if (!File.Exists(importPath)) return false;
                 SetReadOnly(false, true);
-                File.Copy(importPath, FileLocation, true);
-                Load();
-                return true;
+                try
+                {
+                    File.Copy(importPath, FileLocation, true);
+                    Load();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    App.Logger.WriteException("GBSEditor::ImportSettings", ex);
+                }
             }
-            catch { return false; }
+            catch (Exception ex)
+            {
+                App.Logger.WriteException("GBSEditor::ImportSettings", ex);
+            }
+            return false;
         }
 
         public void SetPresets(string prefix, object? value)

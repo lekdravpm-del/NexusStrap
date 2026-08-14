@@ -28,7 +28,11 @@
                 _filestream?.Flush();
                 _filestream?.Dispose();
             }
-            catch { }
+            catch (Exception ex)
+            {
+                // Logger disposal failure - cannot log further, but don't crash
+                System.Diagnostics.Debug.WriteLine($"Logger disposal error: {ex.Message}");
+            }
             finally
             {
                 _semaphore.Release();

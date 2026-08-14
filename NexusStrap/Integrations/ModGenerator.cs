@@ -165,7 +165,10 @@ public static class ModGenerator
         Directory.CreateDirectory(tempPath);
 
         foreach (var file in Directory.GetFiles(tempPath, "*.zip").Where(f => !f.Contains(hash)))
-            try { File.Delete(file); } catch { }
+        {
+            try { File.Delete(file); }
+            catch (Exception ex) { App.Logger.WriteException("ModGenerator::CleanupTempFiles", ex); }
+        }
 
         async Task<string> DownloadOne(string type)
         {
@@ -193,7 +196,10 @@ public static class ModGenerator
             var remoteData = await Task.Run(() => App.RemoteData.Prop);
             if (remoteData?.Mappings?.Count > 0) return remoteData.Mappings;
         }
-        catch { }
+        catch (Exception ex)
+        {
+            App.Logger.WriteException("ModGenerator::LoadMappings", ex);
+        }
 
         return await LoadEmbeddedMappingsAsync();
     }

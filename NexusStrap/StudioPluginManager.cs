@@ -65,10 +65,22 @@
             {
                 using HttpClient client = new();
                 client.DefaultRequestHeaders.Add("User-Agent", App.ProjectName);
-                var response = await client.GetStringAsync(VersionApiUrl);
-                return JsonSerializer.Deserialize<GithubRelease>(response);
+                try
+                {
+                    var response = await client.GetStringAsync(VersionApiUrl);
+                    return JsonSerializer.Deserialize<GithubRelease>(response);
+                }
+                catch (Exception ex)
+                {
+                    App.Logger.WriteException("StudioPluginManager::GetLatestRelease", ex);
+                }
+                return null;
             }
-            catch { return null; }
+            catch (Exception ex)
+            {
+                App.Logger.WriteException("StudioPluginManager::GetLatestRelease", ex);
+                return null;
+            }
         }
 
         private static string GetCachedVersion()
@@ -78,7 +90,11 @@
                 using var doc = JsonDocument.Parse(File.ReadAllText(VersionCacheFile));
                 return doc.RootElement.GetProperty("Version").GetString() ?? "0.0.0";
             }
-            catch { return "0.0.0"; }
+            catch (Exception ex)
+            {
+                App.Logger.WriteException("StudioPluginManager::GetCachedVersion", ex);
+            }
+            return "0.0.0";
         }
 
         public static void Uninstall()

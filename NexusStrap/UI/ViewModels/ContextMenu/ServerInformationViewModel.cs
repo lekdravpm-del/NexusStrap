@@ -48,11 +48,13 @@ namespace NexusStrap.UI.ViewModels.ContextMenu
         public async void QueryServerUptime()
         {
             DateTime? serverTime = await _activityWatcher.Data.QueryServerTime();
-            TimeSpan _serverUptime = DateTime.UtcNow - serverTime.Value;
-
             string? serverUptime = Strings.ContextMenu_ServerInformation_Notification_ServerNotTracked;
-            if (_serverUptime.TotalSeconds > 60)
-                serverUptime = Time.FormatTimeSpan(_serverUptime);
+            if (serverTime is DateTime time)
+            {
+                TimeSpan serverUptimeSpan = DateTime.UtcNow - time;
+                if (serverUptimeSpan.TotalSeconds > 60)
+                    serverUptime = Time.FormatTimeSpan(serverUptimeSpan);
+            }
 
             ServerUptime = serverUptime;
 

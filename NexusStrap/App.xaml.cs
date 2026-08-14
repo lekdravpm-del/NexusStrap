@@ -418,6 +418,10 @@ namespace NexusStrap
                 FastFlags.Load();
                 GlobalSettings.Load();
 
+                // make sure the desktop and start menu shortcuts exist from the very
+                // first open, even before Roblox itself has been installed
+                new Installer { IsImplicitInstall = true }.EnsureShortcuts();
+
                 // to fix error System.IO.IOException: No se encuentra el recurso 'ui/style/.xaml'.
                 // when i put in installer dosent work
                 // if i try to fix in wpfuiwindow also dosent work

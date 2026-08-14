@@ -86,9 +86,7 @@
                     <ui:NavigationItem Content="{x:Static resources:Strings.ServerBrowser_Title}" PageType="{x:Type pages:ServerBrowserPage}" Icon="Globe24" IconSize="20" Tag="serverbrowser" x:Name="serverBrowser" />
                     <ui:NavigationItem Content="Launch Arguments" PageType="{x:Type pages:CustomLaunchArgsPage}" Icon="Code24" IconSize="20" Tag="launchargs" />
                     <ui:NavigationItem Content="Log Viewer" PageType="{x:Type pages:LogViewerPage}" Icon="Document24" IconSize="20" Tag="logviewer" />
-                    <ui:NavigationItem Content="Anti-Cheat" PageType="{x:Type pages:AntiCheatPage}" Icon="ShieldCheckmark24" IconSize="20" Tag="anticheat" />
-                    <ui:NavigationItem Content="Conflict Detector" PageType="{x:Type pages:ModConflictPage}" Icon="ErrorCircle24" IconSize="20" Tag="conflictdetector" />
-                    <ui:NavigationItem Content="Health Check" PageType="{x:Type pages:HealthCheckPage}" Icon="HeartPulse24" IconSize="20" Tag="healthcheck" />
+                    <ui:NavigationItem Content="App Analyzer" PageType="{x:Type pages:AppAnalyzerPage}" Icon="ScanText24" IconSize="20" Tag="appanalyzer" />
                     <ui:NavigationItem Content="Analytics" PageType="{x:Type pages:AnalyticsPage}" Icon="ChartPerson24" IconSize="20" Tag="analytics" />
 
                     <ui:NavigationItem Content="{x:Static resources:Strings.Menu_FastFlagEditor_Title}" PageType="{x:Type pages:FastFlagEditorPage}" Icon="EditSettings20" IconSize="20" Tag="fastflageditor" Visibility="Collapsed" />

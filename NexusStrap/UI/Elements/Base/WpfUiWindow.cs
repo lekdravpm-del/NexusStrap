@@ -159,7 +159,10 @@ namespace NexusStrap.UI.Elements.Base
                     var color = (Color)ColorConverter.ConvertFromString(stop.Color);
                     customBrush.GradientStops.Add(new GradientStop(color, stop.Offset));
                 }
-                catch { }
+                catch (Exception ex)
+                {
+                    App.Logger.WriteException("WpfUiWindow::ApplyGradientBackground", ex);
+                }
             }
 
             Application.Current.Resources["ApplicationBackground"] = customBrush;

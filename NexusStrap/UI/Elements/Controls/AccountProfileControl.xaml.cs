@@ -72,10 +72,18 @@ namespace NexusStrap.UI.Elements.Controls
             OnActiveAccountChanged(account);
         }
 
+        private static readonly Dictionary<long, BitmapSource> _avatarCache = new();
+
         private async Task LoadAvatarAsync(long userId)
         {
             try
             {
+                if (_avatarCache.TryGetValue(userId, out var cached))
+                {
+                    AvatarBrush.ImageSource = cached;
+                    return;
+                }
+
                 var response = await App.HttpClient.GetAsync($"https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds={userId}&size=48x48&format=Png&isCircular=true");
 
                 if (!response.IsSuccessStatusCode)
@@ -89,12 +97,18 @@ namespace NexusStrap.UI.Elements.Controls
                 if (string.IsNullOrEmpty(imageUrl))
                     return;
 
+                byte[] imageBytes = await App.HttpClient.GetByteArrayAsync(imageUrl);
+
+                using var stream = new MemoryStream(imageBytes);
+
                 var bitmap = new BitmapImage();
                 bitmap.BeginInit();
-                bitmap.UriSource = new Uri(imageUrl);
+                bitmap.StreamSource = stream;
                 bitmap.CacheOption = BitmapCacheOption.OnLoad;
                 bitmap.EndInit();
                 bitmap.Freeze();
+
+                _avatarCache[userId] = bitmap;
 
                 AvatarBrush.ImageSource = bitmap;
             }

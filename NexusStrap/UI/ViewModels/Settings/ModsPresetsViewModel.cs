@@ -498,7 +498,11 @@ namespace NexusStrap.UI.ViewModels.Settings
                 bitmap.Freeze();
                 return bitmap;
             }
-            catch { return null; }
+            catch (Exception ex)
+            {
+                App.Logger.WriteException("ModsPresetsViewModel::LoadImage", ex);
+                return null;
+            }
         }
 
         public string ShiftlockCursorSelectedPath { get; set; } = "";

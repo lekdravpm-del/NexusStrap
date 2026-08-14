@@ -18,8 +18,19 @@ namespace NexusStrap
 
         private static string StartMenuShortcut => Path.Combine(Paths.WindowsStartMenu, $"{App.ProjectName}.lnk");
 
-        public string NexusStrapInstallDirectory = Path.Combine(Paths.LocalAppData, "NexusStrap"); // default directory for nexusstrap
-                                                                                                 // TODO dynamically fetch from uninstall/player registry keys
+public string NexusStrapInstallDirectory
+        {
+            get
+            {
+                // Try to fetch installed directory from registry first
+                using var key = Registry.CurrentUser.OpenSubKey($@"Software\Microsoft\Windows\CurrentVersion\Uninstall\{App.ProjectName}");
+                if (key != null && key.GetValue("InstallLocation") is string registryPath)
+                    return registryPath;
+
+                // Fall back to default directory if not found
+                return Path.Combine(Paths.LocalAppData, "NexusStrap"); // default directory for nexusstrap
+            }
+        }
         public string InstallLocation = Path.Combine(Paths.LocalAppData, App.ProjectName);
 
         public bool ExistingDataPresent => File.Exists(Path.Combine(InstallLocation, "Settings.json"));
@@ -37,6 +48,62 @@ namespace NexusStrap
         public bool IsImplicitInstall = false;
 
         public string InstallLocationError { get; set; } = "";
+
+        /// <summary>
+        /// Makes sure the desktop and start menu shortcuts exist and point at the
+        /// current executable, creating or repairing them if needed. Called on
+        /// every normal startup and right after an install, so the shortcuts are
+        /// available from the very first open, even before Roblox is installed.
+        /// </summary>
+        public void EnsureShortcuts()
+        {
+            const string LOG_IDENT = "Installer::EnsureShortcuts";
+
+            try
+            {
+                if (!File.Exists(Paths.Application))
+                    return;
+
+                if (CreateDesktopShortcuts)
+                    EnsureShortcut(DesktopShortcut);
+
+                if (CreateStartMenuShortcuts)
+                    EnsureShortcut(StartMenuShortcut);
+            }
+            catch (Exception ex)
+            {
+                App.Logger.WriteLine(LOG_IDENT, "Failed to ensure shortcuts exist");
+                App.Logger.WriteException(LOG_IDENT, ex);
+            }
+        }
+
+        private static void EnsureShortcut(string lnkPath)
+        {
+            if (!File.Exists(lnkPath))
+            {
+                Shortcut.Create(Paths.Application, "", lnkPath);
+                return;
+            }
+
+            // the shortcut exists, but make sure it still points at the current
+            // executable (covers moved installs and portable copies being replaced)
+            try
+            {
+                var shortcut = ShellLink.Shortcut.ReadFromFile(lnkPath);
+                string? target = shortcut.LinkInfo?.LocalBasePathUnicode ?? shortcut.LinkInfo?.LocalBasePath;
+
+                if (string.IsNullOrEmpty(target) || !string.Equals(target, Paths.Application, StringComparison.OrdinalIgnoreCase))
+                {
+                    File.Delete(lnkPath);
+                    Shortcut.Create(Paths.Application, "", lnkPath);
+                }
+            }
+            catch
+            {
+                File.Delete(lnkPath);
+                Shortcut.Create(Paths.Application, "", lnkPath);
+            }
+        }
 
         public ImportSettingsFrom ImportSource { get; set; } = ImportSettingsFrom.NexusStrap;
 

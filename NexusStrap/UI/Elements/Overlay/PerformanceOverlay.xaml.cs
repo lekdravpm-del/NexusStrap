@@ -1,5 +1,4 @@
 using System.Diagnostics;
-using System.Management;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
@@ -9,7 +8,11 @@ namespace NexusStrap.UI.Elements.Overlay
     public partial class PerformanceOverlay : Wpf.Ui.Controls.UiWindow
     {
         private readonly DispatcherTimer _updateTimer;
+        private readonly Stopwatch _sampleStopwatch = Stopwatch.StartNew();
         private Process? _robloxProcess;
+        private TimeSpan _lastProcessorTime;
+        private TimeSpan _lastSampleElapsed;
+        private bool _hasCpuSample;
 
         public PerformanceOverlay()
         {
@@ -42,7 +45,15 @@ namespace NexusStrap.UI.Elements.Overlay
                 var processes = Process.GetProcessesByName("RobloxPlayerBeta");
                 if (processes.Length > 0)
                 {
+                    _robloxProcess?.Dispose();
                     _robloxProcess = processes[0];
+
+                    // GetProcessesByName creates a Process object for every match. Keep only
+                    // the process we are tracking so repeated rediscovery does not leak handles.
+                    foreach (var process in processes.Skip(1))
+                        process.Dispose();
+
+                    ResetCpuSampling();
                     StatusText.Text = $"Tracking: {_robloxProcess.Id}";
                 }
                 else
@@ -69,34 +80,34 @@ namespace NexusStrap.UI.Elements.Overlay
                     return;
                 }
 
-                using var proc = Process.GetProcessById(_robloxProcess.Id);
+                _robloxProcess.Refresh();
 
-                long memBytes = proc.WorkingSet64;
+                long memBytes = _robloxProcess.WorkingSet64;
                 double memMB = memBytes / (1024.0 * 1024.0);
                 MemText.Text = $"{memMB:F0} MB";
 
-                try
+                var elapsed = _sampleStopwatch.Elapsed;
+                var processorTime = _robloxProcess.TotalProcessorTime;
+
+                if (_hasCpuSample)
                 {
-                    using var searcher = new ManagementObjectSearcher(
-                        $"SELECT PercentProcessorTime FROM Win32_PerfFormattedData_PerfProc_Process WHERE IDProcess = '{proc.Id}'");
-                    foreach (ManagementObject obj in searcher.Get())
+                    var elapsedMilliseconds = (elapsed - _lastSampleElapsed).TotalMilliseconds;
+                    var cpuMilliseconds = (processorTime - _lastProcessorTime).TotalMilliseconds;
+
+                    if (elapsedMilliseconds > 0)
                     {
-                        double cpu = Convert.ToDouble(obj["PercentProcessorTime"]);
-                        CpuText.Text = $"{cpu:F0}%";
-                        break;
+                        double cpu = cpuMilliseconds / (elapsedMilliseconds * Environment.ProcessorCount) * 100;
+                        CpuText.Text = $"{Math.Clamp(cpu, 0, 100):F0}%";
                     }
                 }
-                catch
+                else
                 {
-                    CpuText.Text = "?";
+                    CpuText.Text = "...";
+                    _hasCpuSample = true;
                 }
 
-                try
-                {
-                    using var logSearcher = new ManagementObjectSearcher(
-                        $"SELECT ElapsedTime FROM Win32_PerfFormattedData_PerfProc_Process WHERE IDProcess = '{proc.Id}'");
-                }
-                catch { }
+                _lastProcessorTime = processorTime;
+                _lastSampleElapsed = elapsed;
 
                 FpsText.Text = "--";
             }
@@ -111,7 +122,15 @@ namespace NexusStrap.UI.Elements.Overlay
         protected override void OnClosed(EventArgs e)
         {
             _updateTimer.Stop();
+            _robloxProcess?.Dispose();
             base.OnClosed(e);
+        }
+
+        private void ResetCpuSampling()
+        {
+            _hasCpuSample = false;
+            _lastProcessorTime = TimeSpan.Zero;
+            _lastSampleElapsed = _sampleStopwatch.Elapsed;
         }
     }
 }

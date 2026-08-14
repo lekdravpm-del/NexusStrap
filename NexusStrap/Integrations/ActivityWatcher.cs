@@ -111,7 +111,7 @@
             LoadGameHistory();
         }
 
-        public async void Start()
+        public async Task Start()
         {
             const string LOG_IDENT = "ActivityWatcher::Start";
 
@@ -126,14 +126,19 @@
             //
             // we'll tail the log file continuously, monitoring for any log entries that we need to determine the current game activity
 
-            FileInfo logFileInfo;
-
-            if (String.IsNullOrEmpty(LogLocation))
+            try
             {
-                string logDirectory = Path.Combine(Paths.Roblox, "logs");
+                FileInfo? logFileInfo = null;
 
-                if (!Directory.Exists(logDirectory))
-                    return;
+                if (String.IsNullOrEmpty(LogLocation))
+                {
+                    string logDirectory = Path.Combine(Paths.Roblox, "logs");
+
+                    if (!Directory.Exists(logDirectory))
+                    {
+                        App.Logger.WriteLine(LOG_IDENT, $"Roblox log directory does not exist: {logDirectory}");
+                        return;
+                    }
 
                 // we need to make sure we're fetching the absolute latest log file
                 // if roblox doesn't start quickly enough, we can wind up fetching the previous log file
@@ -141,44 +146,60 @@
 
                 App.Logger.WriteLine(LOG_IDENT, "Opening Roblox log file...");
 
-                while (true)
-                {
-                    logFileInfo = new DirectoryInfo(logDirectory)
-                        .GetFiles()
+                    while (!IsDisposed)
+                    {
+                        var newestLogFile = new DirectoryInfo(logDirectory)
+                            .GetFiles()
                         .Where(x => x.Name.Contains("Player", StringComparison.OrdinalIgnoreCase) && x.CreationTime <= DateTime.Now)
                         .OrderByDescending(x => x.CreationTime)
-                        .First();
+                            .FirstOrDefault();
 
-                    if (logFileInfo.CreationTime.AddSeconds(15) > DateTime.Now)
-                        break;
+                        if (newestLogFile is not null && newestLogFile.CreationTime.AddSeconds(15) > DateTime.Now)
+                        {
+                            logFileInfo = newestLogFile;
+                            break;
+                        }
 
-                    App.Logger.WriteLine(LOG_IDENT, $"Could not find recent enough log file, waiting... (newest is {logFileInfo.Name})");
-                    await Task.Delay(1000);
+                        string newestName = newestLogFile?.Name ?? "none";
+                        App.Logger.WriteLine(LOG_IDENT, $"Could not find a recent enough log file, waiting... (newest is {newestName})");
+                        await Task.Delay(1000);
+                    }
+
+                    if (logFileInfo is null)
+                        return;
+
+                    LogLocation = logFileInfo.FullName;
+                }
+                else
+                {
+                    logFileInfo = new FileInfo(LogLocation);
+                    if (!logFileInfo.Exists)
+                    {
+                        App.Logger.WriteLine(LOG_IDENT, $"Roblox log file does not exist: {LogLocation}");
+                        return;
+                    }
                 }
 
-                LogLocation = logFileInfo.FullName;
+                OnLogOpen?.Invoke(this, EventArgs.Empty);
+
+                using var logFileStream = logFileInfo.Open(FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                App.Logger.WriteLine(LOG_IDENT, $"Opened {LogLocation}");
+
+                using var streamReader = new StreamReader(logFileStream);
+
+                while (!IsDisposed)
+                {
+                    string? log = await streamReader.ReadLineAsync();
+
+                    if (log is null)
+                        await Task.Delay(1000);
+                    else
+                        ReadLogEntry(log);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                logFileInfo = new FileInfo(LogLocation);
-            }
-
-            OnLogOpen?.Invoke(this, EventArgs.Empty);
-
-            var logFileStream = logFileInfo.Open(FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-
-            App.Logger.WriteLine(LOG_IDENT, $"Opened {LogLocation}");
-
-            using var streamReader = new StreamReader(logFileStream);
-
-            while (!IsDisposed)
-            {
-                string? log = await streamReader.ReadLineAsync();
-
-                if (log is null)
-                    await Task.Delay(1000);
-                else
-                    ReadLogEntry(log);
+                App.Logger.WriteException(LOG_IDENT, ex);
             }
         }
 
@@ -213,7 +234,9 @@
             }
             else
             {
-                ProcessPlayerLogEntry(logMessage);
+                _ = ProcessPlayerLogEntry(logMessage).ContinueWith(task =>
+                    App.Logger.WriteException(LOG_IDENT, task.Exception!),
+                    TaskContinuationOptions.OnlyOnFaulted);
             }
         }
 
@@ -250,7 +273,7 @@
             }
         }
 
-        private async void ProcessPlayerLogEntry(string logMessage)
+        private async Task ProcessPlayerLogEntry(string logMessage)
         {
             const string LOG_IDENT = "ActivityWatcher::ProcessPlayerLogEntry";
 
@@ -561,7 +584,10 @@
             if (_httpListener != null)
             {
                 try { _httpListener.Close(); }
-                catch { }
+                catch (Exception ex)
+                {
+                    App.Logger.WriteException("ActivityWatcher::StopHTTPServer", ex);
+                }
                 _httpListener = null;
             }
         }

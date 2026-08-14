@@ -130,12 +130,17 @@ namespace NexusStrap.UI
             if (uptimeActive)
             {
                 DateTime? serverTime = await _activityWatcher.Data.QueryServerTime();
-                TimeSpan _serverUptime = DateTime.UtcNow - serverTime.Value;
-
-                if (_serverUptime.TotalSeconds > 60)
-                    serverUptime = Time.FormatTimeSpan(_serverUptime);
+                if (serverTime is DateTime time)
+                {
+                    TimeSpan serverUptimeSpan = DateTime.UtcNow - time;
+                    serverUptime = serverUptimeSpan.TotalSeconds > 60
+                        ? Time.FormatTimeSpan(serverUptimeSpan)
+                        : Strings.ContextMenu_ServerInformation_Notification_ServerNotTracked;
+                }
                 else
+                {
                     serverUptime = Strings.ContextMenu_ServerInformation_Notification_ServerNotTracked;
+                }
             }
 
             if (
@@ -219,7 +224,10 @@ namespace NexusStrap.UI
                         _menuContainer.Close();
                 });
             }
-            catch { }
+            catch (Exception ex)
+            {
+                App.Logger.WriteException("NotifyIconWrapper::CloseMenu", ex);
+            }
 
             _notifyIcon.Visible = false;
             _notifyIcon.Dispose();

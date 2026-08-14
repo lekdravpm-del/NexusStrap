@@ -293,7 +293,11 @@ namespace NexusStrap.UI.ViewModels.Settings
                 foreach (var r in results) SearchResults.Add(r);
                 LoadingMessage = SearchResults.Count == 0 ? "No games found." : "";
             }
-            catch { LoadingMessage = "Search failed."; }
+            catch (Exception ex)
+                {
+                    App.Logger.WriteException("RegionSelectorViewModel::SearchGames", ex);
+                    LoadingMessage = "Search failed.";
+                }
             finally { IsGameSearchLoading = false; }
         }
 

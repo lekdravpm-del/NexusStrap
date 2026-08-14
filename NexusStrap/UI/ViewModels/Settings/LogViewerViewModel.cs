@@ -54,7 +54,11 @@ namespace NexusStrap.UI.ViewModels.Settings
                 _allLines = File.ReadAllLines(SelectedLogFile).ToList();
                 FilterLogs();
             }
-            catch { LogContent = "Failed to read log file."; }
+            catch (Exception ex)
+                {
+                    App.Logger.WriteException("LogViewerViewModel::LoadLogFile", ex);
+                    LogContent = "Failed to read log file.";
+                }
         }
 
         private void FilterLogs()
@@ -68,7 +72,8 @@ namespace NexusStrap.UI.ViewModels.Settings
         private void ClearCurrentLog()
         {
             if (string.IsNullOrEmpty(SelectedLogFile) || !File.Exists(SelectedLogFile)) return;
-            try { File.WriteAllText(SelectedLogFile, ""); LoadLogFile(); } catch { }
+            try { File.WriteAllText(SelectedLogFile, ""); LoadLogFile(); }
+            catch (Exception ex) { App.Logger.WriteException("LogViewerViewModel::ClearCurrentLog", ex); }
         }
     }
 }

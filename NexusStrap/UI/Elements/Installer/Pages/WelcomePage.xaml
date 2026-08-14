@@ -43,24 +43,15 @@
                    Foreground="{DynamicResource TextFillColorTertiaryBrush}" TextAlignment="Center" />
 
         <Grid Grid.Row="4" Margin="0,20,0,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-
-            <ui:Button Grid.Column="0" Margin="0,0,6,0"
+            <ui:Button
                        Height="48" FontSize="16" FontWeight="SemiBold" HorizontalContentAlignment="Center" Padding="32,0"
-                       HorizontalAlignment="Stretch" Icon="ArrowRight24"
-                       Content="Express Install" Click="ExpressInstall_Click" />
-            <ui:Button Grid.Column="1" Margin="6,0,0,0"
-                       Height="48" FontSize="16" FontWeight="SemiBold" HorizontalContentAlignment="Center" Padding="32,0"
-                       HorizontalAlignment="Stretch" Icon="Settings24"
-                       Content="Customize" Click="Customize_Click" />
+                       HorizontalAlignment="Center" Width="300" Icon="ArrowRight24"
+                       Content="Continue" Click="Continue_Click" />
         </Grid>
 
         <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,16,0,0">
-            <TextBlock FontSize="11" Foreground="{DynamicResource TextFillColorTertiaryBrush}" VerticalAlignment="Center"
-                       Text="github.com/lekdravpm-del/NexusStrap" />
+            <ui:Anchor Content="GitHub" Icon="Code24" NavigateUri="https://github.com/lekdravpm-del/NexusStrap" ToolTip="Visit the NexusStrap GitHub repository" Margin="0,0,20,0" VerticalAlignment="Center" />
+            <ui:Anchor Content="Wiki" Icon="BookOpen24" NavigateUri="https://github.com/lekdravpm-del/NexusStrap/wiki" ToolTip="Read the NexusStrap wiki" VerticalAlignment="Center" />
         </StackPanel>
     </Grid>
 </ui:UiPage>

@@ -38,7 +38,9 @@ namespace NexusStrap.Models.Persistable
         public bool Error773Fix { get; set; } = true;
         public int MultibloxInstanceCount { get; set; } = 2;
         public int MultibloxDelayMs { get; set; } = 1500;
-        public ProcessPriorityOption SelectedProcessPriority { get; set; } = ProcessPriorityOption.AboveNormal;
+        // AboveNormal can make the desktop, browser, and Discord feel worse on busy PCs.
+        // Let Windows schedule Roblox normally unless the user explicitly opts in.
+        public ProcessPriorityOption SelectedProcessPriority { get; set; } = ProcessPriorityOption.Normal;
 
         // FastFlag Editor/Settings Related
         public bool UseFastFlagManager { get; set; } = true;

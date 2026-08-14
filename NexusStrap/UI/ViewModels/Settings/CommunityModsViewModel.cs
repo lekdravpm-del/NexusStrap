@@ -222,7 +222,11 @@ namespace NexusStrap.UI.ViewModels.Settings
                     mod.ThumbnailImage = bitmap;
                 });
             }
-            catch { mod.HasThumbnailError = true; }
+            catch (Exception ex)
+            {
+                App.Logger.WriteException("CommunityModsViewModel::LoadThumbnail", ex);
+                mod.HasThumbnailError = true;
+            }
         }
 
         private async Task ApplySkyboxFixAsync()

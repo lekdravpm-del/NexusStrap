@@ -7,6 +7,8 @@
 crates/
 target
 publish/
+publish_single/
+testpub/
 
 # User-specific files
 *.rsuser

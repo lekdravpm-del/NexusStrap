@@ -12,6 +12,8 @@
         FluentDialog,
         NexusStrapDialog,
         FluentAeroDialog,
+        AuroraDialog,
+        NeonDialog,
         CustomDialog
     }
 }
