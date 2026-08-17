@@ -10,8 +10,6 @@
             BootstrapperStyle.FluentAeroDialog,
             BootstrapperStyle.FluentDialog,
             BootstrapperStyle.ClassicFluentDialog,
-            BootstrapperStyle.AuroraDialog,
-            BootstrapperStyle.NeonDialog,
             BootstrapperStyle.ByfronDialog,
             BootstrapperStyle.TwentyFiveDialog,
             BootstrapperStyle.ProgressDialog,

@@ -3,7 +3,6 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using NexusStrap.Resources;
 using NexusStrap.UI.Elements.Settings.Pages;
 using Wpf.Ui.Controls;
 
@@ -80,15 +79,15 @@ namespace NexusStrap.UI.Elements.Controls
 
         private void UpdateWelcomeText()
         {
-            WelcomeTitle.Text = Strings.Guide_Welcome_Hello;
-            WelcomeSubtitle.Text = Strings.Guide_Welcome_Thanks;
-            WelcomeCredit.Text = Strings.Guide_Welcome_Credit;
-            WelcomeQuestion.Text = Strings.Guide_Welcome_Question;
-            WelcomeSkipBtn.Content = Strings.Guide_Welcome_Skip;
-            WelcomeStartBtn.Content = Strings.Guide_Welcome_StartTour;
-            StepHint.Text = Strings.Guide_Step_ClickToContinue;
-            BackBtn.Content = Strings.Guide_Step_Back;
-            SkipBtn.Content = Strings.Guide_Step_SkipTour;
+            WelcomeTitle.Text = "Welcome to NexusStrap!";
+            WelcomeSubtitle.Text = "Thanks for choosing NexusStrap. Let's walk you through the settings.";
+            WelcomeCredit.Text = "Made by NexusStrap Contributors";
+            WelcomeQuestion.Text = "Would you like a quick tour?";
+            WelcomeSkipBtn.Content = "Skip";
+            WelcomeStartBtn.Content = "Start Tour";
+            StepHint.Text = "Click anywhere to continue";
+            BackBtn.Content = "Back";
+            SkipBtn.Content = "Skip Tour";
         }
 
         public void Start(Settings.MainWindow window)
@@ -151,98 +150,86 @@ namespace NexusStrap.UI.Elements.Controls
             }
 
             Section("integrations", typeof(IntegrationsPage),
-                Strings.Guide_Section_Integrations,
-                Strings.Guide_Section_Integrations_Description,
-                ("ActivityTrackingOption", Strings.Guide_Section_Integrations, Strings.Guide_Step_Integrations_ActivityTracking),
-                ("DiscordActivityOption", Strings.Guide_Section_Integrations, Strings.Guide_Step_Integrations_DiscordActivity),
-                ("StudioActivityOption", Strings.Guide_Section_Integrations, Strings.Guide_Step_Integrations_StudioActivity),
-                ("CustomIntegrationsListBox", Strings.Guide_Section_Integrations, Strings.Guide_Step_Integrations_CustomIntegrations));
+                "Integrations", "Manage activity tracking, Discord RPC, and custom integrations.",
+                ("ActivityTrackingOption", "Integrations", "Enable activity tracking to show game info and server details."),
+                ("DiscordActivityOption", "Integrations", "Show your current game on Discord."),
+                ("StudioActivityOption", "Integrations", "Show Roblox Studio activity on Discord."),
+                ("CustomIntegrationsListBox", "Integrations", "Add custom apps to launch with Roblox."));
 
             Section("bootstrapper", typeof(BehaviourPage),
-                Strings.Guide_Section_Bootstrapper,
-                Strings.Guide_Section_Bootstrapper_Description,
-                ("ConfirmLaunchesToggle", Strings.Guide_Section_Bootstrapper, Strings.Guide_Step_Bootstrapper_ConfirmLaunches),
-                ("CookieAccessToggle", Strings.Guide_Section_Bootstrapper, Strings.Guide_Step_Bootstrapper_CookieAccess),
-                ("UncapFpsToggle", Strings.Guide_Section_Bootstrapper, Strings.Guide_Step_Bootstrapper_UncapFps),
-                ("ProcessPriorityOption", Strings.Guide_Section_Bootstrapper, Strings.Guide_Step_Bootstrapper_ProcessPriority),
-                ("BackgroundUpdatesToggle", Strings.Guide_Section_Bootstrapper, Strings.Guide_Step_Bootstrapper_BackgroundUpdates));
+                "Bootstrapper", "Configure how NexusStrap launches and behaves.",
+                ("ConfirmLaunchesToggle", "Bootstrapper", "Confirm before each launch."),
+                ("CookieAccessToggle", "Bootstrapper", "Allow cookie access for server features."),
+                ("UncapFpsToggle", "Bootstrapper", "Remove the default FPS cap."),
+                ("ProcessPriorityOption", "Bootstrapper", "Set Roblox process priority."),
+                ("BackgroundUpdatesToggle", "Bootstrapper", "Enable silent background updates."));
 
             Section("fastflags", typeof(FastFlagsPage),
-                Strings.Guide_Section_FastFlags,
-                Strings.Guide_Section_FastFlags_Description,
-                ("ManagerEnabled", Strings.Guide_Section_FastFlags, Strings.Guide_Step_FastFlags_ManagerEnabled),
-                ("Reset", Strings.Guide_Section_FastFlags, Strings.Guide_Step_FastFlags_Reset));
+                "Fast Flags", "Override Roblox client flags for performance and visuals.",
+                ("ManagerEnabled", "Fast Flags", "Enable the Fast Flag manager."),
+                ("Reset", "Fast Flags", "Reset all flags to default."));
 
             Section("fflagtemplates", typeof(FFlagTemplatesPage),
-                Strings.Guide_Section_FFlagTemplates,
-                Strings.Guide_Section_FFlagTemplates_Description,
-                ("TemplateSearchBox", Strings.Guide_Section_FFlagTemplates, Strings.Guide_Step_FFlagTemplates_Search),
-                ("TemplateImportButton", Strings.Guide_Section_FFlagTemplates, Strings.Guide_Step_FFlagTemplates_Import),
-                ("CategoryPerformance", Strings.Guide_Section_FFlagTemplates, Strings.Guide_Step_FFlagTemplates_Categories));
+                "FFlag Templates", "Apply pre-made flag configurations.",
+                ("TemplateSearchBox", "FFlag Templates", "Search for flag templates."),
+                ("TemplateImportButton", "FFlag Templates", "Import a custom template."),
+                ("CategoryPerformance", "FFlag Templates", "Browse templates by category."));
 
             Section("mods", typeof(ModsPresetsPage),
-                Strings.Guide_Section_Mods,
-                Strings.Guide_Section_Mods_Description,
-                ("OldAvatarEditorToggle", Strings.Guide_Section_Mods, Strings.Guide_Step_Mods_OldAvatarEditor),
-                ("OldCharacterSoundsToggle", Strings.Guide_Section_Mods, Strings.Guide_Step_Mods_OldCharacterSounds),
-                ("OldJumpSoundToggle", Strings.Guide_Section_Mods, Strings.Guide_Step_Mods_OldJumpSound),
-                ("SilenceFallingToggle", Strings.Guide_Section_Mods, Strings.Guide_Step_Mods_SilenceFalling),
-                ("SilenceSwimToggle", Strings.Guide_Section_Mods, Strings.Guide_Step_Mods_SilenceSwim),
-                ("CursorTypeOption", Strings.Guide_Section_Mods, Strings.Guide_Step_Mods_CursorType),
-                ("EmojiTypeOption", Strings.Guide_Section_Mods, Strings.Guide_Step_Mods_EmojiType),
-                ("CustomFontOption", Strings.Guide_Section_Mods, Strings.Guide_Step_Mods_CustomFont),
-                ("CustomDeathSoundOption", Strings.Guide_Section_Mods, Strings.Guide_Step_Mods_CustomDeathSound),
-                ("CustomCursorOption", Strings.Guide_Section_Mods, Strings.Guide_Step_Mods_CustomCursor),
-                ("CustomShiftlockOption", Strings.Guide_Section_Mods, Strings.Guide_Step_Mods_CustomShiftlock));
+                "Mods", "Customize your Roblox experience with mods.",
+                ("OldAvatarEditorToggle", "Mods", "Revert to the old avatar editor."),
+                ("OldCharacterSoundsToggle", "Mods", "Use classic character sounds."),
+                ("OldJumpSoundToggle", "Mods", "Use the old jump sound."),
+                ("SilenceFallingToggle", "Mods", "Silence the falling sound."),
+                ("SilenceSwimToggle", "Mods", "Silence the swimming sound."),
+                ("CursorTypeOption", "Mods", "Choose a custom cursor style."),
+                ("EmojiTypeOption", "Mods", "Change the emoji set."),
+                ("CustomFontOption", "Mods", "Use a custom font in-game."),
+                ("CustomDeathSoundOption", "Mods", "Change the death sound."),
+                ("CustomCursorOption", "Mods", "Upload your own cursor."),
+                ("CustomShiftlockOption", "Mods", "Upload a custom shift lock cursor."));
 
             Section("appearance", typeof(AppearancePage),
-                Strings.Guide_Section_Appearance,
-                Strings.Guide_Section_Appearance_Description,
-                ("IconSelector", Strings.Guide_Section_Appearance, Strings.Guide_Step_Appearance_IconSelector),
-                ("CustomThemesListBox", Strings.Guide_Section_Appearance, Strings.Guide_Step_Appearance_CustomThemes));
+                "Appearance", "Customize the NexusStrap window look.",
+                ("IconSelector", "Appearance", "Change the application icon."),
+                ("CustomThemesListBox", "Appearance", "Create and apply custom themes."));
 
             Section("regionselector", typeof(RegionSelectorPage),
-                Strings.Guide_Section_RegionSelector,
-                Strings.Guide_Section_RegionSelector_Description,
-                ("SearchComboBox", Strings.Guide_Section_RegionSelector, Strings.Guide_Step_RegionSelector_Search),
-                ("SortOrderComboBox", Strings.Guide_Section_RegionSelector, Strings.Guide_Step_RegionSelector_SortOrder),
-                ("RegionComboBox", Strings.Guide_Section_RegionSelector, Strings.Guide_Step_RegionSelector_Region));
+                "Region Selector", "Find and join servers in specific regions.",
+                ("SearchComboBox", "Region Selector", "Search for a game."),
+                ("SortOrderComboBox", "Region Selector", "Sort servers by different criteria."),
+                ("RegionComboBox", "Region Selector", "Filter by server region."));
 
             Section("robloxsettings", typeof(RobloxSettingsPage),
-                Strings.Guide_Section_RobloxSettings,
-                Strings.Guide_Section_RobloxSettings_Description,
-                ("ImportCard", Strings.Guide_Section_RobloxSettings, Strings.Guide_Step_RobloxSettings_ImportCard),
-                ("OpenFolderCard", Strings.Guide_Section_RobloxSettings, Strings.Guide_Step_RobloxSettings_OpenFolderCard),
-                ("ExportCard", Strings.Guide_Section_RobloxSettings, Strings.Guide_Step_RobloxSettings_ExportCard),
-                ("ReadOnlyToggle", Strings.Guide_Section_RobloxSettings, Strings.Guide_Step_RobloxSettings_ReadOnlyToggle));
+                "Roblox Settings", "Manage your Roblox client settings.",
+                ("ImportCard", "Roblox Settings", "Import settings from a file."),
+                ("OpenFolderCard", "Roblox Settings", "Open the Roblox settings folder."),
+                ("ExportCard", "Roblox Settings", "Export your settings."),
+                ("ReadOnlyToggle", "Roblox Settings", "Protect settings from being overwritten."));
 
             Section("shortcuts", typeof(ShortcutsPage),
-                Strings.Guide_Section_Shortcuts,
-                Strings.Guide_Section_Shortcuts_Description,
-                ("ExtractIconsToggle", Strings.Guide_Section_Shortcuts, Strings.Guide_Step_Shortcuts_ExtractIcons),
-                ("DesktopIconToggle", Strings.Guide_Section_Shortcuts, Strings.Guide_Step_Shortcuts_DesktopIcon),
-                ("StartMenuIconToggle", Strings.Guide_Section_Shortcuts, Strings.Guide_Step_Shortcuts_StartMenuIcon),
-                ("PlayerIconToggle", Strings.Guide_Section_Shortcuts, Strings.Guide_Step_Shortcuts_PlayerIcon),
-                ("StudioIconToggle", Strings.Guide_Section_Shortcuts, Strings.Guide_Step_Shortcuts_StudioIcon),
-                ("SettingsIconToggle", Strings.Guide_Section_Shortcuts, Strings.Guide_Step_Shortcuts_SettingsIcon));
+                "Shortcuts", "Manage desktop and start menu shortcuts.",
+                ("ExtractIconsToggle", "Shortcuts", "Extract icons from Roblox."),
+                ("DesktopIconToggle", "Shortcuts", "Create a desktop shortcut."),
+                ("StartMenuIconToggle", "Shortcuts", "Create a start menu shortcut."),
+                ("PlayerIconToggle", "Shortcuts", "Create a Roblox Player shortcut."),
+                ("StudioIconToggle", "Shortcuts", "Create a Roblox Studio shortcut."),
+                ("SettingsIconToggle", "Shortcuts", "Create a settings shortcut."));
 
             Section("logviewer", typeof(LogViewerPage),
-                Strings.Guide_Section_LogViewer,
-                Strings.Guide_Section_LogViewer_Description,
-                ("LogFilesComboBox", Strings.Guide_Section_LogViewer, Strings.Guide_Step_LogViewer_LogFiles),
-                ("LogSearchTextBox", Strings.Guide_Section_LogViewer, Strings.Guide_Step_LogViewer_SearchLogs),
-                ("AddArgButton", Strings.Guide_Section_LogViewer, Strings.Guide_Step_LogViewer_AddArgument));
+                "Log Viewer", "View NexusStrap logs for debugging.",
+                ("LogFilesComboBox", "Log Viewer", "Select a log file."),
+                ("LogSearchTextBox", "Log Viewer", "Search through log entries."),
+                ("AddArgButton", "Log Viewer", "Add custom launch arguments."));
 
             Section("appanalyzer", typeof(AppAnalyzerPage),
-                Strings.Guide_Section_AppAnalyzer,
-                Strings.Guide_Section_AppAnalyzer_Description,
-                ("ScanConflictsButton", Strings.Guide_Section_AppAnalyzer, Strings.Guide_Step_AppAnalyzer_ScanConflicts),
-                ("RunHealthCheckButton", Strings.Guide_Section_AppAnalyzer, Strings.Guide_Step_AppAnalyzer_RunHealthCheck));
+                "App Analyzer", "Scan your installation for issues.",
+                ("ScanConflictsButton", "App Analyzer", "Scan for file conflicts."),
+                ("RunHealthCheckButton", "App Analyzer", "Run a health check."));
 
             Section("analytics", typeof(AnalyticsPage),
-                Strings.Guide_Section_Analytics,
-                Strings.Guide_Section_Analytics_Description,
-                ("RefreshButton", Strings.Guide_Section_Analytics, Strings.Guide_Step_Analytics_Refresh));
+                "Analytics", "View your usage statistics.",
+                ("RefreshButton", "Analytics", "Refresh analytics data."));
         }
 
         private void StartTour_Click(object sender, RoutedEventArgs e)

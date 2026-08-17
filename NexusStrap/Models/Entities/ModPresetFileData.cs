@@ -7,7 +7,7 @@ namespace NexusStrap.Models.Entities
     {
         public string FilePath { get; private set; }
 
-        public string FullFilePath => Path.Combine(Paths.PresetModifications, FilePath);
+        public string FullFilePath => Path.Combine(Paths.Modifications, FilePath);
 
         public FileStream FileStream => File.OpenRead(FullFilePath);
 

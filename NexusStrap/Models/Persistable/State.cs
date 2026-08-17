@@ -14,6 +14,8 @@
 
         public string? LastPage { get; set; } = null!;
 
+        public bool HasSeenGuide { get; set; } = false;
+
         public bool ForceReinstall { get; set; } = false;
 
         public WindowState SettingsWindow { get; set; } = new();

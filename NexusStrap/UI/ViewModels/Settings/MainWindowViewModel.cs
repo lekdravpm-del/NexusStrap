@@ -99,10 +99,8 @@ namespace NexusStrap.UI.ViewModels.Settings
                 Process.Start(Paths.Application, $"-{mode.ToLower()}");
                 App.DeferredTerminate();
             }
-            else
-            {
-                CloseWindow();
-            }
+
+            CloseWindow();
         }
 
         private async void RestartApp()

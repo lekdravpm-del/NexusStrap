@@ -80,6 +80,12 @@
             </controls:OptionControl>
 
             <controls:OptionControl
+                        Header="Old Death Sound"
+                        Description="Revert to the classic Roblox death sound (oof).">
+                <ui:ToggleSwitch IsChecked="{Binding OldDeathSoundTask.NewState, Mode=TwoWay}" />
+            </controls:OptionControl>
+
+            <controls:OptionControl
                         Header="{x:Static resources:Strings.Menu_Mods_Presets_MouseCursor_Title}"
                         Description="{x:Static resources:Strings.Menu_Mods_Presets_MouseCursor_Description}">
 

@@ -17,6 +17,7 @@ namespace NexusStrap.UI.Elements.Settings
     public partial class MainWindow : INavigationWindow
     {
         private Models.Persistable.WindowState _state => App.State.Prop.SettingsWindow;
+        private readonly HashSet<string> _alwaysHiddenTags = new() { "fastflageditor", "fastflageditorwarning" };
 
         public MainWindow(bool showAlreadyRunningWarning)
         {
@@ -178,6 +179,41 @@ namespace NexusStrap.UI.Elements.Settings
         public void HideLoading()
         {
             LoadingOverlay.Visibility = Visibility.Collapsed;
+        }
+
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string query = SearchBox.Text?.Trim().ToLowerInvariant() ?? "";
+
+            foreach (var item in RootNavigation.Items)
+            {
+                if (item is not NavigationItem navItem) continue;
+
+                string tag = (navItem.Tag as string ?? "").ToLowerInvariant();
+                string content = (navItem.Content?.ToString() ?? "").ToLowerInvariant();
+
+                if (_alwaysHiddenTags.Contains(tag))
+                    continue;
+
+                if (tag == "secret")
+                {
+                    navItem.Visibility = query == "roblox" ? Visibility.Visible : Visibility.Collapsed;
+                    continue;
+                }
+
+                if (string.IsNullOrEmpty(query))
+                {
+                    if (navItem.Tag?.ToString() != "optimizationsetup")
+                        navItem.Visibility = Visibility.Visible;
+                    else
+                        navItem.Visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    bool matches = content.Contains(query) || tag.Contains(query);
+                    navItem.Visibility = matches ? Visibility.Visible : Visibility.Collapsed;
+                }
+            }
         }
     }
 }

@@ -44,11 +44,16 @@
                     <Image x:Name="Image2" Width="80" Height="80" VerticalAlignment="Center" Source="pack://application:,,,/Resources/BootstrapperStyles/ByfronDialog/Matt.png" RenderOptions.BitmapScalingMode="HighQuality" Opacity="0" />
                 </Grid>
 
-                <StackPanel Grid.Column="1" Margin="16,0,0,0" VerticalAlignment="Center">
+<StackPanel Grid.Column="1" Margin="16,0,0,0" VerticalAlignment="Center">
                     <TextBlock Text="NEXUS STRAP" FontSize="28" FontWeight="Bold" Foreground="White">
                         <TextBlock.Effect>
                             <DropShadowEffect Color="White" BlurRadius="18" ShadowDepth="0" Opacity="0.8"/>
                         </TextBlock.Effect>
+                    </TextBlock>
+                    <TextBlock Text="Gamer1 is a femboy~" FontSize="9" Foreground="{DynamicResource TextFillColorTertiaryBrush}" Margin="0,2,0,0" RenderTransformOrigin="0.5,0.5">
+                        <TextBlock.RenderTransform>
+                            <RotateTransform Angle="0"/>
+                        </TextBlock.RenderTransform>
                     </TextBlock>
                     <TextBlock Text="{x:Static resources:Strings.Menu_About_Description}" Foreground="{DynamicResource TextFillColorTertiaryBrush}" FontSize="13" Margin="0,4,0,0" />
                 </StackPanel>

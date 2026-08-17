@@ -153,7 +153,7 @@
 
             <!-- Made by -->
             <StatusBarItem Grid.Column="1" VerticalAlignment="Center" Margin="0,0,4,0">
-                <TextBlock Text="Made by Recd" FontSize="12" FontWeight="Medium" VerticalAlignment="Center" Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
+                <TextBlock Text="" FontSize="12" FontWeight="Medium" VerticalAlignment="Center" Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
             </StatusBarItem>
 
             <!-- Close -->
