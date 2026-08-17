@@ -1,0 +1,104 @@
+<UserControl x:Class="NexusStrap.UI.Elements.Controls.SpotlightGuide"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             Panel.ZIndex="10000"
+             IsHitTestVisible="True">
+    <Grid x:Name="RootGrid" Background="Transparent" MouseLeftButtonDown="Root_Click">
+        <Path x:Name="DimPath" Fill="#B8000000" IsHitTestVisible="False" Stretch="None" />
+
+        <Canvas>
+            <Border x:Name="HighlightBox"
+                    Canvas.ZIndex="2"
+                    Canvas.Left="0"
+                    Canvas.Top="0"
+                    BorderBrush="White"
+                    BorderThickness="2.5"
+                    CornerRadius="10"
+                    IsHitTestVisible="False"
+                    Visibility="Collapsed">
+                <Border.Effect>
+                    <DropShadowEffect Color="White" BlurRadius="24" ShadowDepth="0" Opacity="0.9" />
+                </Border.Effect>
+            </Border>
+
+            <Border x:Name="StepCard"
+                    Canvas.ZIndex="3"
+                    Background="#E6101010"
+                    BorderBrush="#44FFFFFF"
+                    BorderThickness="1"
+                    CornerRadius="12"
+                    Padding="22,18"
+                    MaxWidth="380"
+                    Visibility="Collapsed"
+                    MouseLeftButtonDown="StepCard_Click">
+                <StackPanel>
+                    <TextBlock x:Name="StepSection" FontSize="11" FontWeight="SemiBold"
+                               Foreground="#FF9AD0FF" TextWrapping="Wrap" Margin="0,0,0,4" />
+                    <TextBlock x:Name="StepTitle" FontSize="16" FontWeight="Bold" Foreground="White"
+                               TextWrapping="Wrap" Margin="0,0,0,8" />
+                    <TextBlock x:Name="StepDescription" FontSize="13"
+                               Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                               TextWrapping="Wrap" LineHeight="20" Margin="0,0,0,12" />
+                    <TextBlock x:Name="StepHint" FontSize="12"
+                               Foreground="{DynamicResource TextFillColorTertiaryBrush}"
+                               Text="Click anywhere to continue" Margin="0,0,0,10" />
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock x:Name="StepCounter" FontSize="12" VerticalAlignment="Center"
+                                   Foreground="{DynamicResource TextFillColorTertiaryBrush}" Margin="0,0,12,0" />
+                        <ui:Button x:Name="BackBtn" Content="Back" Click="StepBack_Click" Padding="14,6" Margin="0,0,8,0" FontSize="12" />
+                        <ui:Button x:Name="SkipBtn" Content="Skip Tour" Click="Skip_Click" Padding="14,6" FontSize="12" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Canvas>
+
+        <Border x:Name="WelcomePanel"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Background="#F20F0F0F"
+                BorderBrush="#66FFFFFF"
+                BorderThickness="1"
+                CornerRadius="20"
+                Padding="40,36"
+                MinWidth="420"
+                MaxWidth="500">
+            <StackPanel HorizontalAlignment="Center">
+                <TextBlock x:Name="WelcomeTitle" Text="Hello there!" FontSize="26" FontWeight="Bold" Foreground="White"
+                           HorizontalAlignment="Center" Margin="0,0,0,8">
+                    <TextBlock.Effect>
+                        <DropShadowEffect Color="White" BlurRadius="16" ShadowDepth="0" Opacity="0.7"/>
+                    </TextBlock.Effect>
+                </TextBlock>
+                <TextBlock x:Name="WelcomeSubtitle" Text="Thanks for using our Strap!" FontSize="16"
+                           Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                           HorizontalAlignment="Center" Margin="0,0,0,6" />
+                <TextBlock x:Name="WelcomeCredit" Text="This strap was made by Recd, a single open source dev" FontSize="13"
+                           Foreground="{DynamicResource TextFillColorTertiaryBrush}"
+                           HorizontalAlignment="Center" TextAlignment="Center" Margin="0,0,0,20"
+                           TextWrapping="Wrap" MaxWidth="400" />
+                <TextBlock x:Name="WelcomeQuestion" Text="Want a quick tour of how everything works?"
+                           FontSize="14" Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                           HorizontalAlignment="Center" Margin="0,0,0,12" />
+
+                <Grid Margin="0,0,0,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Language" FontSize="12"
+                               Foreground="{DynamicResource TextFillColorTertiaryBrush}"
+                               VerticalAlignment="Center" Margin="0,0,8,0" />
+                    <ComboBox x:Name="LanguageCombo" Grid.Column="1"
+                              Width="180" HorizontalAlignment="Right"
+                              SelectionChanged="LanguageCombo_SelectionChanged" />
+                </Grid>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <ui:Button x:Name="WelcomeSkipBtn" Content="Skip" Click="Skip_Click" Padding="20,8" Margin="0,0,10,0" />
+                    <ui:Button x:Name="WelcomeStartBtn" Content="Start Tour" Appearance="Primary" Click="StartTour_Click" Padding="20,8" Icon="Lightbulb24" />
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

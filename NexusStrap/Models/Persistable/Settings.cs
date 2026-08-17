@@ -88,6 +88,7 @@ namespace NexusStrap.Models.Persistable
 
         // Auto Region Select
         public bool AutoSelectBestRegion { get; set; } = false;
+        public string ForcedRegion { get; set; } = "None";
 
         // Performance Overlay
         public bool EnablePerformanceOverlay { get; set; } = false;

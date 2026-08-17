@@ -254,10 +254,23 @@ namespace NexusStrap.UI.Elements.ContextMenu
             }
         }
 
-        private void QuickLaunchMenuItem_Click(object sender, RoutedEventArgs e)
+        private async void QuickLaunchMenuItem_Click(object sender, RoutedEventArgs e)
         {
             if (sender is not MenuItem menuItem || menuItem.Tag is not long placeId)
                 return;
+
+            if (!string.IsNullOrWhiteSpace(App.Settings.Prop.ForcedRegion) && App.Settings.Prop.ForcedRegion != "None")
+            {
+                if (_activityWatcher?.InGame == true)
+                {
+                    await FindAndJoinServerInRegion(placeId, App.Settings.Prop.ForcedRegion);
+                }
+                else
+                {
+                    Frontend.ShowMessageBox("You need to be in a game to use Force Region from Quick Launch.", MessageBoxImage.Information);
+                }
+                return;
+            }
 
             string robloxUri = $"roblox://experiences/start?placeId={placeId}";
             Process.Start(new ProcessStartInfo
@@ -551,7 +564,9 @@ namespace NexusStrap.UI.Elements.ContextMenu
                 return;
             }
 
-            string selectedRegion = App.Settings.Prop.SelectedRegion;
+            string selectedRegion = !string.IsNullOrWhiteSpace(App.Settings.Prop.ForcedRegion) && App.Settings.Prop.ForcedRegion != "None"
+                ? App.Settings.Prop.ForcedRegion
+                : App.Settings.Prop.SelectedRegion;
             if (string.IsNullOrEmpty(selectedRegion)) return;
 
             await FindAndJoinServerInRegion(_activityWatcher.Data.PlaceId, selectedRegion);

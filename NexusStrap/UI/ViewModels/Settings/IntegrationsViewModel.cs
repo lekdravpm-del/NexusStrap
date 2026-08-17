@@ -340,6 +340,21 @@ namespace NexusStrap.UI.ViewModels.Settings
             set { _customState = value; App.Settings.Prop.CustomRPCState = value; OnPropertyChanged(nameof(CustomState)); }
         }
 
+        public ObservableCollection<string> AvailableRegions { get; } = new()
+        {
+            "None", "US", "EU", "Asia", "AU", "SA", "JP"
+        };
+
+        public string ForcedRegion
+        {
+            get => App.Settings.Prop.ForcedRegion;
+            set
+            {
+                App.Settings.Prop.ForcedRegion = value;
+                OnPropertyChanged(nameof(ForcedRegion));
+            }
+        }
+
         public bool IsCustomIntegrationSelected => SelectedCustomIntegration is not null;
 
         private static bool IsBlocked(string path)

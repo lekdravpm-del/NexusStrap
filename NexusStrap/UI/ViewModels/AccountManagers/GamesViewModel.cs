@@ -630,7 +630,9 @@ namespace NexusStrap.UI.ViewModels.AccountManagers
                     return;
                 }
 
-                string selectedRegion = App.Settings.Prop.SelectedRegion ?? "";
+                string selectedRegion = !string.IsNullOrWhiteSpace(App.Settings.Prop.ForcedRegion) && App.Settings.Prop.ForcedRegion != "None"
+                    ? App.Settings.Prop.ForcedRegion
+                    : App.Settings.Prop.SelectedRegion ?? "";
 
                 if (string.IsNullOrWhiteSpace(selectedRegion))
                 {
@@ -706,7 +708,8 @@ namespace NexusStrap.UI.ViewModels.AccountManagers
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(App.Settings.Prop.SelectedRegion))
+            if (string.IsNullOrWhiteSpace(App.Settings.Prop.SelectedRegion) &&
+                (string.IsNullOrWhiteSpace(App.Settings.Prop.ForcedRegion) || App.Settings.Prop.ForcedRegion == "None"))
             {
                 Frontend.ShowMessageBox("Please select a region in Region Selector first.", MessageBoxImage.Warning);
                 return;
@@ -1523,11 +1526,17 @@ namespace NexusStrap.UI.ViewModels.AccountManagers
 
             try
             {
-                PlaceId = placeId.ToString();
-                mgr.SetCurrentPlaceId(PlaceId);
-                mgr.SetCurrentServerInstanceId(ServerId);
+            PlaceId = placeId.ToString();
+            mgr.SetCurrentPlaceId(PlaceId);
+            mgr.SetCurrentServerInstanceId(ServerId);
 
-                await mgr.LaunchAccountAsync(mgr.ActiveAccount, placeId, ServerId);
+            if (!string.IsNullOrWhiteSpace(App.Settings.Prop.ForcedRegion) && App.Settings.Prop.ForcedRegion != "None")
+            {
+                await AutoFindAndJoinGameAsync(placeId);
+                return;
+            }
+
+            await mgr.LaunchAccountAsync(mgr.ActiveAccount, placeId, ServerId);
             }
             catch (Exception ex)
             {

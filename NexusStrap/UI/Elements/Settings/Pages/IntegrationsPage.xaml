@@ -57,6 +57,18 @@
         </controls:OptionControl>
 
         <controls:OptionControl
+            Description="Forces all game joins to connect to a server in the selected region. Select 'None' to disable."
+            Header="Force Region"
+            IsEnabled="{Binding InnerContent.IsChecked, ElementName=ActivityTrackingOption, Mode=OneWay}">
+            <ComboBox
+                Width="200"
+                Margin="5,0,0,0"
+                Padding="10,5,10,5"
+                ItemsSource="{Binding AvailableRegions, Mode=OneTime}"
+                SelectedItem="{Binding ForcedRegion, Mode=TwoWay}" />
+        </controls:OptionControl>
+
+        <controls:OptionControl
             Description="{x:Static resources:Strings.Menu_Integrations_PlaytimeCounter_Description}"
             Header="{x:Static resources:Strings.Menu_Integrations_PlaytimeCounter_Title}"
             IsEnabled="{Binding InnerContent.IsChecked, ElementName=ActivityTrackingOption, Mode=OneWay}">

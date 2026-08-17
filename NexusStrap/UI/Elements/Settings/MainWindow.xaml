@@ -65,8 +65,9 @@
                     </TextBlock.Effect>
                 </TextBlock>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
+                    <ui:TextBox x:Name="SearchBox" Width="160" PlaceholderText="Search..." Margin="0,0,20,0" VerticalAlignment="Center" TextChanged="SearchBox_TextChanged" />
                     <controls:AccountProfileControl VerticalAlignment="Center" Margin="0,0,8,0" />
-                    <ui:Anchor Content="Roblox" Icon="Games24" NavigateUri="https://www.roblox.com/users/3573547911/profile" ToolTip="Follow my Roblox profile" VerticalAlignment="Center" />
+                    <ui:Anchor Content="Roblox" Icon="Games24" NavigateUri="https://www.roblox.com/users/3573547911/profile" ToolTip="Follow my Roblox profile" VerticalAlignment="Center" Margin="0,0,16,0" />
                     <ui:Anchor Content="Discord" Icon="Chat24" NavigateUri="https://discord.gg/hvhEDxFek" ToolTip="Join our Discord server" VerticalAlignment="Center" />
                 </StackPanel>
             </Grid>
