@@ -69,6 +69,6 @@
             </DataGrid>
         </Border>
 
-        <ui:Button Content="Refresh" Command="{Binding RefreshCommand}" HorizontalAlignment="Left" Margin="0,12,0,0" />
+        <ui:Button x:Name="RefreshButton" Content="Refresh" Command="{Binding RefreshCommand}" HorizontalAlignment="Left" Margin="0,12,0,0" />
     </StackPanel>
 </ui:UiPage>

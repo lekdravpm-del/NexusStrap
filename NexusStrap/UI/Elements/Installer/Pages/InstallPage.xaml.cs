@@ -16,24 +16,13 @@ namespace NexusStrap.UI.Elements.Installer.Pages
         {
             DataContext = _viewModel;
 
-            _viewModel.SetCanContinueEvent += (_, state) =>
-            {
-                if (Window.GetWindow(this) is MainWindow window)
-                    window.SetButtonEnabled("next", state);
-            };
-
             InitializeComponent();
         }
 
-        private void UiPage_Loaded(object sender, RoutedEventArgs e)
+        private void Install_Click(object sender, RoutedEventArgs e)
         {
-            if (Window.GetWindow(this) is MainWindow window)
-            {
-                window.SetNextButtonText(Strings.Common_Navigation_Install);
-                window.NextPageCallback += NextPageCallback;
-            }
+            if (_viewModel.DoInstall() && Window.GetWindow(this) is MainWindow window)
+                window.NextPage();
         }
-
-        public bool NextPageCallback() => _viewModel.DoInstall();
     }
 }

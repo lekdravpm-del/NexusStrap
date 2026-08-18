@@ -16,6 +16,15 @@
         From2013,
 
         [EnumSort(Order = 5)]
-        From2006
+        From2006,
+
+        [EnumSort(Order = 6)]
+        RedCross,
+
+        [EnumSort(Order = 7)]
+        NeonGreen,
+
+        [EnumSort(Order = 8)]
+        CyanDot
     }
 }

@@ -88,9 +88,6 @@ namespace NexusStrap.UI.Elements.Installer
             var page = _pages[_pages.IndexOf(_currentPage) + 1];
 
             Navigate(page);
-
-            SetButtonEnabled("next", page != _pages.Last());
-            SetButtonEnabled("back", true);
         }
 
         void BackPage()
@@ -101,9 +98,6 @@ namespace NexusStrap.UI.Elements.Installer
             var page = _pages[_pages.IndexOf(_currentPage) - 1];
 
             Navigate(page);
-
-            SetButtonEnabled("next", true);
-            SetButtonEnabled("back", page != _pages.First());
         }
 
         void MainWindow_Closing(object? sender, CancelEventArgs e)

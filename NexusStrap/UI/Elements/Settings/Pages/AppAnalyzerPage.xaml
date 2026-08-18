@@ -71,7 +71,7 @@
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <ui:Button Grid.Column="0" Content="Scan for Conflicts" Appearance="Primary" Command="{Binding ScanConflictsCommand}" Margin="0,0,12,0" />
+                        <ui:Button x:Name="ScanConflictsButton" Grid.Column="0" Content="Scan for Conflicts" Appearance="Primary" Command="{Binding ScanConflictsCommand}" Margin="0,0,12,0" />
                         <TextBlock Grid.Column="1" Text="{Binding ConflictStatusText}" VerticalAlignment="Center" FontSize="13" FontWeight="Medium" TextWrapping="Wrap" />
                     </Grid>
 
@@ -99,7 +99,7 @@
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <ui:Button Grid.Column="0" Content="Run Health Check" Appearance="Primary" Command="{Binding RunHealthCheckCommand}" Margin="0,0,12,0" />
+                        <ui:Button x:Name="RunHealthCheckButton" Grid.Column="0" Content="Run Health Check" Appearance="Primary" Command="{Binding RunHealthCheckCommand}" Margin="0,0,12,0" />
                         <TextBlock Grid.Column="1" Text="Diagnoses common issues that may prevent Roblox from launching." VerticalAlignment="Center" FontSize="13" FontWeight="Medium" />
                     </Grid>
 

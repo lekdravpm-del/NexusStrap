@@ -9,10 +9,9 @@
       xmlns:controls="clr-namespace:NexusStrap.UI.Elements.Controls"
       mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="InstallPage"
-      Scrollable="True"
-      Loaded="UiPage_Loaded"
-      Background="Transparent">
+Title="InstallPage"
+       Scrollable="True"
+       Background="Transparent">
 
     <StackPanel Margin="0,0,14,14">
         <TextBlock FontSize="20" FontWeight="SemiBold" Text="{x:Static resources:Strings.Installer_Install_Location_Title}" TextWrapping="Wrap" />
@@ -123,5 +122,9 @@
         <ui:InfoBar Grid.Row="2" Grid.ColumnSpan="2" Margin="0,8,0,0" Padding="8"
                     Title="{x:Static resources:Strings.Installer_InstallationNotFound}"
                     IsOpen="{Binding ShowNotFound, Mode=OneWay}" Severity="Warning" IsClosable="False" />
+
+        <ui:Button Height="48" FontSize="16" FontWeight="SemiBold" HorizontalContentAlignment="Center" Padding="32,0"
+                   HorizontalAlignment="Center" Width="300" Icon="ArrowDownload24" Margin="0,20,0,0"
+                   Content="{x:Static resources:Strings.Common_Navigation_Install}" Click="Install_Click" />
     </StackPanel>
 </ui:UiPage>

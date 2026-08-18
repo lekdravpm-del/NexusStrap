@@ -12,9 +12,6 @@ namespace NexusStrap.UI.Elements.Installer.Pages
 
         public WelcomePage()
         {
-            if (Window.GetWindow(this) is MainWindow window)
-                window.SetButtonEnabled("next", true);
-
             DataContext = _viewModel;
             InitializeComponent();
         }

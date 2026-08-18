@@ -17,13 +17,13 @@
     <StackPanel Margin="0,0,14,14">
         <TextBlock Margin="0,0,0,8" Text="{x:Static resources:Strings.Menu_Behaviour_Description}" FontSize="14" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
 
-        <controls:OptionControl 
+        <controls:OptionControl x:Name="ConfirmLaunchesToggle" 
             Header="{x:Static resources:Strings.Menu_Behaviour_ConfirmLaunches_Title}"
             Description="{x:Static resources:Strings.Menu_Behaviour_ConfirmLaunches_Description}">
             <ui:ToggleSwitch IsChecked="{Binding ConfirmLaunches, Mode=TwoWay}" />
         </controls:OptionControl>
 
-        <controls:OptionControl 
+        <controls:OptionControl x:Name="CookieAccessToggle" 
             Header="{x:Static resources:Strings.Menu_Behaviour_AllowCookieAccess_Title}"
             Description="{Binding Source={x:Static resources:Strings.Menu_Behaviour_AllowCookieAccess_Description}, Converter={StaticResource StringFormatConverter}, ConverterParameter='https://github.com/lekdravpm-del/NexusStrap'}">
             <StackPanel Orientation="Horizontal">
@@ -50,7 +50,7 @@
             <ui:ToggleSwitch IsChecked="{Binding CloseCrashHandler, Mode=TwoWay}" />
         </controls:OptionControl>
 
-        <controls:OptionControl
+        <controls:OptionControl x:Name="UncapFpsToggle"
             Header="Uncap FPS"
             Description="Unlocks the maximum FPS limit, allowing it to exceed 240.">
             <ui:ToggleSwitch IsChecked="{Binding FramerateUncap, Mode=TwoWay}" />
@@ -91,7 +91,7 @@
             </StackPanel>
         </ui:CardExpander>
 
-        <controls:OptionControl
+        <controls:OptionControl x:Name="ProcessPriorityOption"
             Header="{x:Static resources:Strings.Menu_Behaviour_ProcessPriority_Title}"
             Description="{x:Static resources:Strings.Menu_Behaviour_ProcessPriority_Description}">
             <ComboBox
@@ -108,7 +108,7 @@
             </ComboBox>
         </controls:OptionControl>
 
-        <controls:OptionControl
+        <controls:OptionControl x:Name="BackgroundUpdatesToggle"
             Header="{x:Static resources:Strings.Menu_Behaviour_BackgroundUpdates_Title}"
             Description="{x:Static resources:Strings.Menu_Behaviour_BackgroundUpdates_Description}">
             <ui:ToggleSwitch IsChecked="{Binding BackgroundUpdates, Mode=TwoWay}" />

@@ -1,4 +1,4 @@
-﻿using NexusStrap.AppData;
+using NexusStrap.AppData;
 using CommunityToolkit.Mvvm.Input;
 using ICSharpCode.SharpZipLib.Zip;
 using Microsoft.Win32;
@@ -87,6 +87,8 @@ namespace NexusStrap.UI.ViewModels.Settings
         public ICommand OpenCompatSettingsCommand => new RelayCommand(OpenCompatSettings);
         public ModPresetTask OldAvatarBackgroundTask { get; } = new("OldAvatarBackground", @"ExtraContent\places\Mobile.rbxl", "OldAvatarBackground.rbxl");
 
+        public ModPresetTask OldDeathSoundTask { get; } = new("OldDeathSound", @"content\sounds\ouch.ogg", "OldDeath.ogg");
+
         public ModPresetTask OldCharacterSoundsTask { get; } = new("OldCharacterSounds", new()
         {
             { @"content\sounds\action_footsteps_plastic.mp3", "Sounds.OldWalk.mp3"  },
@@ -106,14 +108,16 @@ namespace NexusStrap.UI.ViewModels.Settings
                 Enums.CursorType.From2006, new()
                 {
                     { @"content\textures\Cursors\KeyboardMouse\ArrowCursor.png",    "Cursor.From2006.ArrowCursor.png"    },
-                    { @"content\textures\Cursors\KeyboardMouse\ArrowFarCursor.png", "Cursor.From2006.ArrowFarCursor.png" }
+                    { @"content\textures\Cursors\KeyboardMouse\ArrowFarCursor.png", "Cursor.From2006.ArrowFarCursor.png" },
+                    { @"content\textures\Cursors\KeyboardMouse\MouseLockedCursor.png", "Cursor.From2006.MouseLockedCursor.png" }
                 }
             },
             {
                 Enums.CursorType.From2013, new()
                 {
                     { @"content\textures\Cursors\KeyboardMouse\ArrowCursor.png",    "Cursor.From2013.ArrowCursor.png"    },
-                    { @"content\textures\Cursors\KeyboardMouse\ArrowFarCursor.png", "Cursor.From2013.ArrowFarCursor.png" }
+                    { @"content\textures\Cursors\KeyboardMouse\ArrowFarCursor.png", "Cursor.From2013.ArrowFarCursor.png" },
+                    { @"content\textures\Cursors\KeyboardMouse\MouseLockedCursor.png", "Cursor.From2013.MouseLockedCursor.png" }
                 }
             },
             {
@@ -121,7 +125,8 @@ namespace NexusStrap.UI.ViewModels.Settings
                 {
                     { @"content\textures\Cursors\KeyboardMouse\ArrowCursor.png",    "Cursor.BlackAndWhiteDot.ArrowCursor.png"    },
                     { @"content\textures\Cursors\KeyboardMouse\ArrowFarCursor.png", "Cursor.BlackAndWhiteDot.ArrowFarCursor.png" },
-                    { @"content\textures\Cursors\KeyboardMouse\IBeamCursor.png", "Cursor.BlackAndWhiteDot.IBeamCursor.png" }
+                    { @"content\textures\Cursors\KeyboardMouse\IBeamCursor.png",    "Cursor.BlackAndWhiteDot.IBeamCursor.png"    },
+                    { @"content\textures\Cursors\KeyboardMouse\MouseLockedCursor.png", "Cursor.BlackAndWhiteDot.MouseLockedCursor.png" }
                 }
             },
             {
@@ -129,10 +134,39 @@ namespace NexusStrap.UI.ViewModels.Settings
                 {
                     { @"content\textures\Cursors\KeyboardMouse\ArrowCursor.png",    "Cursor.PurpleCross.ArrowCursor.png"    },
                     { @"content\textures\Cursors\KeyboardMouse\ArrowFarCursor.png", "Cursor.PurpleCross.ArrowFarCursor.png" },
-                    { @"content\textures\Cursors\KeyboardMouse\IBeamCursor.png", "Cursor.PurpleCross.IBeamCursor.png" }
+                    { @"content\textures\Cursors\KeyboardMouse\IBeamCursor.png",    "Cursor.PurpleCross.IBeamCursor.png"    },
+                    { @"content\textures\Cursors\KeyboardMouse\MouseLockedCursor.png", "Cursor.PurpleCross.MouseLockedCursor.png" }
+                }
+            },
+            {
+                Enums.CursorType.RedCross, new()
+                {
+                    { @"content\textures\Cursors\KeyboardMouse\ArrowCursor.png",    "Cursor.RedCross.ArrowCursor.png"    },
+                    { @"content\textures\Cursors\KeyboardMouse\ArrowFarCursor.png", "Cursor.RedCross.ArrowFarCursor.png" },
+                    { @"content\textures\Cursors\KeyboardMouse\IBeamCursor.png",    "Cursor.RedCross.IBeamCursor.png"    },
+                    { @"content\textures\Cursors\KeyboardMouse\MouseLockedCursor.png", "Cursor.RedCross.MouseLockedCursor.png" }
+                }
+            },
+            {
+                Enums.CursorType.NeonGreen, new()
+                {
+                    { @"content\textures\Cursors\KeyboardMouse\ArrowCursor.png",    "Cursor.NeonGreen.ArrowCursor.png"    },
+                    { @"content\textures\Cursors\KeyboardMouse\ArrowFarCursor.png", "Cursor.NeonGreen.ArrowFarCursor.png" },
+                    { @"content\textures\Cursors\KeyboardMouse\IBeamCursor.png",    "Cursor.NeonGreen.IBeamCursor.png"    },
+                    { @"content\textures\Cursors\KeyboardMouse\MouseLockedCursor.png", "Cursor.NeonGreen.MouseLockedCursor.png" }
+                }
+            },
+            {
+                Enums.CursorType.CyanDot, new()
+                {
+                    { @"content\textures\Cursors\KeyboardMouse\ArrowCursor.png",    "Cursor.CyanDot.ArrowCursor.png"    },
+                    { @"content\textures\Cursors\KeyboardMouse\ArrowFarCursor.png", "Cursor.CyanDot.ArrowFarCursor.png" },
+                    { @"content\textures\Cursors\KeyboardMouse\IBeamCursor.png",    "Cursor.CyanDot.IBeamCursor.png"    },
+                    { @"content\textures\Cursors\KeyboardMouse\MouseLockedCursor.png", "Cursor.CyanDot.MouseLockedCursor.png" }
                 }
             }
         });
+
 
         public FontModPresetTask TextFontTask { get; } = new();
 

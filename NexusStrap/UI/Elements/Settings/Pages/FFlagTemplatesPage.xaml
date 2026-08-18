@@ -20,11 +20,11 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <ui:TextBox Grid.Column="0" PlaceholderText="Search templates..." 
+            <ui:TextBox x:Name="TemplateSearchBox" Grid.Column="0" PlaceholderText="Search templates..." 
                          Text="{Binding SearchQuery, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          Margin="0,0,8,0" />
 
-            <ui:Button Grid.Column="1" Content="Import" Icon="ArrowDownload24" 
+            <ui:Button x:Name="TemplateImportButton" Grid.Column="1" Content="Import" Icon="ArrowDownload24" 
                         Command="{Binding ImportTemplateCommand}"
                         Appearance="Secondary" Height="32" Padding="12,0" />
         </Grid>

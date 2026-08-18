@@ -120,18 +120,18 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <ui:CardAction Grid.Column="0" Margin="0,0,4,0" Command="{Binding ImportCommand}" Icon="FolderAdd24">
+            <ui:CardAction x:Name="ImportCard" Grid.Column="0" Margin="0,0,4,0" Command="{Binding ImportCommand}" Icon="FolderAdd24">
                 <TextBlock FontSize="14" Text="Import Settings" />
             </ui:CardAction>
-            <ui:CardAction Grid.Column="1" Margin="4,0,4,0" Command="{Binding OpenRobloxFolderCommand}" Icon="Folder24">
+            <ui:CardAction x:Name="OpenFolderCard" Grid.Column="1" Margin="4,0,4,0" Command="{Binding OpenRobloxFolderCommand}" Icon="Folder24">
                 <TextBlock FontSize="14" Text="Open Folder" />
             </ui:CardAction>
-            <ui:CardAction Grid.Column="2" Margin="4,0,0,0" Command="{Binding ExportCommand}" Icon="Save24">
+            <ui:CardAction x:Name="ExportCard" Grid.Column="2" Margin="4,0,0,0" Command="{Binding ExportCommand}" Icon="Save24">
                 <TextBlock FontSize="14" Text="Export Settings" />
             </ui:CardAction>
         </Grid>
 
-        <controls:OptionControl Description="{x:Static resources:Strings.Menu_GBSEditor_ReadOnly_Description}" Header="{x:Static resources:Strings.Menu_GBSEditor_ReadOnly_Title}">
+        <controls:OptionControl x:Name="ReadOnlyToggle" Description="{x:Static resources:Strings.Menu_GBSEditor_ReadOnly_Description}" Header="{x:Static resources:Strings.Menu_GBSEditor_ReadOnly_Title}">
             <ui:ToggleSwitch Margin="5,0,0,0" IsChecked="{Binding ReadOnly}" />
         </controls:OptionControl>
 

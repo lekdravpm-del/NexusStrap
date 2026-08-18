@@ -64,20 +64,20 @@
                 MinWidth="420"
                 MaxWidth="500">
             <StackPanel HorizontalAlignment="Center">
-                <TextBlock x:Name="WelcomeTitle" Text="Hello there!" FontSize="26" FontWeight="Bold" Foreground="White"
+                <TextBlock x:Name="WelcomeTitle" Text="Welcome to NexusStrap!" FontSize="26" FontWeight="Bold" Foreground="White"
                            HorizontalAlignment="Center" Margin="0,0,0,8">
                     <TextBlock.Effect>
                         <DropShadowEffect Color="White" BlurRadius="16" ShadowDepth="0" Opacity="0.7"/>
                     </TextBlock.Effect>
                 </TextBlock>
-                <TextBlock x:Name="WelcomeSubtitle" Text="Thanks for using our Strap!" FontSize="16"
+                <TextBlock x:Name="WelcomeSubtitle" Text="Thanks for choosing NexusStrap. Let's walk you through the settings." FontSize="16"
                            Foreground="{DynamicResource TextFillColorSecondaryBrush}"
                            HorizontalAlignment="Center" Margin="0,0,0,6" />
-                <TextBlock x:Name="WelcomeCredit" Text="This strap was made by Recd, a single open source dev" FontSize="13"
+                <TextBlock x:Name="WelcomeCredit" Text="Made by NexusStrap Contributors" FontSize="13"
                            Foreground="{DynamicResource TextFillColorTertiaryBrush}"
                            HorizontalAlignment="Center" TextAlignment="Center" Margin="0,0,0,20"
                            TextWrapping="Wrap" MaxWidth="400" />
-                <TextBlock x:Name="WelcomeQuestion" Text="Want a quick tour of how everything works?"
+                <TextBlock x:Name="WelcomeQuestion" Text="Would you like a quick tour?"
                            FontSize="14" Foreground="{DynamicResource TextFillColorSecondaryBrush}"
                            HorizontalAlignment="Center" Margin="0,0,0,12" />
 

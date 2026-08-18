@@ -406,6 +406,16 @@ If not, then please report this exception through a [GitHub issue]({1}) along wi
   <data name="Enums.CursorType.BlackAndWhiteDot" xml:space="preserve">
     <value>Black And White Dot</value>
   </data>
+  <data name="Enums.CursorType.RedCross" xml:space="preserve">
+    <value>Red Cross</value>
+  </data>
+  <data name="Enums.CursorType.NeonGreen" xml:space="preserve">
+    <value>Neon Green</value>
+  </data>
+  <data name="Enums.CursorType.CyanDot" xml:space="preserve">
+    <value>Cyan Dot</value>
+  </data>
+
   <data name="Enums.EmojiType.Catmoji" xml:space="preserve">
     <value>Catmoji</value>
   </data>

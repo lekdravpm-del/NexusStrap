@@ -142,6 +142,6 @@
         </StackPanel>
 
         <!-- Footer -->
-        <TextBlock Grid.Row="4" Text="Made by Recd" FontSize="13" FontWeight="Medium" Foreground="{DynamicResource TextFillColorTertiaryBrush}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,8" />
+        <TextBlock Grid.Row="4" Text="" FontSize="13" FontWeight="Medium" Foreground="{DynamicResource TextFillColorTertiaryBrush}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,8" />
     </Grid>
 </ui:UiPage>

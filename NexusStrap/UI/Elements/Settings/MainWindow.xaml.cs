@@ -78,6 +78,19 @@ namespace NexusStrap.UI.Elements.Settings
                 INavigationItem? currentPage = RootNavigation.Current;
                 App.State.Prop.LastPage = currentPage?.PageType.FullName!;
             }
+
+            // First-run welcome guide — shown after the optimization setup has been resolved
+            if (!App.State.Prop.HasSeenGuide && !App.State.Prop.ShowOptimizationSetup)
+            {
+                Loaded += (_, _) =>
+                {
+                    Dispatcher.BeginInvoke(new Action(() =>
+                    {
+                        GuideOverlay.Visibility = Visibility.Visible;
+                        GuideOverlay.Start(this);
+                    }));
+                };
+            }
         }
 
         private async void SafeNavigate(Type page)

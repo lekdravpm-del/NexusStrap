@@ -305,6 +305,15 @@ namespace NexusStrap
                         App.FinalizeExceptionHandling(t.Exception);
                 }
 
+                // The bootstrapper dialog may close itself from the background thread.
+                // Give the UI thread a moment to process the close before terminating,
+                // so the window doesn't get stuck on screen.
+                if (dialog is not null)
+                {
+                    Application.Current.Dispatcher.InvokeAsync(() => dialog.CloseBootstrapper());
+                    Thread.Sleep(500);
+                }
+
                 App.Terminate();
             });
 

@@ -2376,6 +2376,34 @@ namespace NexusStrap.Resources {
                 return ResourceManager.GetString("Enums.CursorType.PurpleCross", resourceCulture);
             }
         }
+        /// <summary>
+        ///   Looks up a localized string similar to Red Cross.
+        /// </summary>
+        public static string Enums_CursorType_RedCross {
+            get {
+                return ResourceManager.GetString("Enums.CursorType.RedCross", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Neon Green.
+        /// </summary>
+        public static string Enums_CursorType_NeonGreen {
+            get {
+                return ResourceManager.GetString("Enums.CursorType.NeonGreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cyan Dot.
+        /// </summary>
+        public static string Enums_CursorType_CyanDot {
+            get {
+                return ResourceManager.GetString("Enums.CursorType.CyanDot", resourceCulture);
+            }
+        }
+        
+
         
         /// <summary>
         ///   Looks up a localized string similar to Blank.

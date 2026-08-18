@@ -22,7 +22,7 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <ComboBox Grid.Column="0" ItemsSource="{Binding LogFiles}" SelectedItem="{Binding SelectedLogFile}" Margin="0,0,8,0" DisplayMemberPath="." />
+            <ComboBox x:Name="LogFilesComboBox" Grid.Column="0" ItemsSource="{Binding LogFiles}" SelectedItem="{Binding SelectedLogFile}" Margin="0,0,8,0" DisplayMemberPath="." />
             <ui:Button Grid.Column="1" Content="Refresh" Command="{Binding RefreshCommand}" />
         </Grid>
 
@@ -32,7 +32,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <ui:TextBox Grid.Row="0" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" PlaceholderText="Search logs..." Margin="0,0,0,8" />
+            <ui:TextBox x:Name="LogSearchTextBox" Grid.Row="0" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" PlaceholderText="Search logs..." Margin="0,0,0,8" />
 
             <Border Grid.Row="1" Background="{DynamicResource ControlFillColorDefaultBrush}" CornerRadius="6" Padding="8">
                 <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">

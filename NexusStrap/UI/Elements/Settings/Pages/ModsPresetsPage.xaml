@@ -72,7 +72,7 @@
                         FontWeight="Bold"
                         Text="{x:Static resources:Strings.Common_Presets}" />
 
-            <controls:OptionControl
+            <controls:OptionControl x:Name="OldAvatarEditorToggle"
                         Header="{x:Static resources:Strings.Menu_Mods_Presets_OldAvatarEditor_Title}"
                         Description="{x:Static resources:Strings.Menu_Mods_Presets_OldAvatarEditor_Description}">
 
@@ -85,7 +85,7 @@
                 <ui:ToggleSwitch IsChecked="{Binding OldDeathSoundTask.NewState, Mode=TwoWay}" />
             </controls:OptionControl>
 
-            <controls:OptionControl
+            <controls:OptionControl x:Name="CursorTypeOption"
                         Header="{x:Static resources:Strings.Menu_Mods_Presets_MouseCursor_Title}"
                         Description="{x:Static resources:Strings.Menu_Mods_Presets_MouseCursor_Description}">
 
@@ -103,7 +103,7 @@
                 </ComboBox>
             </controls:OptionControl>
 
-            <controls:OptionControl
+            <controls:OptionControl x:Name="EmojiTypeOption"
                         Header="{x:Static resources:Strings.Menu_Mods_Presets_EmojiType_Title}"
                         Description="{x:Static resources:Strings.Menu_Mods_Presets_EmojiType_Description}">
 
@@ -127,7 +127,7 @@
                         FontWeight="Bold"
                         Text="{x:Static resources:Strings.Common_Miscellaneous}" />
 
-            <controls:OptionControl
+            <controls:OptionControl x:Name="CustomFontOption"
                         Header="{x:Static resources:Strings.Menu_Mods_Misc_CustomFont_Title}"
                         Description="{x:Static resources:Strings.Menu_Mods_Misc_CustomFont_Description}">
 
@@ -145,7 +145,7 @@
                 </StackPanel>
             </controls:OptionControl>
 
-            <controls:OptionControl
+            <controls:OptionControl x:Name="CustomDeathSoundOption"
                         Header="{x:Static resources:Strings.Menu_Mods_Misc_CustomDeathSound_Title}"
                         Description="{x:Static resources:Strings.Menu_Mods_Misc_CustomDeathSound_Description}">
 
@@ -185,7 +185,7 @@
 
                 <StackPanel>
 
-                    <controls:OptionControl
+                    <controls:OptionControl x:Name="CustomCursorOption"
                                 Header="{x:Static resources:Strings.Menu_Mods_Misc_CustomCursor_Title}"
                                 Description="{x:Static resources:Strings.Menu_Mods_Misc_CustomCursor_Description}">
 
@@ -203,7 +203,7 @@
                         </StackPanel>
                     </controls:OptionControl>
 
-                    <controls:OptionControl
+                    <controls:OptionControl x:Name="CustomShiftlockOption"
                                 Header="{x:Static resources:Strings.Menu_Mods_Misc_CustomShiftLock_Title}"
                                 Description="{x:Static resources:Strings.Menu_Mods_Misc_CustomShiftLock_Description}">
 
