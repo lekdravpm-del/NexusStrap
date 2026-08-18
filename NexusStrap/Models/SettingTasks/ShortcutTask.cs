@@ -20,11 +20,6 @@
             set
             {
                 base.NewState = value;
-
-                if (value)
-                    App.PendingSettingTasks[Name] = this;
-                else
-                    App.PendingSettingTasks.Remove(Name);
             }
         }
 

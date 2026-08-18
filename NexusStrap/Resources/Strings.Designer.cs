@@ -1,5 +1,5 @@
 ﻿//------------------------------------------------------------------------------
-// yes, a robot wrote this file. totally🫩 jk.
+// yes, a robot wrote this file totally🫩 jk.
 // it holds every UI string so the app doesn't look like gibberish
 // if you need a new string: edit the .resx, pray, rebuild
 //------------------------------------------------------------------------------

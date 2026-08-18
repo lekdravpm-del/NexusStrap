@@ -65,10 +65,10 @@ public string NexusStrapInstallDirectory
                     return;
 
                 if (CreateDesktopShortcuts)
-                    EnsureShortcut(DesktopShortcut);
+                    EnsureShortcut(DesktopShortcut, "-menu");
 
                 if (CreateStartMenuShortcuts)
-                    EnsureShortcut(StartMenuShortcut);
+                    EnsureShortcut(StartMenuShortcut, "-player");
             }
             catch (Exception ex)
             {
@@ -77,11 +77,11 @@ public string NexusStrapInstallDirectory
             }
         }
 
-        private static void EnsureShortcut(string lnkPath)
+        private static void EnsureShortcut(string lnkPath, string args)
         {
             if (!File.Exists(lnkPath))
             {
-                Shortcut.Create(Paths.Application, "", lnkPath);
+                Shortcut.Create(Paths.Application, args, lnkPath);
                 return;
             }
 
@@ -95,13 +95,13 @@ public string NexusStrapInstallDirectory
                 if (string.IsNullOrEmpty(target) || !string.Equals(target, Paths.Application, StringComparison.OrdinalIgnoreCase))
                 {
                     File.Delete(lnkPath);
-                    Shortcut.Create(Paths.Application, "", lnkPath);
+                    Shortcut.Create(Paths.Application, args, lnkPath);
                 }
             }
             catch
             {
                 File.Delete(lnkPath);
-                Shortcut.Create(Paths.Application, "", lnkPath);
+                Shortcut.Create(Paths.Application, args, lnkPath);
             }
         }
 
@@ -175,10 +175,10 @@ public string NexusStrapInstallDirectory
                 WindowsRegistry.RegisterStudio();
 
             if (CreateDesktopShortcuts)
-                Shortcut.Create(Paths.Application, "", DesktopShortcut);
+                Shortcut.Create(Paths.Application, "-menu", DesktopShortcut);
 
             if (CreateStartMenuShortcuts)
-                Shortcut.Create(Paths.Application, "", StartMenuShortcut);
+                Shortcut.Create(Paths.Application, "-player", StartMenuShortcut);
 
             if (ImportSource != ImportSettingsFrom.None)
             {
