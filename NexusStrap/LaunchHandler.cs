@@ -87,18 +87,8 @@ namespace NexusStrap
             }
             else if (!App.LaunchSettings.QuietFlag.Active)
             {
-                if (App.State.Prop.ShowOptimizationSetup)
-                {
-                    // first launch - open the settings window directly so the
-                    // hardware optimization setup page can run
-                    App.Logger.WriteLine(LOG_IDENT, "Opening settings (first launch optimization)");
-                    LaunchSettings();
-                }
-                else
-                {
-                    App.Logger.WriteLine(LOG_IDENT, "Opening menu");
-                    LaunchMenu();
-                }
+                App.Logger.WriteLine(LOG_IDENT, "Opening menu");
+                LaunchMenu();
             }
             else
             {

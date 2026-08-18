@@ -65,10 +65,10 @@ public string NexusStrapInstallDirectory
                     return;
 
                 if (CreateDesktopShortcuts)
-                    EnsureShortcut(DesktopShortcut, "-menu");
+                    EnsureShortcut(DesktopShortcut);
 
                 if (CreateStartMenuShortcuts)
-                    EnsureShortcut(StartMenuShortcut, "-player");
+                    EnsureShortcut(StartMenuShortcut);
             }
             catch (Exception ex)
             {
@@ -77,13 +77,12 @@ public string NexusStrapInstallDirectory
             }
         }
 
-        private static void EnsureShortcut(string lnkPath, string args)
+        private static void EnsureShortcut(string lnkPath)
         {
-            // Always recreate with correct args
             if (File.Exists(lnkPath))
-                File.Delete(lnkPath);
+                return;
 
-            Shortcut.Create(Paths.Application, args, lnkPath);
+            Shortcut.Create(Paths.Application, "", lnkPath);
         }
 
         public ImportSettingsFrom ImportSource { get; set; } = ImportSettingsFrom.NexusStrap;
@@ -156,10 +155,10 @@ public string NexusStrapInstallDirectory
                 WindowsRegistry.RegisterStudio();
 
             if (CreateDesktopShortcuts)
-                Shortcut.Create(Paths.Application, "-menu", DesktopShortcut);
+                Shortcut.Create(Paths.Application, "", DesktopShortcut);
 
             if (CreateStartMenuShortcuts)
-                Shortcut.Create(Paths.Application, "-player", StartMenuShortcut);
+                Shortcut.Create(Paths.Application, "", StartMenuShortcut);
 
             if (ImportSource != ImportSettingsFrom.None)
             {
