@@ -55,6 +55,11 @@ namespace NexusStrap
                 App.Logger.WriteLine(LOG_IDENT, "Opening menu");
                 LaunchMenu();
             }
+            else if (App.LaunchSettings.OpenSettingsFlag.Active)
+            {
+                App.Logger.WriteLine(LOG_IDENT, "Opening settings");
+                LaunchSettings();
+            }
             else if (App.LaunchSettings.WatcherFlag.Active)
             {
                 App.Logger.WriteLine(LOG_IDENT, "Opening watcher");

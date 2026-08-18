@@ -44,6 +44,8 @@ namespace NexusStrap
 
         public LaunchFlag BloxshadeFlag             { get; } = new("bloxshade");
 
+        public LaunchFlag OpenSettingsFlag          { get; } = new("opensettings");
+
 #if DEBUG
         public bool BypassUpdateCheck => true;
 #else
