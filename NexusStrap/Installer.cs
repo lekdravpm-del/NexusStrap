@@ -79,30 +79,11 @@ public string NexusStrapInstallDirectory
 
         private static void EnsureShortcut(string lnkPath, string args)
         {
-            if (!File.Exists(lnkPath))
-            {
-                Shortcut.Create(Paths.Application, args, lnkPath);
-                return;
-            }
-
-            // the shortcut exists, but make sure it still points at the current
-            // executable (covers moved installs and portable copies being replaced)
-            try
-            {
-                var shortcut = ShellLink.Shortcut.ReadFromFile(lnkPath);
-                string? target = shortcut.LinkInfo?.LocalBasePathUnicode ?? shortcut.LinkInfo?.LocalBasePath;
-
-                if (string.IsNullOrEmpty(target) || !string.Equals(target, Paths.Application, StringComparison.OrdinalIgnoreCase))
-                {
-                    File.Delete(lnkPath);
-                    Shortcut.Create(Paths.Application, args, lnkPath);
-                }
-            }
-            catch
-            {
+            // Always recreate with correct args
+            if (File.Exists(lnkPath))
                 File.Delete(lnkPath);
-                Shortcut.Create(Paths.Application, args, lnkPath);
-            }
+
+            Shortcut.Create(Paths.Application, args, lnkPath);
         }
 
         public ImportSettingsFrom ImportSource { get; set; } = ImportSettingsFrom.NexusStrap;
