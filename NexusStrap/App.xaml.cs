@@ -62,8 +62,8 @@ namespace NexusStrap
 
         public static readonly Dictionary<string, BaseTask> PendingSettingTasks = new();
 
-        // Disambiguate Settings so we use the persistable Settings (NexusStrap.Models.Persistable.Settings),
-        // not the auto-generated Properties.Settings which doesn't contain the clicker fields.
+        // use the persistable Settings (NexusStrap.Models.Persistable.Settings),
+        // NOT that boring auto-made Properties.Settings - it doesn't even have the clicker fields
         public static readonly JsonManager<Settings> Settings = new();
 
         public static readonly JsonManager<State> State = new();

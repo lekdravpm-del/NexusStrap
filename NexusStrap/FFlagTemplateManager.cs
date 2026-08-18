@@ -6,6 +6,7 @@ namespace NexusStrap
     {
         private static readonly HashSet<string> RendererPreferenceFlags = new(StringComparer.Ordinal)
         {
+            // renderer flags are like a polycule: only one can be active at a time or drama happens
             "FFlagDebugGraphicsPreferD3D11",
             "FFlagDebugGraphicsPreferVulkan",
             "FFlagDebugGraphicsPreferOpenGL",
