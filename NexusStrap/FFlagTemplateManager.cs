@@ -15,8 +15,170 @@ namespace NexusStrap
         {
             new FFlagTemplate
             {
-                Name = "Maximum FPS Performance",
-                Description = "Removes unnecessary visual effects to maximize frame rate. Best for competitive gaming.",
+                Name = "144 FPS Zero Ping",
+                Description = "Extreme performance and network optimization for 144+ FPS with minimal latency. Strips grass, shadows, telemetry, and maxes out thread scheduling.",
+                Category = FFlagTemplateCategories.Performance,
+                Flags = new Dictionary<string, string>
+                {
+                    { "FLogNetwork", "7" },
+                    { "FFlagHandleAltEnterFullscreenManually", "False" },
+                    { "DFIntOcclusionShelfScalarNumerator", "2" },
+                    { "FFlagFRMRefactor", "False" },
+                    { "FFlagUISUseLastFrameTimeInUpdateInputSignal", "True" },
+                    { "FFlagSimEnableDCD16", "True" },
+                    { "DFFlagFrameTimeJitterMedians2", "False" },
+                    { "DFFlagReplicatorSeparateVarThresholds", "True" },
+                    { "FFlagFasterPreciseTime4", "True" },
+                    { "FIntActivatedCountTimerMSKeyboard", "0" },
+                    { "FIntDebugForceMSAASamples", "1" },
+                    { "DFIntNetworkClusterPacketCacheNumParallelTasks", "12" },
+                    { "FFlagLargeReplicatorRead2", "True" },
+                    { "DFIntMegaReplicatorNumParallelTasks", "12" },
+                    { "DFIntGraphicsOptimizationModeMaxFrameTimeTargetMs", "25" },
+                    { "DFIntGraphicsOptimizationModeMinFrameTimeTargetMs", "16" },
+                    { "FFlagDebugDisableTelemetryV2Stat", "True" },
+                    { "FFlagDebugDisableTelemetryV2Counter", "True" },
+                    { "DFIntTaskSchedulerJobInitThreads", "12" },
+                    { "DFIntS2PhysicsSenderRate", "128" },
+                    { "FIntRuntimeMaxNumOfMutexes", "1000000" },
+                    { "FIntSSAOMipLevels", "0" },
+                    { "DFIntMemoryUtilityCurveNumSegments", "100" },
+                    { "DFFlagMouseMoveOncePerFrame", "False" },
+                    { "DFIntRakNetResendRttMultiple", "1" },
+                    { "FIntActivatedCountTimerMSMouse", "0" },
+                    { "DFFlagMergeFakeInputEvents3", "True" },
+                    { "FIntSSAO", "0" },
+                    { "DFIntBatchThumbnailResultsSizeCap", "200" },
+                    { "FFlagDebugDisableTelemetryPoint", "True" },
+                    { "FIntRuntimeMaxNumOfDPCs", "64" },
+                    { "DFIntReplicationDataCacheNumParallelTasks", "12" },
+                    { "DFIntDebugPerformanceControlFrameTime", "2" },
+                    { "DFIntClientPacketMaxDelayMs", "1" },
+                    { "FIntRuntimeMaxNumOfSchedulers", "1000000" },
+                    { "FFlagDebugDisableTelemetryEphemeralCounter", "True" },
+                    { "DFIntAnimationLodFacsDistanceMax", "0" },
+                    { "DFIntClientNetworkInfluxHundredthsPercentage", "0" },
+                    { "FFlagDebugDisableTelemetryEphemeralStat", "True" },
+                    { "FFlagDisablePostFx", "True" },
+                    { "DFIntOcclusionFresnelEllipsoids", "6" },
+                    { "DFIntMaxDataPacketPerSend", "100000" },
+                    { "DFIntOcclusionFresnelConsensusNumerator", "2" },
+                    { "DFIntRakNetNakResendDelayMs", "1" },
+                    { "FIntGrassMovementReducedMotionFactor", "0" },
+                    { "FIntRuntimeMaxNumOfConditions", "1000000" },
+                    { "DFFlagClampIncomingReplicationLag", "True" },
+                    { "DFIntJoinDataCompressionLevel", "0" },
+                    { "DFIntDebugFRMQualityLevelOverride", "1" },
+                    { "FIntRenderGrassDetailStrands", "0" },
+                    { "FIntRenderShadowIntensity", "0" },
+                    { "DFIntMaxProcessPacketsStepsAccumulated", "0" },
+                    { "DFIntRakNetLoopMs", "1" },
+                    { "FIntRuntimeMaxNumOfLatches", "1000000" },
+                    { "FFlagMessageBusCallOptimization", "True" },
+                    { "DFIntRakNetSelectTimeoutMs", "1" },
+                    { "FIntTaskSchedulerAutoThreadLimit", "12" },
+                    { "FIntFRMMinGrassDistance", "0" },
+                    { "DFFlagDebugSkipMeshVoxelizer", "True" },
+                    { "FIntCameraMaxZoomDistance", "2147483647" },
+                    { "DFIntTextureQualityOverride", "0" },
+                    { "FIntRenderShadowmapBias", "0" },
+                    { "DFIntMaxProcessPacketsJobScaling", "10000" },
+                    { "DFIntMaxProcessPacketsStepsPerCyclic", "5000" },
+                    { "FIntFRMMaxGrassDistance", "0" },
+                    { "DFIntTaskSchedulerJobInGameThreads", "12" },
+                    { "FIntRuntimeMaxNumOfThreads", "1000000" },
+                    { "DFIntNetworkSchemaCompressionRatio", "0" },
+                    { "DFIntClientPacketHealthyAllocationPercent", "20" },
+                    { "FFlagSortKeyOptimization", "True" },
+                    { "DFIntRakNetApplicationFeedbackScaleUpThresholdPercent", "0" },
+                    { "DFFlagRobloxTelemetryAddDeviceRAM", "False" },
+                    { "DFIntContentProviderPreloadHangTelemetryHundredthsPercentage", "0" },
+                    { "FIntLuaGcParallelMinMultiTasks", "12" },
+                    { "DFFlagReplicatorDisKickSize", "True" },
+                    { "FFlagNextGenReplicatorEnabledRead2", "True" },
+                    { "FFlagDebugGraphicsPreferD3D11", "True" },
+                    { "DFFlagDebugPerfMode", "True" },
+                    { "FFlagLargeReplicatorWrite2", "True" },
+                    { "DFIntGraphicsOptimizationModeFRMFrameRateTarget", "1000" },
+                    { "DFIntRakNetApplicationFeedbackScaleUpFactorHundredthPercent", "0" },
+                    { "FFlagDebugDisableTelemetryEventIngest", "True" },
+                    { "DFIntPhysicsReceiveNumParallelTasks", "12" },
+                    { "FFlagDebugCheckRenderThreading", "True" },
+                    { "DFIntTargetTimeDelayFacctorTenths", "15" },
+                    { "DFIntWaitOnUpdateNetworkLoopEndedMS", "100" },
+                    { "FFlagDebugDisableTelemetryV2Event", "True" },
+                    { "DFIntHttpBatchApi_maxWaitMs", "40" },
+                    { "DFIntMaxReceiveToDeserializeLatencyMilliseconds", "10" },
+                    { "FIntInterpolationAwareTargetTimeLerpHundredth", "40" },
+                    { "DFIntHttpBatchApi_minWaitMs", "5" },
+                    { "DFIntHttpBatchApi_cacheDelayMs", "15" },
+                    { "DFIntMemoryUtilityCurveTotalMemoryReserve", "0" },
+                    { "FFlagLuaMenuPerfImprovements", "True" },
+                    { "FFlagEnablePartyVoiceOnlyForUnfilteredThreads", "False" },
+                    { "FFlagAdServiceEnabled", "False" },
+                    { "DFIntS2PhysicsSenderRate", "128" },
+                    { "FIntSmoothMouseSpringFrequencyTenths", "100" },
+                    { "FIntV1MenuLanguageSelectionFeaturePerMillageRollout", "0" },
+                    { "DFIntMaxFrameBufferSize", "4" },
+                    { "FFlagTaskSchedulerLimitTargetFpsTo2402", "False" },
+                }
+            },
+
+            new FFlagTemplate
+            {
+                Name = "Gamer Tested",
+                Description = "Balanced performance preset. Removes grass and heavy shadows while keeping decent visuals. Good for mid-range PCs.",
+                Category = FFlagTemplateCategories.Performance,
+                Flags = new Dictionary<string, string>
+                {
+                    { "FIntFRMMinGrassDistance", "0" },
+                    { "FIntFRMMaxGrassDistance", "0" },
+                    { "DFIntDebugFRMQualityLevelOverride", "1" },
+                    { "DFIntTextureQualityOverride", "1" },
+                    { "DFFlagTextureQualityOverrideEnabled", "True" },
+                    { "FFlagDebugSkyGray", "True" },
+                    { "FIntRenderShadowIntensity", "0" },
+                    { "FIntDebugForceMSAASamples", "1" },
+                    { "FFlagDebugGraphicsPreferVulkan", "True" },
+                    { "DFIntCSGLevelOfDetailSwitchingDistance", "0" },
+                    { "DFIntCSGLevelOfDetailSwitchingDistanceL12", "0" },
+                    { "DFIntCSGLevelOfDetailSwitchingDistanceL23", "0" },
+                    { "DFIntCSGLevelOfDetailSwitchingDistanceL34", "0" },
+                }
+            },
+
+            new FFlagTemplate
+            {
+                Name = "Bloxstrap Optimized",
+                Description = "Pre-tuned flags used by the Bloxstrap community. Focuses on network and rendering efficiency without destroying visuals.",
+                Category = FFlagTemplateCategories.Network,
+                Flags = new Dictionary<string, string>
+                {
+                    { "DFIntClientPacketMaxDelayMs", "1" },
+                    { "DFIntRakNetResendRttMultiple", "1" },
+                    { "DFIntRakNetNakResendDelayMs", "1" },
+                    { "DFIntRakNetLoopMs", "1" },
+                    { "DFIntRakNetSelectTimeoutMs", "1" },
+                    { "DFIntNetworkQualityResponderMaxWaitTime", "1" },
+                    { "DFIntMaxAcceptableUpdateDelay", "1" },
+                    { "DFIntServerFramesBetweenJoins", "1" },
+                    { "DFIntS2PhysicsSenderRate", "128" },
+                    { "DFIntNetworkSchemaCompressionRatio", "0" },
+                    { "DFIntJoinDataCompressionLevel", "0" },
+                    { "DFIntMaxDataPacketPerSend", "100000" },
+                    { "DFIntCodecMaxOutgoingFrames", "1000" },
+                    { "DFIntCodecMaxIncomingPackets", "100" },
+                    { "DFIntBufferCompressionLevel", "0" },
+                    { "DFFlagClampIncomingReplicationLag", "True" },
+                    { "DFIntReplicationDataCacheNumParallelTasks", "12" },
+                    { "DFIntNetworkClusterPacketCacheNumParallelTasks", "12" },
+                }
+            },
+
+            new FFlagTemplate
+            {
+                Name = "Low End Savior",
+                Description = "For older or low-spec computers. Sacrifices all visuals for the smoothest possible gameplay on weak hardware.",
                 Category = FFlagTemplateCategories.Performance,
                 Flags = new Dictionary<string, string>
                 {
@@ -30,13 +192,44 @@ namespace NexusStrap
                     { "DFIntCSGLevelOfDetailSwitchingDistanceL12", "0" },
                     { "DFIntCSGLevelOfDetailSwitchingDistanceL23", "0" },
                     { "DFIntCSGLevelOfDetailSwitchingDistanceL34", "0" },
+                    { "FFlagDebugSkyGray", "True" },
+                    { "FIntDebugForceMSAASamples", "1" },
+                    { "FFlagDebugGraphicsPreferVulkan", "True" },
+                    { "FFlagDisablePostFx", "True" },
+                    { "FIntRenderShadowIntensity", "0" },
+                    { "FIntSSAO", "0" },
+                    { "FIntSSAOMipLevels", "0" },
+                    { "FIntRenderGrassDetailStrands", "0" },
+                }
+            },
+
+            new FFlagTemplate
+            {
+                Name = "Maximum FPS",
+                Description = "Removes all non-essential visual effects to maximize frame rate. Best for competitive gaming on any hardware.",
+                Category = FFlagTemplateCategories.Performance,
+                Flags = new Dictionary<string, string>
+                {
+                    { "FIntFRMMinGrassDistance", "0" },
+                    { "FIntFRMMaxGrassDistance", "0" },
+                    { "DFFlagDebugPauseVoxelizer", "True" },
+                    { "DFIntDebugFRMQualityLevelOverride", "1" },
+                    { "DFIntTextureQualityOverride", "1" },
+                    { "DFFlagTextureQualityOverrideEnabled", "True" },
+                    { "DFIntCSGLevelOfDetailSwitchingDistance", "0" },
+                    { "DFIntCSGLevelOfDetailSwitchingDistanceL12", "0" },
+                    { "DFIntCSGLevelOfDetailSwitchingDistanceL23", "0" },
+                    { "DFIntCSGLevelOfDetailSwitchingDistanceL34", "0" },
+                    { "FFlagDisablePostFx", "True" },
+                    { "FIntRenderShadowIntensity", "0" },
+                    { "FIntSSAO", "0" },
                 }
             },
 
             new FFlagTemplate
             {
                 Name = "Tom Pearl FFlags",
-                Description = "Enables the highest visual quality settings for screenshots and recording.",
+                Description = "Enables the highest visual quality settings for screenshots and recording. Uses maximum MSAA and texture quality.",
                 Category = FFlagTemplateCategories.GraphicsQuality,
                 Flags = new Dictionary<string, string>
                 {
@@ -50,36 +243,25 @@ namespace NexusStrap
 
             new FFlagTemplate
             {
-                Name = "Low End PC",
-                Description = "For older or low-spec computers. Sacrifices visuals for smooth gameplay.",
-                Category = FFlagTemplateCategories.Performance,
+                Name = "Brighter and Clearer",
+                Description = "Disables post-processing (bloom, vignette, color grading) for a brighter, clearer view. Makes dark games much easier to see.",
+                Category = FFlagTemplateCategories.VisualEffects,
                 Flags = new Dictionary<string, string>
                 {
-                    { "FIntFRMMinGrassDistance", "0" },
-                    { "FIntFRMMaxGrassDistance", "0" },
-                    { "DFFlagDebugPauseVoxelizer", "True" },
-                    { "DFIntDebugFRMQualityLevelOverride", "1" },
-                    { "DFIntTextureQualityOverride", "1" },
-                    { "DFFlagTextureQualityOverrideEnabled", "True" },
-                    { "DFIntCSGLevelOfDetailSwitchingDistance", "0" },
-                    { "DFIntCSGLevelOfDetailSwitchingDistanceL12", "0" },
-                    { "DFIntCSGLevelOfDetailSwitchingDistanceL23", "0" },
-                    { "DFIntCSGLevelOfDetailSwitchingDistanceL34", "0" },
-                    { "FFlagDebugSkyGray", "True" },
-                    { "FIntDebugForceMSAASamples", "1" },
-                    { "FFlagDebugGraphicsPreferVulkan", "True" },
+                    { "FFlagDisablePostFx", "True" },
                 }
             },
 
             new FFlagTemplate
             {
-                Name = "No Grass",
-                Description = "Removes grass rendering entirely. Significant performance boost with minimal visual impact.",
-                Category = FFlagTemplateCategories.Performance,
+                Name = "Crisp Gameplay",
+                Description = "Disables post-processing, heavy shadows, and lowers render quality for the cleanest possible look during gameplay.",
+                Category = FFlagTemplateCategories.VisualEffects,
                 Flags = new Dictionary<string, string>
                 {
-                    { "FIntFRMMinGrassDistance", "0" },
-                    { "FIntFRMMaxGrassDistance", "0" },
+                    { "FFlagDisablePostFx", "True" },
+                    { "FIntRenderShadowIntensity", "0" },
+                    { "DFIntDebugFRMQualityLevelOverride", "3" },
                 }
             },
 
@@ -91,222 +273,6 @@ namespace NexusStrap
                 Flags = new Dictionary<string, string>
                 {
                     { "FFlagDebugGraphicsPreferVulkan", "True" },
-                }
-            },
-
-            new FFlagTemplate
-            {
-                Name = "OpenGL Renderer",
-                Description = "Uses OpenGL rendering. May help on older AMD/Intel GPUs.",
-                Category = FFlagTemplateCategories.Performance,
-                Flags = new Dictionary<string, string>
-                {
-                    { "FFlagDebugGraphicsPreferOpenGL", "True" },
-                }
-            },
-
-            new FFlagTemplate
-            {
-                Name = "Gray Sky",
-                Description = "Replaces sky with solid gray. Reduces GPU load from sky rendering.",
-                Category = FFlagTemplateCategories.VisualEffects,
-                Flags = new Dictionary<string, string>
-                {
-                    { "FFlagDebugSkyGray", "True" },
-                }
-            },
-
-            new FFlagTemplate
-            {
-                Name = "Disable Particles",
-                Description = "Reduces particle effect quality to improve performance in effects-heavy games.",
-                Category = FFlagTemplateCategories.VisualEffects,
-                Flags = new Dictionary<string, string>
-                {
-                    { "DFIntDebugFRMQualityLevelOverride", "1" },
-                    { "DFFlagDebugPauseVoxelizer", "True" },
-                }
-            },
-
-            new FFlagTemplate
-            {
-                Name = "Network Optimizer",
-                Description = "Adjusts network settings for more stable connections.",
-                Category = FFlagTemplateCategories.Network,
-                Flags = new Dictionary<string, string>
-                {
-                    { "DFIntDebugFRMQualityLevelOverride", "3" },
-                }
-            },
-
-            new FFlagTemplate
-            {
-                Name = "Anti-Aliasing Only",
-                Description = "Enables anti-aliasing without other quality changes. Smooths jagged edges.",
-                Category = FFlagTemplateCategories.GraphicsQuality,
-                Flags = new Dictionary<string, string>
-                {
-                    { "FIntDebugForceMSAASamples", "4" },
-                }
-            },
-
-            new FFlagTemplate
-            {
-                Name = "Studio Optimization",
-                Description = "Optimizes Roblox Studio performance for faster development.",
-                Category = FFlagTemplateCategories.Performance,
-                Flags = new Dictionary<string, string>
-                {
-                    { "FIntFRMMinGrassDistance", "0" },
-                    { "FIntFRMMaxGrassDistance", "0" },
-                    { "DFFlagDebugPauseVoxelizer", "True" },
-                    { "DFIntDebugFRMQualityLevelOverride", "1" },
-                    { "FFlagDebugSkyGray", "True" },
-                    { "DFIntCSGLevelOfDetailSwitchingDistance", "0" },
-                    { "DFIntCSGLevelOfDetailSwitchingDistanceL12", "0" },
-                    { "DFIntCSGLevelOfDetailSwitchingDistanceL23", "0" },
-                    { "DFIntCSGLevelOfDetailSwitchingDistanceL34", "0" },
-                }
-            },
-
-            new FFlagTemplate
-            {
-                Name = "Mobile-like Quality",
-                Description = "Reduces quality to mobile-like levels. Useful for very low-end PCs.",
-                Category = FFlagTemplateCategories.Performance,
-                Flags = new Dictionary<string, string>
-                {
-                    { "DFIntTextureQualityOverride", "1" },
-                    { "DFFlagTextureQualityOverrideEnabled", "True" },
-                    { "DFIntDebugFRMQualityLevelOverride", "1" },
-                    { "FIntDebugForceMSAASamples", "1" },
-                    { "FIntFRMMinGrassDistance", "0" },
-                    { "FIntFRMMaxGrassDistance", "0" },
-                    { "DFIntCSGLevelOfDetailSwitchingDistance", "0" },
-                    { "DFIntCSGLevelOfDetailSwitchingDistanceL12", "0" },
-                    { "DFIntCSGLevelOfDetailSwitchingDistanceL23", "0" },
-                    { "DFIntCSGLevelOfDetailSwitchingDistanceL34", "0" },
-                }
-            },
-
-            new FFlagTemplate
-            {
-                Name = "Clean Render",
-                Description = "Removes post-processing effects like bloom and color correction for a cleaner look.",
-                Category = FFlagTemplateCategories.VisualEffects,
-                Flags = new Dictionary<string, string>
-                {
-                    { "DFIntDebugFRMQualityLevelOverride", "1" },
-                    { "FFlagDebugSkyGray", "True" },
-                }
-            },
-
-            new FFlagTemplate
-            {
-                Name = "Reduce Mesh Complexity",
-                Description = "Switches to lower polygon models. Great performance boost with subtle visual change.",
-                Category = FFlagTemplateCategories.Performance,
-                Flags = new Dictionary<string, string>
-                {
-                    { "DFIntCSGLevelOfDetailSwitchingDistance", "0" },
-                    { "DFIntCSGLevelOfDetailSwitchingDistanceL12", "0" },
-                    { "DFIntCSGLevelOfDetailSwitchingDistanceL23", "0" },
-                    { "DFIntCSGLevelOfDetailSwitchingDistanceL34", "0" },
-                }
-            },
-
-            new FFlagTemplate
-            {
-                Name = "Disable Shadows",
-                Description = "Disables shadow rendering. Major performance improvement.",
-                Category = FFlagTemplateCategories.GraphicsQuality,
-                Flags = new Dictionary<string, string>
-                {
-                    { "DFIntDebugFRMQualityLevelOverride", "1" },
-                }
-            },
-
-            new FFlagTemplate
-            {
-                Name = "Balanced Performance",
-                Description = "A balanced preset that improves FPS without sacrificing too much quality.",
-                Category = FFlagTemplateCategories.Performance,
-                Flags = new Dictionary<string, string>
-                {
-                    { "FIntFRMMinGrassDistance", "10" },
-                    { "FIntFRMMaxGrassDistance", "50" },
-                    { "DFIntDebugFRMQualityLevelOverride", "5" },
-                    { "DFIntCSGLevelOfDetailSwitchingDistance", "1000" },
-                    { "DFIntCSGLevelOfDetailSwitchingDistanceL12", "750" },
-                    { "DFIntCSGLevelOfDetailSwitchingDistanceL23", "500" },
-                    { "DFIntCSGLevelOfDetailSwitchingDistanceL34", "250" },
-                }
-            },
-
-            new FFlagTemplate
-            {
-                Name = "High Quality Anti-Aliasing",
-                Description = "Enables maximum MSAA for the smoothest edges possible.",
-                Category = FFlagTemplateCategories.GraphicsQuality,
-                Flags = new Dictionary<string, string>
-                {
-                    { "FIntDebugForceMSAASamples", "8" },
-                }
-            },
-
-            new FFlagTemplate
-            {
-                Name = "Voxelizer Pause",
-                Description = "Pauses the voxelizer system to save CPU. Useful when world building is not needed.",
-                Category = FFlagTemplateCategories.Performance,
-                Flags = new Dictionary<string, string>
-                {
-                    { "DFFlagDebugPauseVoxelizer", "True" },
-                }
-            },
-
-            new FFlagTemplate
-            {
-                Name = "Minimal Visuals",
-                Description = "Strips everything non-essential. Maximum FPS at the cost of visual fidelity.",
-                Category = FFlagTemplateCategories.Performance,
-                Flags = new Dictionary<string, string>
-                {
-                    { "FIntFRMMinGrassDistance", "0" },
-                    { "FIntFRMMaxGrassDistance", "0" },
-                    { "DFFlagDebugPauseVoxelizer", "True" },
-                    { "DFIntDebugFRMQualityLevelOverride", "1" },
-                    { "DFIntTextureQualityOverride", "1" },
-                    { "DFFlagTextureQualityOverrideEnabled", "True" },
-                    { "FFlagDebugSkyGray", "True" },
-                    { "FIntDebugForceMSAASamples", "1" },
-                    { "DFIntCSGLevelOfDetailSwitchingDistance", "0" },
-                    { "DFIntCSGLevelOfDetailSwitchingDistanceL12", "0" },
-                    { "DFIntCSGLevelOfDetailSwitchingDistanceL23", "0" },
-                    { "DFIntCSGLevelOfDetailSwitchingDistanceL34", "0" },
-                }
-            },
-
-            new FFlagTemplate
-            {
-                Name = "Disable DPI Scaling",
-                Description = "Disables DPI scaling. Fixes blurry UI on high-DPI displays.",
-                Category = FFlagTemplateCategories.Stability,
-                Flags = new Dictionary<string, string>
-                {
-                    { "DFFlagDisableDPIScale", "True" },
-                }
-            },
-
-            new FFlagTemplate
-            {
-                Name = "Custom Resolution Quality",
-                Description = "Sets texture quality to mid-range for a balance of clarity and performance.",
-                Category = FFlagTemplateCategories.GraphicsQuality,
-                Flags = new Dictionary<string, string>
-                {
-                    { "DFIntTextureQualityOverride", "8" },
-                    { "DFFlagTextureQualityOverrideEnabled", "True" },
                 }
             },
 
@@ -324,53 +290,53 @@ namespace NexusStrap
 
             new FFlagTemplate
             {
-                Name = "Unlock FPS 144",
-                Description = "Raises the frame rate cap to 144. A gentler option than 240 for 144Hz displays.",
-                Category = FFlagTemplateCategories.Performance,
+                Name = "Future is Bright",
+                Description = "Forces the new Future is Bright shadow-map lighting engine for improved, more colorful lighting.",
+                Category = FFlagTemplateCategories.GraphicsQuality,
                 Flags = new Dictionary<string, string>
                 {
-                    { "DFIntTaskSchedulerTargetFps", "144" },
-                    { "FFlagGameBasicSettingsFramerateCap", "False" },
+                    { "FFlagDebugForceFutureIsBrightPhase2", "True" },
+                    { "FFlagDebugForceFutureIsBrightPhase3", "True" },
                 }
             },
 
             new FFlagTemplate
             {
-                Name = "Brighter & Clearer",
-                Description = "Disables post-processing (bloom, vignette, color grading) for a brighter, clearer view. Makes dark games much easier to see.",
-                Category = FFlagTemplateCategories.VisualEffects,
+                Name = "Telemetry Blocker",
+                Description = "Disables all Roblox telemetry and data collection. Improves privacy and reduces background network usage.",
+                Category = FFlagTemplateCategories.Network,
                 Flags = new Dictionary<string, string>
                 {
-                    { "FFlagDisablePostFx", "True" },
+                    { "FFlagDebugDisableTelemetryV2Stat", "True" },
+                    { "FFlagDebugDisableTelemetryV2Counter", "True" },
+                    { "FFlagDebugDisableTelemetryEphemeralCounter", "True" },
+                    { "FFlagDebugDisableTelemetryEphemeralStat", "True" },
+                    { "FFlagDebugDisableTelemetryPoint", "True" },
+                    { "FFlagDebugDisableTelemetryEventIngest", "True" },
+                    { "FFlagDebugDisableTelemetryV2Event", "True" },
+                    { "DFIntContentProviderPreloadHangTelemetryHundredthsPercentage", "0" },
+                    { "DFFlagRobloxTelemetryAddDeviceRAM", "False" },
+                    { "FFlagAddDMLogging", "False" },
                 }
             },
 
             new FFlagTemplate
             {
                 Name = "Shadow Tuning",
-                Description = "Softens or removes heavy shadows so enemies and terrain stand out. Set to 0 to fully disable shadow intensity.",
+                Description = "Removes shadow intensity and lowers shadow atlas usage. Enemies and terrain stand out more clearly.",
                 Category = FFlagTemplateCategories.VisualEffects,
                 Flags = new Dictionary<string, string>
                 {
                     { "FIntRenderShadowIntensity", "0" },
-                }
-            },
-
-            new FFlagTemplate
-            {
-                Name = "Future Is Bright Lighting",
-                Description = "Forces the new 'Future is Bright' shadow-map lighting engine for improved, more colorful lighting.",
-                Category = FFlagTemplateCategories.GraphicsQuality,
-                Flags = new Dictionary<string, string>
-                {
-                    { "FFlagDebugForceFutureIsBrightPhase2", "True" },
+                    { "FIntRenderShadowmapBias", "0" },
+                    { "FIntRenderMaxShadowAtlasUsageBeforeDownscale", "1" },
                 }
             },
 
             new FFlagTemplate
             {
                 Name = "On-Screen FPS Counter",
-                Description = "Shows a small FPS counter in the corner of the game, handy for checking your performance after tuning flags.",
+                Description = "Shows a small FPS counter in the corner of the game. Handy for checking your performance after tuning flags.",
                 Category = FFlagTemplateCategories.Debug,
                 Flags = new Dictionary<string, string>
                 {
@@ -380,26 +346,39 @@ namespace NexusStrap
 
             new FFlagTemplate
             {
-                Name = "Crisp Gameplay",
-                Description = "Disables post-processing and heavy shadows at once for the cleanest possible look during gameplay.",
-                Category = FFlagTemplateCategories.VisualEffects,
+                Name = "No Grass",
+                Description = "Removes grass rendering entirely. Significant performance boost with minimal visual impact.",
+                Category = FFlagTemplateCategories.Performance,
                 Flags = new Dictionary<string, string>
                 {
-                    { "FFlagDisablePostFx", "True" },
-                    { "FIntRenderShadowIntensity", "0" },
-                    { "DFIntDebugFRMQualityLevelOverride", "3" },
+                    { "FIntFRMMinGrassDistance", "0" },
+                    { "FIntFRMMaxGrassDistance", "0" },
+                    { "FIntGrassMovementReducedMotionFactor", "0" },
+                    { "FIntRenderGrassDetailStrands", "0" },
                 }
             },
 
             new FFlagTemplate
             {
-                Name = "High Quality Textures",
-                Description = "Forces maximum texture quality so details, skins and surfaces stay sharp up close.",
-                Category = FFlagTemplateCategories.GraphicsQuality,
+                Name = "Threading Powerhouse",
+                Description = "Maxes out thread scheduling, mutexes, and latches for systems with many CPU cores. Reduces scheduling bottlenecks.",
+                Category = FFlagTemplateCategories.Performance,
                 Flags = new Dictionary<string, string>
                 {
-                    { "DFIntTextureQualityOverride", "16" },
-                    { "DFFlagTextureQualityOverrideEnabled", "True" },
+                    { "DFIntTaskSchedulerJobInitThreads", "12" },
+                    { "DFIntTaskSchedulerJobInGameThreads", "12" },
+                    { "FIntRuntimeMaxNumOfThreads", "1000000" },
+                    { "FIntRuntimeMaxNumOfMutexes", "1000000" },
+                    { "FIntRuntimeMaxNumOfLatches", "1000000" },
+                    { "FIntRuntimeMaxNumOfSemaphores", "1000000" },
+                    { "FIntRuntimeMaxNumOfConditions", "1000000" },
+                    { "FIntRuntimeMaxNumOfSchedulers", "1000000" },
+                    { "FIntRuntimeMaxNumOfDPCs", "64" },
+                    { "DFIntMegaReplicatorNumParallelTasks", "12" },
+                    { "DFIntReplicationDataCacheNumParallelTasks", "12" },
+                    { "DFIntPhysicsReceiveNumParallelTasks", "12" },
+                    { "FIntTaskSchedulerAutoThreadLimit", "12" },
+                    { "FIntLuaGcParallelMinMultiTasks", "12" },
                 }
             },
         };
@@ -433,8 +412,6 @@ namespace NexusStrap
             App.FastFlags.suspendUndoSnapshot = true;
             App.FastFlags.SaveUndoSnapshot();
 
-            // When the template pins a renderer, clear the others so two
-            // renderer preferences can never be active at the same time.
             if (template.Flags.Keys.Any(RendererPreferenceFlags.Contains))
             {
                 foreach (string rendererFlag in RendererPreferenceFlags)

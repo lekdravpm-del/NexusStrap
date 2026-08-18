@@ -194,6 +194,12 @@ namespace NexusStrap.UI.Elements.Settings
             LoadingOverlay.Visibility = Visibility.Collapsed;
         }
 
+        private void GuideButton_Click(object sender, RoutedEventArgs e)
+        {
+            GuideOverlay.Visibility = Visibility.Visible;
+            GuideOverlay.Start(this);
+        }
+
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             string query = SearchBox.Text?.Trim().ToLowerInvariant() ?? "";

@@ -65,9 +65,10 @@
                     </TextBlock.Effect>
                 </TextBlock>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
-                    <ui:TextBox x:Name="SearchBox" Width="160" PlaceholderText="Search..." Margin="0,0,24,0" VerticalAlignment="Center" TextChanged="SearchBox_TextChanged" />
-                    <controls:AccountProfileControl VerticalAlignment="Center" Margin="0,0,16,0" />
-                    <ui:Anchor Content="Roblox" Icon="Games24" NavigateUri="https://www.roblox.com/users/3573547911/profile" ToolTip="Follow my Roblox profile" VerticalAlignment="Center" Margin="0,0,20,0" />
+                    <ui:Button x:Name="GuideButton" Icon="Lightbulb24" Content="Guide" Height="28" Padding="8,0" Margin="0,0,10,0" Click="GuideButton_Click" ToolTip="Run the spotlight guide" VerticalAlignment="Center" />
+                    <ui:TextBox x:Name="SearchBox" Width="160" PlaceholderText="Search..." Margin="0,0,10,0" VerticalAlignment="Center" TextChanged="SearchBox_TextChanged" />
+                    <controls:AccountProfileControl VerticalAlignment="Center" Margin="0,0,10,0" />
+                    <ui:Anchor Content="Roblox" Icon="Games24" NavigateUri="https://www.roblox.com/users/3573547911/profile" ToolTip="Follow my Roblox profile" VerticalAlignment="Center" Margin="0,0,10,0" />
                     <ui:Anchor Content="Discord" Icon="Chat24" NavigateUri="https://discord.gg/hvhEDxFek" ToolTip="Join our Discord server" VerticalAlignment="Center" />
                 </StackPanel>
             </Grid>
@@ -93,7 +94,7 @@
                     <ui:NavigationItem Content="{x:Static resources:Strings.Menu_FastFlagEditor_Title}" PageType="{x:Type pages:FastFlagEditorPage}" Icon="EditSettings20" IconSize="20" Tag="fastflageditor" Visibility="Collapsed" />
                     <ui:NavigationItem Content="FastFlagEditorWarning" PageType="{x:Type pages:FastFlagEditorWarningPage}" Icon="Warning24" IconSize="20" Tag="fastflageditorwarning" Visibility="Collapsed" />
                     <ui:NavigationItem Content="Optimization Setup" PageType="{x:Type pages:OptimizationSetupPage}" Icon="HeartPulse24" IconSize="20" Tag="optimizationsetup" Visibility="Collapsed" />
-                    <ui:NavigationItem Content="Secret" PageType="{x:Type pages:SecretPage}" Icon="Sparkle24" IconSize="20" Tag="secret" Visibility="Collapsed" />
+                    <ui:NavigationItem Content="Secret" PageType="{x:Type pages:SecretPage}" Icon="Eye24" IconSize="20" Tag="secret" Visibility="Collapsed" />
                     <ui:NavigationItem Content="Community Mods" PageType="{x:Type pages:CommunityModsPage}" Icon="BuildingShop24" IconSize="20" Tag="communitymods" Visibility="Collapsed" />
                     <ui:NavigationItem Content="Mods" PageType="{x:Type pages:ModsPresetsPage}" Icon="BuildingShop24" IconSize="20" Tag="mods" />
                     <ui:NavigationItem Content="Mod Generator" PageType="{x:Type pages:ModGeneratorPage}" Icon="BuildingShop24" IconSize="20" Tag="modgenerator" Visibility="Collapsed" />
