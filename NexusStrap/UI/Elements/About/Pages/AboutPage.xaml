@@ -50,11 +50,6 @@
                             <DropShadowEffect Color="White" BlurRadius="18" ShadowDepth="0" Opacity="0.8"/>
                         </TextBlock.Effect>
                     </TextBlock>
-                    <TextBlock Text="Gamer1 is a femboy~" FontSize="9" Foreground="{DynamicResource TextFillColorTertiaryBrush}" Margin="0,2,0,0" RenderTransformOrigin="0.5,0.5">
-                        <TextBlock.RenderTransform>
-                            <RotateTransform Angle="0"/>
-                        </TextBlock.RenderTransform>
-                    </TextBlock>
                     <TextBlock Text="{x:Static resources:Strings.Menu_About_Description}" Foreground="{DynamicResource TextFillColorTertiaryBrush}" FontSize="13" Margin="0,4,0,0" />
                 </StackPanel>
             </Grid>
@@ -95,8 +90,7 @@
                         <TextBlock Text="Contributors" FontSize="12" FontWeight="SemiBold" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Margin="0,0,0,4" />
                         <Border Padding="10" Background="{DynamicResource ApplicationBackgroundBrush}" CornerRadius="8">
                             <StackPanel>
-                                <TextBlock Text="Gamer1" FontSize="14" FontWeight="Medium" />
-                                <TextBlock Text="Gamer1 is a femboy~" FontSize="11" Foreground="{DynamicResource TextFillColorTertiaryBrush}" Margin="0,2,0,0" />
+                                <TextBlock Text="alexandre.szx" FontSize="14" FontWeight="Medium" />
                             </StackPanel>
                         </Border>
                     </StackPanel>

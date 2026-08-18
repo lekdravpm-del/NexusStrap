@@ -754,6 +754,17 @@ namespace NexusStrap.UI.ViewModels.AccountManagers
             mgr.SetCurrentServerInstanceId(ServerId);
 
             await mgr.LaunchAccountAsync(mgr.ActiveAccount, placeId, ServerId);
+
+            GetMainWindow()?.CloseWindow();
+
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window is NexusStrap.UI.Elements.Settings.MainWindow settingsWindow)
+                {
+                    settingsWindow.CloseWindow();
+                    break;
+                }
+            }
         }
 
         private async Task FetchDiscoveryPageGamesAsync(long userId, CancellationToken token = default)

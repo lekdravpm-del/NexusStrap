@@ -32,11 +32,11 @@
 
             <Frame x:Name="RootFrame" Grid.Column="0" />
 
-            <ui:NavigationCompact x:Name="RootNavigation" Grid.Column="1" Margin="8,0,0,0" Frame="{Binding ElementName=RootFrame}" SelectedPageIndex="0" FooterAlwaysVisible="True" Background="Transparent">
+            <ui:NavigationCompact x:Name="RootNavigation" Grid.Column="1" Margin="4,0,12,0" MaxWidth="195" Frame="{Binding ElementName=RootFrame}" SelectedPageIndex="0" FooterAlwaysVisible="True" Background="Transparent" IsExpanded="True">
                 <ui:NavigationCompact.Items>
-                    <ui:NavigationItem Content="Accounts" PageType="{x:Type pages:AccountsPage}" Icon="PersonAccounts24" Tag="accounts" Margin="0,0,12,0" FontWeight="Medium" />
-                    <ui:NavigationItem Content="Friends" PageType="{x:Type pages:FriendsPage}" Icon="People24" Tag="friends" Margin="0,0,12,0" FontWeight="Medium" x:Name="friends"/>
-                    <ui:NavigationItem Content="Game Browser" PageType="{x:Type pages:GamesPage}" Icon="Games24" Tag="games" Margin="0,0,12,0" FontWeight="Medium" x:Name="games"/>
+                    <ui:NavigationItem Content="Accounts" PageType="{x:Type pages:AccountsPage}" Icon="PersonAccounts24" IconSize="20" Tag="accounts" FontWeight="Medium" />
+                    <ui:NavigationItem Content="Friends" PageType="{x:Type pages:FriendsPage}" Icon="People24" IconSize="20" Tag="friends" FontWeight="Medium" x:Name="friends"/>
+                    <ui:NavigationItem Content="Game Browser" PageType="{x:Type pages:GamesPage}" Icon="Games24" IconSize="20" Tag="games" FontWeight="Medium" x:Name="games"/>
                 </ui:NavigationCompact.Items>
             </ui:NavigationCompact>
         </Grid>

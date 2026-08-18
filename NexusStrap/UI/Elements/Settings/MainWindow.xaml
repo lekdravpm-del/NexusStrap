@@ -65,7 +65,6 @@
                     </TextBlock.Effect>
                 </TextBlock>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
-                    <ui:Button x:Name="GuideButton" Icon="Lightbulb24" Content="Guide" Height="28" Padding="8,0" Margin="0,0,10,0" Click="GuideButton_Click" ToolTip="Run the spotlight guide" VerticalAlignment="Center" />
                     <ui:TextBox x:Name="SearchBox" Width="160" PlaceholderText="Search..." Margin="0,0,10,0" VerticalAlignment="Center" TextChanged="SearchBox_TextChanged" />
                     <controls:AccountProfileControl VerticalAlignment="Center" Margin="0,0,10,0" />
                     <ui:Anchor Content="Roblox" Icon="Games24" NavigateUri="https://www.roblox.com/users/3573547911/profile" ToolTip="Follow my Roblox profile" VerticalAlignment="Center" Margin="0,0,10,0" />

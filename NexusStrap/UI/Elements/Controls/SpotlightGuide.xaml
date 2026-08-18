@@ -93,6 +93,10 @@
                               Width="180" HorizontalAlignment="Right"
                               SelectionChanged="LanguageCombo_SelectionChanged" />
                 </Grid>
+                <TextBlock Text="You can change the language above to read the guide in your preferred language."
+                           FontSize="11" Foreground="{DynamicResource TextFillColorTertiaryBrush}"
+                           HorizontalAlignment="Center" TextAlignment="Center" Margin="0,0,0,16"
+                           TextWrapping="Wrap" MaxWidth="380" />
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <ui:Button x:Name="WelcomeSkipBtn" Content="Skip" Click="Skip_Click" Padding="20,8" Margin="0,0,10,0" />

@@ -310,7 +310,12 @@ namespace NexusStrap
                 // so the window doesn't get stuck on screen.
                 if (dialog is not null)
                 {
-                    Application.Current.Dispatcher.InvokeAsync(() => dialog.CloseBootstrapper());
+                    try
+                    {
+                        Application.Current?.Dispatcher.Invoke(() => dialog.CloseBootstrapper());
+                    }
+                    catch { }
+
                     Thread.Sleep(500);
                 }
 

@@ -336,6 +336,9 @@ namespace NexusStrap.UI.Elements.Controls
             if (!_running && WelcomePanel.Visibility != Visibility.Visible) return;
             _running = false;
 
+            App.State.Prop.HasSeenGuide = true;
+            App.State.Save();
+
             RestoreOriginalPage();
 
             var fade = new DoubleAnimation(1, 0, TimeSpan.FromMilliseconds(300));
