@@ -77,6 +77,7 @@
                 <ui:NavigationCompact.Items>
                     <ui:NavigationItem Content="{x:Static resources:Strings.Menu_Integrations_Title}" PageType="{x:Type pages:IntegrationsPage}" Icon="PuzzlePiece24" IconSize="20" Tag="integrations" />
                     <ui:NavigationItem Content="{x:Static resources:Strings.Menu_Behaviour_Title}" PageType="{x:Type pages:BehaviourPage}" Icon="Rocket24" IconSize="20" Tag="bootstrapper" />
+                    <ui:NavigationItem Content="Mods" PageType="{x:Type pages:ModsPresetsPage}" Icon="PaintBrush24" IconSize="20" Tag="mods" />
                     <ui:NavigationItem Content="{x:Static resources:Strings.Menu_FastFlags_Title}" PageType="{x:Type pages:FastFlagsPage}" Icon="Tag24" IconSize="20" Tag="fastflags" />
                     <ui:NavigationItem Content="FFlag Templates" PageType="{x:Type pages:FFlagTemplatesPage}" Icon="Library24" IconSize="20" Tag="fflagtemplates" />
                     <ui:NavigationItem Content="{x:Static resources:Strings.Menu_Appearance_Title}" PageType="{x:Type pages:AppearancePage}" Icon="Color24" IconSize="20" Tag="appearance" />
@@ -85,7 +86,6 @@
                     <ui:NavigationItem Content="{x:Static resources:Strings.Common_Shortcuts}" PageType="{x:Type pages:ShortcutsPage}" Icon="Keyboard24" IconSize="20" Tag="shortcuts" />
 
                     <ui:NavigationItem Content="Server History" PageType="{x:Type pages:ServerHistoryPage}" Icon="History24" IconSize="20" Tag="serverhistory" />
-                    <ui:NavigationItem Content="{x:Static resources:Strings.ServerBrowser_Title}" PageType="{x:Type pages:ServerBrowserPage}" Icon="Globe24" IconSize="20" Tag="serverbrowser" x:Name="serverBrowser" />
                     <ui:NavigationItem Content="Launch Arguments" PageType="{x:Type pages:CustomLaunchArgsPage}" Icon="Code24" IconSize="20" Tag="launchargs" />
                     <ui:NavigationItem Content="Log Viewer" PageType="{x:Type pages:LogViewerPage}" Icon="Document24" IconSize="20" Tag="logviewer" />
                     <ui:NavigationItem Content="App Analyzer" PageType="{x:Type pages:AppAnalyzerPage}" Icon="ScanText24" IconSize="20" Tag="appanalyzer" />
@@ -95,9 +95,6 @@
                     <ui:NavigationItem Content="FastFlagEditorWarning" PageType="{x:Type pages:FastFlagEditorWarningPage}" Icon="Warning24" IconSize="20" Tag="fastflageditorwarning" Visibility="Collapsed" />
                     <ui:NavigationItem Content="Optimization Setup" PageType="{x:Type pages:OptimizationSetupPage}" Icon="HeartPulse24" IconSize="20" Tag="optimizationsetup" Visibility="Collapsed" />
                     <ui:NavigationItem Content="Secret" PageType="{x:Type pages:SecretPage}" Icon="Eye24" IconSize="20" Tag="secret" Visibility="Collapsed" />
-                    <ui:NavigationItem Content="Community Mods" PageType="{x:Type pages:CommunityModsPage}" Icon="BuildingShop24" IconSize="20" Tag="communitymods" Visibility="Collapsed" />
-                    <ui:NavigationItem Content="Mods" PageType="{x:Type pages:ModsPresetsPage}" Icon="BuildingShop24" IconSize="20" Tag="mods" />
-                    <ui:NavigationItem Content="Mod Generator" PageType="{x:Type pages:ModGeneratorPage}" Icon="BuildingShop24" IconSize="20" Tag="modgenerator" Visibility="Collapsed" />
                     <ui:NavigationItem Content="Theme Store" PageType="{x:Type pages:ThemeStorePage}" Icon="PaintBrush24" IconSize="20" Tag="themestore" Visibility="Collapsed" />
                 </ui:NavigationCompact.Items>
                 <ui:NavigationCompact.Footer>

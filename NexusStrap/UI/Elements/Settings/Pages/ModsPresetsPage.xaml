@@ -15,55 +15,15 @@
 
     mc:Ignorable="d">
 
-    <StackPanel Margin="0,0,14,14">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+
+        <StackPanel Margin="0,0,14,14">
 
         <TextBlock
             FontSize="14"
             Foreground="{StaticResource TextFillColorSecondaryBrush}"
             Text="{x:Static resources:Strings.Menu_Mods_Description}"
             TextWrapping="Wrap" />
-
-        <Grid Margin="0,16,0,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-
-            <ui:CardAction Grid.Row="0" Grid.Column="0" Margin="0,0,4,0" Command="{Binding OpenCommunityModsCommand}" Icon="BuildingShop20">
-                <StackPanel>
-                    <TextBlock FontSize="14" Text="Community Mods" />
-                    <TextBlock  Margin="0,2,0,0" Padding="0,0,16,0" FontSize="12" Foreground="{StaticResource TextFillColorTertiaryBrush}" Text="Explore user-created mods." TextWrapping="Wrap" />
-                </StackPanel>
-            </ui:CardAction>
-
-            <ui:CardAction Grid.Row="0" Grid.Column="1" Margin="0,0,0,0" Command="{Binding OpenModsCommand}" Icon="List24">
-                <StackPanel>
-                    <TextBlock FontSize="14" Text="My Mods" TextWrapping="Wrap" />
-                    <TextBlock Margin="0,2,0,0" FontSize="12" Foreground="{DynamicResource TextFillColorTertiaryBrush}" Text="Manage your active mods." TextWrapping="Wrap" />
-                </StackPanel>
-            </ui:CardAction>
-
-            <ui:CardAction Grid.Row="0" Grid.Column="2" Margin="4,0,0,0" VerticalAlignment="Top" Command="{Binding OpenModGeneratorCommand}" Icon="Color20">
-                <StackPanel>
-                    <TextBlock FontSize="14" Text="Mod Generator" TextWrapping="Wrap" />
-                    <controls:MarkdownTextBlock Margin="0,2,0,0" FontSize="12"  Foreground="{StaticResource TextFillColorTertiaryBrush}" MarkdownText="Generate mods easily with a single click." TextWrapping="Wrap" />
-                </StackPanel>
-            </ui:CardAction>
-
-            <ui:CardAction Grid.Row="1" Grid.ColumnSpan="3" Margin="0,7,0,0" VerticalAlignment="Top" Command="{Binding OpenCompatSettingsCommand}" Icon="WindowWrench24">
-                <StackPanel>
-                    <TextBlock FontSize="14" Text="{x:Static resources:Strings.Menu_Mods_Misc_CompatibilitySettings_Title}" TextWrapping="Wrap" />
-                    <controls:MarkdownTextBlock Margin="0,2,0,0" FontSize="12" Foreground="{DynamicResource TextFillColorTertiaryBrush}" MarkdownText="{Binding Source={x:Static resources:Strings.Menu_Mods_Misc_CompatibilitySettings_Description}, Converter={StaticResource StringFormatConverter}, ConverterParameter='https://devblogs.microsoft.com/directx/demystifying-full-screen-optimizations/'}" TextWrapping="Wrap" />
-                </StackPanel>
-            </ui:CardAction>
-        </Grid>
-
-        <Separator Margin="0,8,0,0" />
 
         <StackPanel Margin="8">
 
@@ -427,4 +387,5 @@
             </ui:CardExpander>
         </StackPanel>
     </StackPanel>
+    </ScrollViewer>
 </ui:UiPage>

@@ -45,8 +45,6 @@ namespace NexusStrap.UI.Elements.Settings
             gbs.Opacity = viewModel.GBSEnabled ? 1 : 0.5;
             gbs.IsEnabled = viewModel.GBSEnabled; // binding doesnt work as expected so we are setting it in here instead
 
-            serverBrowser.Visibility = viewModel.ServerBrowserEnabled ? System.Windows.Visibility.Visible : System.Windows.Visibility.Collapsed;
-
             LoadState();
 
             string? lastPageName = App.State.Prop.LastPage;

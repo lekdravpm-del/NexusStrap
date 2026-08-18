@@ -328,7 +328,23 @@ namespace NexusStrap.UI.Elements.Controls
 
         private void Skip_Click(object sender, RoutedEventArgs e)
         {
-            Complete();
+            CloseGuide();
+        }
+
+        private void CloseGuide()
+        {
+            if (!_running && WelcomePanel.Visibility != Visibility.Visible) return;
+            _running = false;
+
+            RestoreOriginalPage();
+
+            var fade = new DoubleAnimation(1, 0, TimeSpan.FromMilliseconds(300));
+            fade.Completed += (_, _) =>
+            {
+                Visibility = Visibility.Collapsed;
+                GuideCompleted?.Invoke(this, EventArgs.Empty);
+            };
+            BeginAnimation(OpacityProperty, fade);
         }
 
         private void Complete()

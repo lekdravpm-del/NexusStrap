@@ -39,7 +39,6 @@ namespace NexusStrap
                     { "FFlagDebugDisableTelemetryV2Stat", "True" },
                     { "FFlagDebugDisableTelemetryV2Counter", "True" },
                     { "DFIntTaskSchedulerJobInitThreads", "12" },
-                    { "DFIntS2PhysicsSenderRate", "128" },
                     { "FIntRuntimeMaxNumOfMutexes", "1000000" },
                     { "FIntSSAOMipLevels", "0" },
                     { "DFIntMemoryUtilityCurveNumSegments", "100" },

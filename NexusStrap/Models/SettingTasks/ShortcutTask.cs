@@ -14,6 +14,20 @@
             OriginalState = File.Exists(_shortcutPath);
         }
 
+        public override bool NewState
+        {
+            get => base.NewState;
+            set
+            {
+                base.NewState = value;
+
+                if (value)
+                    App.PendingSettingTasks[Name] = this;
+                else
+                    App.PendingSettingTasks.Remove(Name);
+            }
+        }
+
         public override void Execute()
         {
             if (NewState)
