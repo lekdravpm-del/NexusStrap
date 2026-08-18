@@ -1,5 +1,5 @@
 ﻿//------------------------------------------------------------------------------
-// yes, a robot wrote this file. a very tired robot.
+// yes, a robot wrote this file. a very tired robot totaly🫩
 // it holds every UI string so the app doesn't look like gibberish
 // if you need a new string: edit the .resx, pray, rebuild
 //------------------------------------------------------------------------------
@@ -14,9 +14,6 @@ namespace NexusStrap.Resources {
     // this class was forged by the StronglyTypedResourceBuilder
     // (aka the magic string-fetching goblin)
     // change strings in the .resx file, not here, or the goblin gets you
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-    [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Strings {
         
         private static global::System.Resources.ResourceManager resourceMan;

@@ -14,9 +14,6 @@ namespace NexusStrap.Properties {
     // this class was forged by the StronglyTypedResourceBuilder
     // (aka the magic string-fetching goblin)
     // change strings in the .resx file, not here, or the goblin gets you
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-    [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
