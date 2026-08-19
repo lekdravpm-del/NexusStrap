@@ -1,78 +1,64 @@
-<h1 align="center">NexusStrap</h1>
-
 <p align="center">
-    The Roblox launcher that respects your RAM, your FPS, and your cursor.
+    <img src="https://img.shields.io/github/v/release/lekdravpm-del/NexusStrap?label=Latest%20Release" alt="Latest Release">
+    <img src="https://img.shields.io/github/downloads/lekdravpm-del/NexusStrap/total" alt="Total Downloads">
+    <img src="https://img.shields.io/github/stars/lekdravpm-del/NexusStrap" alt="Stars">
 </p>
 
 <p align="center">
-    Star this repo if you like it — it fuels the caffeine intake.
+    <b>Leave a star if you like the project! ⭐️</b>
 </p>
 
-> [!CAUTION]
-> Only download NexusStrap from the official repository or Releases page.
-> Any other source is a stranger handing you candy in a van. Don't take it.
+# NexusStrap
 
----
+NexusStrap is a fork of Bloxstrap focused on performance, memory efficiency, and cursor customization.
 
-## Why NexusStrap?
+> [!IMPORTANT]
+> NexusStrap supports Windows 10 and above only.
 
-Vanilla Roblox is heavy. NexusStrap is the crash diet:
+## Installation
 
-- **Memory Limiter** — cap how much RAM Roblox can eat, plus a built-in RAM cleaner
-- **Process Priority Control** — tell Roblox who's boss
-- **Auto-close Crash Handler** — that memory-hogging background process, gone
-- **Multi-instance support** — because one Roblox wasn't enough
+1. Download the latest version 👉 [Releases](https://github.com/lekdravpm-del/NexusStrap/releases/latest)
+2. Run the Exe and finish the setup
+3. Launch NexusStrap
+4. Enjoy a lighter, cleaner Roblox
 
----
+## Features
 
-## The Cursor Stuff (the good stuff)
+- **Memory Limiter** — cap Roblox's RAM usage and clean up leftover memory
+- **Shift-lock cursor themes** with live preview
+- **Custom Cursor Sets** — build, switch, export, and import packs
+- **Custom death sounds**
+- **Auto-close Crash Handler** — frees up memory
+- **Process priority control**
+- **Multi-instance launching**
+- **Femboy theme** and other custom themes
+- **8-bit bootstrapper icon**
+- FastFlag editor with profiles and ban-flag warnings
+- Custom Discord RPC, game shortcuts, account manager, and more
 
-- **Shift-lock cursor themes** — pick a theme, see a live preview, it just works
-- **Custom Cursor Sets** — build your own packs, switch between them with one click
-- **Export/Import** your cursor sets — share them with friends
-- **Custom death sounds** — make dying in Roblox sound the way it feels
+## Frequently Asked Questions (FAQ)
 
-All custom images are auto-scaled to Roblox's native cursor sizes, so they
-won't render 10 feet tall in-game.
+**Can it get you banned?**
 
----
+No. NexusStrap doesn't modify Roblox gameplay files — only the launcher and client appearance, like any other bootstrapper.
 
-## Looks
+**Is it a virus?**
 
-- **Femboy theme** (yes, it's pink. no, we don't apologize)
-- **8-bit bootstrapper icon** for the retro gamer in you
-- Custom fonts, custom icons, custom everything
-- Spotlight guide that walks you through the app
+No. It's open source. Read the code or build it yourself.
 
----
+## How to Fork
 
-## Quality of Life
+NexusStrap is built using **C# and .NET 10**.
 
-- FastFlag editor with profiles, presets, undo/redo, and ban-flag warnings
-- Game shortcuts for one-click joining
-- Custom Discord RPC showing what you're actually doing
-- Combined log viewer so you can see what broke
-- Account manager with cookie login
-- One-click uninstall that cleans up after itself
-
----
-
-## Download
-
-Grab the latest `NexusStrap.exe` from the **Releases** page.
-No installer, no bloat — replace your exe, keep your settings.
+1. Go to: https://github.com/lekdravpm-del/NexusStrap
+2. Click **Fork** (top right)
+3. This creates your own copy under your GitHub account
 
 ## Building from Source
 
-Requirements: [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0)
-
 ```bash
-# Build only
+# Build
 dotnet build NexusStrap.slnx -c Release
 
 # Publish single .exe
 dotnet publish NexusStrap/NexusStrap.csproj -c Release -r win-x64 -p:SelfContained=false -p:PublishSingleFile=true -p:PublishReadyToRun=false
-
-## Licensing
-
-This project is **dual-licensed** under `GPL-3.0-or-later` and `Unlicensed`.
