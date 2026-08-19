@@ -38,10 +38,6 @@
 
 NexusStrap is a fork of Bloxstrap with one job: **make Roblox feel better on your PC.**
 
-No trackers, no bloat, no "team" of anonymous devs. Just code, caffeine, and cursors.
-
-## The Good Stuff
-
 ### Performance
 
 - **Memory Limiter** — cap how much RAM Roblox is allowed to touch
@@ -49,6 +45,7 @@ No trackers, no bloat, no "team" of anonymous devs. Just code, caffeine, and cur
 - **Auto-close Crash Handler** — kill the invisible memory hog before it hogs
 - **Process priority control** — decide who's boss on your machine
 - **Multi-instance launching** — several games, no mutex war
+- and yes it has the feature to clean on version-XXXXXX so save up space
 
 > [!NOTE]
 > The Memory Limiter alone usually cuts Roblox RAM usage by a noticeable chunk
@@ -121,7 +118,7 @@ No. NexusStrap changes the launcher and appearance — not gameplay.
 
 **Is it a virus?**
 
-No, it's open source. Read the code, build it yourself, or don't — your call.
+No, it's open source. Read the code, build it yourself, or don't
 
 **Will you add my feature?**
 
