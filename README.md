@@ -42,7 +42,7 @@ No trackers, no bloat, no "team" of anonymous devs. Just code, caffeine, and cur
 
 ## The Good Stuff
 
-### 🧠 Performance
+### Performance
 
 - **Memory Limiter** — cap how much RAM Roblox is allowed to touch
 - **RAM Cleaner** — sweep up the leftovers when Roblox is done eating
@@ -54,7 +54,7 @@ No trackers, no bloat, no "team" of anonymous devs. Just code, caffeine, and cur
 > The Memory Limiter alone usually cuts Roblox RAM usage by a noticeable chunk
 > on longer sessions. That's the whole point.
 
-### 🖱️ The Cursor Stuff
+### The Cursor Stuff
 
 - **Shift-lock cursor themes** with live preview — see it before you commit
 - **Custom Cursor Sets** — build whole packs, switch with one click
@@ -63,14 +63,14 @@ No trackers, no bloat, no "team" of anonymous devs. Just code, caffeine, and cur
 - Every image is **auto-scaled to Roblox's real cursor size**, so your PNG won't
   render 10 feet tall in-game
 
-### 🎨 Looks
+### Looks
 
 - **Femboy theme** — yes, it's pink. No, we don't apologize.
 - **8-bit bootstrapper icon** for the retro crowd
 - Custom fonts, icons, and bootstrapper appearance
 - **Spotlight guide** that teaches you the app while you use it
 
-### ⚙️ Everything Else
+### Everything Else
 
 - FastFlag editor with profiles, presets, undo/redo, and ban-flag warnings
 - Custom Discord RPC showing what you're actually doing
