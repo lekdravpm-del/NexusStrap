@@ -1,21 +1,66 @@
-<h1 align="center">
-    NexusStrap
-</h1>
+<h1 align="center">NexusStrap</h1>
 
 <p align="center">
-    NexusStrap is a fork of FishStrap focused on performance and customization
+    The Roblox launcher that respects your RAM, your FPS, and your cursor.
 </p>
 
 <p align="center">
-    If you want to help support our project please consider giving this repo a star!
+    Star this repo if you like it — it fuels the caffeine intake.
 </p>
 
 > [!CAUTION]
-> Only download NexusStrap from the official repository or releases provided by the project. Do not download binaries from unofficial sources, as they may be modified or malicious.
+> Only download NexusStrap from the official repository or Releases page.
+> Any other source is a stranger handing you candy in a van. Don't take it.
+
+---
+
+## Why NexusStrap?
+
+Vanilla Roblox is heavy. NexusStrap is the crash diet:
+
+- **Memory Limiter** — cap how much RAM Roblox can eat, plus a built-in RAM cleaner
+- **Process Priority Control** — tell Roblox who's boss
+- **Auto-close Crash Handler** — that memory-hogging background process, gone
+- **Multi-instance support** — because one Roblox wasn't enough
+
+---
+
+## The Cursor Stuff (the good stuff)
+
+- **Shift-lock cursor themes** — pick a theme, see a live preview, it just works
+- **Custom Cursor Sets** — build your own packs, switch between them with one click
+- **Export/Import** your cursor sets — share them with friends
+- **Custom death sounds** — make dying in Roblox sound the way it feels
+
+All custom images are auto-scaled to Roblox's native cursor sizes, so they
+won't render 10 feet tall in-game.
+
+---
+
+## Looks
+
+- **Femboy theme** (yes, it's pink. no, we don't apologize)
+- **8-bit bootstrapper icon** for the retro gamer in you
+- Custom fonts, custom icons, custom everything
+- Spotlight guide that walks you through the app
+
+---
+
+## Quality of Life
+
+- FastFlag editor with profiles, presets, undo/redo, and ban-flag warnings
+- Game shortcuts for one-click joining
+- Custom Discord RPC showing what you're actually doing
+- Combined log viewer so you can see what broke
+- Account manager with cookie login
+- One-click uninstall that cleans up after itself
+
+---
 
 ## Download
 
-Grab the latest `NexusStrap.exe` from the repository's Releases page.
+Grab the latest `NexusStrap.exe` from the **Releases** page.
+No installer, no bloat — replace your exe, keep your settings.
 
 ## Building from Source
 
@@ -25,83 +70,8 @@ Requirements: [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0)
 # Build only
 dotnet build NexusStrap.slnx -c Release
 
-# Publish single .exe (self-contained, ~95MB)
-dotnet publish NexusStrap/NexusStrap.csproj -c Release -p:PublishProfile=Publish-x64
-```
-
-Output: `NexusStrap/bin/Release/net10.0-windows/publish/win-x64/NexusStrap.exe`
-
----
-
-## Key Improvements Over NexusStrap
-
-### Integrations
-
-* Player and message logs are now combined into **Logs Menu**
-* Disable Roblox’s built-in screenshot and video recording system
-* Custom NexusStrap Discord RPC that shows the current page/dialog
-* Replace "Playing Roblox" with the name of the game you're playing using Custom Status Display
-* Game history logging is now toggleable
-* PlayTime Counter shows both total and session playtime
-
-### Bootstrapper
-
-* Switch between all of the classic Roblox icons for the top bar icon
-* Change the Roblox process priority
-* Automatically close the Roblox Crash Handler to reduce memory usage
-* Integrated cleaner tool to remove leftover files (feature was made by FishStrap first, not us)
-* Multi-instance launching support
-
-### Mods
-
-* Generate Mods using custom gradient colors easily
-* Quick use Custom Cursors and Custom Shiftlocks easily
-* Have multiple Custom Cursor Sets ready for use with the click of a button
-* Easily add custom death sounds
-
-### FastFlag Enhancements
-
-* Toggle advanced settings
-* Better Profiles
-* Press Ctrl+Z and Ctrl+Y to Undo/Redo changes
-* Built-in FastFlag lists inside of the profiles dialog
-* Remove invalid/default flags and automatically update outdated ones in one click
-* Use Preset Column to help find which flags are toggleables in fastflag settings
-* FastFlag Warning system to help tell you about ban worthy fastflags
-* Select values quickly using the built-in value selector when adding flags
-* Use Find Flag feature to check all of Roblox's FastFlags
-* Publish and Use other peoples published lists in Public Flag Lists
-
-### UI & Appearance
-
-* Fully customizable bootstrapper launcher
-* Change the app font to any font you want
-* Supports animated GIF, image, and gradient backgrounds themes
-* Built-in App themes
-* Use element toolbox when creating custom launchers (probably removing soon because it's useless)
-
-### Settings
-
-* Disable Hardware Acceleration to lower NexusStrap memory usage
-* Disable NexusStrap Animations to help with performance
-* Fixed auto update that won't go off randomly
-* Easily switch Roblox update channels with action presets
-* Option to fully block Roblox updates
-* Quickly Reset/Import/Export all your settings in one place
-* Use the debug menu to read log files
-* Easily uninstall NexusStrap if it's not to your liking
-
-### Extra Features
-
-* Remembers the last opened tab
-* Import settings from other bootstrappers easily like FishStrap and NexusStrap
-* Built-in PC tweaks for performance optimization
-* Create game shortcuts for faster game joining
-* Includes a hidden Easter egg page and game
-
-More features are planned to be added. You can also suggest a feature in the Issues section.
-
----
+# Publish single .exe
+dotnet publish NexusStrap/NexusStrap.csproj -c Release -r win-x64 -p:SelfContained=false -p:PublishSingleFile=true -p:PublishReadyToRun=false
 
 ## Licensing
 
