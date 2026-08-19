@@ -84,17 +84,14 @@
                     <ui:NavigationItem Content="{x:Static resources:Strings.Menu_RobloxSettings_Title}" PageType="{x:Type pages:RobloxSettingsPage}" Icon="LauncherSettings24" IconSize="20" Tag="robloxsettings" x:Name="gbs" />
                     <ui:NavigationItem Content="{x:Static resources:Strings.Common_Shortcuts}" PageType="{x:Type pages:ShortcutsPage}" Icon="Keyboard24" IconSize="20" Tag="shortcuts" />
 
-                    <ui:NavigationItem Content="Server History" PageType="{x:Type pages:ServerHistoryPage}" Icon="History24" IconSize="20" Tag="serverhistory" />
-                    <ui:NavigationItem Content="Launch Arguments" PageType="{x:Type pages:CustomLaunchArgsPage}" Icon="Code24" IconSize="20" Tag="launchargs" />
-                    <ui:NavigationItem Content="Log Viewer" PageType="{x:Type pages:LogViewerPage}" Icon="Document24" IconSize="20" Tag="logviewer" />
-                    <ui:NavigationItem Content="App Analyzer" PageType="{x:Type pages:AppAnalyzerPage}" Icon="ScanText24" IconSize="20" Tag="appanalyzer" />
-                    <ui:NavigationItem Content="Analytics" PageType="{x:Type pages:AnalyticsPage}" Icon="ChartPerson24" IconSize="20" Tag="analytics" />
+                    <ui:NavigationItem Content="Memory" PageType="{x:Type pages:MemoryPage}" Icon="Pulse24" IconSize="20" Tag="memory" />
+
+                    <ui:NavigationItem Content="Log Viewer" PageType="{x:Type pages:LogViewer2Page}" Icon="Document24" IconSize="20" Tag="logviewer" />
 
                     <ui:NavigationItem Content="{x:Static resources:Strings.Menu_FastFlagEditor_Title}" PageType="{x:Type pages:FastFlagEditorPage}" Icon="EditSettings20" IconSize="20" Tag="fastflageditor" Visibility="Collapsed" />
                     <ui:NavigationItem Content="FastFlagEditorWarning" PageType="{x:Type pages:FastFlagEditorWarningPage}" Icon="Warning24" IconSize="20" Tag="fastflageditorwarning" Visibility="Collapsed" />
                     <ui:NavigationItem Content="Optimization Setup" PageType="{x:Type pages:OptimizationSetupPage}" Icon="HeartPulse24" IconSize="20" Tag="optimizationsetup" Visibility="Collapsed" />
                     <ui:NavigationItem Content="Secret" PageType="{x:Type pages:SecretPage}" Icon="Eye24" IconSize="20" Tag="secret" Visibility="Collapsed" />
-                    <ui:NavigationItem Content="Theme Store" PageType="{x:Type pages:ThemeStorePage}" Icon="PaintBrush24" IconSize="20" Tag="themestore" Visibility="Collapsed" />
                 </ui:NavigationCompact.Items>
                 <ui:NavigationCompact.Footer>
                     <ui:NavigationItem Content="{x:Static resources:Strings.Menu_AccountManager_Title}" Icon="ContactCard24" IconSize="20" Tag="accountmanager"  Command="{Binding OpenAccountManagerCommand, Mode=OneTime}" />

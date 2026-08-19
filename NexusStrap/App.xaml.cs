@@ -48,6 +48,8 @@ namespace NexusStrap
 
         public NexusStrapRichPresence RichPresenceInstance { get; private set; } = null!;
 
+        public static readonly EventWaitHandle PlayerLaunchSignal = new(false, EventResetMode.AutoReset, "NexusStrap-PlayerLaunch");
+
         public static bool IsActionBuild => !String.IsNullOrEmpty(BuildMetadata.CommitRef);
 
         public static bool IsProductionBuild => IsActionBuild && BuildMetadata.CommitRef.StartsWith("tag", StringComparison.Ordinal);
@@ -447,6 +449,8 @@ namespace NexusStrap
 
                 WindowsRegistry.RegisterApis();
 
+                MemoryManager.Start();
+
                 LaunchHandler.ProcessLaunchArgs();
             }
 
@@ -454,6 +458,7 @@ namespace NexusStrap
 
         protected override void OnExit(ExitEventArgs e)
         {
+            MemoryManager.Stop();
             AccountManager.Shared.SaveAccounts();
             RichPresence?.Dispose();
             WatcherInstance?.Dispose();

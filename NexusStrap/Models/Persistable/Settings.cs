@@ -202,5 +202,11 @@ namespace NexusStrap.Models.Persistable
 
         // New Feature
         public bool EnableExtraFeature { get; set; } = false;
+
+        // Memory Limiter / RAM Cleaner
+        public bool EnableMemoryLimiter { get; set; } = false;
+        public int MemoryLimitMB { get; set; } = 4096;
+        public bool EnableRamCleaner { get; set; } = false;
+        public int RamCleanIntervalMinutes { get; set; } = 10;
     }
 }

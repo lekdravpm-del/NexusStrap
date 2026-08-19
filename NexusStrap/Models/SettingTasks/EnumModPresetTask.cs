@@ -1,5 +1,6 @@
 ﻿using NexusStrap.Models.Entities;
 using NexusStrap.Models.SettingTasks.Base;
+using System.Windows.Media.Imaging;
 
 namespace NexusStrap.Models.SettingTasks
 {
@@ -8,6 +9,8 @@ namespace NexusStrap.Models.SettingTasks
         private readonly Dictionary<T, Dictionary<string, ModPresetFileData>> _fileDataMap = new();
 
         private readonly Dictionary<T, Dictionary<string, string>> _map;
+
+        public event EventHandler? PreviewChanged;
 
         public EnumModPresetTask(string name, Dictionary<T, Dictionary<string, string>> map) : base("ModPreset", name)
         {
@@ -28,6 +31,45 @@ namespace NexusStrap.Models.SettingTasks
                 }
 
                 _fileDataMap[enumPair.Key] = dataMap;
+            }
+        }
+
+        public override T NewState
+        {
+            get => base.NewState;
+            set
+            {
+                base.NewState = value;
+                PreviewChanged?.Invoke(this, EventArgs.Empty);
+            }
+        }
+
+        public BitmapImage GetPreviewImage(T theme)
+        {
+            if (theme.Equals(default(T)))
+                return null!;
+
+            if (!_fileDataMap.TryGetValue(theme, out var resourceMap))
+                return null!;
+
+            var arrowEntry = resourceMap.FirstOrDefault(kvp => kvp.Key.Contains("ArrowCursor"));
+            if (arrowEntry.Value is null)
+                return null!;
+
+            try
+            {
+                using var stream = arrowEntry.Value.ResourceStream;
+                var image = new BitmapImage();
+                image.BeginInit();
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.StreamSource = stream;
+                image.EndInit();
+                image.Freeze();
+                return image;
+            }
+            catch
+            {
+                return null!;
             }
         }
 

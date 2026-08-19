@@ -224,44 +224,10 @@ namespace NexusStrap.UI.Elements.Settings.Pages
             mainWindow?.ShowLoading("Cleaning List...");
             App.RichPresence?.SetDialog("Dialog: Cleaning List");
 
-            App.FastFlags.suspendUndoSnapshot = true;
-            App.FastFlags.SaveUndoSnapshot();
-
             try
             {
-                var remoteManager = new RemoteDataManager();
-                await remoteManager.LoadData();
-
-                var base64Flags = DecodeBase64Flags(remoteManager.Prop.AllowedFastFlags);
-                App.Logger.WriteLine("CleanList", $"Loaded {base64Flags.Count} allowed flags.");
-
-                var allFlags = App.FastFlags.GetAllFlags();
-                var invalidRemoved = new Dictionary<string, object>(StringComparer.OrdinalIgnoreCase);
-
-                // Remove any flag not in the remote Allowed list
-                foreach (var flag in allFlags)
-                {
-                    var name = flag.Name.Trim();
-                    if (!base64Flags.Contains(name))
-                    {
-                        invalidRemoved[name] = flag.Value;
-                        App.FastFlags.SetValue(name, null);
-                    }
-                }
-
-                int totalChanges = invalidRemoved.Count;
-                if (totalChanges == 0)
-                {
-                    Frontend.ShowMessageBox("No invalid FastFlags detected.", MessageBoxImage.Information);
-                    return;
-                }
-
-                Frontend.ShowMessageBox($"{totalChanges} have been removed due to not being in allow list.",
-                    MessageBoxImage.Information
-                    );
-
-                ReloadList();
-                UpdateTotalFlagsCount();
+                // Allowlist check disabled - accept all flags
+                Frontend.ShowMessageBox("FastFlag allowlist check is disabled. All flags are accepted.", MessageBoxImage.Information);
             }
             catch (Exception ex)
             {
@@ -269,7 +235,6 @@ namespace NexusStrap.UI.Elements.Settings.Pages
             }
             finally
             {
-                App.FastFlags.suspendUndoSnapshot = false;
                 mainWindow?.HideLoading();
                 App.RichPresence?.ClearDialog();
             }
@@ -351,30 +316,7 @@ namespace NexusStrap.UI.Elements.Settings.Pages
                 entry = _fastFlagList.FirstOrDefault(x => x.Name == name);
             }
 
-            var remoteManager = new RemoteDataManager();
-            await remoteManager.LoadData();
-            var base64Flags = DecodeBase64Flags(remoteManager.Prop.AllowedFastFlags);
-
-            if (!base64Flags.Contains(name))
-            {
-                if (Frontend.ShowMessageBox($"'{name}' is not in roblox allowlist and won't work.\n\nRemove it now?", MessageBoxImage.Warning, MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                {
-                    App.FastFlags.SetValue(name, null);
-
-                    if (entry != null)
-                    {
-                        _fastFlagList.Remove(entry);
-                    }
-                    else
-                    {
-                        ReloadList();
-                    }
-
-                    UpdateTotalFlagsCount();
-                    return;
-                }
-            }
-
+            // Allowlist check disabled - accept all flags
             DataGrid.SelectedItem = entry;
             DataGrid.ScrollIntoView(entry);
             UpdateTotalFlagsCount();
@@ -480,21 +422,8 @@ namespace NexusStrap.UI.Elements.Settings.Pages
 
             App.FastFlags.suspendUndoSnapshot = false;
 
-            var remoteManager = new RemoteDataManager();
-            await remoteManager.LoadData();
-            var base64Flags = DecodeBase64Flags(remoteManager.Prop.AllowedFastFlags);
-
-            var invalidFlags = list.Keys.Where(flag => !base64Flags.Contains(flag)).ToList();
-            if (invalidFlags.Any())
-            {
-                if (Frontend.ShowMessageBox($"{invalidFlags.Count} imported flags are not in the allowlist and won't work.\n\nRemove them now?", MessageBoxImage.Warning, MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                {
-                    foreach (var flagName in invalidFlags)
-                    {
-                        App.FastFlags.SetValue(flagName, null);
-                    }
-                }
-            }
+            // Allow all flags - no allowlist restriction
+            // Previously checked against remote allowlist, now disabled to accept any custom flags
 
             ClearSearch();
         }

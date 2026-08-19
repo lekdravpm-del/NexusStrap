@@ -9,60 +9,10 @@
     mc:Ignorable="d"
     d:DesignHeight="600" d:DesignWidth="800">
     <StackPanel Margin="0,8,14,14">
-        <TextBlock FontSize="14" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Text="All-in-one diagnostics: anti-cheat flag scan, flag conflict detection and environment health check." Margin="0,0,0,4" />
+        <TextBlock FontSize="14" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Text="All-in-one diagnostics: flag conflict detection and environment health check." Margin="0,0,0,4" />
         <TextBlock FontSize="20" FontWeight="Bold" Text="App Analyzer" Margin="0,0,0,12" />
 
         <TabControl>
-            <!-- Anti-Cheat Scan -->
-            <TabItem Header="Anti-Cheat Scan">
-                <StackPanel Margin="0,12,0,0">
-                    <Grid Margin="0,0,0,12">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <ui:Button Grid.Column="0" Content="Scan Flags" Appearance="Primary" Command="{Binding ScanAntiCheatCommand}" Margin="0,0,12,0" />
-                        <TextBlock Grid.Column="1" Text="{Binding AntiCheatStatusText}" VerticalAlignment="Center" FontSize="13" FontWeight="Medium" TextWrapping="Wrap" />
-                    </Grid>
-
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="12" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-
-                        <Border Grid.Column="0" Padding="12" Background="{DynamicResource ControlFillColorDefaultBrush}" CornerRadius="8">
-                            <StackPanel>
-                                <TextBlock FontSize="14" FontWeight="SemiBold" Text="Warnings" Foreground="#FFB44444" Margin="0,0,0,8" />
-                                <ItemsControl ItemsSource="{Binding WarningMessages}">
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding}" TextWrapping="Wrap" Margin="0,0,0,4" Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
-                                <TextBlock Text="No warnings found." Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
-                            </StackPanel>
-                        </Border>
-
-                        <Border Grid.Column="2" Padding="12" Background="{DynamicResource ControlFillColorDefaultBrush}" CornerRadius="8">
-                            <StackPanel>
-                                <TextBlock FontSize="14" FontWeight="SemiBold" Text="Safe Flags" Foreground="#FF44BB44" Margin="0,0,0,8" />
-                                <ItemsControl ItemsSource="{Binding SafeMessages}">
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding}" TextWrapping="Wrap" Margin="0,0,0,4" Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
-                                <TextBlock Text="Run a scan to see safe flags." Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
-                            </StackPanel>
-                        </Border>
-                    </Grid>
-                </StackPanel>
-            </TabItem>
-
             <!-- Conflict Detector -->
             <TabItem Header="Conflict Detector">
                 <StackPanel Margin="0,12,0,0">

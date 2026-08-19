@@ -1,0 +1,74 @@
+<ui:UiPage x:Class="NexusStrap.UI.Elements.Settings.Pages.MemoryPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    Title="Memory"
+    Scrollable="True"
+    mc:Ignorable="d"
+    d:DesignHeight="600" d:DesignWidth="800">
+    <StackPanel Margin="0,8,14,14">
+        <TextBlock FontSize="20" FontWeight="Bold" Text="Memory Manager" Margin="0,0,0,4"/>
+        <TextBlock Text="Control how much RAM Roblox uses." Foreground="{DynamicResource TextFillColorSecondaryBrush}" Margin="0,0,0,16"/>
+
+        <ui:CardControl x:Name="RamCleanerToggle" Icon="Pulse24" Margin="0,0,0,8">
+            <ui:CardControl.Header>
+                <StackPanel>
+                    <TextBlock FontWeight="SemiBold" Text="RAM Cleaner"/>
+                    <TextBlock FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                               Text="Automatically trims Roblox's working set to free up RAM on a timer."
+                               TextWrapping="Wrap"/>
+                </StackPanel>
+            </ui:CardControl.Header>
+            <ui:ToggleSwitch IsChecked="{Binding EnableRamCleaner, Mode=TwoWay}" />
+        </ui:CardControl>
+
+        <ui:CardControl x:Name="CleanIntervalBox" Icon="Timer24" Margin="0,0,0,8">
+            <ui:CardControl.Header>
+                <StackPanel>
+                    <TextBlock FontWeight="SemiBold" Text="Clean Interval (minutes)"/>
+                    <TextBlock FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                               Text="How often the RAM cleaner runs." TextWrapping="Wrap"/>
+                </StackPanel>
+            </ui:CardControl.Header>
+            <ui:NumberBox Width="160" Value="{Binding RamCleanIntervalMinutes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Min="1" Max="120" />
+        </ui:CardControl>
+
+        <ui:CardControl x:Name="CleanNowButton" Icon="Broom24" Margin="0,0,0,16">
+            <ui:CardControl.Header>
+                <StackPanel>
+                    <TextBlock FontWeight="SemiBold" Text="Clean Now"/>
+                    <TextBlock FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                               Text="Instantly trim Roblox memory." TextWrapping="Wrap"/>
+                </StackPanel>
+            </ui:CardControl.Header>
+            <ui:Button Content="Clean Roblox RAM" Appearance="Primary" Click="CleanNow_Click" />
+        </ui:CardControl>
+
+        <ui:CardControl x:Name="MemoryLimiterToggle" Icon="Ruler24" Margin="0,0,0,8">
+            <ui:CardControl.Header>
+                <StackPanel>
+                    <TextBlock FontWeight="SemiBold" Text="Memory Limiter"/>
+                    <TextBlock FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                               Text="Watches Roblox memory and trims it when it exceeds the limit."
+                               TextWrapping="Wrap"/>
+                </StackPanel>
+            </ui:CardControl.Header>
+            <ui:ToggleSwitch IsChecked="{Binding EnableMemoryLimiter, Mode=TwoWay}" />
+        </ui:CardControl>
+
+        <ui:CardControl x:Name="MemoryLimitBox" Icon="Ruler24" Margin="0,0,0,16">
+            <ui:CardControl.Header>
+                <StackPanel>
+                    <TextBlock FontWeight="SemiBold" Text="Memory Limit (MB)"/>
+                    <TextBlock FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                               Text="Trim Roblox once its memory usage exceeds this value." TextWrapping="Wrap"/>
+                </StackPanel>
+            </ui:CardControl.Header>
+            <ui:NumberBox Width="160" Value="{Binding MemoryLimitMB, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Min="512" Max="32768" />
+        </ui:CardControl>
+
+        <TextBlock x:Name="StatusText" Foreground="{DynamicResource TextFillColorTertiaryBrush}" TextWrapping="Wrap"/>
+    </StackPanel>
+</ui:UiPage>
