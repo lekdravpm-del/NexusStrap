@@ -1,0 +1,40 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:colorPicker="clr-namespace:ColorPicker"
+                    xmlns:converters="clr-namespace:ColorPicker.Converters"
+                    xmlns:userControls="clr-namespace:ColorPicker.UserControls">
+    <ControlTheme TargetType="colorPicker:SquarePicker" x:Key="{x:Type colorPicker:SquarePicker}">
+        <ControlTheme.Resources>
+            <converters:BoundsMinConverter x:Key="BoundsMinConverter" />
+        </ControlTheme.Resources>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="colorPicker:SquarePicker">
+                    <Grid Margin="5" Background="Transparent" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="24" />
+                        </Grid.ColumnDefinitions>
+
+                        <userControls:SquareSlider Grid.Column="0"
+                                                   x:Name="PART_SquareSlider"
+                                                   HorizontalAlignment="Stretch"
+                                                   VerticalAlignment="Stretch"
+                                                   RangeX="100" RangeY="100"
+                                                   Hue="{Binding Color.HSV_H, RelativeSource={RelativeSource TemplatedParent}}"
+                                                   Color="{Binding Color, RelativeSource={RelativeSource TemplatedParent}}"
+                                                   HeadX="{Binding Color.HSV_S, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                                   HeadY="{Binding Color.HSV_V, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
+                
+                        <colorPicker:HueSlider Grid.Column="2"
+                                               Width="24"
+                                               VerticalAlignment="Stretch"
+                                               SmallChange="{TemplateBinding SmallChange}"
+                                               Value="{Binding Color.HSV_H, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

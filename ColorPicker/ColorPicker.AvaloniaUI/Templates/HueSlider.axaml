@@ -1,0 +1,59 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:colorPicker="clr-namespace:ColorPicker"
+                    xmlns:converters="clr-namespace:ColorPicker.Converters">
+    
+    <ControlTheme TargetType="colorPicker:HueSlider" x:Key="{x:Type colorPicker:HueSlider}">
+        <ControlTheme.Resources>
+            <converters:ProportialConverter x:Key="ProportialConverter" />
+            
+            <Bitmap x:Key="grayscaleImage">avares://ColorPicker.AvaloniaUI/Images/CircularHueGradientGray.png</Bitmap>
+        </ControlTheme.Resources>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="colorPicker:HueSlider">
+                    <Grid Name="PART_Handle" Background="Transparent" ClipToBounds="False">
+                        <Border CornerRadius="4" 
+                                BorderThickness="1" 
+                                BorderBrush="#3F3F46" 
+                                ClipToBounds="True">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+                                    <GradientStop Color="#FF0000" Offset="0.0" />
+                                    <GradientStop Color="#FFFF00" Offset="0.166" />
+                                    <GradientStop Color="#00FF00" Offset="0.333" />
+                                    <GradientStop Color="#00FFFF" Offset="0.5" />
+                                    <GradientStop Color="#0000FF" Offset="0.666" />
+                                    <GradientStop Color="#FF00FF" Offset="0.833" />
+                                    <GradientStop Color="#FF0000" Offset="1.0" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
+
+                        <Canvas IsHitTestVisible="False">
+                            <Border Width="24" 
+                                    Height="8" 
+                                    Background="White" 
+                                    BorderBrush="#3F3F46"
+                                    BorderThickness="1" 
+                                    CornerRadius="2">
+                                <Canvas.Top>
+                                    <MultiBinding Converter="{StaticResource ProportialConverter}">
+                                        <Binding Path="Bounds.Height" RelativeSource="{RelativeSource TemplatedParent}" />
+                                        <Binding Path="Value" RelativeSource="{RelativeSource TemplatedParent}" />
+                                        <Binding Source="360.0" />
+                                    </MultiBinding>
+                                </Canvas.Top>
+                            </Border>
+                        </Canvas>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+		
+		<Style Selector="^:disabled /template/ Image#HueImage">
+			<Setter Property="Source" Value="{StaticResource grayscaleImage}" />
+		</Style>
+	</ControlTheme>
+</ResourceDictionary>
