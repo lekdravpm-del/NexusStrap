@@ -29,6 +29,8 @@ namespace NexusStrap.Integrations
     {
         private const string LOG_IDENT = "AccountManager";
         private const string AccountsFile = "AccountManager.json";
+        private const string RegKeyPath = @"Software\NexusStrap";
+        private const string RegValueName = "AM_v1";
         private readonly string _accountsLocation;
         private Browser? _browser;
         private List<AltAccount> _accounts = new();
@@ -123,28 +125,64 @@ namespace NexusStrap.Integrations
             }
         }
 
+    private string? ReadRegistryJson()
+        {
+            try
+            {
+                using var key = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(RegKeyPath);
+                return key?.GetValue(RegValueName) as string;
+            }
+            catch { return null; }
+        }
+        private void WriteRegistryJson(string json)
+        {
+            try
+            {
+                using var key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(RegKeyPath);
+                key.SetValue(RegValueName, json, Microsoft.Win32.RegistryValueKind.String);
+            }
+            catch (Exception ex) { App.Logger.WriteException($"{LOG_IDENT}::Registry", ex); }
+        }
+        private void DeleteLegacyFiles()
+        {
+            try
+            {
+                string[] legacy = new[]
+                {
+                    _accountsLocation,
+                    Path.Combine("C:\\Users\\smadi\\Downloads", AccountsFile),
+                    Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "NexusStrap", "Cache", AccountsFile),
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AccountsFile)
+                };
+                foreach (var p in legacy.Distinct())
+                {
+                    try { if (File.Exists(p)) File.Delete(p); } catch { }
+                }
+            }
+            catch { }
+        }
+
     public void LoadAccounts()
     {
         const string LOG_IDENT_LOAD = $"{LOG_IDENT}::LoadAccounts";
 
-        App.Logger.WriteLine(LOG_IDENT_LOAD, "Loading accounts...");
+        App.Logger.WriteLine(LOG_IDENT_LOAD, "Loading accounts (registry) ...");
 
-        var dir = Path.GetDirectoryName(_accountsLocation);
-        if (!string.IsNullOrEmpty(dir) && !Directory.Exists(dir))
-            Directory.CreateDirectory(dir);
+        string? json = ReadRegistryJson();
 
-        if (!File.Exists(_accountsLocation))
-        {
-            App.Logger.WriteLine(LOG_IDENT_LOAD, "Accounts file not found.");
-            _accounts = new();
-            NoAccountsFound?.Invoke();
-            return;
-        }
-
-        string json = File.ReadAllText(_accountsLocation);
+        // migrate from legacy file if registry empty
         if (string.IsNullOrWhiteSpace(json))
         {
-            App.Logger.WriteLine(LOG_IDENT_LOAD, "Accounts file is empty.");
+            string[] tryFiles = new[] { _accountsLocation, Path.Combine("C:\\Users\\smadi\\Downloads", AccountsFile), Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "NexusStrap", "Cache", AccountsFile) };
+            foreach (var f in tryFiles)
+            {
+                try { if (File.Exists(f)) { json = File.ReadAllText(f); if (!string.IsNullOrWhiteSpace(json)) { App.Logger.WriteLine(LOG_IDENT_LOAD, $"Migrating from legacy file {f}"); break; } } } catch { }
+            }
+        }
+
+        if (string.IsNullOrWhiteSpace(json))
+        {
+            App.Logger.WriteLine(LOG_IDENT_LOAD, "No registry entry and no legacy file.");
             _accounts = new();
             NoAccountsFound?.Invoke();
             return;
@@ -219,13 +257,9 @@ namespace NexusStrap.Integrations
         {
             const string LOG_IDENT_SAVE = $"{LOG_IDENT}::SaveAccounts";
 
-            App.Logger.WriteLine(LOG_IDENT_SAVE, "Saving accounts...");
+            App.Logger.WriteLine(LOG_IDENT_SAVE, "Saving accounts to registry...");
             try
             {
-                var dir = Path.GetDirectoryName(_accountsLocation);
-                if (!string.IsNullOrEmpty(dir) && !Directory.Exists(dir))
-                    Directory.CreateDirectory(dir);
-
                 var protectedAccounts = _accounts
                     .Select(a => new AltAccount(ProtectString(a.SecurityToken), a.UserId, a.Username, a.DisplayName))
                     .ToList();
@@ -240,9 +274,10 @@ namespace NexusStrap.Integrations
                 };
 
                 string json = JsonConvert.SerializeObject(managerData, Formatting.Indented);
-                File.WriteAllText(_accountsLocation, json);
+                WriteRegistryJson(json);
+                DeleteLegacyFiles();
 
-                App.Logger.WriteLine(LOG_IDENT_SAVE, $"Saved {_accounts.Count} accounts with active account: {ActiveAccount?.Username ?? "None"}");
+                App.Logger.WriteLine(LOG_IDENT_SAVE, $"Saved {_accounts.Count} accounts to registry with active account: {ActiveAccount?.Username ?? "None"}");
                 App.Logger.WriteLine(LOG_IDENT_SAVE, $"Saved Place ID: {CurrentPlaceId}, Server Instance ID: {CurrentServerInstanceId}");
             }
             catch (Exception ex)

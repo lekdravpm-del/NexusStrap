@@ -290,18 +290,6 @@ namespace NexusStrap
 
             new FFlagTemplate
             {
-                Name = "Future is Bright",
-                Description = "Forces the new Future is Bright shadow-map lighting engine for improved, more colorful lighting.",
-                Category = FFlagTemplateCategories.GraphicsQuality,
-                Flags = new Dictionary<string, string>
-                {
-                    { "FFlagDebugForceFutureIsBrightPhase2", "True" },
-                    { "FFlagDebugForceFutureIsBrightPhase3", "True" },
-                }
-            },
-
-            new FFlagTemplate
-            {
                 Name = "Telemetry Blocker",
                 Description = "Disables all Roblox telemetry and data collection. Improves privacy and reduces background network usage.",
                 Category = FFlagTemplateCategories.Network,
@@ -330,17 +318,6 @@ namespace NexusStrap
                     { "FIntRenderShadowIntensity", "0" },
                     { "FIntRenderShadowmapBias", "0" },
                     { "FIntRenderMaxShadowAtlasUsageBeforeDownscale", "1" },
-                }
-            },
-
-            new FFlagTemplate
-            {
-                Name = "On-Screen FPS Counter",
-                Description = "Shows a small FPS counter in the corner of the game. Handy for checking your performance after tuning flags.",
-                Category = FFlagTemplateCategories.Debug,
-                Flags = new Dictionary<string, string>
-                {
-                    { "FFlagDebugDisplayFPS", "True" },
                 }
             },
 
@@ -379,6 +356,87 @@ namespace NexusStrap
                     { "DFIntPhysicsReceiveNumParallelTasks", "12" },
                     { "FIntTaskSchedulerAutoThreadLimit", "12" },
                     { "FIntLuaGcParallelMinMultiTasks", "12" },
+                }
+            },
+
+            // --- 2026 Latest additions - kept old templates intact, new ones based on Aug 2026 gist ---
+            new FFlagTemplate
+            {
+                Name = "2026 Potato Extreme",
+                Description = "Aug 2026 compiled potato: voxel lighting, zero grass/shadows, low terrain/meshes, disable PostFX/sky/wind/SSAO/viewport/blur - max FPS on any PC (Firebladedoge229 gist).",
+                Category = FFlagTemplateCategories.Performance,
+                Flags = new Dictionary<string, string>
+                {
+                    { "DFIntTaskSchedulerTargetFps", "2147483647" },
+                    { "FFlagTaskSchedulerLimitTargetFpsTo2402", "False" },
+                    { "DFFlagTextureQualityOverrideEnabled", "True" },
+                    { "DFIntTextureQualityOverride", "0" },
+                    { "FIntTextureCompositorLowResFactor", "1" },
+                    { "DFFlagEnableRequestAsyncCompression", "True" },
+                    { "FFlagDisablePostFx", "True" },
+                    { "DFFlagDebugRenderForceTechnologyVoxel", "True" },
+                    { "DFIntCSGLevelOfDetailSwitchingDistance", "0" },
+                    { "DFIntCSGLevelOfDetailSwitchingDistanceL12", "0" },
+                    { "DFIntCSGLevelOfDetailSwitchingDistanceL23", "0" },
+                    { "DFIntCSGLevelOfDetailSwitchingDistanceL34", "0" },
+                    { "DFIntCSGv2LodsToGenerate", "0" },
+                    { "FIntFRMMinGrassDistance", "0" },
+                    { "FIntFRMMaxGrassDistance", "0" },
+                    { "FFlagNewLightAttenuation", "False" },
+                    { "FIntRenderShadowIntensity", "0" },
+                    { "DFFlagDebugPauseVoxelizer", "True" },
+                    { "FIntTerrainArraySliceSize", "0" },
+                    { "FIntRomarkStartWithGraphicQualityLevel", "1" },
+                    { "DFIntDebugFRMQualityLevelOverride", "1" },
+                    { "DFIntDebugRestrictGCDistance", "1" },
+                    { "FIntDebugTextureManagerSkipMips", "-1" },
+                    { "FFlagMSRefactor5", "False" },
+                    { "FFlagGlobalWindActivated", "False" },
+                    { "FIntSSAOMipLevels", "0" },
+                    { "FFlagAdServiceEnabled", "False" },
+                    { "FIntRobloxGuiBlurIntensity", "0" },
+                    { "FFlagDebugSkyGray", "True" },
+                    { "FIntFullscreenTitleBarTriggerDelayMillis", "2147483647" },
+                    { "FIntViewportFrameMaxSize", "0" },
+                }
+            },
+
+            new FFlagTemplate
+            {
+                Name = "2026 Network Ultra",
+                Description = "Aug 2026 RakNet + telemetry killer: 1ms loop/select/resend, 0% telemetry, zero preloading, cleaner connection.",
+                Category = FFlagTemplateCategories.Network,
+                Flags = new Dictionary<string, string>
+                {
+                    { "DFIntRakNetResendRttMultiple", "1" },
+                    { "DFIntRakNetNakResendDelayMs", "1" },
+                    { "DFIntRakNetLoopMs", "1" },
+                    { "DFIntRakNetSelectTimeoutMs", "1" },
+                    { "DFIntClientPacketMaxDelayMs", "1" },
+                    { "FFlagDebugDisableTelemetryV2Stat", "True" },
+                    { "FFlagDebugDisableTelemetryV2Counter", "True" },
+                    { "FFlagDebugDisableTelemetryV2Event", "True" },
+                    { "FFlagDebugDisableTelemetryEphemeralCounter", "True" },
+                    { "FFlagDebugDisableTelemetryEphemeralStat", "True" },
+                    { "FFlagDebugDisableTelemetryPoint", "True" },
+                    { "FFlagDebugDisableTelemetryEventIngest", "True" },
+                }
+            },
+
+            new FFlagTemplate
+            {
+                Name = "2026 Quick Launch Lite",
+                Description = "Launch Roblox faster: disable ViewportFrames, fullscreen delay, quick game launch, lower texture manager mips.",
+                Category = FFlagTemplateCategories.Performance,
+                Flags = new Dictionary<string, string>
+                {
+                    { "FFlagEnableQuickGameLaunch", "False" },
+                    { "FIntFullscreenTitleBarTriggerDelayMillis", "2147483647" },
+                    { "FIntViewportFrameMaxSize", "0" },
+                    { "FIntDebugTextureManagerSkipMips", "-1" },
+                    { "FStringPartTexturePackTablePre2022", "" },
+                    { "FStringTerrainMaterialTable2022", "" },
+                    { "DFIntAnimationLodFacsDistanceMax", "0" },
                 }
             },
         };

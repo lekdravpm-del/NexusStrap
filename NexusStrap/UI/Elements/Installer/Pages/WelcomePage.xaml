@@ -23,8 +23,8 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
@@ -35,22 +35,56 @@
             </TextBlock.Effect>
         </TextBlock>
 
-        <TextBlock Grid.Row="1" Text="by Recd" HorizontalAlignment="Center" FontSize="14"
+        <TextBlock Grid.Row="1" Text="by lekdravpm" HorizontalAlignment="Center" FontSize="14"
                    Foreground="{DynamicResource TextFillColorSecondaryBrush}" Margin="0,4,0,0" />
 
         <TextBlock Grid.Row="2" Text="{x:Static resources:Strings.Installer_Welcome_MainText}" HorizontalAlignment="Center"
                    FontSize="13" TextWrapping="Wrap" Margin="0,12,0,0" MaxWidth="520"
                    Foreground="{DynamicResource TextFillColorTertiaryBrush}" TextAlignment="Center" />
 
-        <Grid Grid.Row="4" Margin="0,20,0,0">
+        <!-- Feature highlights -->
+        <Grid Grid.Row="3" Margin="0,20,0,0" HorizontalAlignment="Center" MaxWidth="500">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" HorizontalAlignment="Center" Margin="0,0,8,0">
+                <ui:SymbolIcon FontSize="22" Symbol="Shield24" HorizontalAlignment="Center"
+                               Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
+                <TextBlock FontSize="11" FontWeight="SemiBold" Text="Open Source" HorizontalAlignment="Center" Margin="0,4,0,0" />
+                <TextBlock FontSize="10" Text="Fully transparent" HorizontalAlignment="Center"
+                           Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" HorizontalAlignment="Center">
+                <ui:SymbolIcon FontSize="22" Symbol="PaintBrush24" HorizontalAlignment="Center"
+                               Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
+                <TextBlock FontSize="11" FontWeight="SemiBold" Text="Customizable" HorizontalAlignment="Center" Margin="0,4,0,0" />
+                <TextBlock FontSize="10" Text="Cursors, sounds, FFlags" HorizontalAlignment="Center"
+                           Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
+            </StackPanel>
+
+            <StackPanel Grid.Column="2" HorizontalAlignment="Center" Margin="8,0,0,0">
+                <ui:SymbolIcon FontSize="22" Symbol="ArrowDownload24" HorizontalAlignment="Center"
+                               Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
+                <TextBlock FontSize="11" FontWeight="SemiBold" Text="Auto Updates" HorizontalAlignment="Center" Margin="0,4,0,0" />
+                <TextBlock FontSize="10" Text="Stay up to date" HorizontalAlignment="Center"
+                           Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="5" Margin="0,20,0,0">
             <ui:Button
                        Height="48" FontSize="16" FontWeight="SemiBold" HorizontalContentAlignment="Center" Padding="32,0"
                        HorizontalAlignment="Center" Width="300" Icon="ArrowRight24"
                        Content="Continue" Click="Continue_Click" />
         </Grid>
 
-        <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,16,0,0">
+        <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,24,0,0">
             <ui:Anchor Content="GitHub" Icon="Code24" NavigateUri="https://github.com/lekdravpm-del/NexusStrap" ToolTip="Visit the NexusStrap GitHub repository" Margin="0,0,20,0" VerticalAlignment="Center" />
+            <ui:Anchor Content="Discord" Icon="Chat24" NavigateUri="https://discord.gg/PHbaZR8SJ" ToolTip="Join the NexusStrap Discord" Margin="0,0,20,0" VerticalAlignment="Center" />
             <ui:Anchor Content="Wiki" Icon="BookOpen24" NavigateUri="https://github.com/lekdravpm-del/NexusStrap/wiki" ToolTip="Read the NexusStrap wiki" VerticalAlignment="Center" />
         </StackPanel>
     </Grid>

@@ -18,6 +18,7 @@ namespace NexusStrap.UI.Elements.Settings
     {
         private Models.Persistable.WindowState _state => App.State.Prop.SettingsWindow;
         private readonly HashSet<string> _alwaysHiddenTags = new() { "fastflageditor", "fastflageditorwarning" };
+        private bool _forceClose = false;
 
         public MainWindow(bool showAlreadyRunningWarning)
         {
@@ -77,8 +78,8 @@ namespace NexusStrap.UI.Elements.Settings
                 App.State.Prop.LastPage = currentPage?.PageType.FullName!;
             }
 
-            // First-run welcome guide — shown after the optimization setup has been resolved
-            if (!App.State.Prop.HasSeenGuide && !App.State.Prop.ShowOptimizationSetup)
+            // First-run welcome guide — shown on first launch
+            if (!App.State.Prop.HasSeenGuide)
             {
                 Loaded += (_, _) =>
                 {
@@ -89,6 +90,32 @@ namespace NexusStrap.UI.Elements.Settings
                     }));
                 };
             }
+
+            Locale.LanguageChanged += (_, _) =>
+            {
+                Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    // Restart settings window to apply language change
+                    Close();
+                    var newWindow = new MainWindow(false);
+                    newWindow.Show();
+                }));
+            };
+
+            // Close this window when another NexusStrap instance triggers a player launch (e.g. browser)
+            Task.Run(() =>
+            {
+                App.PlayerLaunchSignal.WaitOne();
+                Thread.Sleep(200);
+                Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    _forceClose = true;
+                    App.PendingSettingTasks.Clear();
+                    Close();
+                }));
+                Thread.Sleep(1000);
+                Environment.Exit(0);
+            });
         }
 
         private async void SafeNavigate(Type page)
@@ -147,7 +174,7 @@ namespace NexusStrap.UI.Elements.Settings
 
         private void WpfUiWindow_Closing(object sender, CancelEventArgs e)
         {
-            if (App.FastFlags.Changed || App.PendingSettingTasks.Any())
+            if (!_forceClose && (App.FastFlags.Changed || App.PendingSettingTasks.Any()))
             {
                 var result = Frontend.ShowMessageBox(Strings.Menu_UnsavedChanges, MessageBoxImage.Warning, MessageBoxButton.YesNo);
 

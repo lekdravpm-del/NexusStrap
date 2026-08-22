@@ -254,6 +254,26 @@ namespace NexusStrap
             if (launchMode == LaunchMode.None)
                 throw new InvalidOperationException("No Roblox launch mode set");
 
+            // Signal any existing Settings window to close (e.g. browser-triggered launch)
+            App.PlayerLaunchSignal.Set();
+
+            // Also directly close any existing Settings window via process enumeration
+            try
+            {
+                foreach (var proc in Process.GetProcessesByName(App.ProjectName))
+                {
+                    if (proc.Id != Environment.ProcessId && proc.MainWindowHandle != IntPtr.Zero)
+                    {
+                        App.Logger.WriteLine(LOG_IDENT, $"Found existing instance (PID {proc.Id}), closing it");
+                        proc.CloseMainWindow();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                App.Logger.WriteException(LOG_IDENT, ex);
+            }
+
             if (!File.Exists(Path.Combine(Paths.System, "mfplat.dll")))
             {
                 Frontend.ShowMessageBox(Strings.Bootstrapper_WMFNotFound, MessageBoxImage.Error);

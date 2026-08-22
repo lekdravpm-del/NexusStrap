@@ -4,6 +4,8 @@ namespace NexusStrap
 {
     internal static class Locale
     {
+        public static event EventHandler? LanguageChanged;
+
         public static CultureInfo CurrentCulture { get; private set; } = CultureInfo.InvariantCulture;
 
         public static bool RightToLeft { get; private set; } = false;
@@ -92,6 +94,8 @@ namespace NexusStrap
             }
 
             RightToLeft = _rtlLocales.Any(CurrentCulture.Name.StartsWith);
+
+            LanguageChanged?.Invoke(null, EventArgs.Empty);
         }
 
         public static void Initialize()

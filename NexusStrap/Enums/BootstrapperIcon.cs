@@ -4,6 +4,8 @@
     {
         [EnumName(StaticName = "NexusStrap")]
         IconNexus,
+        [EnumName(StaticName = "NexusStrap (8-Bit)")]
+        Icon8Bit,
         [EnumName(StaticName = "2008")]
         Icon2008,
         [EnumName(StaticName = "2011")]

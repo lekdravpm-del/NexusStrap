@@ -42,6 +42,11 @@ namespace NexusStrap.UI.Elements.Base
                 this.WindowBackdropType = BackgroundType.None;
                 this.Background = new SolidColorBrush(Colors.Black);
             }
+            else if (finalTheme == Enums.Theme.Femboy)
+            {
+                ApplyFemboyAccent();
+                this.WindowBackdropType = BackgroundType.None;
+            }
             else
             {
                 this.Background = null;
@@ -91,6 +96,29 @@ namespace NexusStrap.UI.Elements.Base
             Application.Current.Resources["AccentTextFillColorTertiaryBrush"] = new SolidColorBrush(Color.FromArgb(0x66, 0x00, 0x00, 0x00));
             Application.Current.Resources["TextOnAccentFillColorPrimary"] = blackText;
             Application.Current.Resources["TextOnAccentFillColorSecondary"] = Color.FromArgb(0x80, 0x00, 0x00, 0x00);
+        }
+
+        private void ApplyFemboyAccent()
+        {
+            var pink = Color.FromRgb(0xFF, 0x8F, 0xAB);
+            var pinkDeep = Color.FromRgb(0xEC, 0x6E, 0x94);
+            var whiteText = Colors.White;
+
+            Application.Current.Resources["SystemAccentColor"] = pink;
+            Application.Current.Resources["SystemAccentColorPrimary"] = pink;
+            Application.Current.Resources["SystemAccentColorSecondary"] = pinkDeep;
+            Application.Current.Resources["SystemAccentColorTertiary"] = pinkDeep;
+            Application.Current.Resources["SystemAccentBrush"] = new SolidColorBrush(pink);
+            Application.Current.Resources["SystemFillColorAttentionBrush"] = new SolidColorBrush(pink);
+            Application.Current.Resources["AccentFillColorDefaultBrush"] = new SolidColorBrush(pink);
+            Application.Current.Resources["AccentFillColorSecondaryBrush"] = new SolidColorBrush(pinkDeep);
+            Application.Current.Resources["AccentFillColorTertiaryBrush"] = new SolidColorBrush(pinkDeep);
+            Application.Current.Resources["AccentFillColorSelectedTextBackgroundBrush"] = new SolidColorBrush(pinkDeep);
+            Application.Current.Resources["AccentTextFillColorPrimaryBrush"] = new SolidColorBrush(whiteText);
+            Application.Current.Resources["AccentTextFillColorSecondaryBrush"] = new SolidColorBrush(Color.FromArgb(0x80, 0xFF, 0xFF, 0xFF));
+            Application.Current.Resources["AccentTextFillColorTertiaryBrush"] = new SolidColorBrush(Color.FromArgb(0x66, 0xFF, 0xFF, 0xFF));
+            Application.Current.Resources["TextOnAccentFillColorPrimary"] = whiteText;
+            Application.Current.Resources["TextOnAccentFillColorSecondary"] = Color.FromArgb(0x80, 0xFF, 0xFF, 0xFF);
         }
 
         private void ApplyDarkAccent()

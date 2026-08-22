@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiki - Nexus Strap</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        .wiki-layout {
+            position: relative;
+            z-index: 1;
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 100px 24px 120px;
+        }
+
+        .wiki-header {
+            margin-bottom: 48px;
+        }
+
+        .wiki-header h1 {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+
+        .wiki-header p {
+            font-size: 15px;
+            color: var(--text-dim);
+        }
+
+        .wiki-nav {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+        }
+
+        .wiki-nav a {
+            padding: 8px 16px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .wiki-nav a:hover {
+            border-color: #333;
+            color: var(--white);
+            background: var(--glow);
+        }
+
+        .wiki-section {
+            margin-bottom: 48px;
+        }
+
+        .wiki-section h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .wiki-section h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--white);
+            margin: 20px 0 8px;
+        }
+
+        .wiki-section p {
+            font-size: 14px;
+            line-height: 1.7;
+            color: var(--text-dim);
+            margin-bottom: 12px;
+        }
+
+        .wiki-section ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 12px;
+        }
+
+        .wiki-section ul li {
+            font-size: 14px;
+            line-height: 1.7;
+            color: var(--text-dim);
+            padding: 4px 0 4px 20px;
+            position: relative;
+        }
+
+        .wiki-section ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #333;
+        }
+
+        .wiki-code {
+            background: #0c0c10;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px 20px;
+            font-family: 'SF Mono', 'Consolas', monospace;
+            font-size: 13px;
+            color: var(--text);
+            overflow-x: auto;
+            margin-bottom: 16px;
+        }
+
+        .wiki-callout {
+            border-left: 3px solid #333;
+            padding: 16px 20px;
+            background: var(--bg-card);
+            border-radius: 0 10px 10px 0;
+            margin-bottom: 16px;
+        }
+
+        .wiki-callout p {
+            margin-bottom: 0;
+        }
+
+        .wiki-callout strong {
+            color: var(--white);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: var(--text-dim);
+            text-decoration: none;
+            margin-bottom: 32px;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--white);
+        }
+    </style>
+</head>
+<body>
+    <nav class="topbar">
+        <span class="topbar-text">Made by <strong>Recd</strong></span>
+        <div class="topbar-links">
+            <a href="index.html" class="topbar-link">Home</a>
+            <a href="https://github.com/lekdravpm-del/NexusStrap" target="_blank" class="topbar-link">GitHub</a>
+            <a href="https://discord.gg/PHbaZR8SJ" target="_blank" class="topbar-link">Discord</a>
+        </div>
+    </nav>
+
+    <div class="wiki-layout">
+        <a href="index.html" class="back-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            Back to Home
+        </a>
+
+        <div class="wiki-header">
+            <h1>Nexus Strap Wiki</h1>
+            <p>Everything you need to know about using and configuring Nexus Strap.</p>
+        </div>
+
+        <div class="wiki-nav">
+            <a href="#getting-started">Getting Started</a>
+            <a href="#features">Features</a>
+            <a href="#cursors">Cursors</a>
+            <a href="#fastflags">FastFlags</a>
+            <a href="#settings">Settings</a>
+            <a href="#faq">FAQ</a>
+        </div>
+
+        <section class="wiki-section" id="getting-started">
+            <h2>Getting Started</h2>
+            <p>Nexus Strap is a lightweight Roblox bootstrapper. It replaces the default Roblox launcher with a faster, more customizable alternative.</p>
+
+            <h3>Installation</h3>
+            <ul>
+                <li>Download the latest release from GitHub or the homepage</li>
+                <li>Run <strong>NexusStrap.exe</strong></li>
+                <li>The app will guide you through the initial setup</li>
+                <li>Log in with your Roblox account when prompted</li>
+            </ul>
+
+            <h3>First Launch</h3>
+            <p>On first launch, Nexus Strap will set up its mod directory and apply default settings. You can customize everything later from the settings menu.</p>
+
+            <div class="wiki-callout">
+                <p><strong>Note:</strong> Nexus Strap stores its files in <code>%LOCALAPPDATA%\NexusStrap</code>. Your settings are preserved across updates.</p>
+            </div>
+        </section>
+
+        <section class="wiki-section" id="features">
+            <h2>Features</h2>
+
+            <h3>Memory Limiter</h3>
+            <p>Cap Roblox's memory usage to prevent it from eating all your RAM. Set a maximum in MB and Nexus Strap will enforce it.</p>
+
+            <h3>RAM Cleaner</h3>
+            <p>Periodically cleans up Roblox's memory footprint while the game is running. Works automatically in the background.</p>
+
+            <h3>Crash Handler Auto-Close</h3>
+            <p>Kills the Roblox Crash Handler process automatically to free up system resources.</p>
+
+            <h3>Discord Rich Presence</h3>
+            <p>Shows what page or dialog you're currently on in Nexus Strap via Discord's activity status.</p>
+
+            <h3>Game Shortcuts</h3>
+            <p>Create one-click shortcuts to launch specific Roblox games directly.</p>
+
+            <h3>Process Priority</h3>
+            <p>Set Roblox's process priority (Idle, Below Normal, Normal, Above Normal, High, RealTime) from within Nexus Strap.</p>
+        </section>
+
+        <section class="wiki-section" id="cursors">
+            <h2>Cursors</h2>
+
+            <h3>Shift-Lock Themes</h3>
+            <p>Choose from a collection of shift-lock cursor themes. Each theme includes a custom MouseLockedCursor that replaces Roblox's default circle.</p>
+            <ul>
+                <li>Preview each theme before applying</li>
+                <li>Themes are written to the correct Roblox textures folder automatically</li>
+                <li>Cursors are downscaled to Roblox's native 32x32 size</li>
+            </ul>
+
+            <h3>Custom Cursor Sets</h3>
+            <p>Create, import, and export your own cursor packs. A cursor set includes:</p>
+            <ul>
+                <li><strong>MouseLockedCursor.png</strong> — The shift-lock cursor (32x32)</li>
+                <li><strong>ArrowCursor.png</strong> — Standard mouse cursor (64x64)</li>
+                <li><strong>ArrowFarCursor.png</strong> — Far-away cursor (64x64)</li>
+                <li><strong>IBeamCursor.png</strong> — Text selection cursor (64x64)</li>
+            </ul>
+
+            <h3>Custom Death Sounds</h3>
+            <p>Replace Roblox's default death sound with any OGG audio file.</p>
+        </section>
+
+        <section class="wiki-section" id="fastflags">
+            <h2>FastFlags</h2>
+
+            <h3>What are FastFlags?</h3>
+            <p>FastFlags are internal Roblox settings that control rendering, networking, and other engine behavior. Nexus Strap provides a visual editor to modify them safely.</p>
+
+            <h3>Using the Editor</h3>
+            <ul>
+                <li>Browse the built-in flag list or search by name</li>
+                <li>Use presets for common configurations (performance, rendering, etc.)</li>
+                <li>Create and save your own flag profiles</li>
+                <li>Undo/redo support for all changes</li>
+            </ul>
+
+            <h3>Profiles</h3>
+            <p>Save different flag configurations and switch between them. Useful if you want different settings for different games.</p>
+        </section>
+
+        <section class="wiki-section" id="settings">
+            <h2>Settings</h2>
+
+            <h3>Appearance</h3>
+            <ul>
+                <li>Change the bootstrapper theme (includes Femboy theme)</li>
+                <li>Custom 8-bit bootstrapper icon</li>
+                <li>Dark and light mode support</li>
+            </ul>
+
+            <h3>Integrations</h3>
+            <ul>
+                <li>Add custom pre-launch integrations</li>
+                <li>Auto-close integrations after Roblox starts</li>
+                <li>Discord RPC toggle</li>
+            </ul>
+
+            <h3>Import / Export</h3>
+            <p>Back up all your settings to a file and restore them on another machine. Covers FastFlags, mods, cursors, and preferences.</p>
+        </section>
+
+        <section class="wiki-section" id="faq">
+            <h2>FAQ</h2>
+
+            <h3>Is Nexus Strap safe to use?</h3>
+            <p>Yes. Nexus Strap is an open-source bootstrapper. It does not inject code into Roblox or modify game memory. It only changes the launcher and cosmetic files.</p>
+
+            <h3>Will I get banned?</h3>
+            <p>Nexus Strap does not modify Roblox's executable or memory. The FastFlag editor warns you about risky flags. Cosmetic mods (cursors, sounds) are not flagged by Roblox's detection.</p>
+
+            <h3>Where are my settings stored?</h3>
+            <p>In <code>%LOCALAPPDATA%\NexusStrap</code>. This includes your mod files, logs, and configuration.</p>
+
+            <h3>How do I uninstall?</h3>
+            <p>Use the built-in uninstaller from the settings menu, or manually delete the NexusStrap folder from AppData and remove the registry entry.</p>
+
+            <h3>Can I contribute?</h3>
+            <p>The project is open source on GitHub. Fork the repo, make your changes, and submit a pull request.</p>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <p>Nexus Strap is not affiliated with Roblox Corporation.</p>
+        <p class="footer-sub">Built with care by Recd.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

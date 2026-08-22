@@ -16,6 +16,8 @@ namespace NexusStrap
 
         private static string DesktopShortcut => Path.Combine(Paths.Desktop, $"{App.ProjectName}.lnk");
 
+        private static string DesktopShortcutFallback => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Desktop", $"{App.ProjectName}.lnk");
+
         private static string StartMenuShortcut => Path.Combine(Paths.WindowsStartMenu, $"{App.ProjectName}.lnk");
 
 public string NexusStrapInstallDirectory
@@ -61,14 +63,26 @@ public string NexusStrapInstallDirectory
 
             try
             {
-                if (!File.Exists(Paths.Application))
+                string exePath = File.Exists(Paths.Application) ? Paths.Application : Paths.Process;
+
+                if (string.IsNullOrEmpty(exePath) || !File.Exists(exePath))
+                {
+                    App.Logger.WriteLine(LOG_IDENT, $"No valid executable found. Paths.Application={Paths.Application}, Paths.Process={Paths.Process}");
                     return;
+                }
+
+                App.Logger.WriteLine(LOG_IDENT, $"Ensuring shortcuts with target: {exePath}");
 
                 if (CreateDesktopShortcuts)
-                    EnsureShortcut(DesktopShortcut);
+                {
+                    EnsureShortcut(DesktopShortcut, exePath);
+                    // Fallback for OneDrive issues
+                    if (!string.Equals(Paths.Desktop, DesktopShortcutFallback, StringComparison.OrdinalIgnoreCase))
+                        EnsureShortcut(DesktopShortcutFallback, exePath);
+                }
 
                 if (CreateStartMenuShortcuts)
-                    EnsureShortcut(StartMenuShortcut);
+                    EnsureShortcut(StartMenuShortcut, exePath);
             }
             catch (Exception ex)
             {
@@ -77,12 +91,9 @@ public string NexusStrapInstallDirectory
             }
         }
 
-        private static void EnsureShortcut(string lnkPath)
+        private static void EnsureShortcut(string lnkPath, string exePath)
         {
-            if (File.Exists(lnkPath))
-                return;
-
-            Shortcut.Create(Paths.Application, "", lnkPath);
+            Shortcut.Create(exePath, "", lnkPath);
         }
 
         public ImportSettingsFrom ImportSource { get; set; } = ImportSettingsFrom.NexusStrap;
@@ -155,10 +166,26 @@ public string NexusStrapInstallDirectory
                 WindowsRegistry.RegisterStudio();
 
             if (CreateDesktopShortcuts)
+            {
+                App.Logger.WriteLine("Installer::DoInstall", $"Creating desktop shortcut: {DesktopShortcut} -> {Paths.Application}");
                 Shortcut.Create(Paths.Application, "", DesktopShortcut);
+                App.Logger.WriteLine("Installer::DoInstall", $"Desktop shortcut creation done. File exists: {File.Exists(DesktopShortcut)}");
+                
+                // Also create on local desktop as fallback for OneDrive issues
+                if (!string.Equals(Paths.Desktop, DesktopShortcutFallback, StringComparison.OrdinalIgnoreCase))
+                {
+                    App.Logger.WriteLine("Installer::DoInstall", $"Creating desktop shortcut fallback: {DesktopShortcutFallback} -> {Paths.Application}");
+                    Shortcut.Create(Paths.Application, "", DesktopShortcutFallback);
+                    App.Logger.WriteLine("Installer::DoInstall", $"Desktop fallback shortcut creation done. File exists: {File.Exists(DesktopShortcutFallback)}");
+                }
+            }
 
             if (CreateStartMenuShortcuts)
+            {
+                App.Logger.WriteLine("Installer::DoInstall", $"Creating start menu shortcut: {StartMenuShortcut} -> {Paths.Application}");
                 Shortcut.Create(Paths.Application, "", StartMenuShortcut);
+                App.Logger.WriteLine("Installer::DoInstall", $"Start menu shortcut creation done. File exists: {File.Exists(StartMenuShortcut)}");
+            }
 
             if (ImportSource != ImportSettingsFrom.None)
             {

@@ -36,6 +36,18 @@ namespace NexusStrap.UI.ViewModels.Settings
 
         public ModsPresetsViewModel()
         {
+            ShiftlockCursorTask.PreviewChanged += (_, _) =>
+            {
+                OnPropertyChanged(nameof(ShiftlockCursorPreviewImage));
+                OnPropertyChanged(nameof(ShiftlockCursorPreviewLabel));
+            };
+
+            CursorTypeTask.PreviewChanged += (_, _) =>
+            {
+                OnPropertyChanged(nameof(CursorTypePreviewImage));
+                OnPropertyChanged(nameof(CursorTypePreviewLabel));
+            };
+
             LoadCustomCursorSets();
 
             LoadCursorPathsForSelectedSet();
@@ -108,16 +120,14 @@ namespace NexusStrap.UI.ViewModels.Settings
                 Enums.CursorType.From2006, new()
                 {
                     { @"content\textures\Cursors\KeyboardMouse\ArrowCursor.png",    "Cursor.From2006.ArrowCursor.png"    },
-                    { @"content\textures\Cursors\KeyboardMouse\ArrowFarCursor.png", "Cursor.From2006.ArrowFarCursor.png" },
-                    { @"content\textures\Cursors\KeyboardMouse\MouseLockedCursor.png", "Cursor.From2006.MouseLockedCursor.png" }
+                    { @"content\textures\Cursors\KeyboardMouse\ArrowFarCursor.png", "Cursor.From2006.ArrowFarCursor.png" }
                 }
             },
             {
                 Enums.CursorType.From2013, new()
                 {
                     { @"content\textures\Cursors\KeyboardMouse\ArrowCursor.png",    "Cursor.From2013.ArrowCursor.png"    },
-                    { @"content\textures\Cursors\KeyboardMouse\ArrowFarCursor.png", "Cursor.From2013.ArrowFarCursor.png" },
-                    { @"content\textures\Cursors\KeyboardMouse\MouseLockedCursor.png", "Cursor.From2013.MouseLockedCursor.png" }
+                    { @"content\textures\Cursors\KeyboardMouse\ArrowFarCursor.png", "Cursor.From2013.ArrowFarCursor.png" }
                 }
             },
             {
@@ -125,8 +135,7 @@ namespace NexusStrap.UI.ViewModels.Settings
                 {
                     { @"content\textures\Cursors\KeyboardMouse\ArrowCursor.png",    "Cursor.BlackAndWhiteDot.ArrowCursor.png"    },
                     { @"content\textures\Cursors\KeyboardMouse\ArrowFarCursor.png", "Cursor.BlackAndWhiteDot.ArrowFarCursor.png" },
-                    { @"content\textures\Cursors\KeyboardMouse\IBeamCursor.png",    "Cursor.BlackAndWhiteDot.IBeamCursor.png"    },
-                    { @"content\textures\Cursors\KeyboardMouse\MouseLockedCursor.png", "Cursor.BlackAndWhiteDot.MouseLockedCursor.png" }
+                    { @"content\textures\Cursors\KeyboardMouse\IBeamCursor.png",    "Cursor.BlackAndWhiteDot.IBeamCursor.png"    }
                 }
             },
             {
@@ -134,8 +143,7 @@ namespace NexusStrap.UI.ViewModels.Settings
                 {
                     { @"content\textures\Cursors\KeyboardMouse\ArrowCursor.png",    "Cursor.PurpleCross.ArrowCursor.png"    },
                     { @"content\textures\Cursors\KeyboardMouse\ArrowFarCursor.png", "Cursor.PurpleCross.ArrowFarCursor.png" },
-                    { @"content\textures\Cursors\KeyboardMouse\IBeamCursor.png",    "Cursor.PurpleCross.IBeamCursor.png"    },
-                    { @"content\textures\Cursors\KeyboardMouse\MouseLockedCursor.png", "Cursor.PurpleCross.MouseLockedCursor.png" }
+                    { @"content\textures\Cursors\KeyboardMouse\IBeamCursor.png",    "Cursor.PurpleCross.IBeamCursor.png"    }
                 }
             },
             {
@@ -143,8 +151,7 @@ namespace NexusStrap.UI.ViewModels.Settings
                 {
                     { @"content\textures\Cursors\KeyboardMouse\ArrowCursor.png",    "Cursor.RedCross.ArrowCursor.png"    },
                     { @"content\textures\Cursors\KeyboardMouse\ArrowFarCursor.png", "Cursor.RedCross.ArrowFarCursor.png" },
-                    { @"content\textures\Cursors\KeyboardMouse\IBeamCursor.png",    "Cursor.RedCross.IBeamCursor.png"    },
-                    { @"content\textures\Cursors\KeyboardMouse\MouseLockedCursor.png", "Cursor.RedCross.MouseLockedCursor.png" }
+                    { @"content\textures\Cursors\KeyboardMouse\IBeamCursor.png",    "Cursor.RedCross.IBeamCursor.png"    }
                 }
             },
             {
@@ -152,8 +159,7 @@ namespace NexusStrap.UI.ViewModels.Settings
                 {
                     { @"content\textures\Cursors\KeyboardMouse\ArrowCursor.png",    "Cursor.NeonGreen.ArrowCursor.png"    },
                     { @"content\textures\Cursors\KeyboardMouse\ArrowFarCursor.png", "Cursor.NeonGreen.ArrowFarCursor.png" },
-                    { @"content\textures\Cursors\KeyboardMouse\IBeamCursor.png",    "Cursor.NeonGreen.IBeamCursor.png"    },
-                    { @"content\textures\Cursors\KeyboardMouse\MouseLockedCursor.png", "Cursor.NeonGreen.MouseLockedCursor.png" }
+                    { @"content\textures\Cursors\KeyboardMouse\IBeamCursor.png",    "Cursor.NeonGreen.IBeamCursor.png"    }
                 }
             },
             {
@@ -161,14 +167,27 @@ namespace NexusStrap.UI.ViewModels.Settings
                 {
                     { @"content\textures\Cursors\KeyboardMouse\ArrowCursor.png",    "Cursor.CyanDot.ArrowCursor.png"    },
                     { @"content\textures\Cursors\KeyboardMouse\ArrowFarCursor.png", "Cursor.CyanDot.ArrowFarCursor.png" },
-                    { @"content\textures\Cursors\KeyboardMouse\IBeamCursor.png",    "Cursor.CyanDot.IBeamCursor.png"    },
-                    { @"content\textures\Cursors\KeyboardMouse\MouseLockedCursor.png", "Cursor.CyanDot.MouseLockedCursor.png" }
+                    { @"content\textures\Cursors\KeyboardMouse\IBeamCursor.png",    "Cursor.CyanDot.IBeamCursor.png"    }
                 }
             }
         });
 
 
         public FontModPresetTask TextFontTask { get; } = new();
+
+        public ShiftlockCursorTask ShiftlockCursorTask { get; } = new();
+
+        public System.Windows.Media.Imaging.BitmapImage ShiftlockCursorPreviewImage =>
+            ShiftlockCursorTask.GetPreviewImage(ShiftlockCursorTask.NewState);
+
+        public string ShiftlockCursorPreviewLabel =>
+            ShiftlockCursorTask.NewState == Enums.CursorType.Default ? "Default" : ShiftlockCursorTask.NewState.ToString();
+
+        public System.Windows.Media.Imaging.BitmapImage CursorTypePreviewImage =>
+            CursorTypeTask.GetPreviewImage(CursorTypeTask.NewState);
+
+        public string CursorTypePreviewLabel =>
+            CursorTypeTask.NewState.Equals(default(Enums.CursorType)) ? "Default" : CursorTypeTask.NewState.ToString();
 
         private void OpenCompatSettings()
         {
@@ -181,9 +200,9 @@ namespace NexusStrap.UI.ViewModels.Settings
 
         }
 
-        private static string CursorPath => Path.Combine(Paths.PresetModifications, "Content", "textures", "Cursors", "KeyboardMouse");
-        private static string ShiftlockPath => Path.Combine(Paths.PresetModifications, "Content", "textures");
-        private static string SoundPath => Path.Combine(Paths.PresetModifications, "Content", "sounds");
+        private static string CursorPath => Path.Combine(Paths.Modifications, "content", "textures", "Cursors", "KeyboardMouse");
+        private static string ShiftlockPath => Path.Combine(Paths.Modifications, "content", "textures");
+        private static string SoundPath => Path.Combine(Paths.Modifications, "content", "sounds");
 
         private static readonly string[] CursorFiles = { "ArrowCursor.png", "ArrowFarCursor.png", "IBeamCursor.png" };
         private static readonly string[] ShiftlockFiles = { "MouseLockedCursor.png" };
@@ -201,24 +220,24 @@ namespace NexusStrap.UI.ViewModels.Settings
         }
 
         public void AddCustomCursorMod() =>
-            AddCustomFile(CursorFiles, CursorPath, "Select Cursor", "PNG (*.png)|*.png", "cursors", RefreshStates);
+            AddCustomFile(CursorFiles, CursorPath, "Select Cursor", "PNG (*.png)|*.png", "cursors", RefreshStates, 64);
 
         public void RemoveCustomCursorMod() =>
             RemoveCustomFile(CursorFiles, CursorPath, "No custom cursors found.", RefreshStates);
 
         public void AddCustomShiftlockMod() =>
-            AddCustomFile(ShiftlockFiles, ShiftlockPath, "Select Shiftlock", "PNG (*.png)|*.png", "shiftlock", RefreshStates);
+            AddCustomFile(ShiftlockFiles, ShiftlockPath, "Select Shiftlock", "PNG (*.png)|*.png", "shiftlock", RefreshStates, 32);
 
         public void RemoveCustomShiftlockMod() =>
             RemoveCustomFile(ShiftlockFiles, ShiftlockPath, "No shiftlock found.", RefreshStates);
 
         public void AddCustomDeathSound() =>
-            AddCustomFile(SoundFiles, SoundPath, "Select Death Sound", "OGG (*.ogg)|*.ogg", "death sound", RefreshStates);
+            AddCustomFile(SoundFiles, SoundPath, "Select Death Sound", "OGG (*.ogg)|*.ogg", "death sound", RefreshStates, 0);
 
         public void RemoveCustomDeathSound() =>
             RemoveCustomFile(SoundFiles, SoundPath, "No death sound found.", RefreshStates);
 
-        private void AddCustomFile(string[] targetFiles, string targetDir, string dialogTitle, string filter, string failureText, Action postAction)
+        private void AddCustomFile(string[] targetFiles, string targetDir, string dialogTitle, string filter, string failureText, Action postAction, int targetSize)
         {
             var dialog = new OpenFileDialog
             {
@@ -237,7 +256,7 @@ namespace NexusStrap.UI.ViewModels.Settings
                 foreach (var name in targetFiles)
                 {
                     string destPath = Path.Combine(targetDir, name);
-                    File.Copy(sourcePath, destPath, overwrite: true);
+                    CopyCursorResized(sourcePath, destPath, targetSize);
                 }
             }
             catch (Exception ex)
@@ -276,6 +295,35 @@ namespace NexusStrap.UI.ViewModels.Settings
             }
 
             postAction?.Invoke();
+        }
+
+        // Roblox renders cursors at native resolution. Downscale to the stock sizes
+        // (shift-lock 32x32, arrow cursors 64x64) so oversized custom images don't
+        // appear huge in-game. targetSize <= 0 means plain copy (e.g. sounds).
+        private static void CopyCursorResized(string sourcePath, string destPath, int targetSize)
+        {
+            if (targetSize <= 0)
+            {
+                File.Copy(sourcePath, destPath, true);
+                return;
+            }
+
+            using var src = System.Drawing.Image.FromFile(sourcePath);
+            if (src.Width <= targetSize && src.Height <= targetSize)
+            {
+                File.Copy(sourcePath, destPath, true);
+                return;
+            }
+
+            using var resized = new System.Drawing.Bitmap(targetSize, targetSize, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+            using (var g = System.Drawing.Graphics.FromImage(resized))
+            {
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+                g.DrawImage(src, 0, 0, targetSize, targetSize);
+            }
+            resized.Save(destPath, System.Drawing.Imaging.ImageFormat.Png);
         }
 
         #region Custom Cursor Set
@@ -327,6 +375,7 @@ namespace NexusStrap.UI.ViewModels.Settings
         public ICommand ApplyCursorSetCommand => new RelayCommand(ApplyCursorSet);
         public ICommand ImportCursorSetCommand => new RelayCommand(ImportCursorSet);
         public ICommand ExportCursorSetCommand => new RelayCommand(ExportCursorSet);
+        public ICommand GetCurrentCursorSetCommand => new RelayCommand(FetchCurrentCursorSet);
         public ICommand AddCursorCommand => new RelayCommand<string>(AddCursorImage);
         public ICommand DeleteCursorCommand => new RelayCommand<string>(DeleteCursorImage);
 
@@ -396,22 +445,31 @@ namespace NexusStrap.UI.ViewModels.Settings
                 return;
             }
 
-            string sourceDir = SelectedCustomCursorSet.FolderPath;
-            string targetDir = Path.Combine(Paths.PresetModifications, "content", "textures");
-            string targetKB = Path.Combine(targetDir, "Cursors", "KeyboardMouse");
+string sourceDir = SelectedCustomCursorSet.FolderPath;
+            string targetTextures = Path.Combine(Paths.Modifications, "content", "textures");
+                string targetKB = Path.Combine(targetTextures, "Cursors", "KeyboardMouse");
 
             try
             {
                 Directory.CreateDirectory(targetKB);
-                string[] targets = { Path.Combine(targetDir, "MouseLockedCursor.png"), Path.Combine(targetKB, "ArrowCursor.png"), Path.Combine(targetKB, "ArrowFarCursor.png"), Path.Combine(targetKB, "IBeamCursor.png") };
+                string[] targets = { Path.Combine(targetTextures, "MouseLockedCursor.png"), Path.Combine(targetKB, "ArrowCursor.png"), Path.Combine(targetKB, "ArrowFarCursor.png"), Path.Combine(targetKB, "IBeamCursor.png") };
                 foreach (var t in targets) if (File.Exists(t)) File.Delete(t);
 
-                foreach (string file in Directory.GetFiles(SelectedCustomCursorSet.FolderPath, "*.png", SearchOption.AllDirectories))
+                string sourceKB = Path.Combine(sourceDir, "Cursors", "KeyboardMouse");
+                if (Directory.Exists(sourceKB))
                 {
-                    string dest = Path.Combine(targetDir, Path.GetRelativePath(SelectedCustomCursorSet.FolderPath, file));
-                    Directory.CreateDirectory(Path.GetDirectoryName(dest)!);
-                    File.Copy(file, dest, true);
+                    foreach (string file in Directory.GetFiles(sourceKB, "*.png", SearchOption.AllDirectories))
+                    {
+                        string relative = Path.GetRelativePath(sourceKB, file);
+                        string dest = Path.Combine(targetKB, relative);
+                        Directory.CreateDirectory(Path.GetDirectoryName(dest)!);
+                        CopyCursorResized(file, dest, 64);
+                    }
                 }
+
+                string sourceRoot = Path.Combine(sourceDir, "MouseLockedCursor.png");
+                if (File.Exists(sourceRoot))
+                    CopyCursorResized(sourceRoot, Path.Combine(targetTextures, "MouseLockedCursor.png"), 32);
 
                 Frontend.ShowMessageBox($"Cursor set '{SelectedCustomCursorSet.Name}' applied successfully!", MessageBoxImage.Information);
             }
@@ -453,6 +511,46 @@ namespace NexusStrap.UI.ViewModels.Settings
                 NotifyCursorStates();
             }
             catch (Exception ex) { App.Logger.WriteException("ModsViewModel::ImportCursorSet", ex); }
+        }
+
+        private void FetchCurrentCursorSet()
+        {
+            if (SelectedCustomCursorSet is null) return;
+
+            try
+            {
+                string modsDir = Path.Combine(Paths.Modifications, "content", "textures");
+                string kbDir = Path.Combine(modsDir, "Cursors", "KeyboardMouse");
+
+                var sources = new (string Source, string Name)[]
+                {
+                    (Path.Combine(modsDir, "MouseLockedCursor.png"), "MouseLockedCursor.png"),
+                    (Path.Combine(kbDir, "ArrowCursor.png"), "ArrowCursor.png"),
+                    (Path.Combine(kbDir, "ArrowFarCursor.png"), "ArrowFarCursor.png"),
+                    (Path.Combine(kbDir, "IBeamCursor.png"), "IBeamCursor.png")
+                };
+
+                int copied = 0;
+                foreach (var (source, name) in sources)
+                {
+                    if (!File.Exists(source)) continue;
+                    string? dest = GetCursorTargetPath(name);
+                    if (dest is null) continue;
+                    File.Copy(source, dest, true);
+                    copied++;
+                }
+
+                if (copied == 0)
+                {
+                    Frontend.ShowMessageBox("No applied cursors were found in your mods folder.", MessageBoxImage.Information);
+                    return;
+                }
+
+                LoadCursorPathsForSelectedSet();
+                NotifyCursorStates();
+                Frontend.ShowMessageBox($"Fetched {copied} cursor file(s) into '{SelectedCustomCursorSet.Name}'.", MessageBoxImage.Information);
+            }
+            catch (Exception ex) { App.Logger.WriteException("ModsViewModel::FetchCurrentCursorSet", ex); }
         }
 
         private void AddCursorImage(string? fileName)

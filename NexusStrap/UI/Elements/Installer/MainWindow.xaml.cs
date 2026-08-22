@@ -39,7 +39,7 @@ namespace NexusStrap.UI.Elements.Installer
 
         private Type _currentPage = typeof(WelcomePage);
 
-        private List<Type> _pages = new() { typeof(WelcomePage), typeof(InstallPage), typeof(CompletionPage) };
+        private List<Type> _pages = new() { typeof(WelcomePage), typeof(AccountSetupPage), typeof(InstallPage), typeof(CompletionPage) };
 
         private DateTimeOffset _lastNavigation = DateTimeOffset.Now;
 
@@ -125,7 +125,34 @@ namespace NexusStrap.UI.Elements.Installer
         {
             _currentPage = pageType;
             NextPageCallback = null;
+            UpdateStepIndicators();
             return RootNavigation.Navigate(pageType);
+        }
+
+        private void UpdateStepIndicators()
+        {
+            int idx = _pages.IndexOf(_currentPage);
+
+            var accent = (System.Windows.Media.SolidColorBrush)FindResource("SystemAccentBrush");
+
+            Step1Circle.Background = idx >= 0 ? accent : (System.Windows.Media.Brush)FindResource("ControlFillColorDefaultBrush");
+            Step1Num.Foreground = System.Windows.Media.Brushes.White;
+            Step1Label.Foreground = (System.Windows.Media.Brush)FindResource("TextFillColorPrimaryBrush");
+            Connector1.Background = idx >= 1 ? accent : (System.Windows.Media.Brush)FindResource("ControlFillColorDefaultBrush");
+
+            Step2Circle.Background = idx >= 1 ? accent : (System.Windows.Media.Brush)FindResource("ControlFillColorDefaultBrush");
+            Step2Num.Foreground = idx >= 1 ? System.Windows.Media.Brushes.White : (System.Windows.Media.Brush)FindResource("TextFillColorSecondaryBrush");
+            Step2Label.Foreground = idx >= 1 ? (System.Windows.Media.Brush)FindResource("TextFillColorPrimaryBrush") : (System.Windows.Media.Brush)FindResource("TextFillColorSecondaryBrush");
+            Connector2.Background = idx >= 2 ? accent : (System.Windows.Media.Brush)FindResource("ControlFillColorDefaultBrush");
+
+            Step3Circle.Background = idx >= 2 ? accent : (System.Windows.Media.Brush)FindResource("ControlFillColorDefaultBrush");
+            Step3Num.Foreground = idx >= 2 ? System.Windows.Media.Brushes.White : (System.Windows.Media.Brush)FindResource("TextFillColorSecondaryBrush");
+            Step3Label.Foreground = idx >= 2 ? (System.Windows.Media.Brush)FindResource("TextFillColorPrimaryBrush") : (System.Windows.Media.Brush)FindResource("TextFillColorSecondaryBrush");
+            Connector3.Background = idx >= 3 ? accent : (System.Windows.Media.Brush)FindResource("ControlFillColorDefaultBrush");
+
+            Step4Circle.Background = idx >= 3 ? accent : (System.Windows.Media.Brush)FindResource("ControlFillColorDefaultBrush");
+            Step4Num.Foreground = idx >= 3 ? System.Windows.Media.Brushes.White : (System.Windows.Media.Brush)FindResource("TextFillColorSecondaryBrush");
+            Step4Label.Foreground = idx >= 3 ? (System.Windows.Media.Brush)FindResource("TextFillColorPrimaryBrush") : (System.Windows.Media.Brush)FindResource("TextFillColorSecondaryBrush");
         }
 
         public void SetPageService(IPageService pageService) => RootNavigation.PageService = pageService;

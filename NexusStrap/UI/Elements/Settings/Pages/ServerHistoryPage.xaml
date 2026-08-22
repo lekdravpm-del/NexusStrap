@@ -21,10 +21,10 @@
         <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,12">
             <ui:Button Content="Refresh" Command="{Binding RefreshCommand}" Margin="0,0,8,0" />
             <ui:Button Content="Rejoin Selected" Appearance="Primary" Command="{Binding RejoinCommand}" IsEnabled="{Binding CanRejoin}" Margin="0,0,8,0" />
-            <ui:Button Content="Clear History" Appearance="Danger" Command="{Binding ClearHistoryCommand}" />
+            <ui:Button x:Name="ClearHistoryButton" Content="Clear History" Appearance="Danger" Command="{Binding ClearHistoryCommand}" />
         </StackPanel>
 
-        <DataGrid Grid.Row="2"
+        <DataGrid x:Name="HistoryListBox" Grid.Row="2"
             AutoGenerateColumns="False"
             IsReadOnly="True"
             SelectionMode="Single"

@@ -704,14 +704,14 @@ namespace NexusStrap.UI.ViewModels.AccountManagers
             var mgr = AccountManager.Shared;
             if (mgr?.ActiveAccount is null)
             {
-                Frontend.ShowMessageBox("Please select an account first.", MessageBoxImage.Warning);
+                App.Logger.WriteLine(LOG_IDENT_AUTO_JOIN, "No active account, skipping login-required check");
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(App.Settings.Prop.SelectedRegion) &&
                 (string.IsNullOrWhiteSpace(App.Settings.Prop.ForcedRegion) || App.Settings.Prop.ForcedRegion == "None"))
             {
-                Frontend.ShowMessageBox("Please select a region in Region Selector first.", MessageBoxImage.Warning);
+                App.Logger.WriteLine(LOG_IDENT_AUTO_JOIN, "No region selected, skipping");
                 return;
             }
 
@@ -739,7 +739,7 @@ namespace NexusStrap.UI.ViewModels.AccountManagers
             var mgr = AccountManager.Shared;
             if (mgr?.ActiveAccount is null)
             {
-                Frontend.ShowMessageBox("Please select an account first.", MessageBoxImage.Warning);
+                App.Logger.WriteLine(LOG_IDENT_LAUNCH, "No active account, skipping login-required popup");
                 return;
             }
 

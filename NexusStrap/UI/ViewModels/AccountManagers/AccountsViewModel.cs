@@ -38,6 +38,9 @@ namespace NexusStrap.UI.ViewModels.AccountManagers
         private string _currentUserAvatarUrl = "";
 
         [ObservableProperty]
+        private string _currentUserIdText = "";
+
+        [ObservableProperty]
         private ObservableCollection<Account> _accounts = new();
 
         [ObservableProperty]
@@ -140,6 +143,8 @@ namespace NexusStrap.UI.ViewModels.AccountManagers
             {
                 CurrentUserDisplayName = mgr.ActiveAccount.DisplayName;
                 CurrentUserUsername = $"@{mgr.ActiveAccount.Username}";
+                CurrentUserIdText = mgr.ActiveAccount.UserId.ToString();
+                NexusFriendRegistry.Register(mgr.ActiveAccount.UserId, mgr.ActiveAccount.Username, mgr.ActiveAccount.DisplayName);
 
                 string? avatarUrl = avatarUrls.GetValueOrDefault(mgr.ActiveAccount.UserId);
                 CurrentUserAvatarUrl = avatarUrl ?? "";
@@ -154,6 +159,7 @@ namespace NexusStrap.UI.ViewModels.AccountManagers
                 CurrentUserDisplayName = "Not Logged In";
                 CurrentUserUsername = "";
                 CurrentUserAvatarUrl = "";
+                CurrentUserIdText = "";
                 IsAccountInformationVisible = false;
                 IsAccountLoggedIn = false; // Set to false when no active account
             }
@@ -275,6 +281,8 @@ namespace NexusStrap.UI.ViewModels.AccountManagers
         {
             CurrentUserDisplayName = account.DisplayName;
             CurrentUserUsername = $"@{account.Username}";
+            CurrentUserIdText = account.UserId.ToString();
+            NexusFriendRegistry.Register(account.UserId, account.Username, account.DisplayName);
 
             var avatarUrls = await GetAvatarUrlsBulkAsync(new List<long> { account.UserId });
             CurrentUserAvatarUrl = avatarUrls.GetValueOrDefault(account.UserId) ?? "";
@@ -403,9 +411,11 @@ namespace NexusStrap.UI.ViewModels.AccountManagers
             }
 
             mgr.SetActiveAccount(existingBackendAccount);
+            NexusFriendRegistry.Register(existingBackendAccount.UserId, existingBackendAccount.Username, existingBackendAccount.DisplayName);
 
             CurrentUserDisplayName = existingBackendAccount.DisplayName;
             CurrentUserUsername = $"@{existingBackendAccount.Username}";
+            CurrentUserIdText = existingBackendAccount.UserId.ToString();
 
             var currentAvatarUrls = await GetAvatarUrlsBulkAsync(new List<long> { existingBackendAccount.UserId });
             CurrentUserAvatarUrl = currentAvatarUrls.GetValueOrDefault(existingBackendAccount.UserId) ?? "";
@@ -460,6 +470,7 @@ namespace NexusStrap.UI.ViewModels.AccountManagers
                 CurrentUserDisplayName = "Not Logged In";
                 CurrentUserUsername = "";
                 CurrentUserAvatarUrl = "";
+                CurrentUserIdText = "";
                 IsAccountInformationVisible = false;
             }
 
@@ -477,6 +488,18 @@ namespace NexusStrap.UI.ViewModels.AccountManagers
         }
 
         [RelayCommand]
+        private void CopyId()
+        {
+            if (string.IsNullOrWhiteSpace(CurrentUserIdText)) return;
+            try
+            {
+                Clipboard.SetText(CurrentUserIdText);
+                Frontend.ShowMessageBox($"Copied ID {CurrentUserIdText}", MessageBoxImage.Information);
+            }
+            catch { }
+        }
+
+        [RelayCommand]
         private void SignOut()
         {
             var mgr = Manager;
@@ -484,6 +507,7 @@ namespace NexusStrap.UI.ViewModels.AccountManagers
             CurrentUserDisplayName = "Not Logged In";
             CurrentUserUsername = "";
             CurrentUserAvatarUrl = "";
+            CurrentUserIdText = "";
 
             FriendsCount = 0;
             FollowersCount = 0;

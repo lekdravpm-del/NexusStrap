@@ -12,6 +12,8 @@
         Green,
         Orange,
         Pink,
+        [EnumName(StaticName = "Femboy")]
+        Femboy,
         [EnumName(FromTranslation = "Common.Custom")]
         Custom
     }

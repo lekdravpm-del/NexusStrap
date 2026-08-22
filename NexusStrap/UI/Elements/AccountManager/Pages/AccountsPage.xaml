@@ -125,6 +125,21 @@
                                     <TextBlock FontSize="11" FontWeight="Medium" Text="{Binding FollowingCount, StringFormat='{}{0} Following'}" />
                                 </Border>
                             </StackPanel>
+                            <!-- ID row with copy -->
+                            <Border Margin="0,8,0,0" Padding="8,4" CornerRadius="6" Background="{DynamicResource ControlFillColorDefaultBrush}" Visibility="{Binding IsAccountLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="ID" FontSize="10" FontWeight="Bold" Foreground="{DynamicResource TextFillColorTertiaryBrush}" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding CurrentUserIdText}" FontSize="12" FontWeight="SemiBold" FontFamily="Consolas" VerticalAlignment="Center"/>
+                                    <ui:Button Grid.Column="2" Width="26" Height="26" Padding="0" Appearance="Secondary" Command="{Binding CopyIdCommand}" ToolTip="Copy ID" Margin="8,0,0,0">
+                                        <ui:SymbolIcon Symbol="Copy24" FontSize="13"/>
+                                    </ui:Button>
+                                </Grid>
+                            </Border>
                         </StackPanel>
                     </StackPanel>
 

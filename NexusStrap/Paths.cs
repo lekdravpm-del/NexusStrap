@@ -7,7 +7,7 @@
         public static string Temp => Path.Combine(Path.GetTempPath(), App.ProjectName);
         public static string UserProfile => Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
         public static string LocalAppData => Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-        public static string Desktop => Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+        public static string Desktop => Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         public static string WindowsStartMenu => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.StartMenu), "Programs");
         public static string System => Environment.GetFolderPath(Environment.SpecialFolder.System);
 

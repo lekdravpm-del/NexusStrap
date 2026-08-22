@@ -96,10 +96,13 @@ namespace NexusStrap.UI.ViewModels.Settings
 
             if (!App.LaunchSettings.TestModeFlag.Active)
             {
-                var result = Frontend.ShowMessageBox("Would you like to log in?", MessageBoxImage.Question, MessageBoxButton.YesNo);
+                if (AccountManager.Shared.ActiveAccount is null)
+                {
+                    var result = Frontend.ShowMessageBox("Would you like to log in?", MessageBoxImage.Question, MessageBoxButton.YesNo);
 
-                if (result == MessageBoxResult.Yes)
-                    OpenAccountManager();
+                    if (result == MessageBoxResult.Yes)
+                        OpenAccountManager();
+                }
 
                 Process.Start(Paths.Application, $"-{mode.ToLower()}");
                 App.DeferredTerminate();

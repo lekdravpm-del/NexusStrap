@@ -337,13 +337,11 @@ namespace NexusStrap
                         Frontend.ShowBalloonTip(Strings.Bootstrapper_ModificationsFailed_Title, Strings.Bootstrapper_ModificationsFailed_Message, ToolTipIcon.Warning);
                 }
 
-                StartRoblox();
+                await StartRoblox();
             }
 
             if (!IsStudioLaunch)
             {
-                await WaitForRobloxWindowVisibleAsync();
-
                 Dialog?.CloseBootstrapper();
 
                 await mutex.ReleaseAsync();
@@ -355,26 +353,6 @@ namespace NexusStrap
                 await mutex.ReleaseAsync();
 
                 Dialog?.CloseBootstrapper();
-            }
-        }
-
-        private async Task WaitForRobloxWindowVisibleAsync()
-        {
-            const string LOG_IDENT = "Bootstrapper::WaitForRobloxWindowVisible";
-
-            try
-            {
-                using var timeoutCts = new CancellationTokenSource(TimeSpan.FromSeconds(90));
-                using var linkedCts = CancellationTokenSource.CreateLinkedTokenSource(_cancelTokenSource.Token, timeoutCts.Token);
-
-                while (_appPid == 0 || !Win32WindowHelper.IsWindowVisibleForProcess(_appPid))
-                {
-                    await Task.Delay(250, linkedCts.Token);
-                }
-            }
-            catch (OperationCanceledException)
-            {
-                App.Logger.WriteLine(LOG_IDENT, "Timed out waiting for the Roblox window to become visible");
             }
         }
 
@@ -857,7 +835,7 @@ namespace NexusStrap
             }
         }
 
-        private async void StartRoblox()
+        private async Task StartRoblox()
         {
             const string LOG_IDENT = "Bootstrapper::StartRoblox";
 
@@ -1685,6 +1663,10 @@ namespace NexusStrap
                 string? customFontModName = activeMods
                     .FirstOrDefault(mod => File.Exists(Path.Combine(Paths.Modifications, mod.FolderName, "content", "fonts", "CustomFont.ttf")))?.FolderName;
 
+                // the preset font mod lives under the "Preset Mods" subfolder
+                if (customFontModName is null && File.Exists(Paths.CustomFont))
+                    customFontModName = "Preset Mods";
+
                 var fontTask = Task.Run(() =>
                 {
                     if (customFontModName != null)
@@ -1786,7 +1768,7 @@ namespace NexusStrap
                                         {
                                             needsCopy = false;
                                         }
-                                        else if (targetInfo.LastWriteTime == sourceInfo.LastWriteTime || targetInfo.Length != sourceInfo.Length)
+                                else if (targetInfo.LastWriteTime != sourceInfo.LastWriteTime || targetInfo.Length != sourceInfo.Length)
                                         {
                                             string sourceHash = await Task.Run(() => MD5Hash.FromFile(file));
                                             string targetHash = await Task.Run(() => MD5Hash.FromFile(fileVersionFolder));
@@ -1828,6 +1810,79 @@ namespace NexusStrap
                 success = success && fileResults.All(r => r);
 
                 await fontTask;
+
+                if (Directory.Exists(Paths.Modifications))
+                {
+                    App.Logger.WriteLine(LOG_IDENT, "Applying Preset Mods and non-mod files...");
+
+                    var modFolderNames = activeMods.Select(m => m.FolderName).ToHashSet(StringComparer.OrdinalIgnoreCase);
+
+                    foreach (string file in Directory.GetFiles(Paths.Modifications, "*.*", SearchOption.AllDirectories))
+                    {
+                        if (_cancelTokenSource.IsCancellationRequested) return true;
+
+                        string relativeFile = file.Substring(Paths.Modifications.Length).TrimStart(Path.DirectorySeparatorChar);
+
+                        string topLevelDir = relativeFile.Split(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar)[0];
+                        if (modFolderNames.Contains(topLevelDir))
+                            continue;
+
+                        // preset mods (fonts, emojis, etc.) are stored under a "Preset Mods" subfolder,
+                        // strip that prefix so they land at the correct path in the version directory
+                        if (relativeFile.StartsWith("Preset Mods", StringComparison.OrdinalIgnoreCase))
+                            relativeFile = relativeFile.Substring("Preset Mods".Length).TrimStart(Path.DirectorySeparatorChar);
+
+                        if (relativeFile.EndsWith(".lock") || relativeFile.EndsWith(".mesh"))
+                            continue;
+
+                        string fileVersionFolder = Path.Combine(_latestVersionDirectory, relativeFile);
+
+                        try
+                        {
+                            var sourceInfo = new FileInfo(file);
+
+                            lock (currentModManifest)
+                                currentModManifest[relativeFile] = new ModFileEntry { Size = sourceInfo.Length, LastModified = sourceInfo.LastWriteTime };
+
+                            bool needsCopy = true;
+
+                            if (File.Exists(fileVersionFolder))
+                            {
+                                var targetInfo = new FileInfo(fileVersionFolder);
+
+                                if (targetInfo.Length == sourceInfo.Length && targetInfo.LastWriteTime == sourceInfo.LastWriteTime)
+                                {
+                                    needsCopy = false;
+                                }
+                                else if (targetInfo.LastWriteTime != sourceInfo.LastWriteTime || targetInfo.Length != sourceInfo.Length)
+                                {
+                                    string sourceHash = await Task.Run(() => MD5Hash.FromFile(file));
+                                    string targetHash = await Task.Run(() => MD5Hash.FromFile(fileVersionFolder));
+
+                                    if (sourceHash == targetHash)
+                                    {
+                                        needsCopy = false;
+                                        File.SetLastWriteTime(fileVersionFolder, sourceInfo.LastWriteTime);
+                                    }
+                                }
+                            }
+
+                            if (needsCopy)
+                            {
+                                Directory.CreateDirectory(Path.GetDirectoryName(fileVersionFolder)!);
+                                Filesystem.AssertReadOnly(fileVersionFolder);
+                                File.Copy(file, fileVersionFolder, true);
+                                File.SetLastWriteTime(fileVersionFolder, sourceInfo.LastWriteTime);
+                                Filesystem.AssertReadOnly(fileVersionFolder);
+                                App.Logger.WriteLine(LOG_IDENT, $"Preset mod: {relativeFile} copied to version folder");
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            App.Logger.WriteLine(LOG_IDENT, $"Failed to apply preset mod ({relativeFile}): {ex.Message}");
+                        }
+                    }
+                }
 
                 if (App.Settings.Prop.UseFastFlagManager)
                 {

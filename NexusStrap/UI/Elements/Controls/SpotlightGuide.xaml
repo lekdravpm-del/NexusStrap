@@ -56,13 +56,14 @@
         <Border x:Name="WelcomePanel"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
+                Margin="0,40,0,0"
                 Background="#F20F0F0F"
                 BorderBrush="#66FFFFFF"
                 BorderThickness="1"
                 CornerRadius="20"
                 Padding="40,36"
-                MinWidth="420"
-                MaxWidth="500">
+                MinWidth="460"
+                MaxWidth="560">
             <StackPanel HorizontalAlignment="Center">
                 <TextBlock x:Name="WelcomeTitle" Text="Welcome to NexusStrap!" FontSize="26" FontWeight="Bold" Foreground="White"
                            HorizontalAlignment="Center" Margin="0,0,0,8">
@@ -72,7 +73,7 @@
                 </TextBlock>
                 <TextBlock x:Name="WelcomeSubtitle" Text="Thanks for choosing NexusStrap. Let's walk you through the settings." FontSize="16"
                            Foreground="{DynamicResource TextFillColorSecondaryBrush}"
-                           HorizontalAlignment="Center" Margin="0,0,0,6" />
+                           HorizontalAlignment="Center" Margin="0,0,0,6" TextWrapping="Wrap" />
                 <TextBlock x:Name="WelcomeCredit" Text="Made by NexusStrap Contributors" FontSize="13"
                            Foreground="{DynamicResource TextFillColorTertiaryBrush}"
                            HorizontalAlignment="Center" TextAlignment="Center" Margin="0,0,0,20"

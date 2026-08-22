@@ -48,6 +48,8 @@ namespace NexusStrap
 
         public NexusStrapRichPresence RichPresenceInstance { get; private set; } = null!;
 
+        public static readonly EventWaitHandle PlayerLaunchSignal = new(false, EventResetMode.AutoReset, "NexusStrap-PlayerLaunch");
+
         public static bool IsActionBuild => !String.IsNullOrEmpty(BuildMetadata.CommitRef);
 
         public static bool IsProductionBuild => IsActionBuild && BuildMetadata.CommitRef.StartsWith("tag", StringComparison.Ordinal);
@@ -269,6 +271,8 @@ namespace NexusStrap
 
             base.OnStartup(e);
 
+            UI.RoundedWindowChrome.Install();
+
             bool fontApplied = FontManager.ApplySavedCustomFont();
 
             if (fontApplied)
@@ -417,6 +421,7 @@ namespace NexusStrap
                 State.Load();
                 FastFlags.Load();
                 GlobalSettings.Load();
+                Integrations.PresenceHeartbeat.Start();
 
                 // make sure the desktop and start menu shortcuts exist from the very
                 // first open, even before Roblox itself has been installed
@@ -447,6 +452,8 @@ namespace NexusStrap
 
                 WindowsRegistry.RegisterApis();
 
+                MemoryManager.Start();
+
                 LaunchHandler.ProcessLaunchArgs();
             }
 
@@ -454,6 +461,8 @@ namespace NexusStrap
 
         protected override void OnExit(ExitEventArgs e)
         {
+            Integrations.PresenceHeartbeat.Stop();
+            MemoryManager.Stop();
             AccountManager.Shared.SaveAccounts();
             RichPresence?.Dispose();
             WatcherInstance?.Dispose();

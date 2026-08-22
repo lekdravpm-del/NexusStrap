@@ -1,7 +1,9 @@
 using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.Input;
 using NexusStrap.Models;
+using NexusStrap.Resources;
 
 namespace NexusStrap.UI.ViewModels.Settings
 {
@@ -80,6 +82,21 @@ namespace NexusStrap.UI.ViewModels.Settings
         {
             if (template == null) return;
 
+            // First-time warning: most FFlags are outdated in 2026
+            if (App.State.Prop.ShowFFlagEditorWarning)
+            {
+                var warnResult = Frontend.ShowMessageBox(
+                    Strings.Menu_FastFlagEditor_Warning_Text + "\n\nDo you want to continue and apply this template?",
+                    System.Windows.MessageBoxImage.Warning,
+                    System.Windows.MessageBoxButton.YesNo);
+
+                if (warnResult != System.Windows.MessageBoxResult.Yes)
+                    return;
+
+                App.State.Prop.ShowFFlagEditorWarning = false;
+                App.State.Save();
+            }
+
             var result = Frontend.ShowMessageBox(
                 $"Apply '{template.Name}'?\n\nThis will make {template.ChangeCount} FastFlag change(s).",
                 System.Windows.MessageBoxImage.Question,
@@ -90,7 +107,7 @@ namespace NexusStrap.UI.ViewModels.Settings
                 FFlagTemplateManager.ApplyTemplate(template);
 
                 Frontend.ShowMessageBox(
-                    $"Template '{template.Name}' applied successfully!\n\nSave your settings to make changes permanent.",
+                    $"Template '{template.Name}' applied successfully!\n\nSave your settings to make changes permanent. Open FastFlags to see them.",
                     System.Windows.MessageBoxImage.Information);
             }
         }

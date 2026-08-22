@@ -18,8 +18,8 @@
         </Grid.RowDefinitions>
         <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
             <StackPanel>
-                <!-- Server Browser Filters -->
-                <Border Padding="16" Margin="0,0,0,16" Background="{DynamicResource PrimaryBackgroundColor}" BorderBrush="{DynamicResource ControlFillColorDefaultBrush}" BorderThickness="1" CornerRadius="8">
+                <!-- Server Browser Filters - hidden per request -->
+                <Border Visibility="Collapsed" Padding="16" Margin="0,0,0,16" Background="{DynamicResource PrimaryBackgroundColor}" BorderBrush="{DynamicResource ControlFillColorDefaultBrush}" BorderThickness="1" CornerRadius="8">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
@@ -142,7 +142,7 @@
 
                             <StackPanel VerticalAlignment="Top" Orientation="Vertical">
                                 <StackPanel Margin="0,0,0,12" Orientation="Vertical">
-                                    <TextBlock Margin="0,0,0,8" FontWeight="SemiBold" Text="Game Search" />
+                                    <TextBlock Margin="0,0,0,8" FontWeight="SemiBold" Text="Game Search" Visibility="Collapsed" />
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
@@ -151,6 +151,7 @@
 
                                         <ComboBox
                             x:Name="SearchComboBox"
+                            Visibility="Collapsed"
                             Grid.Column="0"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Stretch"
@@ -321,7 +322,7 @@
                     BorderThickness="1"
                     CornerRadius="8">
                     <StackPanel>
-                        <StackPanel Grid.Column="0" Margin="0,-4,0,8" Orientation="Horizontal">
+                        <StackPanel Grid.Column="0" Margin="0,-4,0,8" Orientation="Horizontal" Visibility="Collapsed">
                             <TextBlock Margin="0,0,4,0" VerticalAlignment="Center" Text="Region:" />
                             <ComboBox MinWidth="150" Margin="0,0,8,0" ItemsSource="{Binding Regions}" SelectedItem="{Binding SelectedRegion}" />
                             <TextBlock Margin="0,0,4,0" VerticalAlignment="Center" Text="Server Size:" />

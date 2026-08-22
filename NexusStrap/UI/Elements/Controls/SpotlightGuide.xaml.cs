@@ -66,6 +66,14 @@ namespace NexusStrap.UI.Elements.Controls
             App.Settings.Prop.Locale = identifier;
             App.Settings.Save();
 
+            // Restart Settings window to apply language change immediately
+            if (_window != null)
+            {
+                _window.Close();
+                var newWindow = new Settings.MainWindow(false);
+                newWindow.Show();
+            }
+
             UpdateWelcomeText();
 
             if (_running && !_transitioning && _stepIndex < _steps.Count)
@@ -212,20 +220,19 @@ namespace NexusStrap.UI.Elements.Controls
                 ("StudioIconToggle", "Shortcuts", "Create a Roblox Studio shortcut."),
                 ("SettingsIconToggle", "Shortcuts", "Create a settings shortcut."));
 
-            Section("logviewer", typeof(LogViewerPage),
-                "Log Viewer", "View NexusStrap logs for debugging.",
-                ("LogFilesComboBox", "Log Viewer", "Select a log file."),
+            Section("logviewer", typeof(LogViewer2Page),
+                "Log Viewer", "View NexusStrap logs for debugging and manage launch arguments.",
+                ("LogFilesComboBox", "Log Viewer", "Select a log file to view."),
                 ("LogSearchTextBox", "Log Viewer", "Search through log entries."),
                 ("AddArgButton", "Log Viewer", "Add custom launch arguments."));
 
-            Section("appanalyzer", typeof(AppAnalyzerPage),
-                "App Analyzer", "Scan your installation for issues.",
-                ("ScanConflictsButton", "App Analyzer", "Scan for file conflicts."),
-                ("RunHealthCheckButton", "App Analyzer", "Run a health check."));
-
-            Section("analytics", typeof(AnalyticsPage),
-                "Analytics", "View your usage statistics.",
-                ("RefreshButton", "Analytics", "Refresh analytics data."));
+            Section("memory", typeof(MemoryPage),
+                "Memory", "Control how much RAM Roblox uses.",
+                ("RamCleanerToggle", "Memory", "Automatically trim Roblox's working set on a timer."),
+                ("CleanIntervalBox", "Memory", "Set how often the RAM cleaner runs."),
+                ("CleanNowButton", "Memory", "Instantly trim Roblox memory right now."),
+                ("MemoryLimiterToggle", "Memory", "Enable the memory usage limiter."),
+                ("MemoryLimitBox", "Memory", "Set the maximum RAM Roblox can use."));
         }
 
         private void StartTour_Click(object sender, RoutedEventArgs e)
@@ -289,7 +296,7 @@ namespace NexusStrap.UI.Elements.Controls
                 Rect hole;
                 if (target != null && TryGetElementRect(target, out Rect rect))
                 {
-                    rect.Inflate(10, 10);
+                    rect.Inflate(4, 4);
                     hole = rect;
                     HighlightBox.Visibility = Visibility.Visible;
                     PositionHighlight(rect);
@@ -477,10 +484,17 @@ namespace NexusStrap.UI.Elements.Controls
             if (fromWidth <= 0 || double.IsNaN(fromWidth)) fromWidth = r.Width;
             if (fromHeight <= 0 || double.IsNaN(fromHeight)) fromHeight = r.Height;
 
-            HighlightBox.BeginAnimation(Canvas.LeftProperty, new DoubleAnimation(fromLeft, r.X, TimeSpan.FromMilliseconds(280)) { EasingFunction = ease });
-            HighlightBox.BeginAnimation(Canvas.TopProperty, new DoubleAnimation(fromTop, r.Y, TimeSpan.FromMilliseconds(280)) { EasingFunction = ease });
-            HighlightBox.BeginAnimation(WidthProperty, new DoubleAnimation(fromWidth, r.Width, TimeSpan.FromMilliseconds(280)) { EasingFunction = ease });
-            HighlightBox.BeginAnimation(HeightProperty, new DoubleAnimation(fromHeight, r.Height, TimeSpan.FromMilliseconds(280)) { EasingFunction = ease });
+            // Adjust for BorderThickness to align perfectly with target element
+            const double borderOffset = 2.5;
+            double targetLeft = r.X - borderOffset;
+            double targetTop = r.Y - borderOffset;
+            double targetWidth = r.Width + borderOffset * 2;
+            double targetHeight = r.Height + borderOffset * 2;
+
+            HighlightBox.BeginAnimation(Canvas.LeftProperty, new DoubleAnimation(fromLeft, targetLeft, TimeSpan.FromMilliseconds(280)) { EasingFunction = ease });
+            HighlightBox.BeginAnimation(Canvas.TopProperty, new DoubleAnimation(fromTop, targetTop, TimeSpan.FromMilliseconds(280)) { EasingFunction = ease });
+            HighlightBox.BeginAnimation(WidthProperty, new DoubleAnimation(fromWidth, targetWidth, TimeSpan.FromMilliseconds(280)) { EasingFunction = ease });
+            HighlightBox.BeginAnimation(HeightProperty, new DoubleAnimation(fromHeight, targetHeight, TimeSpan.FromMilliseconds(280)) { EasingFunction = ease });
         }
 
         private void PositionCard(Rect hole)

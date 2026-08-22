@@ -15,6 +15,11 @@ namespace NexusStrap
             return assembly.GetManifestResourceStream(path)!;
         }
 
+        public static bool Exists(string name)
+        {
+            return resourceNames.Any(str => str.EndsWith(name));
+        }
+
         public static async Task<byte[]> Get(string name)
         {
             using var stream = GetStream(name);

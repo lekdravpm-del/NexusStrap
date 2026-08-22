@@ -13,29 +13,71 @@
       Loaded="UiPage_Loaded"
       Background="Transparent">
 
-    <StackPanel Margin="0,0,14,14">
-        <TextBlock Text="NEXUS" FontSize="32" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" Margin="0,0,0,4">
+    <Grid Margin="12,12,26,12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Success checkmark -->
+        <Grid Grid.Row="0" Width="64" Height="64" HorizontalAlignment="Center" Margin="0,0,0,12">
+            <Ellipse Fill="{DynamicResource SystemAccentBrush}" Opacity="0.15" />
+            <ui:SymbolIcon FontSize="32" Symbol="CheckmarkCircle32" HorizontalAlignment="Center"
+                           Foreground="{DynamicResource SystemAccentBrush}" />
+        </Grid>
+
+        <TextBlock Grid.Row="1" Text="NEXUS" FontSize="32" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" Margin="0,0,0,4">
             <TextBlock.Effect>
                 <DropShadowEffect Color="White" BlurRadius="18" ShadowDepth="0" Opacity="0.8"/>
             </TextBlock.Effect>
         </TextBlock>
-        <TextBlock FontSize="14" Text="{x:Static resources:Strings.Installer_Completion_Text}" TextWrapping="Wrap"
-                   TextAlignment="Center" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Margin="0,8,0,20" />
 
-        <ui:CardAction Margin="0,0,0,8" Icon="Settings28" Command="{Binding LaunchSettingsCommand, Mode=OneTime}">
-            <StackPanel>
-                <TextBlock FontSize="14" Text="{x:Static resources:Strings.Installer_Completion_Settings_Title}" />
-                <TextBlock Margin="0,2,0,0" FontSize="12" Text="{x:Static resources:Strings.Installer_Completion_Settings_Description}"
-                           Padding="0,0,16,0" Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
-            </StackPanel>
-        </ui:CardAction>
+        <TextBlock Grid.Row="2" Text="You're all set!" FontSize="16" FontWeight="SemiBold"
+                   HorizontalAlignment="Center" Margin="0,0,0,6" />
 
-        <ui:CardAction Margin="0,0,0,8" Icon="ArrowRight12" Command="{Binding LaunchRobloxCommand, Mode=OneTime}">
-            <StackPanel>
-                <TextBlock FontSize="14" Text="{x:Static resources:Strings.Installer_Completion_Launch_Title}" />
-                <TextBlock Margin="0,2,0,0" FontSize="12" Text="{x:Static resources:Strings.Installer_Completion_Launch_Description}"
-                           Padding="0,0,16,0" Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
-            </StackPanel>
-        </ui:CardAction>
-    </StackPanel>
+        <TextBlock Grid.Row="3" FontSize="13" Text="NexusStrap has been installed successfully. Choose what to do next."
+                   TextWrapping="Wrap" TextAlignment="Center" MaxWidth="400"
+                   Foreground="{DynamicResource TextFillColorSecondaryBrush}" Margin="0,0,0,24" />
+
+        <StackPanel Grid.Row="4" HorizontalAlignment="Center" MaxWidth="400">
+            <ui:CardAction Margin="0,0,0,10" Icon="Settings28" Command="{Binding LaunchSettingsCommand, Mode=OneTime}">
+                <StackPanel>
+                    <TextBlock FontSize="14" FontWeight="SemiBold" Text="Open Settings" />
+                    <TextBlock Margin="0,2,0,0" FontSize="12" Text="Customize cursors, sounds, FFlags, and more"
+                               Padding="0,0,16,0" Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
+                </StackPanel>
+            </ui:CardAction>
+
+            <ui:CardAction Margin="0,0,0,10" Icon="Play24" Command="{Binding LaunchRobloxCommand, Mode=OneTime}">
+                <StackPanel>
+                    <TextBlock FontSize="14" FontWeight="SemiBold" Text="Launch Roblox" />
+                    <TextBlock Margin="0,2,0,0" FontSize="12" Text="Start playing with NexusStrap"
+                               Padding="0,0,16,0" Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
+                </StackPanel>
+            </ui:CardAction>
+
+            <ui:CardAction Margin="0,0,0,0" Icon="People24">
+                <ui:CardAction.Content>
+                    <StackPanel>
+                        <TextBlock FontSize="14" FontWeight="SemiBold" Text="Join Discord" />
+                        <TextBlock Margin="0,2,0,0" FontSize="12" Text="Get help, suggest features, or just hang out"
+                                   Padding="0,0,16,0" Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
+                    </StackPanel>
+                </ui:CardAction.Content>
+                <ui:CardAction.InputBindings>
+                    <MouseBinding MouseAction="LeftClick" Command="{x:Static local:CompletionPage.OpenDiscordCommand}" />
+                </ui:CardAction.InputBindings>
+            </ui:CardAction>
+        </StackPanel>
+
+        <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,24,0,0">
+            <ui:Anchor Content="GitHub" Icon="Code24" NavigateUri="https://github.com/lekdravpm-del/NexusStrap" Margin="0,0,20,0" />
+            <ui:Anchor Content="Wiki" Icon="BookOpen24" NavigateUri="https://github.com/lekdravpm-del/NexusStrap/wiki" />
+        </StackPanel>
+    </Grid>
 </ui:UiPage>
